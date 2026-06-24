@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Fariborz Aref | Sociology, Evidence, and Explanation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fariborz Aref</title>
+  <meta name="description" content="Fariborz Aref, sociologist and research methodologist. Research in inequality, comparative sociology, research design, and mixed methods.">
 
   <style>
     :root {
+      --text: #2f3437;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --link: #1683d8;
+      --soft: #eef7ff;
       --bg: #ffffff;
-      --text: #222222;
-      --muted: #666666;
-      --line: #e6e6e6;
-      --blue: #1d7fd3;
-      --blue-soft: #eef7ff;
-      --dark: #20242a;
-      --max: 1160px;
+      --max: 1120px;
     }
 
     * {
@@ -33,7 +31,7 @@
     }
 
     a {
-      color: var(--blue);
+      color: var(--link);
       text-decoration: none;
       font-weight: 600;
     }
@@ -44,10 +42,10 @@
 
     .topbar {
       border-bottom: 1px solid var(--line);
-      background: #ffffff;
+      background: #fff;
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 10;
     }
 
     .topbar-inner {
@@ -56,57 +54,58 @@
       padding: 12px 24px;
       display: flex;
       align-items: center;
-      gap: 42px;
+      gap: 36px;
     }
 
     .brand {
-      font-weight: 800;
-      color: #444;
       min-width: 170px;
       font-size: 1.05rem;
+      font-weight: 800;
+      color: #4b5563;
     }
 
-    .nav {
+    nav {
       display: flex;
-      gap: 30px;
       flex-wrap: wrap;
-      font-size: 1rem;
+      gap: 28px;
     }
 
-    .nav a {
-      color: #666;
+    nav a {
+      color: #5f6873;
+      font-size: 1rem;
       font-weight: 600;
     }
 
-    .nav a:hover {
-      color: var(--blue);
+    nav a:hover {
+      color: var(--link);
       text-decoration: none;
     }
 
     .page {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 58px 24px 80px;
+      padding: 56px 24px 80px;
       display: grid;
-      grid-template-columns: 245px 1fr;
-      gap: 58px;
+      grid-template-columns: 250px 1fr;
+      gap: 54px;
     }
 
-    .sidebar {
+    aside {
       padding-top: 8px;
     }
 
-    .name-block {
+    .name {
       margin-bottom: 28px;
     }
 
-    .name-block h1 {
+    .name h1 {
       margin: 0 0 8px;
-      font-size: 1.4rem;
-      color: var(--dark);
+      font-size: 1.45rem;
+      line-height: 1.2;
+      color: #24292f;
     }
 
-    .name-block p {
+    .name p {
       margin: 0;
       color: var(--muted);
       font-size: 0.95rem;
@@ -120,18 +119,17 @@
 
     .side-list li {
       display: flex;
-      gap: 12px;
+      gap: 11px;
       align-items: center;
-      margin-bottom: 17px;
-      font-size: 0.95rem;
+      margin-bottom: 16px;
       color: #444;
+      font-size: 0.95rem;
     }
 
     .icon {
       width: 22px;
       text-align: center;
       color: #444;
-      font-size: 1.1rem;
     }
 
     main {
@@ -139,50 +137,68 @@
     }
 
     section {
-      margin-bottom: 44px;
+      margin-bottom: 42px;
     }
 
     h2 {
       margin: 0 0 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      color: #24292f;
       font-size: 1.75rem;
-      color: var(--dark);
       line-height: 1.25;
     }
 
     h3 {
-      margin: 0 0 7px;
+      margin: 0 0 6px;
+      color: #24292f;
       font-size: 1.08rem;
-      color: var(--dark);
     }
 
     p {
       margin: 0 0 14px;
     }
 
-    .intro-title {
+    .lead-title {
+      margin: 0 0 18px;
+      border: 0;
+      padding: 0;
       font-size: 2rem;
-      margin-bottom: 18px;
-      color: var(--dark);
     }
 
-    .intro {
-      font-size: 1.08rem;
+    .lead {
       max-width: 850px;
+      font-size: 1.08rem;
     }
 
-    .signature {
+    .statement {
       margin-top: 20px;
       padding: 16px 18px;
-      border-left: 4px solid var(--blue);
-      background: var(--blue-soft);
-      color: #2d3748;
-      font-size: 1.02rem;
+      border-left: 4px solid var(--link);
+      background: var(--soft);
+      color: #364152;
     }
 
-    .section-line {
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 8px;
-      margin-bottom: 18px;
+    .updates {
+      max-height: 245px;
+      overflow-y: auto;
+      border-top: 1px solid var(--line);
+      padding-right: 8px;
+    }
+
+    .update {
+      margin: 10px 0;
+      padding: 10px 12px;
+      border-left: 4px solid var(--link);
+      border-radius: 4px;
+      background: var(--soft);
+    }
+
+    .label {
+      margin-bottom: 2px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
     }
 
     .grid {
@@ -192,10 +208,10 @@
     }
 
     .card {
+      padding: 16px 18px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 16px 18px;
-      background: #ffffff;
+      background: #fff;
     }
 
     .card:hover {
@@ -216,38 +232,16 @@
       margin-bottom: 6px;
     }
 
-    .updates {
-      border-top: 1px solid var(--line);
-      max-height: 250px;
-      overflow-y: auto;
-      padding-right: 8px;
-    }
-
-    .update-item {
-      background: var(--blue-soft);
-      border-left: 4px solid var(--blue);
-      border-radius: 4px;
-      padding: 10px 12px;
-      margin: 10px 0;
-    }
-
-    .update-label {
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
     .publication {
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 16px;
       margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
     }
 
     .publication:last-child {
-      border-bottom: none;
       margin-bottom: 0;
       padding-bottom: 0;
+      border-bottom: 0;
     }
 
     .tags {
@@ -258,10 +252,10 @@
     }
 
     .tag {
-      background: #f3f4f6;
-      border: 1px solid #e5e7eb;
-      border-radius: 999px;
       padding: 4px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #f6f7f8;
       color: #555;
       font-size: 0.88rem;
       font-weight: 600;
@@ -269,28 +263,31 @@
 
     footer {
       border-top: 1px solid var(--line);
-      text-align: center;
       padding: 28px;
+      text-align: center;
       color: var(--muted);
       font-size: 0.9rem;
     }
 
     @media (max-width: 850px) {
       .topbar-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        display: block;
+      }
+
+      nav {
+        margin-top: 10px;
+        gap: 16px;
       }
 
       .page {
         grid-template-columns: 1fr;
-        gap: 32px;
-        padding-top: 36px;
+        gap: 30px;
+        padding-top: 34px;
       }
 
-      .sidebar {
+      aside {
+        padding-bottom: 22px;
         border-bottom: 1px solid var(--line);
-        padding-bottom: 24px;
       }
 
       .grid {
@@ -298,7 +295,6 @@
       }
     }
   </style>
-
 </head>
 
 <body>
@@ -306,240 +302,211 @@
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">Fariborz Aref</div>
-
-```
-  <nav class="nav">
-    <a href="#work">Current Work</a>
-    <a href="#research">Research</a>
-    <a href="#publications">Publications</a>
-    <a href="#repositories">Repositories</a>
-    <a href="#teaching">Teaching</a>
-    <a href="#cv">CV</a>
-  </nav>
-</div>
-```
-
+      <nav>
+        <a href="#work">Current Work</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#repositories">Repositories</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#cv">CV</a>
+      </nav>
+    </div>
   </header>
 
   <div class="page">
 
-```
-<aside class="sidebar">
-  <div class="name-block">
-    <h1>Fariborz Aref</h1>
-    <p>Sociologist · Research Methodologist</p>
-  </div>
-
-  <ul class="side-list">
-    <li><span class="icon">📍</span><span>United States</span></li>
-    <li><span class="icon">🏛️</span><span>Sociology · Inequality · Methods</span></li>
-    <li><span class="icon">✉️</span><a href="mailto:fariborz.aref@gmail.com">Email</a></li>
-    <li><span class="icon">🌐</span><a href="https://fariborzaref.com" target="_blank">Website</a></li>
-    <li><span class="icon">🔬</span><a href="https://orcid.org/0000-0001-6622-1824" target="_blank">ORCID</a></li>
-    <li><span class="icon">💻</span><a href="https://github.com/fariborzaref" target="_blank">GitHub</a></li>
-  </ul>
-</aside>
-
-<main>
-
-  <section id="home">
-    <h2 class="intro-title">The Architecture of Social Inquiry</h2>
-
-    <p class="intro">
-      I study how inequality is produced, measured, interpreted, and explained across societies.
-      My work brings together sociological theory, comparative research, computational analysis,
-      quantitative modeling, and qualitative inquiry.
-    </p>
-
-    <p class="intro">
-      Across my research, teaching, and open repositories, I focus on one central problem:
-      how social science can move from complex social reality to defensible evidence,
-      explanation, and public relevance.
-    </p>
-
-    <div class="signature">
-      My work treats research design not as a technical formality, but as the structure through
-      which social reality becomes visible, evidence becomes credible, and explanation becomes possible.
-    </div>
-  </section>
-
-  <section id="work">
-    <h2 class="section-line">Current Work</h2>
-
-    <div class="updates">
-      <div class="update-item">
-        <div class="update-label">Research</div>
-        Comparative work on inequality, welfare regimes, labor markets, crisis, and institutional change.
+    <aside>
+      <div class="name">
+        <h1>Fariborz Aref</h1>
+        <p>Sociologist and Research Methodologist</p>
       </div>
 
-      <div class="update-item">
-        <div class="update-label">Methods</div>
-        Open research infrastructure for quantitative sociology, qualitative inquiry, computational analysis,
-        and mixed-methods integration.
-      </div>
+      <ul class="side-list">
+        <li><span class="icon">📍</span><span>United States</span></li>
+        <li><span class="icon">🏛️</span><span>Sociology · Inequality · Methods</span></li>
+        <li><span class="icon">✉️</span><a href="mailto:fariborz.aref@gmail.com">Email</a></li>
+        <li><span class="icon">🌐</span><a href="https://fariborzaref.com" target="_blank" rel="noopener">Website</a></li>
+        <li><span class="icon">🔬</span><a href="https://orcid.org/0000-0001-6622-1824" target="_blank" rel="noopener">ORCID</a></li>
+        <li><span class="icon">💻</span><a href="https://github.com/fariborzaref" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </aside>
 
-      <div class="update-item">
-        <div class="update-label">Teaching</div>
-        Applied materials in research methods, social statistics, evidence evaluation, and AI-era academic judgment.
-      </div>
+    <main>
 
-      <div class="update-item">
-        <div class="update-label">Writing</div>
-        Ongoing work on research design, evidence, explanation, and the logic of social inquiry.
-      </div>
-    </div>
-  </section>
+      <section id="home">
+        <h2 class="lead-title">The Architecture of Social Inquiry</h2>
 
-  <section id="research">
-    <h2 class="section-line">Research</h2>
+        <p class="lead">
+          I study how inequality is produced, measured, and explained across societies. My work connects sociological theory with comparative research, quantitative modeling, qualitative inquiry, and computational methods.
+        </p>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Core Areas</h3>
-        <ul>
-          <li>Social inequality and stratification</li>
-          <li>Comparative and cross-national sociology</li>
-          <li>Migration, education, and global mobility</li>
-          <li>Labor markets and technological transformation</li>
-          <li>Health disparities and public policy</li>
-        </ul>
-      </div>
+        <p class="lead">
+          I focus on how research design turns social complexity into evidence, explanation, and public relevance.
+        </p>
 
-      <div class="card">
-        <h3>Methods</h3>
-        <ul>
-          <li>Structural Equation Modeling</li>
-          <li>Multilevel and longitudinal modeling</li>
-          <li>Generalized Estimating Equations</li>
-          <li>Text mining and network analysis</li>
-          <li>Interviews, focus groups, and NVivo-supported analysis</li>
-        </ul>
-      </div>
-    </div>
+        <div class="statement">
+          Research design is the structure that makes social reality visible, evidence credible, and explanation possible.
+        </div>
+      </section>
 
-    <div class="tags">
-      <span class="tag">R</span>
-      <span class="tag">Python</span>
-      <span class="tag">Stata</span>
-      <span class="tag">SPSS</span>
-      <span class="tag">NVivo</span>
-      <span class="tag">SQL</span>
-      <span class="tag">LaTeX</span>
-      <span class="tag">Git</span>
-    </div>
-  </section>
+      <section id="work">
+        <h2>Current Work</h2>
 
-  <section id="publications">
-    <h2 class="section-line">Selected Publications</h2>
+        <div class="updates">
+          <div class="update">
+            <div class="label">Research</div>
+            Comparative work on inequality, welfare regimes, labor markets, crisis, and institutional change.
+          </div>
 
-    <div class="publication">
-      <h3>From Recession to Pandemic</h3>
-      <p class="small">
-        <em>Comparative Sociology</em>. Evolving inequalities in OECD countries through
-        a two-decade analysis of socio-economic impacts.
-      </p>
-      <p>
-        <a href="https://doi.org/10.1163/15691330-bja10103" target="_blank">
-          DOI: 10.1163/15691330-bja10103
-        </a>
-      </p>
-    </div>
+          <div class="update">
+            <div class="label">Methods</div>
+            Open materials for quantitative sociology, qualitative inquiry, computational analysis, and mixed methods.
+          </div>
 
-    <div class="publication">
-      <h3>Analyzing Inequalities</h3>
-      <p class="small">
-        <em>International Review of Economics</em>. A multifaceted perspective of OECD welfare
-        regimes during the Great Recession and the pandemic.
-      </p>
-      <p>
-        <a href="https://doi.org/10.1007/s12232-024-00448-9" target="_blank">
-          DOI: 10.1007/s12232-024-00448-9
-        </a>
-      </p>
-    </div>
+          <div class="update">
+            <div class="label">Teaching</div>
+            Applied resources in research methods, social statistics, evidence evaluation, and academic judgment.
+          </div>
 
-    <div class="publication">
-      <h3>Research Productivity in Rehabilitation, Disability, and Allied Health Programs</h3>
-      <p class="small">
-        <em>Rehabilitation Research, Policy, and Education</em>.
-      </p>
-      <p>
-        <a href="https://doi.org/10.1891/2168-6653.31.3.194" target="_blank">
-          DOI: 10.1891/2168-6653.31.3.194
-        </a>
-      </p>
-    </div>
-  </section>
+          <div class="update">
+            <div class="label">Writing</div>
+            Work on research design, evidence, explanation, and the logic of social inquiry.
+          </div>
+        </div>
+      </section>
 
-  <section id="repositories">
-    <h2 class="section-line">Repositories</h2>
+      <section id="research">
+        <h2>Research</h2>
 
-    <div class="grid">
-      <div class="card">
-        <h3><a href="https://github.com/fariborzaref/QuantitativeSocietyLab" target="_blank">QuantitativeSocietyLab</a></h3>
-        <p class="small">Statistical modeling, longitudinal analysis, GEE frameworks, and quantitative sociology pipelines.</p>
-      </div>
+        <div class="grid">
+          <div class="card">
+            <h3>Areas</h3>
+            <ul>
+              <li>Social inequality and stratification</li>
+              <li>Comparative and cross-national sociology</li>
+              <li>Migration, education, and global mobility</li>
+              <li>Labor markets and technological change</li>
+              <li>Health disparities and public policy</li>
+            </ul>
+          </div>
 
-      <div class="card">
-        <h3><a href="https://github.com/fariborzaref/QualitativeSocietyLab" target="_blank">QualitativeSocietyLab</a></h3>
-        <p class="small">Thematic, discourse, institutional, and NVivo-supported qualitative research.</p>
-      </div>
+          <div class="card">
+            <h3>Methods</h3>
+            <ul>
+              <li>Structural Equation Modeling</li>
+              <li>Multilevel and longitudinal modeling</li>
+              <li>Generalized Estimating Equations</li>
+              <li>Text mining and network analysis</li>
+              <li>Interviews, focus groups, and NVivo-supported analysis</li>
+            </ul>
+          </div>
+        </div>
 
-      <div class="card">
-        <h3><a href="https://github.com/fariborzaref/MixedMethods_SocietyLab" target="_blank">MixedMethods_SocietyLab</a></h3>
-        <p class="small">Integration of survey, interview, ethnographic, and computational evidence.</p>
-      </div>
+        <div class="tags">
+          <span class="tag">R</span>
+          <span class="tag">Python</span>
+          <span class="tag">Stata</span>
+          <span class="tag">SPSS</span>
+          <span class="tag">NVivo</span>
+          <span class="tag">SQL</span>
+          <span class="tag">LaTeX</span>
+          <span class="tag">Git</span>
+        </div>
+      </section>
 
-      <div class="card">
-        <h3><a href="https://github.com/fariborzaref/ComputationalSociologyHub" target="_blank">ComputationalSociologyHub</a></h3>
-        <p class="small">Text mining, network analysis, simulation, machine learning, and computational social science.</p>
-      </div>
+      <section id="publications">
+        <h2>Selected Publications</h2>
 
-      <div class="card">
-        <h3><a href="https://github.com/fariborzaref/Teaching_and_Curriculum" target="_blank">Teaching_and_Curriculum</a></h3>
-        <p class="small">Syllabi, assignments, methods materials, statistics resources, and applied teaching tools.</p>
-      </div>
+        <div class="publication">
+          <h3>From Recession to Pandemic</h3>
+          <p class="small">
+            <em>Comparative Sociology</em>. Evolving inequalities in OECD countries through a two-decade analysis of socio-economic impacts.
+          </p>
+          <p>
+            <a href="https://doi.org/10.1163/15691330-bja10103" target="_blank" rel="noopener">DOI: 10.1163/15691330-bja10103</a>
+          </p>
+        </div>
 
-      <div class="card">
-        <h3><a href="https://github.com/fariborzaref/SociologyArchive" target="_blank">SociologyArchive</a></h3>
-        <p class="small">Open archive of sociological theory, empirical research, inequality studies, and public scholarship.</p>
-      </div>
-    </div>
-  </section>
+        <div class="publication">
+          <h3>Analyzing Inequalities</h3>
+          <p class="small">
+            <em>International Review of Economics</em>. A multifaceted perspective of OECD welfare regimes during the Great Recession and the pandemic.
+          </p>
+          <p>
+            <a href="https://doi.org/10.1007/s12232-024-00448-9" target="_blank" rel="noopener">DOI: 10.1007/s12232-024-00448-9</a>
+          </p>
+        </div>
 
-  <section id="teaching">
-    <h2 class="section-line">Teaching</h2>
+        <div class="publication">
+          <h3>Research Productivity in Rehabilitation, Disability, and Allied Health Programs</h3>
+          <p class="small">
+            <em>Rehabilitation Research, Policy, and Education</em>.
+          </p>
+          <p>
+            <a href="https://doi.org/10.1891/2168-6653.31.3.194" target="_blank" rel="noopener">DOI: 10.1891/2168-6653.31.3.194</a>
+          </p>
+        </div>
+      </section>
 
-    <p>
-      I teach students how to move from question to evidence, from evidence to analysis,
-      and from analysis to explanation.
-    </p>
+      <section id="repositories">
+        <h2>Repositories</h2>
 
-    <p class="small">
-      Courses include Research Methods, Social Statistics, Social Problems, Social Stratification,
-      Social Inequality, Social Psychology, Social Theory, Race and Ethnic Relations, and
-      Educational Research and Evaluation.
-    </p>
-  </section>
+        <div class="grid">
+          <div class="card">
+            <h3><a href="https://github.com/fariborzaref/QuantitativeSocietyLab" target="_blank" rel="noopener">QuantitativeSocietyLab</a></h3>
+            <p class="small">Statistical modeling, longitudinal analysis, GEE frameworks, and quantitative sociology pipelines.</p>
+          </div>
 
-  <section id="cv">
-    <h2 class="section-line">CV</h2>
+          <div class="card">
+            <h3><a href="https://github.com/fariborzaref/QualitativeSocietyLab" target="_blank" rel="noopener">QualitativeSocietyLab</a></h3>
+            <p class="small">Thematic, discourse, institutional, and NVivo-supported qualitative research.</p>
+          </div>
 
-    <p>
-      <strong>PhD</strong>, Sociology, University of Oklahoma<br />
-      <strong>PhD</strong>, Community Development, Universiti Putra Malaysia<br />
-      <strong>MA</strong>, Survey Research, University of Connecticut<br />
-      <strong>MA</strong>, Sociology, University of Dhaka
-    </p>
+          <div class="card">
+            <h3><a href="https://github.com/fariborzaref/MixedMethods_SocietyLab" target="_blank" rel="noopener">MixedMethods_SocietyLab</a></h3>
+            <p class="small">Integration of survey, interview, ethnographic, and computational evidence.</p>
+          </div>
 
-    <p class="small">
-      Full CV link can be added here after uploading a PDF file to this repository.
-    </p>
-  </section>
+          <div class="card">
+            <h3><a href="https://github.com/fariborzaref/ComputationalSociologyHub" target="_blank" rel="noopener">ComputationalSociologyHub</a></h3>
+            <p class="small">Text mining, network analysis, simulation, machine learning, and computational social science.</p>
+          </div>
 
-</main>
-```
+          <div class="card">
+            <h3><a href="https://github.com/fariborzaref/Teaching_and_Curriculum" target="_blank" rel="noopener">Teaching_and_Curriculum</a></h3>
+            <p class="small">Syllabi, assignments, methods materials, statistics resources, and applied teaching tools.</p>
+          </div>
 
+          <div class="card">
+            <h3><a href="https://github.com/fariborzaref/SociologyArchive" target="_blank" rel="noopener">SociologyArchive</a></h3>
+            <p class="small">Open archive of sociological theory, empirical research, inequality studies, and public scholarship.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="teaching">
+        <h2>Teaching</h2>
+
+        <p>
+          I teach students how to move from question to evidence, from evidence to analysis, and from analysis to explanation.
+        </p>
+
+        <p class="small">
+          Courses include Research Methods, Social Statistics, Social Problems, Social Stratification, Social Inequality, Social Psychology, Social Theory, Race and Ethnic Relations, and Educational Research and Evaluation.
+        </p>
+      </section>
+
+      <section id="cv">
+        <h2>CV</h2>
+
+        <p>
+          <strong>PhD</strong>, Sociology, University of Oklahoma<br>
+          <strong>PhD</strong>, Community Development, Universiti Putra Malaysia<br>
+        </p>
+
+      </section>
+
+    </main>
   </div>
 
   <footer>
@@ -548,4 +515,3 @@
 
 </body>
 </html>
-
