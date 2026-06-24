@@ -4,41 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fariborz Aref</title>
-  <meta name="description" content="Fariborz Aref. Sociology, inequality, research methods, computational social research.">
+  <meta name="description" content="Fariborz Aref. Sociology, global inequality, research methods, and computational social research.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f3efe7;
-      --paper: rgba(255,255,255,.78);
-      --paper-solid: #fffdf8;
-      --ink: #101418;
-      --muted: #68707c;
-      --line: rgba(16,20,24,.12);
-      --blue: #155eef;
-      --blue2: #0ea5e9;
-      --gold: #b58a28;
-      --green: #12805c;
-      --shadow: 0 22px 70px rgba(17, 24, 39, .12);
-      --radius: 28px;
-      --max: 1200px;
-    }
-
-    [data-theme="dark"] {
-      --bg: #080b12;
-      --paper: rgba(14,18,28,.72);
-      --paper-solid: #101622;
-      --ink: #f8fafc;
-      --muted: #a2adbd;
-      --line: rgba(255,255,255,.13);
-      --blue: #6ea8ff;
-      --blue2: #22d3ee;
-      --gold: #f3c969;
-      --green: #49d19b;
-      --shadow: 0 28px 80px rgba(0,0,0,.38);
+      --bg: #f7f5ef;
+      --surface: #ffffff;
+      --surface-2: #f0eee8;
+      --text: #15171a;
+      --muted: #656b74;
+      --line: #dedbd3;
+      --blue: #1b4fd8;
+      --gold: #9b7a2f;
+      --green: #0f766e;
+      --shadow: 0 18px 50px rgba(20, 25, 35, 0.08);
+      --radius: 22px;
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
@@ -46,105 +31,88 @@
 
     body {
       margin: 0;
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
-      background:
-        radial-gradient(circle at 8% 10%, rgba(21,94,239,.18), transparent 30%),
-        radial-gradient(circle at 92% 6%, rgba(181,138,40,.18), transparent 28%),
-        radial-gradient(circle at 70% 88%, rgba(14,165,233,.15), transparent 30%),
-        var(--bg);
-      line-height: 1.6;
-      overflow-x: hidden;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #fbfaf7 0%, var(--bg) 52%, #f2efe7 100%);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .noise {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .06;
-      z-index: -1;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
-    }
+    a { color: inherit; text-decoration: none; }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 40;
       border-bottom: 1px solid var(--line);
-      background: color-mix(in srgb, var(--paper-solid) 78%, transparent);
+      background: rgba(251, 250, 247, 0.94);
       backdrop-filter: blur(18px);
     }
 
     .topbar-inner {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 14px 22px;
+      padding: 14px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
+      min-width: 210px;
       font-weight: 900;
-      letter-spacing: -.04em;
+      letter-spacing: -0.04em;
+      color: var(--text);
     }
 
-    .mark {
-      width: 36px;
-      height: 36px;
+    .brand-mark {
+      width: 38px;
+      height: 38px;
       display: grid;
       place-items: center;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      border-radius: 13px;
+      background: var(--text);
       color: #fff;
-      box-shadow: 0 12px 30px rgba(21,94,239,.25);
-      font-size: .88rem;
+      font-size: 0.86rem;
+      letter-spacing: -0.06em;
     }
 
     nav {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
       justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
-    nav a,
-    .theme {
-      border: 1px solid transparent;
-      border-radius: 999px;
+    nav a {
       padding: 9px 12px;
+      border-radius: 999px;
       color: var(--muted);
-      font: 800 .82rem/1 Inter, sans-serif;
-      cursor: pointer;
-      background: transparent;
-      transition: .18s ease;
+      font-size: 0.86rem;
+      font-weight: 800;
+      transition: background 0.18s ease, color 0.18s ease;
     }
 
-    nav a:hover,
-    nav a.active,
-    .theme:hover {
-      color: var(--ink);
-      background: color-mix(in srgb, var(--ink) 6%, transparent);
-      border-color: var(--line);
+    nav a:hover {
+      color: var(--text);
+      background: var(--surface-2);
     }
 
-    .layout {
+    .shell {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 46px 22px 90px;
+      padding: 46px 24px 86px;
       display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
-      gap: 34px;
+      grid-template-columns: 292px minmax(0, 1fr);
+      gap: 32px;
     }
 
     aside {
@@ -154,121 +122,107 @@
     }
 
     .profile {
+      background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: var(--paper);
-      backdrop-filter: blur(18px);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
 
-    .profile-top {
-      padding: 26px;
+    .profile-head {
+      padding: 24px;
       border-bottom: 1px solid var(--line);
     }
 
-    .sig {
-      height: 112px;
-      border-radius: 24px;
-      background:
-        linear-gradient(135deg, rgba(21,94,239,.18), rgba(14,165,233,.08)),
-        radial-gradient(circle at 80% 24%, rgba(181,138,40,.28), transparent 34%),
-        color-mix(in srgb, var(--paper-solid) 82%, transparent);
+    .monogram {
+      height: 122px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(27, 79, 216, 0.12), rgba(155, 122, 47, 0.10)), var(--surface-2);
       border: 1px solid var(--line);
       display: grid;
       place-items: center;
-      margin-bottom: 22px;
-      position: relative;
-      overflow: hidden;
+      margin-bottom: 20px;
     }
 
-    .sig::before {
-      content: "";
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      border: 1px solid color-mix(in srgb, var(--blue) 30%, transparent);
-      transform: translate(40px, 20px);
-    }
-
-    .sig span {
-      font: 900 2.7rem/1 Inter, sans-serif;
-      letter-spacing: -.12em;
-      z-index: 1;
-      color: var(--ink);
+    .monogram span {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -0.14em;
+      color: var(--text);
     }
 
     h1 {
       margin: 0;
-      font-size: 1.75rem;
+      color: var(--text);
+      font-size: 1.74rem;
       line-height: 1.08;
-      letter-spacing: -.06em;
+      letter-spacing: -0.065em;
     }
 
     .role {
       margin: 9px 0 0;
       color: var(--muted);
+      font-size: 0.95rem;
       font-weight: 600;
-      font-size: .96rem;
     }
 
-    .links {
-      padding: 12px;
+    .side-links {
+      padding: 10px;
       display: grid;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .links a {
+    .side-links a {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
       padding: 12px 14px;
-      border-radius: 16px;
-      color: var(--ink);
+      border-radius: 14px;
       font-weight: 800;
-      font-size: .94rem;
-      transition: .18s ease;
+      color: var(--text);
+      transition: background 0.18s ease, transform 0.18s ease;
     }
 
-    .links a:hover {
-      background: color-mix(in srgb, var(--ink) 6%, transparent);
-      transform: translateX(3px);
+    .side-links a:hover {
+      background: var(--surface-2);
+      transform: translateX(2px);
     }
 
-    .links small {
+    .side-links small {
       color: var(--muted);
       font-weight: 700;
+      font-size: 0.78rem;
     }
 
-    .metrics {
+    .profile-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       border-top: 1px solid var(--line);
     }
 
-    .metric {
-      padding: 16px 10px;
+    .stat {
+      padding: 15px 8px;
       text-align: center;
       border-right: 1px solid var(--line);
     }
 
-    .metric:last-child { border-right: 0; }
+    .stat:last-child { border-right: 0; }
 
-    .metric strong {
+    .stat strong {
       display: block;
       font-size: 1.15rem;
-      letter-spacing: -.05em;
+      line-height: 1;
+      letter-spacing: -0.06em;
     }
 
-    .metric span {
+    .stat span {
       display: block;
+      margin-top: 5px;
       color: var(--muted);
-      font-size: .72rem;
-      font-weight: 800;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: .08em;
     }
 
     main {
@@ -278,131 +232,123 @@
     }
 
     .hero {
-      position: relative;
-      min-height: 530px;
+      background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 34px;
-      background:
-        linear-gradient(145deg, color-mix(in srgb, var(--paper-solid) 90%, transparent), color-mix(in srgb, var(--paper-solid) 58%, transparent));
+      border-radius: 30px;
       box-shadow: var(--shadow);
+      padding: clamp(30px, 6vw, 58px);
+      position: relative;
       overflow: hidden;
-      isolation: isolate;
     }
 
-    #field {
+    .hero::before {
+      content: "";
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      opacity: .55;
-      z-index: -1;
+      background: linear-gradient(90deg, rgba(21, 23, 26, 0.045) 1px, transparent 1px), linear-gradient(180deg, rgba(21, 23, 26, 0.045) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(90deg, transparent, black 14%, black 72%, transparent);
+      pointer-events: none;
     }
 
-    .hero-content {
-      padding: clamp(30px, 6vw, 64px);
-      display: grid;
-      min-height: 530px;
-      align-content: space-between;
-      gap: 36px;
-    }
+    .hero > * { position: relative; z-index: 1; }
 
     .kicker {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      color: var(--muted);
-      font-size: .78rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .16em;
       margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
 
-    .dot {
-      width: 8px;
-      height: 8px;
+    .kicker-dot {
+      width: 9px;
+      height: 9px;
       border-radius: 999px;
       background: var(--green);
-      box-shadow: 0 0 0 7px color-mix(in srgb, var(--green) 18%, transparent);
+      box-shadow: 0 0 0 6px rgba(15, 118, 110, 0.12);
     }
 
     .hero h2 {
-      max-width: 860px;
+      max-width: 780px;
       margin: 0;
-      font-size: clamp(3.1rem, 8vw, 6.9rem);
-      line-height: .88;
-      letter-spacing: -.095em;
+      color: var(--text);
+      font-size: clamp(2.4rem, 6vw, 5.1rem);
+      line-height: 0.96;
+      letter-spacing: -0.085em;
     }
 
     .hero p {
-      max-width: 680px;
-      margin: 24px 0 0;
+      max-width: 700px;
+      margin: 22px 0 0;
       color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.18rem);
+      font-size: clamp(1rem, 1.8vw, 1.16rem);
       font-weight: 600;
     }
 
-    .flow {
+    .workflow {
+      margin-top: 30px;
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 10px;
-      max-width: 850px;
     }
 
     .step {
-      position: relative;
       border: 1px solid var(--line);
-      border-radius: 18px;
+      border-radius: 16px;
+      background: #fbfaf7;
       padding: 14px 12px;
-      background: color-mix(in srgb, var(--paper-solid) 80%, transparent);
-      backdrop-filter: blur(10px);
-      overflow: hidden;
-    }
-
-    .step b {
-      display: block;
-      font-size: .9rem;
-      letter-spacing: -.03em;
     }
 
     .step span {
       display: block;
-      color: var(--muted);
-      font-size: .72rem;
-      font-weight: 800;
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: 4px;
+    }
+
+    .step b {
+      display: block;
+      margin-top: 3px;
+      font-size: 0.92rem;
+      letter-spacing: -0.03em;
     }
 
     .panel {
+      background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 28px;
-      background: var(--paper);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 14px 50px rgba(17, 24, 39, .07);
-      padding: 26px;
+      border-radius: 26px;
+      box-shadow: 0 14px 38px rgba(20, 25, 35, 0.055);
+      padding: 25px;
     }
 
     .section-head {
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 18px;
-      margin-bottom: 18px;
+      margin-bottom: 17px;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: clamp(1.55rem, 3vw, 2.2rem);
-      letter-spacing: -.06em;
+      color: var(--text);
+      font-size: clamp(1.42rem, 3vw, 2rem);
+      line-height: 1.1;
+      letter-spacing: -0.065em;
     }
 
     .section-head p {
       margin: 0;
       color: var(--muted);
-      font-size: .95rem;
-      font-weight: 600;
+      font-size: 0.92rem;
+      font-weight: 700;
     }
 
     .grid {
@@ -411,50 +357,34 @@
       gap: 14px;
     }
 
-    .grid.two {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
     .card {
       border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 20px;
-      background: color-mix(in srgb, var(--paper-solid) 80%, transparent);
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--blue2), var(--gold));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .25s ease;
+      border-radius: 19px;
+      background: #fbfaf7;
+      padding: 18px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      border-color: color-mix(in srgb, var(--blue) 38%, var(--line));
-      box-shadow: 0 20px 50px rgba(17, 24, 39, .10);
+      transform: translateY(-3px);
+      border-color: rgba(27, 79, 216, 0.36);
+      box-shadow: 0 16px 36px rgba(20, 25, 35, 0.08);
     }
-
-    .card:hover::after { transform: scaleX(1); }
 
     .card h3 {
       margin: 0 0 8px;
+      color: var(--text);
       font-size: 1.02rem;
-      letter-spacing: -.04em;
+      letter-spacing: -0.04em;
     }
 
     .card p,
     .card li {
       color: var(--muted);
+      font-size: 0.94rem;
       font-weight: 600;
-      font-size: .94rem;
     }
 
     .card p { margin: 0; }
@@ -470,78 +400,62 @@
     .chip {
       border: 1px solid var(--line);
       border-radius: 999px;
+      background: #fbfaf7;
       padding: 8px 12px;
-      background: color-mix(in srgb, var(--paper-solid) 75%, transparent);
-      color: var(--ink);
-      font-size: .86rem;
+      color: var(--text);
+      font-size: 0.86rem;
       font-weight: 900;
-      transition: .18s ease;
-    }
-
-    .chip:hover {
-      transform: translateY(-2px);
-      border-color: color-mix(in srgb, var(--blue) 40%, var(--line));
     }
 
     .pub {
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 16px;
       align-items: start;
+      gap: 16px;
       padding: 18px 0;
       border-bottom: 1px solid var(--line);
     }
 
-    .pub:first-child { padding-top: 0; }
-    .pub:last-child { border-bottom: 0; padding-bottom: 0; }
+    .pub:first-of-type { padding-top: 0; }
+    .pub:last-child { padding-bottom: 0; border-bottom: 0; }
 
     .pub h3 {
       margin: 0 0 6px;
-      font-size: 1.05rem;
-      letter-spacing: -.04em;
+      color: var(--text);
+      font-size: 1.04rem;
+      letter-spacing: -0.04em;
     }
 
     .pub p {
       margin: 0;
       color: var(--muted);
+      font-size: 0.94rem;
       font-weight: 600;
-      font-size: .94rem;
     }
 
     .doi {
       border: 1px solid var(--line);
       border-radius: 999px;
       padding: 8px 12px;
-      color: var(--link);
-      font-size: .82rem;
+      color: var(--blue);
+      font-size: 0.82rem;
       font-weight: 900;
       white-space: nowrap;
-      transition: .18s ease;
-    }
-
-    .doi:hover {
-      background: color-mix(in srgb, var(--blue) 10%, transparent);
-      text-decoration: none;
     }
 
     .repo {
-      min-height: 150px;
+      min-height: 142px;
       display: grid;
       align-content: space-between;
     }
 
     .repo a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--ink);
+      color: var(--text);
       font-weight: 900;
+      letter-spacing: -0.04em;
     }
 
-    .repo a::after {
-      content: "↗";
-      color: var(--link);
-    }
+    .repo a::after { content: " ↗"; color: var(--blue); }
 
     .cv-line {
       display: grid;
@@ -552,125 +466,52 @@
     }
 
     .cv-line:last-child { border-bottom: 0; }
-
-    .cv-line b { color: var(--ink); }
+    .cv-line b { color: var(--text); }
     .cv-line span { color: var(--muted); font-weight: 600; }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
     footer {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 28px 22px 46px;
-      color: var(--muted);
-      font-size: .9rem;
-      font-weight: 700;
+      padding: 28px 24px 46px;
+      border-top: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
-      gap: 18px;
-      border-top: 1px solid var(--line);
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
     }
 
-    @media (max-width: 980px) {
-      .layout {
-        display: block;
-        padding-top: 26px;
-      }
-
-      aside {
-        position: static;
-        margin-bottom: 22px;
-      }
-
-      .profile {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-
-      .metrics { display: none; }
-
+    @media (max-width: 960px) {
+      .shell { display: block; padding-top: 28px; }
+      aside { position: static; margin-bottom: 22px; }
+      .profile-stats { display: none; }
       .grid,
-      .grid.two {
-        grid-template-columns: 1fr;
-      }
+      .grid.two { grid-template-columns: 1fr; }
+      .workflow { grid-template-columns: 1fr; }
+      .pub { grid-template-columns: 1fr; }
+    }
 
+    @media (max-width: 640px) {
+      .topbar-inner { display: block; }
+      nav { justify-content: flex-start; margin-top: 12px; }
+      nav a { padding: 8px 10px; }
       .hero,
-      .hero-content {
-        min-height: auto;
-      }
-
-      .flow {
-        grid-template-columns: 1fr;
-      }
-
-      .pub {
-        grid-template-columns: 1fr;
-      }
-
-      footer {
-        display: block;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .topbar-inner {
-        display: block;
-      }
-
-      nav {
-        margin-top: 12px;
-        justify-content: flex-start;
-      }
-
-      nav a,
-      .theme {
-        padding: 8px 10px;
-      }
-
-      .hero h2 {
-        font-size: 3.2rem;
-      }
-
-      .hero-content,
-      .panel {
-        padding: 22px;
-      }
-
-      .section-head {
-        display: block;
-      }
-
-      .section-head p {
-        margin-top: 6px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        scroll-behavior: auto !important;
-        transition: none !important;
-        animation: none !important;
-      }
+      .panel { padding: 21px; }
+      .hero h2 { font-size: clamp(2.35rem, 14vw, 3.6rem); }
+      .section-head { display: block; }
+      .section-head p { margin-top: 6px; }
+      footer { display: block; }
+      footer span { display: block; margin-bottom: 6px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="noise"></div>
-
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#top" aria-label="Home">
-        <span class="mark">FA</span>
+      <a class="brand" href="#top" aria-label="Fariborz Aref home">
+        <span class="brand-mark">FA</span>
         <span>Fariborz Aref</span>
       </a>
 
@@ -681,86 +522,81 @@
         <a href="#repositories">Code</a>
         <a href="#teaching">Teaching</a>
         <a href="#cv">CV</a>
-        <button class="theme" id="themeBtn" type="button" aria-label="Toggle theme">Dark</button>
       </nav>
     </div>
   </header>
 
-  <div class="layout" id="top">
+  <div class="shell" id="top">
     <aside>
-      <section class="profile reveal">
-        <div class="profile-top">
-          <div class="sig"><span>FA</span></div>
+      <section class="profile" aria-label="Profile">
+        <div class="profile-head">
+          <div class="monogram"><span>FA</span></div>
           <h1>Fariborz Aref</h1>
-          <p class="role">Sociologist · Research Methods · Inequality</p>
+          <p class="role">Sociologist · Research Methods · Global Inequality</p>
         </div>
 
-        <div class="links">
+        <div class="side-links">
           <a href="mailto:fariborz.aref@gmail.com"><span>Email</span><small>contact</small></a>
           <a href="https://fariborzaref.com" target="_blank" rel="noopener"><span>Website</span><small>main site</small></a>
           <a href="https://orcid.org/0000-0001-6622-1824" target="_blank" rel="noopener"><span>ORCID</span><small>profile</small></a>
           <a href="https://github.com/fariborzaref" target="_blank" rel="noopener"><span>GitHub</span><small>code</small></a>
         </div>
-<div class="metrics">
-  <div class="metric">Research</strong><span>Social Inequality</span></div>
-  <div class="metric">Design</strong><span>Social Systems</span></div>
-  <div class="metric">Data</strong><span>Social Change</span></div>
-</div>
- 
+
+        <div class="profile-stats">
+          <div class="stat"><strong>2</strong><span>PhDs</span></div>
+          <div class="stat"><strong>3</strong><span>Papers</span></div>
+          <div class="stat"><strong>6</strong><span>Labs</span></div>
+        </div>
       </section>
     </aside>
 
     <main>
-      <section class="hero reveal">
-        <canvas id="field" aria-hidden="true"></canvas>
+      <section class="hero">
+        <div class="kicker"><span class="kicker-dot"></span> Sociology · Methods · Evidence</div>
 
-        <div class="hero-content">
-          <div>
-            <div class="kicker"><span class="dot"></span> Sociology · Data · Methods</div>
-            <h2>I study global inequality.</h2>
-            <p>
-              Sociology, statistics, qualitative research, and computational tools for questions about work, migration, education, health, and policy.
-            </p>
-          </div>
+        <h2>I study global inequality.</h2>
 
-          <div class="flow" aria-label="Research workflow">
-            <div class="step"><span>01</span><b>Question</b></div>
-            <div class="step"><span>02</span><b>Data</b></div>
-            <div class="step"><span>03</span><b>Model</b></div>
-            <div class="step"><span>04</span><b>Meaning</b></div>
-            <div class="step"><span>05</span><b>Use</b></div>
-          </div>
+        <p>
+          My work examines how institutions, labor markets, migration, education, health, and policy shape inequality across societies.
+        </p>
+
+        <div class="workflow" aria-label="Research workflow">
+          <div class="step"><span>01</span><b>Question</b></div>
+          <div class="step"><span>02</span><b>Evidence</b></div>
+          <div class="step"><span>03</span><b>Method</b></div>
+          <div class="step"><span>04</span><b>Finding</b></div>
+          <div class="step"><span>05</span><b>Use</b></div>
         </div>
       </section>
 
-      <section class="panel reveal" id="work">
+      <section class="panel" id="work">
         <div class="section-head">
           <h2>Work</h2>
-          <p>Current.</p>
+          <p>Current focus.</p>
         </div>
 
         <div class="grid">
           <article class="card">
             <h3>Research</h3>
-            <p>Inequality, welfare regimes, labor markets, migration, education, health.</p>
+            <p>Global inequality, welfare regimes, labor markets, migration, education, and health.</p>
           </article>
 
           <article class="card">
             <h3>Methods</h3>
-            <p>SEM, multilevel models, GEE, text analysis, interviews, focus groups.</p>
+            <p>SEM, multilevel models, GEE, text analysis, interviews, focus groups, and mixed methods.</p>
           </article>
 
           <article class="card">
             <h3>Teaching</h3>
-            <p>Research methods, statistics, inequality, theory, and evidence writing.</p>
+            <p>Research methods, statistics, inequality, theory, and evidence-based writing.</p>
           </article>
         </div>
       </section>
 
-      <section class="panel reveal" id="methods">
+      <section class="panel" id="methods">
         <div class="section-head">
           <h2>Methods</h2>
-          <p>Tools I use.</p>
+          <p>Tools and approaches.</p>
         </div>
 
         <div class="grid two">
@@ -791,7 +627,7 @@
         </div>
       </section>
 
-      <section class="panel reveal" id="publications">
+      <section class="panel" id="publications">
         <div class="section-head">
           <h2>Publications</h2>
           <p>Selected work.</p>
@@ -822,7 +658,7 @@
         </article>
       </section>
 
-      <section class="panel reveal" id="repositories">
+      <section class="panel" id="repositories">
         <div class="section-head">
           <h2>Code and Materials</h2>
           <p>GitHub labs.</p>
@@ -861,7 +697,7 @@
         </div>
       </section>
 
-      <section class="panel reveal" id="teaching">
+      <section class="panel" id="teaching">
         <div class="section-head">
           <h2>Teaching</h2>
           <p>Courses.</p>
@@ -879,10 +715,10 @@
         </div>
       </section>
 
-      <section class="panel reveal" id="cv">
+      <section class="panel" id="cv">
         <div class="section-head">
           <h2>CV</h2>
-          <p>Recent Education.</p>
+          <p>Education.</p>
         </div>
 
         <div class="cv-line"><b>PhD</b><span>Sociology, University of Oklahoma</span></div>
@@ -894,108 +730,7 @@
 
   <footer>
     <span>Fariborz Aref</span>
-    <span>Sociology · Inequality · Methods</span>
+    <span>Sociology · Global Inequality · Methods</span>
   </footer>
-
-  <script>
-    const root = document.documentElement;
-    const btn = document.getElementById("themeBtn");
-    const saved = localStorage.getItem("theme");
-    if (saved) {
-      root.dataset.theme = saved;
-      btn.textContent = saved === "dark" ? "Light" : "Dark";
-    }
-
-    btn.addEventListener("click", () => {
-      const next = root.dataset.theme === "dark" ? "light" : "dark";
-      root.dataset.theme = next;
-      localStorage.setItem("theme", next);
-      btn.textContent = next === "dark" ? "Light" : "Dark";
-    });
-
-    const reveal = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("show");
-      });
-    }, { threshold: .12 });
-    reveal.forEach(el => observer.observe(el));
-
-    const navLinks = [...document.querySelectorAll("nav a")];
-    const sections = navLinks
-      .map(a => document.querySelector(a.getAttribute("href")))
-      .filter(Boolean);
-
-    const navObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id));
-      });
-    }, { rootMargin: "-35% 0px -55% 0px" });
-
-    sections.forEach(s => navObserver.observe(s));
-
-    const canvas = document.getElementById("field");
-    const ctx = canvas.getContext("2d");
-    let w, h, dpr, points;
-
-    function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const rect = canvas.getBoundingClientRect();
-      w = canvas.width = Math.floor(rect.width * dpr);
-      h = canvas.height = Math.floor(rect.height * dpr);
-      points = Array.from({ length: 56 }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - .5) * .35 * dpr,
-        vy: (Math.random() - .5) * .35 * dpr,
-        r: (Math.random() * 1.7 + .7) * dpr
-      }));
-    }
-
-    function color(alpha) {
-      const dark = root.dataset.theme === "dark";
-      return dark ? `rgba(110,168,255,${alpha})` : `rgba(21,94,239,${alpha})`;
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
-
-      for (const p of points) {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = color(.35);
-        ctx.fill();
-      }
-
-      for (let i = 0; i < points.length; i++) {
-        for (let j = i + 1; j < points.length; j++) {
-          const a = points[i], b = points[j];
-          const dx = a.x - b.x, dy = a.y - b.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const max = 145 * dpr;
-          if (dist < max) {
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = color((1 - dist / max) * .18);
-            ctx.lineWidth = 1 * dpr;
-            ctx.stroke();
-          }
-        }
-      }
-
-      requestAnimationFrame(draw);
-    }
-
-    resize();
-    draw();
-    window.addEventListener("resize", resize);
-  </script>
 </body>
 </html>
