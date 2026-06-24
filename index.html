@@ -22,7 +22,6 @@
       --accent-2: #0f766e;
       --gold: #9a7428;
       --soft-blue: #e8eefb;
-      --soft-green: #e5f4ef;
       --shadow: 0 24px 70px rgba(32, 29, 23, .10);
       --radius: 26px;
       --max: 1220px;
@@ -207,6 +206,7 @@
       padding: 10px;
       display: grid;
       gap: 6px;
+      border-bottom: 1px solid var(--line);
     }
 
     .side-links a {
@@ -221,48 +221,42 @@
       transition: background .18s ease, transform .18s ease;
     }
 
+    .side-links a::after {
+      content: "↗";
+      color: var(--muted);
+      font-weight: 900;
+      transition: color .18s ease, transform .18s ease;
+    }
+
+    .side-links a:first-child::after {
+      content: "";
+    }
+
     .side-links a:hover {
       background: var(--paper-2);
       transform: translateX(2px);
     }
 
-    .side-links small {
+    .side-links a:hover::after {
+      color: var(--accent);
+      transform: translateX(2px);
+    }
+
+    .focus-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 16px;
+    }
+
+    .focus-box span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fbfaf7;
+      padding: 7px 10px;
       color: var(--muted);
       font-size: .78rem;
-      font-weight: 750;
-    }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line);
-    }
-
-    .metric {
-      padding: 16px 10px;
-      text-align: center;
-      border-right: 1px solid var(--line);
-    }
-
-    .metric:last-child {
-      border-right: 0;
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 1.16rem;
-      line-height: 1;
-      letter-spacing: -.065em;
-    }
-
-    .metric span {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: .68rem;
-      font-weight: 900;
-      letter-spacing: .085em;
-      text-transform: uppercase;
+      font-weight: 850;
     }
 
     main {
@@ -598,10 +592,6 @@
         margin-bottom: 22px;
       }
 
-      .metrics {
-        display: none;
-      }
-
       .grid,
       .grid.two {
         grid-template-columns: 1fr;
@@ -705,20 +695,21 @@
         <div class="profile-head">
           <div class="monogram"><span>FA</span></div>
           <h1>Fariborz Aref</h1>
-          <p class="role">Sociologist · Research Methods · Global Inequality</p>
+          <p class="role">Sociologist<br>Global Inequality · Research Methods</p>
         </div>
 
         <div class="side-links">
-          <a href="mailto:fariborz.aref@gmail.com"><span>Email</span><small>contact</small></a>
-          <a href="https://fariborzaref.com" target="_blank" rel="noopener"><span>Website</span><small>main site</small></a>
-          <a href="https://orcid.org/0000-0001-6622-1824" target="_blank" rel="noopener"><span>ORCID</span><small>profile</small></a>
-          <a href="https://github.com/fariborzaref" target="_blank" rel="noopener"><span>GitHub</span><small>code</small></a>
+          <a href="mailto:fariborz.aref@gmail.com"><span>Email</span></a>
+          <a href="https://fariborzaref.com" target="_blank" rel="noopener"><span>Website</span></a>
+          <a href="https://orcid.org/0000-0001-6622-1824" target="_blank" rel="noopener"><span>ORCID</span></a>
+          <a href="https://github.com/fariborzaref" target="_blank" rel="noopener"><span>GitHub</span></a>
         </div>
 
-        <div class="metrics">
-          <div class="metric"><strong>2</strong><span>PhDs</span></div>
-          <div class="metric"><strong>3</strong><span>Papers</span></div>
-          <div class="metric"><strong>6</strong><span>Labs</span></div>
+        <div class="focus-box">
+          <span>Global inequality</span>
+          <span>Research methods</span>
+          <span>Mixed methods</span>
+          <span>Computational sociology</span>
         </div>
       </section>
     </aside>
@@ -900,7 +891,7 @@
 
         <div class="cv-line"><b>PhD</b><span>Sociology, University of Oklahoma</span></div>
         <div class="cv-line"><b>PhD</b><span>Community Development, Putra University</span></div>
-        <div class="cv-line"><b>MA</b><span>Survey Research, University of Connecticut</span></div>
+        <div class="cv-line"><b>MA</b><span>Survey Research, University of Connecticut</span></div>   
       </section>
     </main>
   </div>
