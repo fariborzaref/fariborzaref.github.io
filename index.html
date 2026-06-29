@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -25,6 +25,7 @@
       --shadow: 0 24px 70px rgba(32, 29, 23, .10);
       --radius: 26px;
       --max: 1220px;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
     }
 
     * {
@@ -534,6 +535,178 @@
       background: var(--soft-blue);
     }
 
+    /* ===== Open Research Infrastructure (code labs) ===== */
+    .labs-intro {
+      margin: 0 0 20px;
+      max-width: 74ch;
+      color: var(--muted);
+      font-size: .96rem;
+      font-weight: 640;
+    }
+
+    .labs-intro code {
+      font-family: var(--mono);
+      font-size: .82em;
+      color: var(--ink);
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 2px 7px;
+      white-space: nowrap;
+    }
+
+    .labs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .lab {
+      --c: var(--accent);
+      position: relative;
+      display: grid;
+      align-content: start;
+      gap: 10px;
+      padding: 20px 20px 20px 24px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #fbfaf7;
+      color: var(--ink);
+      overflow: hidden;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .lab::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      background: var(--c);
+      opacity: .5;
+      transition: opacity .18s ease, width .18s ease;
+    }
+
+    .lab:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--c) 42%, var(--line));
+      box-shadow: 0 16px 36px rgba(32, 29, 23, .09);
+    }
+
+    .lab:focus-visible {
+      outline: none;
+      border-color: color-mix(in srgb, var(--c) 42%, var(--line));
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 32%, transparent), 0 16px 36px rgba(32, 29, 23, .09);
+    }
+
+    .lab:hover::before,
+    .lab:focus-visible::before {
+      opacity: 1;
+      width: 5px;
+    }
+
+    .lab-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .lab-domain {
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--c);
+    }
+
+    .lab-go {
+      font-family: var(--mono);
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--muted);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .lab:hover .lab-go,
+    .lab:focus-visible .lab-go {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .lab-name {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 850;
+      letter-spacing: -.04em;
+    }
+
+    .lab-handle {
+      margin: -5px 0 2px;
+      font-family: var(--mono);
+      font-size: .77rem;
+      font-weight: 400;
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .lab-handle b {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .lab-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 630;
+      line-height: 1.5;
+    }
+
+    .lab-langs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 2px;
+    }
+
+    .lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .lang i {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--c);
+      flex: none;
+    }
+
+    .lab-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .lab-tags span {
+      font-family: var(--mono);
+      font-size: .71rem;
+      font-weight: 400;
+      color: var(--muted);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 3px 7px;
+    }
+
     .repo {
       min-height: 144px;
       display: grid;
@@ -594,6 +767,10 @@
 
       .grid,
       .grid.two {
+        grid-template-columns: 1fr;
+      }
+
+      .labs {
         grid-template-columns: 1fr;
       }
 
@@ -828,40 +1005,118 @@
 
       <section class="panel" id="repositories">
         <div class="section-head">
-          <h2>Code and Materials</h2>
-          <p>GitHub labs.</p>
+          <h2>Open Research Infrastructure</h2>
+          <p>Version-controlled · openly licensed</p>
         </div>
 
-        <div class="grid two">
-          <article class="card repo">
-            <a href="https://github.com/fariborzaref/QuantitativeSocietyLab" target="_blank" rel="noopener">QuantitativeSocietyLab</a>
-            <p>Statistical models and quantitative sociology workflows.</p>
-          </article>
+        <p class="labs-intro">
+          Six public laboratories carry the research program end to end — from raw evidence to teaching and the open record. Each is a domain in its own right: quantitative estimation, qualitative interpretation, their integration, computation, pedagogy, and the public archive. Clone any of them with <code>git clone github.com/fariborzaref/&lt;lab&gt;</code>.
+        </p>
 
-          <article class="card repo">
-            <a href="https://github.com/fariborzaref/QualitativeSocietyLab" target="_blank" rel="noopener">QualitativeSocietyLab</a>
-            <p>Qualitative coding, themes, discourse, and institutions.</p>
-          </article>
+        <div class="labs">
+          <a class="lab" style="--c: var(--accent);" href="https://github.com/fariborzaref/QuantitativeSocietyLab" target="_blank" rel="noopener">
+            <div class="lab-top">
+              <span class="lab-domain">Quantitative</span>
+              <span class="lab-go">View repo ↗</span>
+            </div>
+            <h3 class="lab-name">QuantitativeSocietyLab</h3>
+            <p class="lab-handle"><b>fariborzaref</b>/QuantitativeSocietyLab</p>
+            <p class="lab-desc">Reproducible statistical modeling and quantitative sociology workflows, from estimation through diagnostics.</p>
+            <div class="lab-langs">
+              <span class="lang"><i style="--c:#198CE7"></i>R</span>
+              <span class="lang"><i style="--c:#1a5276"></i>Stata</span>
+              <span class="lang"><i style="--c:#c0392b"></i>SPSS</span>
+            </div>
+            <div class="lab-tags">
+              <span>#SEM</span><span>#multilevel</span><span>#GEE</span><span>#reproducible</span>
+            </div>
+          </a>
 
-          <article class="card repo">
-            <a href="https://github.com/fariborzaref/MixedMethods_SocietyLab" target="_blank" rel="noopener">MixedMethods_SocietyLab</a>
-            <p>Survey, interview, and computational evidence in one workflow.</p>
-          </article>
+          <a class="lab" style="--c: #7b3f9e;" href="https://github.com/fariborzaref/QualitativeSocietyLab" target="_blank" rel="noopener">
+            <div class="lab-top">
+              <span class="lab-domain">Qualitative</span>
+              <span class="lab-go">View repo ↗</span>
+            </div>
+            <h3 class="lab-name">QualitativeSocietyLab</h3>
+            <p class="lab-handle"><b>fariborzaref</b>/QualitativeSocietyLab</p>
+            <p class="lab-desc">Coding frameworks, discourse analysis, and institutional interpretation for qualitative inquiry.</p>
+            <div class="lab-langs">
+              <span class="lang"><i style="--c:#7b3f9e"></i>NVivo</span>
+              <span class="lang"><i style="--c:#198CE7"></i>R</span>
+            </div>
+            <div class="lab-tags">
+              <span>#coding</span><span>#discourse</span><span>#grounded-theory</span><span>#institutions</span>
+            </div>
+          </a>
 
-          <article class="card repo">
-            <a href="https://github.com/fariborzaref/ComputationalSociologyHub" target="_blank" rel="noopener">ComputationalSociologyHub</a>
-            <p>Text mining, networks, simulation, and computational sociology.</p>
-          </article>
+          <a class="lab" style="--c: var(--accent-2);" href="https://github.com/fariborzaref/MixedMethods_SocietyLab" target="_blank" rel="noopener">
+            <div class="lab-top">
+              <span class="lab-domain">Mixed methods</span>
+              <span class="lab-go">View repo ↗</span>
+            </div>
+            <h3 class="lab-name">MixedMethods_SocietyLab</h3>
+            <p class="lab-handle"><b>fariborzaref</b>/MixedMethods_SocietyLab</p>
+            <p class="lab-desc">Survey, interview, and computational evidence integrated within a single triangulated design.</p>
+            <div class="lab-langs">
+              <span class="lang"><i style="--c:#198CE7"></i>R</span>
+              <span class="lang"><i style="--c:#3572A5"></i>Python</span>
+            </div>
+            <div class="lab-tags">
+              <span>#integration</span><span>#triangulation</span><span>#survey</span><span>#interview</span>
+            </div>
+          </a>
 
-          <article class="card repo">
-            <a href="https://github.com/fariborzaref/Teaching_and_Curriculum" target="_blank" rel="noopener">Teaching_and_Curriculum</a>
-            <p>Syllabi, assignments, methods, and statistics materials.</p>
-          </article>
+          <a class="lab" style="--c: #198CE7;" href="https://github.com/fariborzaref/ComputationalSociologyHub" target="_blank" rel="noopener">
+            <div class="lab-top">
+              <span class="lab-domain">Computational</span>
+              <span class="lab-go">View repo ↗</span>
+            </div>
+            <h3 class="lab-name">ComputationalSociologyHub</h3>
+            <p class="lab-handle"><b>fariborzaref</b>/ComputationalSociologyHub</p>
+            <p class="lab-desc">Text mining, network analysis, agent-based models, and simulation for computational sociology.</p>
+            <div class="lab-langs">
+              <span class="lang"><i style="--c:#3572A5"></i>Python</span>
+              <span class="lang"><i style="--c:#198CE7"></i>R</span>
+            </div>
+            <div class="lab-tags">
+              <span>#text-mining</span><span>#networks</span><span>#ABM</span><span>#simulation</span>
+            </div>
+          </a>
 
-          <article class="card repo">
-            <a href="https://github.com/fariborzaref/SociologyArchive" target="_blank" rel="noopener">SociologyArchive</a>
-            <p>Theory, research, inequality studies, and public materials.</p>
-          </article>
+          <a class="lab" style="--c: var(--gold);" href="https://github.com/fariborzaref/Teaching_and_Curriculum" target="_blank" rel="noopener">
+            <div class="lab-top">
+              <span class="lab-domain">Pedagogy</span>
+              <span class="lab-go">View repo ↗</span>
+            </div>
+            <h3 class="lab-name">Teaching_and_Curriculum</h3>
+            <p class="lab-handle"><b>fariborzaref</b>/Teaching_and_Curriculum</p>
+            <p class="lab-desc">Syllabi, problem sets, and teaching materials for research methods and applied statistics.</p>
+            <div class="lab-langs">
+              <span class="lang"><i style="--c:#198CE7"></i>R</span>
+              <span class="lang"><i style="--c:#4c8bcf"></i>Quarto</span>
+              <span class="lang"><i style="--c:#3D6117"></i>LaTeX</span>
+            </div>
+            <div class="lab-tags">
+              <span>#pedagogy</span><span>#statistics</span><span>#syllabi</span>
+            </div>
+          </a>
+
+          <a class="lab" style="--c: #4b5563;" href="https://github.com/fariborzaref/SociologyArchive" target="_blank" rel="noopener">
+            <div class="lab-top">
+              <span class="lab-domain">Public archive</span>
+              <span class="lab-go">View repo ↗</span>
+            </div>
+            <h3 class="lab-name">SociologyArchive</h3>
+            <p class="lab-handle"><b>fariborzaref</b>/SociologyArchive</p>
+            <p class="lab-desc">Theory, inequality studies, and openly available public-sociology writing and references.</p>
+            <div class="lab-langs">
+              <span class="lang"><i style="--c:#2b579a"></i>Markdown</span>
+              <span class="lang"><i style="--c:#3D6117"></i>LaTeX</span>
+            </div>
+            <div class="lab-tags">
+              <span>#theory</span><span>#inequality</span><span>#open-access</span>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -891,7 +1146,7 @@
 
         <div class="cv-line"><b>PhD</b><span>Sociology, University of Oklahoma</span></div>
         <div class="cv-line"><b>PhD</b><span>Community Development, Putra University</span></div>
-        <div class="cv-line"><b>MA</b><span>Survey Research, University of Connecticut</span></div>   
+        <div class="cv-line"><b>MA</b><span>Survey Research, University of Connecticut</span></div>
       </section>
     </main>
   </div>
