@@ -24,6 +24,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="F. Aref">
+  <script>document.documentElement.classList.add('js');</script>
 
   <meta property="og:title" content="Fariborz Aref">
   <meta property="og:description" content="Sociologist. Global inequality, research methods, and computational social research.">
@@ -52,6 +53,10 @@
     }
 
     * { box-sizing: border-box; }
+
+    html, body { max-width: 100%; overflow-x: hidden; }
+
+    .card h3, .pub-title, .lens h4, .book h3 { overflow-wrap: break-word; }
 
     html { scroll-behavior: smooth; }
 
@@ -385,10 +390,10 @@
     .leg.off { opacity: .4; background: var(--panel-2); }
     .chart-holder { position: relative; }
     .lab-svg { width: 100%; height: auto; display: block; touch-action: none; cursor: crosshair; }
-    .axis-label { font-size: 13px; fill: var(--muted); font-family: var(--body); }
+    .axis-label { font-size: 14px; fill: var(--muted); font-family: var(--body); }
     .grid-line { stroke: var(--line); stroke-width: 1; }
     .shock-band { fill: rgba(35,44,51,.05); }
-    .shock-text { font-size: 12px; fill: var(--muted); font-family: var(--body); font-weight: 600; }
+    .shock-text { font-size: 13px; fill: var(--muted); font-family: var(--body); font-weight: 600; }
     .series-line { fill: none; stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; transition: opacity .18s ease; }
     .guide-line { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0; }
     .lab-dot { transition: opacity .12s ease; }
@@ -430,6 +435,32 @@
     .book .sub { color: var(--muted); font-style: italic; margin-bottom: 12px; }
     @media (max-width: 620px) { .book { grid-template-columns: 1fr; } .book-cover { width: 150px; } }
 
+    /* ===== Motion: scroll-reveal + hero entrance (progressive; hidden only when JS is on) ===== */
+    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.16,.7,.2,1), transform .8s cubic-bezier(.16,.7,.2,1); will-change: opacity, transform; }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    .js #home .hero-greet,
+    .js #home .hero-title,
+    .js #home .hero-lines,
+    .js #home .hero-cta { opacity: 0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.16,.7,.2,1), transform .9s cubic-bezier(.16,.7,.2,1); }
+    .js #home.lit .hero-greet { opacity: 1; transform: none; transition-delay: .06s; }
+    .js #home.lit .hero-title { opacity: 1; transform: none; transition-delay: .20s; }
+    .js #home.lit .hero-lines { opacity: 1; transform: none; transition-delay: .38s; }
+    .js #home.lit .hero-cta   { opacity: 1; transform: none; transition-delay: .54s; }
+
+    .hero-title em { position: relative; }
+    .hero-title em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .04em; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; border-radius: 2px; }
+    .js #home.lit .hero-title em::after { animation: drawLine 1s cubic-bezier(.16,.7,.2,1) .9s forwards; }
+    @keyframes drawLine { to { transform: scaleX(1); } }
+
+    @media (max-width: 560px) { .series-line { stroke-width: 3.2; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .js #home .hero-greet, .js #home .hero-title, .js #home .hero-lines, .js #home .hero-cta { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .hero-title em::after { transform: scaleX(1) !important; animation: none !important; }
+    }
+
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
       .topbar { display: flex; }
@@ -443,6 +474,26 @@
       .main { margin-left: 0; padding-top: calc(62px + env(safe-area-inset-top)); }
       section { scroll-margin-top: 74px; }
       .news-item { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* ----- Phone refinements ----- */
+    @media (max-width: 560px) {
+      section { padding: 52px 20px; }
+      #home { min-height: 72vh; }
+      .lab-wrap { padding: 16px; }
+      .svc, .book { padding: 20px; }
+      .lab-controls { row-gap: 6px; }
+      .lab-controls .hint { width: 100%; }
+      .tiles { grid-template-columns: repeat(2, 1fr); }
+      .cards { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .pub-links a { padding: 4px 10px; }        /* comfortable tap targets */
+      .leg { padding: 7px 13px; }
+    }
+    @media (max-width: 380px) {
+      .tiles { grid-template-columns: 1fr; }
+      .hero-cta { flex-direction: column; align-items: flex-start; }
+      .hero-cta .btn-ghost { width: 100%; justify-content: center; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -576,7 +627,7 @@
       <p class="lead">
         A central claim in my work: shocks don't hit societies evenly — welfare regimes decide how a
         recession or a pandemic becomes inequality. Here's that argument as a small model you can run.
-        Drag the slider and watch institutions absorb the shock.
+        Drag the slider to watch institutions absorb the shock, and tap or hover the chart to read any year.
       </p>
 
       <div class="lab-wrap">
@@ -912,6 +963,31 @@
       });
     }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
     document.querySelectorAll("main section").forEach(s => spy.observe(s));
+
+    // Hero entrance
+    var home = document.getElementById("home");
+    if (home) requestAnimationFrame(function () { requestAnimationFrame(function () { home.classList.add("lit"); }); });
+
+    // Scroll-reveal cascade (every block below the hero rises in as it enters view)
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) {
+      var targets = [];
+      document.querySelectorAll("main section:not(#home)").forEach(function (sec) {
+        Array.prototype.forEach.call(sec.children, function (child) { targets.push(child); });
+      });
+      targets.forEach(function (t) { t.classList.add("reveal"); });
+      var revIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var sibs = Array.prototype.slice.call(e.target.parentNode.children).filter(function (c) { return c.classList.contains("reveal"); });
+          var idx = sibs.indexOf(e.target);
+          e.target.style.transitionDelay = Math.min(idx, 6) * 0.07 + "s";
+          e.target.classList.add("in");
+          revIO.unobserve(e.target);
+        });
+      }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
+      targets.forEach(function (t) { revIO.observe(t); });
+    }
   </script>
   <script>
     (function () {
@@ -924,7 +1000,9 @@
       var prot = document.getElementById('prot');
       var protVal = document.getElementById('protVal');
 
-      var VBW = 760, VBH = 420, mL = 50, mR = 18, mT = 30, mB = 42;
+      var MOB = window.matchMedia('(max-width: 560px)').matches;
+      var VBW = MOB ? 430 : 760, VBH = MOB ? 470 : 420, mL = 50, mR = 18, mT = 30, mB = 42;
+      svg.setAttribute('viewBox', '0 0 ' + VBW + ' ' + VBH);
       var plotW = VBW - mL - mR, plotH = VBH - mT - mB;
       var y0 = 2004, y1 = 2022, gMin = 0.22, gMax = 0.42;
 
@@ -949,7 +1027,7 @@
 
       // static grid + shock bands
       var g = el('g', {}); svg.appendChild(g);
-      [{ a: 2008, b: 2010, l: '2008 · Great Recession' }, { a: 2020, b: 2021.4, l: '2020 · Pandemic' }].forEach(function (s) {
+      [{ a: 2008, b: 2010, l: MOB ? '2008 · Recession' : '2008 · Great Recession' }, { a: 2020, b: 2021.4, l: '2020 · Pandemic' }].forEach(function (s) {
         g.appendChild(el('rect', { x: xS(s.a), y: mT, width: xS(s.b) - xS(s.a), height: plotH, class: 'shock-band' }));
         var tx = el('text', { x: xS(s.a) + 5, y: mT + 13, class: 'shock-text' }); tx.textContent = s.l; g.appendChild(tx);
       });
@@ -1010,6 +1088,33 @@
         b.addEventListener('click', function () { r.active = !r.active; b.classList.toggle('off', !r.active); draw(); });
         legend.appendChild(b);
       });
+
+      function animateIn() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        regimes.forEach(function (r, i) {
+          var p = lineEls[r.id];
+          if (!r.active) return;
+          var len;
+          try { len = p.getTotalLength(); } catch (e) { return; }
+          p.style.transition = 'none';
+          p.style.strokeDasharray = len;
+          p.style.strokeDashoffset = len;
+          p.getBoundingClientRect(); // force reflow
+          p.style.transition = 'stroke-dashoffset 1.15s cubic-bezier(.16,.7,.2,1) ' + (i * 0.12) + 's';
+          p.style.strokeDashoffset = '0';
+        });
+        setTimeout(function () {
+          regimes.forEach(function (r) {
+            var p = lineEls[r.id];
+            p.style.transition = ''; p.style.strokeDasharray = 'none'; p.style.strokeDashoffset = '0';
+          });
+        }, 1650);
+      }
+      var seenLab = false;
+      var labIO = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting && !seenLab) { seenLab = true; animateIn(); } });
+      }, { threshold: 0.25 });
+      labIO.observe(document.getElementById('lab'));
 
       prot.addEventListener('input', function () { protVal.textContent = prot.value + '%'; draw(); });
       draw();
