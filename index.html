@@ -309,6 +309,11 @@
       padding: 26px; margin-bottom: 16px;
     }
     .svc h3 { margin: 0 0 14px; font-size: 1.3rem; }
+    .grp-label { margin: 18px 0 9px; font-family: var(--body); font-weight: 700; font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+    .grp-label:first-of-type { margin-top: 0; }
+    .tick.cols { column-count: 2; column-gap: 34px; margin-bottom: 0; }
+    .tick.cols li { break-inside: avoid; }
+    @media (max-width: 620px) { .tick.cols { column-count: 1; } }
     .deg { margin-bottom: 12px; }
     .deg b { font-family: var(--display); font-weight: 700; font-size: 1.02rem; }
     .deg span { display: block; color: var(--muted); font-size: .92rem; }
@@ -346,6 +351,65 @@
     .thanks { margin-top: 40px; text-align: center; font-family: var(--display); font-size: 1.3rem; color: var(--accent-ink); }
 
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+    /* ===== Inequality Lab (interactive) ===== */
+    .lab-wrap { border: 1px solid var(--line); border-radius: 20px; background: var(--panel); padding: 22px; box-shadow: var(--shadow); }
+    .lab-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .leg {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--line); border-radius: 999px;
+      padding: 6px 12px; font-size: .82rem; font-weight: 600; line-height: 1;
+      cursor: pointer; background: var(--panel); color: var(--ink);
+      font-family: var(--body); transition: opacity .16s ease, background .16s ease;
+    }
+    .leg .swatch { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+    .leg.off { opacity: .4; background: var(--panel-2); }
+    .chart-holder { position: relative; }
+    .lab-svg { width: 100%; height: auto; display: block; touch-action: none; cursor: crosshair; }
+    .axis-label { font-size: 12px; fill: var(--muted); font-family: var(--body); }
+    .grid-line { stroke: var(--line); stroke-width: 1; }
+    .shock-band { fill: rgba(35,44,51,.05); }
+    .shock-text { font-size: 11px; fill: var(--muted); font-family: var(--body); font-weight: 600; }
+    .series-line { fill: none; stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; transition: opacity .18s ease; }
+    .guide-line { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0; }
+    .lab-dot { transition: opacity .12s ease; }
+    .tooltip {
+      position: absolute; pointer-events: none; opacity: 0;
+      background: var(--ink); color: #fff; border-radius: 10px;
+      padding: 9px 11px; font-size: .74rem; line-height: 1.55; white-space: nowrap;
+      transform: translate(-50%, -112%); transition: opacity .12s ease;
+      box-shadow: 0 12px 26px rgba(0,0,0,.20); z-index: 3;
+    }
+    .tooltip .tt-row { display: flex; align-items: center; gap: 6px; }
+    .tooltip .tt-sw { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+    .lab-controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .lab-controls label { font-size: .84rem; font-weight: 700; color: var(--ink); }
+    .lab-controls .val { color: var(--accent-ink); font-variant-numeric: tabular-nums; }
+    .lab-controls .hint { font-size: .8rem; color: var(--muted); }
+    input[type=range].slider { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 999px; background: var(--line); flex: 1; min-width: 150px; max-width: 300px; }
+    input[type=range].slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+    input[type=range].slider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 2px solid #fff; }
+    .lab-note { margin: 14px 0 0; font-size: .8rem; color: var(--muted); }
+    .lab-note a { color: var(--accent-ink); font-weight: 700; }
+
+    /* two lenses */
+    .lenses { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0 6px; }
+    .lens { border: 1px solid var(--line); border-radius: 16px; background: var(--panel-2); padding: 18px; }
+    .lens .lens-k { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+    .lens h4 { margin: 6px 0; font-size: 1.05rem; }
+    .lens p { margin: 0; font-size: .88rem; color: var(--muted); }
+    .lens .inst { opacity: .72; }
+    @media (max-width: 620px) { .lenses { grid-template-columns: 1fr; } }
+
+    /* book */
+    .book { display: grid; grid-template-columns: 156px 1fr; gap: 28px; align-items: center; border: 1px solid var(--line); border-radius: 20px; background: var(--panel); padding: 28px; box-shadow: var(--shadow); }
+    .book-cover { aspect-ratio: 3 / 4.4; border-radius: 8px; background: linear-gradient(155deg, var(--navy), #142a52); color: #fff; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 18px 36px rgba(29,63,122,.32); }
+    .book-cover .bc-top { font-family: var(--display); font-weight: 700; font-size: 1.02rem; line-height: 1.2; }
+    .book-cover .bc-bot { font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+    .book-tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
+    .book h3 { margin: 8px 0 4px; font-size: 1.5rem; line-height: 1.15; }
+    .book .sub { color: var(--muted); font-style: italic; margin-bottom: 12px; }
+    @media (max-width: 620px) { .book { grid-template-columns: 1fr; } .book-cover { width: 150px; } }
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
@@ -392,12 +456,14 @@
       <ul>
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About Me</a></li>
+        <li><a href="#lab" class="nav-link">Inequality Lab</a></li>
         <li><a href="#news" class="nav-link">News</a></li>
         <li><a href="#publications" class="nav-link">Publications</a></li>
+        <li><a href="#book" class="nav-link">The Book</a></li>
         <li><a href="#background" class="nav-link">Background</a></li>
         <li><a href="#code" class="nav-link">Code &amp; Data</a></li>
         <li><a href="#honors" class="nav-link">Honors &amp; Awards</a></li>
-        <li><a href="#reading" class="nav-link">Books</a></li>
+        <li><a href="#reading" class="nav-link">Reading</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </nav>
@@ -461,10 +527,58 @@
         produce and reproduce inequality. Alongside empirical work, I care about reproducible,
         openly licensed research infrastructure.
       </p>
+      <div class="lenses">
+        <div class="lens">
+          <div class="lens-k">The macro lens</div>
+          <h4>Sociology</h4>
+          <p>Structures, models, and the measurement of inequality across societies. <span class="inst">PhD, University of Oklahoma.</span></p>
+        </div>
+        <div class="lens">
+          <div class="lens-k">The ground lens</div>
+          <h4>Community Development</h4>
+          <p>Fieldwork, local governance, and how communities build capacity from within. <span class="inst">PhD, Putra University.</span></p>
+        </div>
+      </div>
+      <p>
+        Most research picks one of these. Mine moves between them — a question travels from the
+        macro model down to the community system and back — which is where I think the more honest
+        explanations live.
+      </p>
+
       <!-- Optional personal note — edit or delete -->
       <p class="ph">
         Outside of research, I enjoy [add a line here — reading, interests, etc.].
       </p>
+    </section>
+
+    <!-- INEQUALITY LAB -->
+    <section id="lab">
+      <span class="eyebrow">Interactive · Computational Sociology</span>
+      <h2 class="sec-title">The Inequality Lab</h2>
+      <p class="lead">
+        A central claim in my work: shocks don't hit societies evenly — welfare regimes decide how a
+        recession or a pandemic becomes inequality. Here's that argument as a small model you can run.
+        Drag the slider and watch institutions absorb the shock.
+      </p>
+
+      <div class="lab-wrap">
+        <div class="lab-legend" id="legend"></div>
+        <div class="chart-holder" id="chartHolder">
+          <svg class="lab-svg" id="chart" viewBox="0 0 760 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Illustrative inequality trajectories by welfare regime through the 2008 recession and 2020 pandemic"></svg>
+          <div class="tooltip" id="tooltip"></div>
+        </div>
+        <div class="lab-controls">
+          <label>Social-protection strength <span class="val" id="protVal">50%</span></label>
+          <input type="range" min="0" max="100" value="50" class="slider" id="prot" aria-label="Social-protection strength">
+          <span class="hint">0% = shocks pass straight through · 100% = institutions absorb them</span>
+        </div>
+        <p class="lab-note">
+          Illustrative model — trajectories are schematic, dramatizing the mechanism rather than reporting
+          fitted estimates. Empirical results live in the papers:
+          <a href="https://doi.org/10.1163/15691330-bja10103" target="_blank" rel="noopener">recession → pandemic</a> ·
+          <a href="https://doi.org/10.1007/s12232-024-00448-9" target="_blank" rel="noopener">welfare regimes</a>.
+        </p>
+      </div>
     </section>
 
     <!-- NEWS -->
@@ -498,32 +612,66 @@
       <h2 class="sec-title">Selected Work</h2>
 
       <div class="pub">
-        <span class="pub-title">From Recession to Pandemic</span>
-        <span class="pub-venue">Comparative Sociology</span>
+        <span class="pub-title">From recession to pandemic: Evolving inequalities in OECD countries through a two-decade analysis of socio-economic impacts</span>
+        <span class="pub-venue">Comparative Sociology, 23(2), 182–215 · 2024</span>
         <div class="pub-links">
           <a href="https://doi.org/10.1163/15691330-bja10103" target="_blank" rel="noopener">DOI</a>
         </div>
       </div>
 
       <div class="pub">
-        <span class="pub-title">Analyzing Inequalities</span>
-        <span class="pub-venue">International Review of Economics</span>
+        <span class="pub-title">Analyzing inequalities: Welfare regimes during the Great Recession and the pandemic</span>
+        <span class="pub-venue">International Review of Economics, 71, 401–420 · 2024</span>
         <div class="pub-links">
           <a href="https://doi.org/10.1007/s12232-024-00448-9" target="_blank" rel="noopener">DOI</a>
         </div>
       </div>
 
       <div class="pub">
-        <span class="pub-title">Research Productivity in Rehabilitation, Disability, and Allied Health Programs</span>
-        <span class="pub-venue">Rehabilitation Research, Policy, and Education</span>
-        <div class="pub-links">
-          <a href="https://doi.org/10.1891/2168-6653.31.3.194" target="_blank" rel="noopener">DOI</a>
-        </div>
+        <span class="pub-title">Minority-serving institution faculty perspectives on research productivity factors</span>
+        <span class="pub-venue">Journal of Rehabilitation, 87(3), 61–71 · 2021</span>
+      </div>
+
+      <div class="pub">
+        <span class="pub-title">Co-serving Native American and Alaskan Native veterans with disabilities</span>
+        <span class="pub-venue">Journal of Rehabilitation, 86(4), 48–58 · 2020</span>
+      </div>
+
+      <div class="pub">
+        <span class="pub-title">New immigrating minority populations and trend impacts on state vocational rehabilitation agencies</span>
+        <span class="pub-venue">Journal of Rehabilitation, 85(3) · 2019</span>
+      </div>
+
+      <div class="pub">
+        <span class="pub-title">Research productivity in rehabilitation, disability, and allied health programs</span>
+        <span class="pub-venue">Rehabilitation Research, Policy, and Education, 31(3) · 2017</span>
       </div>
 
       <div class="placeholder-note">
-        Full list on your <a href="https://orcid.org/0000-0001-6622-1824" target="_blank" rel="noopener">ORCID</a>.
-        Add more by copying a publication block above and filling in authors, title, venue, and links.
+        Full list on <a href="https://orcid.org/0000-0001-6622-1824" target="_blank" rel="noopener">ORCID</a>.
+      </div>
+    </section>
+
+    <!-- THE BOOK -->
+    <section id="book">
+      <span class="eyebrow">Work in progress</span>
+      <h2 class="sec-title">The Book</h2>
+      <div class="book">
+        <div class="book-cover">
+          <div class="bc-top">The Structure of Social Inquiry</div>
+          <div class="bc-bot">F. Aref · Forthcoming</div>
+        </div>
+        <div>
+          <span class="book-tag">Forthcoming</span>
+          <h3>The Structure of Social Inquiry</h3>
+          <p class="sub">Research Design, Evidence, and Explanation</p>
+          <p style="color:#3d474e;">
+            A book-length argument about how social scientists move from a question to a credible
+            explanation — treating design, evidence, and inference as one connected craft rather than
+            a toolbox of separate techniques.
+            <span class="ph">[Edit this blurb, or add a publisher and release date when ready.]</span>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -540,15 +688,32 @@
       </div>
 
       <div class="svc">
-        <h3>Research &amp; Methods</h3>
-        <ul class="tick">
-          <li>Structural Equation Modeling</li>
-          <li>Multilevel &amp; longitudinal models</li>
-          <li>Generalized Estimating Equations (GEE)</li>
-          <li>Text mining &amp; network analysis</li>
-          <li>Interviews, focus groups &amp; NVivo coding</li>
+        <h3>Areas of Specialization</h3>
+        <ul class="tick cols">
+          <li>Computational &amp; Quantitative Sociology</li>
+          <li>Labor Markets &amp; Economic Change</li>
+          <li>Rural &amp; Regional Development</li>
+          <li>Migration &amp; Demographic Transitions</li>
+          <li>Community Participation &amp; Local Governance</li>
+          <li>Mixed Methods Research</li>
+          <li>Social Inequality &amp; Institutional Barriers</li>
+          <li>Organizational &amp; Community Systems</li>
         </ul>
-        <h4 class="sub-title">Software</h4>
+      </div>
+
+      <div class="svc">
+        <h3>Methodological Expertise</h3>
+        <ul class="tick cols">
+          <li>Structural equation modeling</li>
+          <li>Multilevel &amp; longitudinal models</li>
+          <li>Generalized estimating equations</li>
+          <li>Text &amp; network analysis</li>
+          <li>Comparative &amp; simulation-based modeling</li>
+          <li>Survey design</li>
+          <li>Data visualization</li>
+          <li>Fieldwork integration</li>
+        </ul>
+        <h4 class="grp-label" style="margin-top:20px;">Software</h4>
         <div class="chips">
           <span class="chip">R</span><span class="chip">Python</span><span class="chip">Stata</span>
           <span class="chip">SPSS</span><span class="chip">NVivo</span><span class="chip">SQL</span>
@@ -557,17 +722,41 @@
       </div>
 
       <div class="svc">
-        <h3>Teaching</h3>
+        <h3>Courses Taught</h3>
+
+        <div class="grp-label">Graduate</div>
         <div class="chips">
-          <span class="chip">Research Methods &amp; Applied Statistics</span>
-          <span class="chip">Social Statistics</span>
-          <span class="chip">Social Problems</span>
-          <span class="chip">Social Stratification</span>
-          <span class="chip">Social Inequality</span>
-          <span class="chip">Social Theory</span>
-          <span class="chip">Race &amp; Ethnic Relations</span>
-          <span class="chip">Educational Research</span>
+          <span class="chip">Research Methods &amp; Statistics</span>
+          <span class="chip">Educational Research &amp; Evaluation</span>
         </div>
+
+        <div class="grp-label">Undergraduate</div>
+        <div class="chips">
+          <span class="chip">Sociology Senior Synthesis</span>
+          <span class="chip">Social Stratification</span>
+          <span class="chip">Social Theory</span>
+          <span class="chip">Social Problems</span>
+          <span class="chip">Race &amp; Ethnic Relations</span>
+          <span class="chip">Cultural Anthropology</span>
+          <span class="chip">Social Psychology</span>
+          <span class="chip">Introduction to Sociology</span>
+          <span class="chip">Human Geography</span>
+          <span class="chip">Social Research</span>
+          <span class="chip">Social Statistics</span>
+          <span class="chip">Alcohol, Drugs &amp; Society</span>
+          <span class="chip">Introduction to Multicultural Education</span>
+          <span class="chip">Human Relations &amp; Cultural Diversity</span>
+        </div>
+      </div>
+
+      <div class="svc">
+        <h3>Conference Presentations</h3>
+        <p class="ph">Add selected conference talks and papers here (title, venue, year) — left blank for now.</p>
+      </div>
+
+      <div class="svc">
+        <h3>Selected Projects</h3>
+        <p class="ph">Add funded or applied research projects here (title, role, sponsor, year) — left blank for now.</p>
       </div>
 
       <div class="svc">
@@ -627,8 +816,15 @@
       <span class="eyebrow">Honors &amp; Awards</span>
       <h2 class="sec-title">Highlights</h2>
 
-      <!-- Fill these in; blank slots left from the template -->
       <div class="timeline">
+        <div class="t-entry">
+          <h3>Recognition &amp; Media</h3>
+          <ul class="tick">
+            <li>Ranked among the <b>Top Two Worldwide in Capacity Building</b> — ScholarGPS, 2025.</li>
+            <li>Featured in <i>Science</i> Magazine, 2025, for research on welfare inequality.</li>
+            <li>Guest, Takoma Radio — “Disability Inclusion and Research Productivity,” 2018.</li>
+          </ul>
+        </div>
         <div class="t-entry">
           <h3>Awards &amp; Honors</h3>
           <ul class="tick"><li class="ph">Add an award or honor here.</li></ul>
@@ -637,16 +833,12 @@
           <h3>Grants &amp; Fellowships</h3>
           <ul class="tick"><li class="ph">Add a grant or fellowship here.</li></ul>
         </div>
-        <div class="t-entry">
-          <h3>Recognition</h3>
-          <ul class="tick"><li class="ph">Add any other recognition here.</li></ul>
-        </div>
       </div>
     </section>
 
     <!-- READING -->
     <section id="reading">
-      <span class="eyebrow">Books</span>
+      <span class="eyebrow">Reading</span>
       <h2 class="sec-title">Off the Clock</h2>
       <blockquote>"Add a favorite line or quote here." <!-- optional --></blockquote>
 
@@ -716,6 +908,108 @@
       });
     }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
     document.querySelectorAll("main section").forEach(s => spy.observe(s));
+  </script>
+  <script>
+    (function () {
+      var svg = document.getElementById('chart');
+      if (!svg) return;
+      var NS = 'http://www.w3.org/2000/svg';
+      var holder = document.getElementById('chartHolder');
+      var tooltip = document.getElementById('tooltip');
+      var legend = document.getElementById('legend');
+      var prot = document.getElementById('prot');
+      var protVal = document.getElementById('protVal');
+
+      var VBW = 760, VBH = 420, mL = 50, mR = 18, mT = 30, mB = 42;
+      var plotW = VBW - mL - mR, plotH = VBH - mT - mB;
+      var y0 = 2004, y1 = 2022, gMin = 0.22, gMax = 0.42;
+
+      var regimes = [
+        { id: 'socdem',  name: 'Social-democratic', color: '#0f766e', base: 0.255, rec: 0.016, pan: 0.011 },
+        { id: 'cons',    name: 'Conservative',      color: '#1d3f7a', base: 0.298, rec: 0.024, pan: 0.017 },
+        { id: 'liberal', name: 'Liberal',           color: '#9a7428', base: 0.346, rec: 0.035, pan: 0.029 },
+        { id: 'south',   name: 'Southern',          color: '#b45b3e', base: 0.334, rec: 0.041, pan: 0.035 }
+      ];
+      regimes.forEach(function (r) { r.active = true; });
+
+      var years = []; for (var y = y0; y <= y1; y++) years.push(y);
+
+      function bump(t, c, w) { var d = (t - c) / w; return Math.exp(-0.5 * d * d); }
+      function xS(v) { return mL + (v - y0) / (y1 - y0) * plotW; }
+      function yS(g) { return mT + (gMax - g) / (gMax - gMin) * plotH; }
+      function val(r, v, p) {
+        var pf = 1 - p * 0.70;
+        return r.base + (v - y0) * 0.0006 + r.rec * bump(v, 2009, 1.7) * pf + r.pan * bump(v, 2020, 1.25) * pf;
+      }
+      function el(tag, attrs) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+
+      // static grid + shock bands
+      var g = el('g', {}); svg.appendChild(g);
+      [{ a: 2008, b: 2010, l: '2008 · Great Recession' }, { a: 2020, b: 2021.4, l: '2020 · Pandemic' }].forEach(function (s) {
+        g.appendChild(el('rect', { x: xS(s.a), y: mT, width: xS(s.b) - xS(s.a), height: plotH, class: 'shock-band' }));
+        var tx = el('text', { x: xS(s.a) + 5, y: mT + 13, class: 'shock-text' }); tx.textContent = s.l; g.appendChild(tx);
+      });
+      [0.25, 0.30, 0.35, 0.40].forEach(function (gv) {
+        g.appendChild(el('line', { x1: mL, y1: yS(gv), x2: mL + plotW, y2: yS(gv), class: 'grid-line' }));
+        var t = el('text', { x: mL - 8, y: yS(gv) + 4, 'text-anchor': 'end', class: 'axis-label' }); t.textContent = gv.toFixed(2); g.appendChild(t);
+      });
+      [2004, 2008, 2012, 2016, 2020].forEach(function (yy) {
+        var t = el('text', { x: xS(yy), y: mT + plotH + 22, 'text-anchor': 'middle', class: 'axis-label' }); t.textContent = yy; g.appendChild(t);
+      });
+      var yt = el('text', { x: mL - 40, y: mT - 12, class: 'axis-label' }); yt.textContent = 'Gini (illustrative)'; g.appendChild(yt);
+
+      // series
+      var lineEls = {};
+      regimes.forEach(function (r) { var p = el('path', { class: 'series-line', stroke: r.color }); svg.appendChild(p); lineEls[r.id] = p; });
+      function pathFor(r, p) { var d = ''; years.forEach(function (v, i) { d += (i ? ' L' : 'M') + xS(v).toFixed(1) + ' ' + yS(val(r, v, p)).toFixed(1); }); return d; }
+      function draw() {
+        var p = +prot.value / 100;
+        regimes.forEach(function (r) { lineEls[r.id].setAttribute('d', pathFor(r, p)); lineEls[r.id].style.opacity = r.active ? 1 : 0; });
+      }
+
+      // hover guide + dots
+      var guide = el('line', { class: 'guide-line', y1: mT, y2: mT + plotH }); svg.appendChild(guide);
+      var dots = {};
+      regimes.forEach(function (r) { var c = el('circle', { r: 4.2, fill: r.color, stroke: '#fff', 'stroke-width': 2, class: 'lab-dot' }); c.style.opacity = 0; svg.appendChild(c); dots[r.id] = c; });
+
+      function showAt(v) {
+        var p = +prot.value / 100;
+        guide.setAttribute('x1', xS(v)); guide.setAttribute('x2', xS(v)); guide.style.opacity = 0.5;
+        var rows = '';
+        regimes.forEach(function (r) {
+          if (!r.active) { dots[r.id].style.opacity = 0; return; }
+          var gg = val(r, v, p);
+          dots[r.id].setAttribute('cx', xS(v)); dots[r.id].setAttribute('cy', yS(gg)); dots[r.id].style.opacity = 1;
+          rows += '<div class="tt-row"><span class="tt-sw" style="background:' + r.color + '"></span>' + r.name + ' <b>' + gg.toFixed(3) + '</b></div>';
+        });
+        tooltip.innerHTML = '<div style="font-weight:700;margin-bottom:4px">' + v + '</div>' + rows;
+        tooltip.style.left = (xS(v) / VBW * holder.clientWidth) + 'px';
+        tooltip.style.top = ((mT + 8) / VBH * holder.clientHeight) + 'px';
+        tooltip.style.opacity = 1;
+      }
+      function hide() { guide.style.opacity = 0; tooltip.style.opacity = 0; regimes.forEach(function (r) { dots[r.id].style.opacity = 0; }); }
+      function pointerYear(clientX) {
+        var rect = svg.getBoundingClientRect();
+        var sx = (clientX - rect.left) / rect.width * VBW;
+        var v = Math.round(y0 + (sx - mL) / plotW * (y1 - y0));
+        return Math.max(y0, Math.min(y1, v));
+      }
+      svg.addEventListener('mousemove', function (e) { showAt(pointerYear(e.clientX)); });
+      svg.addEventListener('mouseleave', hide);
+      svg.addEventListener('touchstart', function (e) { if (e.touches[0]) showAt(pointerYear(e.touches[0].clientX)); }, { passive: true });
+      svg.addEventListener('touchmove', function (e) { if (e.touches[0]) showAt(pointerYear(e.touches[0].clientX)); }, { passive: true });
+
+      // legend toggles
+      regimes.forEach(function (r) {
+        var b = document.createElement('button'); b.className = 'leg'; b.type = 'button';
+        b.innerHTML = '<span class="swatch" style="background:' + r.color + '"></span>' + r.name;
+        b.addEventListener('click', function () { r.active = !r.active; b.classList.toggle('off', !r.active); draw(); });
+        legend.appendChild(b);
+      });
+
+      prot.addEventListener('input', function () { protVal.textContent = prot.value + '%'; draw(); });
+      draw();
+    })();
   </script>
 </body>
 </html>
