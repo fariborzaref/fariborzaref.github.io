@@ -362,22 +362,30 @@
     }
     .t-entry h3 { margin: 0 0 6px; font-size: 1.1rem; }
 
-    /* READING */
-    .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
-    .tile {
-      border: 1px solid var(--line); border-radius: 14px; background: var(--panel);
-      padding: 18px; min-height: 118px;
-      display: flex; flex-direction: column; justify-content: flex-end;
-    }
-    .tile.empty { border-style: dashed; color: var(--muted); align-items: center; justify-content: center; text-align: center; }
-    .tile h4 { margin: 0; font-size: 1rem; }
-    .tile span { color: var(--muted); font-size: .82rem; }
-
-    blockquote {
-      margin: 0 0 26px; padding: 16px 20px;
+    /* FOUNDATIONS */
+    .foundations-epigraph {
+      margin: 0 0 6px; padding: 16px 20px;
       border-left: 3px solid var(--accent);
       background: var(--panel-2); border-radius: 0 12px 12px 0;
-      font-family: var(--display); font-style: italic; color: #3d474e;
+      font-family: var(--display); font-style: italic; font-size: 1.24rem;
+      color: var(--accent-ink); max-width: 42ch; line-height: 1.35;
+    }
+    .foundations-intro { max-width: 640px; color: #3d474e; font-size: 1.02rem; margin: 6px 0 0; }
+    .founders { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 28px; border-top: 1px solid var(--line); }
+    .founder { padding: 24px 26px 6px; border-right: 1px solid var(--line); }
+    .founder:first-child { padding-left: 0; }
+    .founder:last-child { padding-right: 0; border-right: 0; }
+    .founder .fnum { font-family: var(--display); font-size: 1rem; letter-spacing: .16em; color: var(--gold); }
+    .founder .fdate { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 6px; }
+    .founder h3 { font-family: var(--display); font-size: 1.55rem; margin: 4px 0 8px; letter-spacing: -.01em; }
+    .founder .concept { font-family: var(--display); font-style: italic; color: var(--accent-ink); font-size: 1.06rem; margin: 0 0 10px; }
+    .founder .tiein { font-size: .9rem; color: #3d474e; margin: 0; line-height: 1.55; }
+    .foundations-synth { margin: 30px 0 0; padding-top: 24px; border-top: 1.5px solid rgba(35,44,51,.22); font-family: var(--display); font-size: 1.26rem; line-height: 1.45; color: var(--ink); max-width: 780px; }
+    .foundations-synth b { color: var(--accent-ink); font-weight: 700; }
+    @media (max-width: 760px) {
+      .founders { grid-template-columns: 1fr; border-top: 0; }
+      .founder { border-right: 0; border-bottom: 1px solid var(--line); padding: 20px 0; }
+      .founder:last-child { border-bottom: 0; }
     }
 
     /* CONTACT */
@@ -494,14 +502,12 @@
       .svc, .book { padding: 20px; }
       .lab-controls { row-gap: 6px; }
       .lab-controls .hint { width: 100%; }
-      .tiles { grid-template-columns: repeat(2, 1fr); }
       .cards { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .pub-links a { padding: 4px 10px; }        /* comfortable tap targets */
       .leg { padding: 7px 13px; }
     }
     @media (max-width: 380px) {
-      .tiles { grid-template-columns: 1fr; }
       .hero-cta { flex-direction: column; align-items: flex-start; }
       .hero-cta .btn-ghost { width: 100%; justify-content: center; }
     }
@@ -542,7 +548,7 @@
         <li><a href="#background" class="nav-link">Background</a></li>
         <li><a href="#code" class="nav-link">Code &amp; Data</a></li>
         <li><a href="#honors" class="nav-link">Honors &amp; Awards</a></li>
-        <li><a href="#reading" class="nav-link">Reading</a></li>
+        <li><a href="#foundations" class="nav-link">Foundations</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </nav>
@@ -557,13 +563,7 @@
         <li><a href="https://fariborzaref.com" target="_blank" rel="noopener"><span class="dot"></span>fariborzaref.com</a></li>
         <li><a href="https://github.com/fariborzaref" target="_blank" rel="noopener"><span class="dot"></span>GitHub</a></li>
         <li><a href="https://orcid.org/0000-0001-6622-1824" target="_blank" rel="noopener"><span class="dot"></span>ORCID</a></li>
-        <!-- Add these once you have the links:
-        <li><a href="#" target="_blank" rel="noopener"><span class="dot"></span>Google Scholar</a></li>
-        <li><a href="#" target="_blank" rel="noopener"><span class="dot"></span>LinkedIn</a></li>
-        -->
       </ul>
-
-      <!-- CV button removed -->
 
       <p class="copyright">&copy; <span id="year"></span> Fariborz Aref. All rights reserved.</p>
     </div>
@@ -654,18 +654,6 @@
         </p>
       </div>
     </section>
-
-    <!-- NEWS (hidden until you have items — uncomment and fill to show, and restore the "News" nav link)
-    <section id="news">
-      <span class="eyebrow">Keep going</span>
-      <h2 class="sec-title">Recent News</h2>
-
-      <div class="news-item">
-        <div class="news-meta"><b>Month Year</b> Type</div>
-        <div class="news-body">Your update here.</div>
-      </div>
-    </section>
-    -->
 
     <!-- PUBLICATIONS -->
     <section id="publications">
@@ -793,43 +781,26 @@
         </div>
 
         <div class="course-group">
-          <div class="course-head"><span class="lvl">Undergraduate</span><span class="count">14 courses</span></div>
+          <div class="course-head"><span class="lvl">Undergraduate</span><span class="count">15 courses</span></div>
           <div class="course-list">
-            <div class="ci"><span class="t">Sociology Senior Synthesis</span></div>
-            <div class="ci"><span class="t">Social Stratification</span></div>
+            <div class="ci"><span class="t">Introduction to Sociology</span></div>
             <div class="ci"><span class="t">Social Theory</span></div>
-            <div class="ci"><span class="t">Social Problems</span></div>
-            <div class="ci"><span class="t">Race &amp; Ethnic Relations</span></div>
-            <div class="ci"><span class="t">Research Methods and Statistics</span></div>
-            <div class="ci"><span class="t">Introduction to Statistics</span></div>
-            <div class="ci"><span class="t">Introduction to Sociology</span></div>
-            <div class="ci"><span class="t">Cultural Anthropology</span></div>
-            <div class="ci"><span class="t">Social Psychology</span></div>
-            <div class="ci"><span class="t">Introduction to Sociology</span></div>
-            <div class="ci"><span class="t">Human Geography</span></div>
             <div class="ci"><span class="t">Social Research</span></div>
             <div class="ci"><span class="t">Social Statistics</span></div>
+            <div class="ci"><span class="t">Introduction to Statistics</span></div>
+            <div class="ci"><span class="t">Social Problems</span></div>
+            <div class="ci"><span class="t">Social Stratification</span></div>
+            <div class="ci"><span class="t">Race &amp; Ethnic Relations</span></div>
+            <div class="ci"><span class="t">Social Psychology</span></div>
+            <div class="ci"><span class="t">Cultural Anthropology</span></div>
+            <div class="ci"><span class="t">Human Geography</span></div>
             <div class="ci"><span class="t">Alcohol, Drugs &amp; Society</span></div>
+            <div class="ci"><span class="t">Sociology Senior Synthesis</span></div>
             <div class="ci"><span class="t">Introduction to Multicultural Education</span></div>
             <div class="ci"><span class="t">Human Relations &amp; Cultural Diversity</span></div>
           </div>
         </div>
       </div>
-
-      <!-- Empty sections hidden until you have content — uncomment a card and fill it to show:
-      <div class="svc">
-        <h3>Conference Presentations</h3>
-        <ul class="tick"><li>Title — Venue, Year.</li></ul>
-      </div>
-      <div class="svc">
-        <h3>Selected Projects</h3>
-        <ul class="tick"><li>Title — Role, Sponsor, Year.</li></ul>
-      </div>
-      <div class="svc">
-        <h3>Professional Service</h3>
-        <ul class="tick"><li>Reviewer — Journal / Conference.</li></ul>
-      </div>
-      -->
     </section>
 
     <!-- CODE & DATA -->
@@ -903,20 +874,41 @@
       </div>
     </section>
 
-    <!-- READING -->
-    <section id="reading">
-      <span class="eyebrow">Reading</span>
-      <h2 class="sec-title">Off the Clock</h2>
-      <blockquote>"The world is not random. It is structured. So is inequality." <!-- optional --></blockquote>
+    <!-- FOUNDATIONS -->
+    <section id="foundations">
+      <span class="eyebrow">Intellectual Lineage</span>
+      <h2 class="sec-title">Foundations</h2>
+      <p class="foundations-epigraph">“The world is not random. It is structured. So is inequality.”</p>
+      <p class="foundations-intro">Three classical accounts of inequality — and where my work picks up the thread.</p>
 
-      <div class="tiles">
-        <div class="tile empty">Add a book</div>
-        <div class="tile empty">Add a book</div>
-        <div class="tile empty">Add a book</div>
-        <!-- Filled example:
-        <div class="tile"><h4>Title</h4><span>Author · Genre</span></div>
-        -->
+      <div class="founders">
+        <div class="founder">
+          <div class="fnum">I</div>
+          <div class="fdate">1818–1883</div>
+          <h3>Marx</h3>
+          <p class="concept">Capital &amp; class</p>
+          <p class="tiein">The economic engine of inequality.</p>
+        </div>
+        <div class="founder">
+          <div class="fnum">II</div>
+          <div class="fdate">1864–1920</div>
+          <h3>Weber</h3>
+          <p class="concept">Class, status &amp; power</p>
+          <p class="tiein">How institutions organize advantage.</p>
+        </div>
+        <div class="founder">
+          <div class="fnum">III</div>
+          <div class="fdate">1858–1917</div>
+          <h3>Durkheim</h3>
+          <p class="concept">Solidarity &amp; cohesion</p>
+          <p class="tiein">What holds societies together under strain.</p>
+        </div>
       </div>
+
+      <p class="foundations-synth">
+        My work joins these threads — the <b>macro structure</b> of inequality and the
+        <b>community systems</b> that absorb it.
+      </p>
     </section>
 
     <!-- CONTACT -->
