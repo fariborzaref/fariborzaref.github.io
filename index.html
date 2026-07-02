@@ -335,6 +335,16 @@
     .svc h3 { margin: 0 0 14px; font-size: 1.3rem; }
     .grp-label { margin: 18px 0 9px; font-family: var(--body); font-weight: 700; font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
     .grp-label:first-of-type { margin-top: 0; }
+    .course-group { margin-top: 26px; }
+    .course-group:first-of-type { margin-top: 2px; }
+    .course-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 8px; border-bottom: 1.5px solid rgba(35,44,51,.22); }
+    .course-head .lvl { font-weight: 700; font-size: .76rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-ink); }
+    .course-head .count { font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .course-list { columns: 2; column-gap: 42px; margin-top: 4px; counter-reset: c; }
+    .course-list .ci { break-inside: avoid; display: flex; align-items: baseline; gap: 12px; padding: 9px 2px; border-bottom: 1px solid var(--line); counter-increment: c; }
+    .course-list .ci::before { content: counter(c, decimal-leading-zero); font-size: .72rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+    .course-list .ci .t { font-size: .96rem; color: var(--ink); font-weight: 500; line-height: 1.4; }
+    @media (max-width: 620px) { .course-list { columns: 1; } }
     .tick.cols { column-count: 2; column-gap: 34px; margin-bottom: 0; }
     .tick.cols li { break-inside: avoid; }
     @media (max-width: 620px) { .tick.cols { column-count: 1; } }
@@ -588,7 +598,7 @@
         <li>Research design &amp; methods</li>
         <li>Mixed methods</li>
         <li>Computational sociology</li>
-        <li>Community capacity building</li>
+        <li>Community capacity building &amp; rural development</li>
       </ul>
       <p>
         My approach pairs quantitative estimation with qualitative interpretation, and is motivated
@@ -616,7 +626,7 @@
 
       <!-- Optional personal note — edit or delete -->
       <p class="ph">
-
+        Outside of research, I enjoy [add a line here — reading, interests, etc.].
       </p>
     </section>
 
@@ -779,28 +789,32 @@
       <div class="svc">
         <h3>Courses Taught</h3>
 
-        <div class="grp-label">Graduate</div>
-        <div class="chips">
-          <span class="chip">Research Methods &amp; Statistics</span>
-          <span class="chip">Educational Research &amp; Evaluation</span>
+        <div class="course-group">
+          <div class="course-head"><span class="lvl">Graduate</span><span class="count">2 courses</span></div>
+          <div class="course-list">
+            <div class="ci"><span class="t">Research Methods &amp; Statistics</span></div>
+            <div class="ci"><span class="t">Educational Research &amp; Evaluation</span></div>
+          </div>
         </div>
 
-        <div class="grp-label">Undergraduate</div>
-        <div class="chips">
-          <span class="chip">Sociology Senior Synthesis</span>
-          <span class="chip">Social Stratification</span>
-          <span class="chip">Social Theory</span>
-          <span class="chip">Social Problems</span>
-          <span class="chip">Race &amp; Ethnic Relations</span>
-          <span class="chip">Cultural Anthropology</span>
-          <span class="chip">Social Psychology</span>
-          <span class="chip">Introduction to Sociology</span>
-          <span class="chip">Human Geography</span>
-          <span class="chip">Social Research</span>
-          <span class="chip">Social Statistics</span>
-          <span class="chip">Alcohol, Drugs &amp; Society</span>
-          <span class="chip">Introduction to Multicultural Education</span>
-          <span class="chip">Human Relations &amp; Cultural Diversity</span>
+        <div class="course-group">
+          <div class="course-head"><span class="lvl">Undergraduate</span><span class="count">14 courses</span></div>
+          <div class="course-list">
+            <div class="ci"><span class="t">Sociology Senior Synthesis</span></div>
+            <div class="ci"><span class="t">Social Stratification</span></div>
+            <div class="ci"><span class="t">Social Theory</span></div>
+            <div class="ci"><span class="t">Social Problems</span></div>
+            <div class="ci"><span class="t">Race &amp; Ethnic Relations</span></div>
+            <div class="ci"><span class="t">Cultural Anthropology</span></div>
+            <div class="ci"><span class="t">Social Psychology</span></div>
+            <div class="ci"><span class="t">Introduction to Sociology</span></div>
+            <div class="ci"><span class="t">Human Geography</span></div>
+            <div class="ci"><span class="t">Social Research</span></div>
+            <div class="ci"><span class="t">Social Statistics</span></div>
+            <div class="ci"><span class="t">Alcohol, Drugs &amp; Society</span></div>
+            <div class="ci"><span class="t">Introduction to Multicultural Education</span></div>
+            <div class="ci"><span class="t">Human Relations &amp; Cultural Diversity</span></div>
+          </div>
         </div>
       </div>
 
@@ -919,7 +933,7 @@
             Professor of Sociology<br>
             Harris-Stowe State University<br>
             Email: <a href="mailto:fariborz.aref@gmail.com">fariborz.aref@gmail.com</a><br>
-          
+            <span class="ph">Phone — add if you wish</span>
           </p>
         </div>
         <div>
