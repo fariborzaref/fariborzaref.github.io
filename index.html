@@ -9,6 +9,7 @@
     gtag('js', new Date());
     gtag('config', 'G-S437KK8JX4');
   </script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Fariborz Aref</title>
@@ -122,6 +123,7 @@
       display: flex;
       flex-direction: column;
     }
+
     .sb-head { text-align: center; }
 
     .avatar {
@@ -391,23 +393,6 @@
     .contact-grid h3 { font-size: 1.08rem; letter-spacing: -.005em; }
     .thanks { margin-top: 40px; text-align: center; font-family: var(--display); font-size: 1.2rem; color: var(--accent-ink); }
 
-    /* CLOSING FOOTER */
-    .site-foot {
-      border-top: 1px solid var(--line);
-      padding: 44px clamp(24px, 6vw, 92px) 52px;
-      max-width: 1080px;
-    }
-    .foot-statement {
-      font-family: var(--display); font-style: italic;
-      font-size: 1rem; line-height: 1.5; color: var(--ink);
-      max-width: 52ch; margin: 0 0 14px; opacity: .88; text-wrap: pretty;
-    }
-    .foot-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--muted); font-size: .82rem; font-weight: 600; }
-    .foot-meta a { color: var(--accent-ink); font-weight: 700; }
-    .foot-meta a:hover { text-decoration: underline; }
-    .foot-dot { opacity: .45; }
-    @media (max-width: 560px) { .site-foot { padding: 36px 20px 44px; } .foot-statement { font-size: .95rem; } }
-
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
     /* ===== Inequality Lab (interactive) ===== */
@@ -570,8 +555,7 @@
 
     <div class="sb-foot">
       <div class="sb-contact">
-        <a href="mailto:fariborz.aref@gmail.com">fariborz.aref@gmail.com</a><br>
-        <span class="ph">Phone — add if you wish</span>
+        <a href="mailto:fariborz.aref@gmail.com">fariborz.aref@gmail.com</a>
       </div>
 
       <ul class="sb-social">
@@ -878,14 +862,16 @@
             <li>Guest, Takoma Radio — “Disability Inclusion and Research Productivity,” 2018.</li>
           </ul>
         </div>
+        <!-- Add real entries when ready, then uncomment:
         <div class="t-entry">
           <h3>Awards &amp; Honors</h3>
-          <ul class="tick"><li class="ph">Add an award or honor here.</li></ul>
+          <ul class="tick"><li>Title — Body, Year.</li></ul>
         </div>
         <div class="t-entry">
           <h3>Grants &amp; Fellowships</h3>
-          <ul class="tick"><li class="ph">Add a grant or fellowship here.</li></ul>
+          <ul class="tick"><li>Title — Sponsor, Year.</li></ul>
         </div>
+        -->
       </div>
     </section>
 
@@ -936,7 +922,7 @@
           <h3 style="margin:0 0 8px;">Fariborz Aref</h3>
           <p style="color:#3d474e;">
             Sociologist and Researcher<br>
-            Email: <a href="mailto:fariborz.aref@gmail.com">fariborz.aref@gmail.com</a><br>
+            Email: <a href="mailto:fariborz.aref@gmail.com">fariborz.aref@gmail.com</a>
           </p>
         </div>
         <div>
@@ -954,7 +940,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    (function(){ var y2 = document.getElementById("year2"); if (y2) y2.textContent = new Date().getFullYear(); })();
 
     // Mobile menu toggle
     const sidebar = document.getElementById("sidebar");
@@ -1065,6 +1050,7 @@
         var p = +prot.value / 100;
         regimes.forEach(function (r) { lineEls[r.id].setAttribute('d', pathFor(r, p)); lineEls[r.id].style.opacity = r.active ? 1 : 0; });
       }
+
       // hover guide + dots
       var guide = el('line', { class: 'guide-line', y1: mT, y2: mT + plotH }); svg.appendChild(guide);
       var dots = {};
@@ -1135,6 +1121,8 @@
       prot.addEventListener('input', function () { protVal.textContent = prot.value + '%'; draw(); });
       draw();
     })();
+  </script>
+
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
