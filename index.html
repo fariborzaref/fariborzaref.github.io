@@ -126,14 +126,14 @@
 
     .sb-head { text-align: center; }
 
-       .avatar {
+    .avatar {
       width: 132px; height: 132px;
       margin: 0 auto 18px;
       border-radius: 50%;
       display: grid; place-items: center;
-      background-image: url(https://raw.githubusercontent.com/areff117/pic/main/thumbnail.jpg);
-      background-size: cover;
-      background-position: center;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(15,118,110,.18), transparent 60%),
+        linear-gradient(150deg, var(--panel-2), #eee7d8);
       border: 1px solid var(--line);
       font-family: var(--display);
       font-size: 2.7rem; font-weight: 700;
