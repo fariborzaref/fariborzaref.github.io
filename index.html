@@ -9,7 +9,6 @@
     gtag('js', new Date());
     gtag('config', 'G-S437KK8JX4');
   </script>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Fariborz Aref</title>
@@ -123,7 +122,6 @@
       display: flex;
       flex-direction: column;
     }
-
     .sb-head { text-align: center; }
 
     .avatar {
@@ -1067,7 +1065,6 @@
         var p = +prot.value / 100;
         regimes.forEach(function (r) { lineEls[r.id].setAttribute('d', pathFor(r, p)); lineEls[r.id].style.opacity = r.active ? 1 : 0; });
       }
-
       // hover guide + dots
       var guide = el('line', { class: 'guide-line', y1: mT, y2: mT + plotH }); svg.appendChild(guide);
       var dots = {};
@@ -1138,8 +1135,6 @@
       prot.addEventListener('input', function () { protVal.textContent = prot.value + '%'; draw(); });
       draw();
     })();
-  </script>
-
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
