@@ -143,7 +143,7 @@
          and delete the "FA" text inside .avatar */
     }
 
-    .sb-name { margin: 0; font-size: 1.5rem; line-height: 1.15; letter-spacing: -.01em; }
+    .sb-name { margin: 0; font-size: 1.32rem; line-height: 1.15; letter-spacing: -.01em; }
     .sb-role {
       display: block;
       margin-top: 8px;
@@ -225,11 +225,11 @@
       text-transform: uppercase;
       margin-bottom: 10px;
     }
-    .sec-title { margin: 0 0 26px; font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.08; letter-spacing: -.02em; }
+    .sec-title { margin: 0 0 24px; font-size: clamp(1.7rem, 3vw, 2.15rem); line-height: 1.12; letter-spacing: -.015em; text-wrap: balance; }
     .sub-title { margin: 40px 0 16px; font-size: 1.35rem; }
 
-    p { margin: 0 0 16px; }
-    .lead { font-size: 1.06rem; color: #3d474e; }
+    p { margin: 0 0 16px; text-wrap: pretty; }
+    .lead { font-size: 1.08rem; color: #3d474e; text-wrap: pretty; }
 
     /* HERO */
     #home {
@@ -254,10 +254,10 @@
       mask-image: radial-gradient(circle at 78% 30%, black, transparent 62%);
       pointer-events: none;
     }
-    .hero-greet { position: relative; color: var(--muted); font-family: var(--display); font-style: italic; font-size: 1.3rem; margin-bottom: 4px; }
-    .hero-title { position: relative; margin: 0; font-size: clamp(2.6rem, 7vw, 5rem); line-height: .98; letter-spacing: -.03em; }
+    .hero-greet { position: relative; color: var(--muted); font-family: var(--display); font-style: italic; font-size: 1.15rem; margin-bottom: 6px; }
+    .hero-title { position: relative; margin: 0; font-size: clamp(2.3rem, 5.5vw, 4rem); line-height: 1.0; letter-spacing: -.03em; }
     .hero-title em { font-style: italic; color: var(--accent-ink); }
-    .hero-lines { position: relative; margin: 22px 0 30px; max-width: 620px; color: #3d474e; font-size: 1.12rem; }
+    .hero-lines { position: relative; margin: 22px 0 30px; max-width: 620px; color: #3d474e; font-size: 1.08rem; text-wrap: pretty; }
     .hero-cta { position: relative; display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 8px;
@@ -303,7 +303,7 @@
     .pub:last-child { border-bottom: 0; }
     .pub-authors { font-size: .95rem; color: #3d474e; }
     .pub-authors u { text-decoration: none; border-bottom: 2px solid var(--accent); font-weight: 700; }
-    .pub-title { display: block; margin: 3px 0; font-weight: 700; font-size: 1.04rem; font-family: var(--display); }
+    .pub-title { display: block; margin: 3px 0; font-weight: 700; font-size: 1.05rem; font-family: var(--display); line-height: 1.4; }
     .pub-venue { color: var(--muted); font-style: italic; font-size: .92rem; }
     .pub-links { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 8px; }
     .pub-links a {
@@ -322,7 +322,7 @@
       transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
     }
     .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: rgba(15,118,110,.35); }
-    .card h3 { margin: 0 0 6px; font-size: 1.06rem; }
+    .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
     .card .card-sub { color: var(--accent-ink); font-weight: 700; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; }
     .card p { color: var(--muted); font-size: .9rem; margin: 8px 0 0; }
     .card .repo-link { display: inline-block; margin-top: 10px; font-weight: 700; font-size: .84rem; color: var(--accent-ink); }
@@ -332,7 +332,7 @@
       border: 1px solid var(--line); border-radius: 18px; background: var(--panel);
       padding: 26px; margin-bottom: 16px;
     }
-    .svc h3 { margin: 0 0 14px; font-size: 1.3rem; }
+    .svc h3 { margin: 0 0 14px; font-size: 1.2rem; letter-spacing: -.005em; }
     .grp-label { margin: 18px 0 9px; font-family: var(--body); font-weight: 700; font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
     .grp-label:first-of-type { margin-top: 0; }
     .course-group { margin-top: 26px; }
@@ -360,15 +360,15 @@
       width: 12px; height: 12px; border-radius: 50%;
       background: var(--panel); border: 2px solid var(--accent);
     }
-    .t-entry h3 { margin: 0 0 6px; font-size: 1.1rem; }
+    .t-entry h3 { margin: 0 0 6px; font-size: 1.08rem; }
 
     /* FOUNDATIONS */
     .foundations-epigraph {
       margin: 0 0 6px; padding: 16px 20px;
       border-left: 3px solid var(--accent);
       background: var(--panel-2); border-radius: 0 12px 12px 0;
-      font-family: var(--display); font-style: italic; font-size: 1.24rem;
-      color: var(--accent-ink); max-width: 42ch; line-height: 1.35;
+      font-family: var(--display); font-style: italic; font-size: 1.18rem;
+      color: var(--accent-ink); max-width: 42ch; line-height: 1.4;
     }
     .foundations-intro { max-width: 640px; color: #3d474e; font-size: 1.02rem; margin: 6px 0 0; }
     .founders { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 28px; border-top: 1px solid var(--line); }
@@ -377,10 +377,10 @@
     .founder:last-child { padding-right: 0; border-right: 0; }
     .founder .fnum { font-family: var(--display); font-size: 1rem; letter-spacing: .16em; color: var(--gold); }
     .founder .fdate { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 6px; }
-    .founder h3 { font-family: var(--display); font-size: 1.55rem; margin: 4px 0 8px; letter-spacing: -.01em; }
-    .founder .concept { font-family: var(--display); font-style: italic; color: var(--accent-ink); font-size: 1.06rem; margin: 0 0 10px; }
+    .founder h3 { font-family: var(--display); font-size: 1.3rem; margin: 4px 0 8px; letter-spacing: -.01em; }
+    .founder .concept { font-family: var(--display); font-style: italic; color: var(--accent-ink); font-size: 1.02rem; margin: 0 0 10px; }
     .founder .tiein { font-size: .9rem; color: #3d474e; margin: 0; line-height: 1.55; }
-    .foundations-synth { margin: 30px 0 0; padding-top: 24px; border-top: 1.5px solid rgba(35,44,51,.22); font-family: var(--display); font-size: 1.26rem; line-height: 1.45; color: var(--ink); max-width: 780px; }
+    .foundations-synth { margin: 30px 0 0; padding-top: 24px; border-top: 1.5px solid rgba(35,44,51,.22); font-family: var(--display); font-size: 1.18rem; line-height: 1.5; color: var(--ink); max-width: 720px; text-wrap: pretty; }
     .foundations-synth b { color: var(--accent-ink); font-weight: 700; }
     @media (max-width: 760px) {
       .founders { grid-template-columns: 1fr; border-top: 0; }
@@ -390,7 +390,8 @@
 
     /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .thanks { margin-top: 40px; text-align: center; font-family: var(--display); font-size: 1.3rem; color: var(--accent-ink); }
+    .contact-grid h3 { font-size: 1.08rem; letter-spacing: -.005em; }
+    .thanks { margin-top: 40px; text-align: center; font-family: var(--display); font-size: 1.2rem; color: var(--accent-ink); }
 
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
@@ -438,7 +439,7 @@
     .lenses { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0 6px; }
     .lens { border: 1px solid var(--line); border-radius: 16px; background: var(--panel-2); padding: 18px; }
     .lens .lens-k { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
-    .lens h4 { margin: 6px 0; font-size: 1.05rem; }
+    .lens h4 { margin: 6px 0; font-size: 1.04rem; }
     .lens p { margin: 0; font-size: .88rem; color: var(--muted); }
     .lens .inst { opacity: .72; }
     @media (max-width: 620px) { .lenses { grid-template-columns: 1fr; } }
@@ -449,7 +450,7 @@
     .book-cover .bc-top { font-family: var(--display); font-weight: 700; font-size: 1.02rem; line-height: 1.2; }
     .book-cover .bc-bot { font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
     .book-tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
-    .book h3 { margin: 8px 0 4px; font-size: 1.5rem; line-height: 1.15; }
+    .book h3 { margin: 8px 0 4px; font-size: 1.3rem; line-height: 1.18; }
     .book .sub { color: var(--muted); font-style: italic; margin-bottom: 12px; }
     @media (max-width: 620px) { .book { grid-template-columns: 1fr; } .book-cover { width: 150px; } }
 
