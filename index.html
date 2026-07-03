@@ -393,6 +393,23 @@
     .contact-grid h3 { font-size: 1.08rem; letter-spacing: -.005em; }
     .thanks { margin-top: 40px; text-align: center; font-family: var(--display); font-size: 1.2rem; color: var(--accent-ink); }
 
+    /* CLOSING FOOTER */
+    .site-foot {
+      border-top: 1px solid var(--line);
+      padding: 44px clamp(24px, 6vw, 92px) 52px;
+      max-width: 1080px;
+    }
+    .foot-statement {
+      font-family: var(--display); font-style: italic;
+      font-size: 1.22rem; line-height: 1.45; color: var(--accent-ink);
+      max-width: 48ch; margin: 0 0 22px; text-wrap: pretty;
+    }
+    .foot-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--muted); font-size: .82rem; font-weight: 600; }
+    .foot-meta a { color: var(--accent-ink); font-weight: 700; }
+    .foot-meta a:hover { text-decoration: underline; }
+    .foot-dot { opacity: .45; }
+    @media (max-width: 560px) { .site-foot { padding: 36px 20px 44px; } .foot-statement { font-size: 1.12rem; } }
+
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
     /* ===== Inequality Lab (interactive) ===== */
@@ -534,7 +551,7 @@
       <div class="avatar">FA</div>
       <h1 class="sb-name">Fariborz Aref</h1>
       <span class="sb-role">
-        Sociologist and Professor<br>
+        Sociologist and Researcher<br>
       </span>
     </div>
 
@@ -556,7 +573,7 @@
     <div class="sb-foot">
       <div class="sb-contact">
         <a href="mailto:fariborz.aref@gmail.com">fariborz.aref@gmail.com</a><br>
-        <span class="ph"></span>
+        <span class="ph">Phone — add if you wish</span>
       </div>
 
       <ul class="sb-social">
@@ -598,7 +615,7 @@
         <li>Research design &amp; methods</li>
         <li>Mixed methods</li>
         <li>Computational sociology</li>
-        <li>Community capacity building</li>
+        <li>Community capacity building &amp; rural development</li>
       </ul>
       <p>
         My approach pairs quantitative estimation with qualitative interpretation, and is motivated
@@ -917,14 +934,13 @@
       <h2 class="sec-title">Get in Touch</h2>
 
       <div class="contact-grid">
-   <div>
-  <h3 style="margin:0 0 8px;">Fariborz Aref</h3>
-  <p style="color:#3d474e;">
-    Sociologist &amp; Professor<br>
-    United States<br>
-    Email: <a href="mailto:fariborz.aref@gmail.com">fariborz.aref@gmail.com</a><br>
-  </p>
-</div>
+        <div>
+          <h3 style="margin:0 0 8px;">Fariborz Aref</h3>
+          <p style="color:#3d474e;">
+            Sociologist and Researcher<br>
+            Email: <a href="mailto:fariborz.aref@gmail.com">fariborz.aref@gmail.com</a><br>
+          </p>
+        </div>
         <div>
           <h3 style="margin:0 0 8px;">Elsewhere</h3>
           <ul class="tick">
@@ -936,10 +952,22 @@
       </div>
     </section>
 
+    <footer class="site-foot">
+      <p class="foot-statement">Structure can be measured. What we do with the measure is a choice.</p>
+      <div class="foot-meta">
+        <span>&copy; <span id="year2"></span> Fariborz Aref</span>
+        <span class="foot-dot">·</span>
+        <span>Sociology of inequality</span>
+        <span class="foot-dot">·</span>
+        <a href="https://github.com/fariborzaref" target="_blank" rel="noopener">Built in the open ↗</a>
+      </div>
+    </footer>
+
   </main>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    (function(){ var y2 = document.getElementById("year2"); if (y2) y2.textContent = new Date().getFullYear(); })();
 
     // Mobile menu toggle
     const sidebar = document.getElementById("sidebar");
