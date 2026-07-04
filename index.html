@@ -757,97 +757,96 @@
       </p>
     </section>
 
-    <!-- INEQUALITY LAB -->
-    <section id="lab">
-      <span class="eyebrow">Interactive · Computational Sociology</span>
-      <h2 class="sec-title">The Inequality Lab</h2>
-      <p class="lead">
-        A central claim in my work: shocks don't hit societies evenly — welfare regimes decide how a
-        recession or a pandemic becomes inequality. Here's that argument as a small model you can run.
-        Drag the slider to watch institutions absorb the shock, and tap or hover the chart to read any year.
-      </p>
+<!-- INEQUALITY LAB -->
+<section id="lab">
+  <span class="eyebrow">Interactive · Computational Sociology</span>
+  <h2 class="sec-title">The Inequality Lab</h2>
+  <p class="lead">
+    A central claim in my work: shocks don't hit societies evenly — welfare regimes decide how a
+    recession or a pandemic becomes inequality. Here's that argument as a small model you can run.
+    Drag the slider to watch institutions absorb the shock, and tap or hover the chart to read any year.
+  </p>
 
-      <div class="lab-wrap">
-        <div class="lab-legend" id="legend"></div>
-        <div class="chart-holder" id="chartHolder">
-          <svg class="lab-svg" id="chart" viewBox="0 0 760 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Illustrative inequality trajectories by welfare regime through the 2008 recession and 2020 pandemic"></svg>
-          <div class="tooltip" id="tooltip"></div>
-        </div>
-        <div class="lab-controls">
-          <label>Social-protection strength <span class="val" id="protVal">50%</span></label>
-          <input type="range" min="0" max="100" value="50" class="slider" id="prot" aria-label="Social-protection strength">
-          <span class="hint">0% = shocks pass straight through · 100% = institutions absorb them</span>
-        </div>
-        <p class="lab-note">
-          Illustrative model — trajectories are schematic, dramatizing the mechanism rather than reporting
-          fitted estimates. Empirical results live in the papers:
-          <a href="https://doi.org/10.1163/15691330-bja10103" target="_blank" rel="noopener">recession → pandemic</a> ·
-          <a href="https://doi.org/10.1007/s12232-024-00448-9" target="_blank" rel="noopener">welfare regimes</a>.
-        </p>
-      </div>
+  <div class="lab-wrap">
+    <div class="lab-legend" id="legend"></div>
+    <div class="chart-holder" id="chartHolder">
+      <svg class="lab-svg" id="chart" viewBox="0 0 760 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Illustrative inequality trajectories by welfare regime through the 2008 recession and 2020 pandemic"></svg>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+    <div class="lab-controls">
+      <label>Social-protection strength <span class="val" id="protVal">50%</span></label>
+      <input type="range" min="0" max="100" value="50" class="slider" id="prot" aria-label="Social-protection strength">
+      <span class="hint">0% = shocks pass straight through · 100% = institutions absorb them</span>
+    </div>
+    <p class="lab-note">
+      Illustrative model — trajectories are schematic, dramatizing the mechanism rather than reporting
+      fitted estimates. Empirical results live in the papers:
+      <a href="https://doi.org/10.1163/15691330-bja10103" target="_blank" rel="noopener">recession → pandemic</a> ·
+      <a href="https://doi.org/10.1007/s12232-024-00448-9" target="_blank" rel="noopener">welfare regimes</a>.
+    </p>
+  </div>
 
-      <a class="lab-cta" href="/inequality/">
-        <span class="lab-cta-icon">◑</span>
-        <span class="lab-cta-body">
-          <span class="lab-cta-eyebrow">Standalone experience</span>
-          <span class="lab-cta-title">Enter the Birth Lottery</span>
-          <span class="lab-cta-sub">Be born at random into the world — and see how much of a life is decided by place alone.</span>
-        </span>
-        <span class="lab-cta-arrow" aria-hidden="true">→</span>
-      </a>
-    </section>
+  <a class="lab-cta" href="inequality">
+    <span class="lab-cta-icon">◑</span>
+    <span class="lab-cta-body">
+      <span class="lab-cta-eyebrow">Standalone experience</span>
+      <span class="lab-cta-title">Enter the Birth Lottery</span>
+      <span class="lab-cta-sub">Be born at random into the world — and see how much of a life is decided by place alone.</span>
+    </span>
+    <span class="lab-cta-arrow" aria-hidden="true">→</span>
+  </a>
+</section>
 
-    <!-- METHODOLOGY LAB -->
-    <section id="methods-lab">
-      <span class="eyebrow">Interactive · Research Methods</span>
-      <h2 class="sec-title">The Methodology Lab</h2>
+<!-- METHODOLOGY LAB -->
+<section id="methods-lab">
+  <span class="eyebrow">Interactive · Research Methods</span>
+  <h2 class="sec-title">The Methodology Lab</h2>
 
-      <p class="mlab-epigraph">Durkheim argued that a society is a reality of its own — never merely the sum of its members. Simpson's paradox is that argument rendered in data.</p>
+  <p class="mlab-epigraph">Durkheim argued that a society is a reality of its own — never merely the sum of its members. Simpson's paradox is that argument rendered in data.</p>
 
-      <p class="lead">
-        Sociology's founding claim is that the collective obeys laws its individuals do not. Its statistical
-        shadow is a reversal: a relationship can flip its sign the instant you divide a population into the
-        groups that actually structure it. Here the question is one of my own — does social spending reduce
-        inequality? — and the honest answer depends entirely on whether you read the aggregate or the
-        structure beneath it.
-      </p>
+  <p class="lead">
+    Sociology's founding claim is that the collective obeys laws its individuals do not. Its statistical
+    shadow is a reversal: a relationship can flip its sign the instant you divide a population into the
+    groups that actually structure it. Here the question is one of my own — does social spending reduce
+    inequality? — and the honest answer depends entirely on whether you read the aggregate or the
+    structure beneath it.
+  </p>
 
-      <div class="lab-wrap">
-        <div class="mlab-readout" id="mlabReadout" aria-live="polite"></div>
-        <div class="chart-holder" id="mchartHolder">
-          <svg class="lab-svg" id="mchart" viewBox="0 0 760 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Scatterplot of social spending against inequality, illustrating Simpson's paradox"></svg>
-        </div>
-        <div class="mlab-controls">
-          <button class="mlab-toggle" id="mlabToggle" type="button" aria-pressed="false">
-            <span class="mlab-switch"></span> Account for structural pressure
-          </button>
-          <div class="mlab-legend" id="mlabLegend"></div>
-        </div>
+  <div class="lab-wrap">
+    <div class="mlab-readout" id="mlabReadout" aria-live="polite"></div>
+    <div class="chart-holder" id="mchartHolder">
+      <svg class="lab-svg" id="mchart" viewBox="0 0 760 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Scatterplot of social spending against inequality, illustrating Simpson's paradox"></svg>
+    </div>
+    <div class="mlab-controls">
+      <button class="mlab-toggle" id="mlabToggle" type="button" aria-pressed="false">
+        <span class="mlab-switch"></span> Account for structural pressure
+      </button>
+      <div class="mlab-legend" id="mlabLegend"></div>
+    </div>
 
-        <p class="mlab-forward">
-          A model trained on the pooled data would learn the sign with confidence — and get it exactly
-          backwards. <b>Structure is not noise to be controlled away; it is the finding.</b> The oldest
-          caution in sociology is also the newest one for machine learning.
-        </p>
+    <p class="mlab-forward">
+      A model trained on the pooled data would learn the sign with confidence — and get it exactly
+      backwards. <b>Structure is not noise to be controlled away; it is the finding.</b> The oldest
+      caution in sociology is also the newest one for machine learning.
+    </p>
 
-        <p class="lab-note">
-          Illustrative data — a Simpson's-paradox structure grounded in comparative welfare research: societies
-          under greater <i>structural pressure</i> (higher pre-redistribution inequality) tend to spend more, so
-          the pooled correlation reflects <i>who spends</i>, not <i>what spending does</i>. The pattern is real; the points are schematic.
-        </p>
-      </div>
+    <p class="lab-note">
+      Illustrative data — a Simpson's-paradox structure grounded in comparative welfare research: societies
+      under greater <i>structural pressure</i> (higher pre-redistribution inequality) tend to spend more, so
+      the pooled correlation reflects <i>who spends</i>, not <i>what spending does</i>. The pattern is real; the points are schematic.
+    </p>
+  </div>
 
-      <a class="lab-cta" href="/methods/">
-        <span class="lab-cta-icon">∴</span>
-        <span class="lab-cta-body">
-          <span class="lab-cta-eyebrow">Full treatise · three demonstrations</span>
-          <span class="lab-cta-title">Open the Methods Lab</span>
-          <span class="lab-cta-sub">Simpson's paradox, the ecological fallacy, and the garden of forking paths — how a claim is earned.</span>
-        </span>
-        <span class="lab-cta-arrow" aria-hidden="true">→</span>
-      </a>
-    </section>
-
+  <a class="lab-cta" href="methods">
+    <span class="lab-cta-icon">∴</span>
+    <span class="lab-cta-body">
+      <span class="lab-cta-eyebrow">Full treatise · three demonstrations</span>
+      <span class="lab-cta-title">Open the Methods Lab</span>
+      <span class="lab-cta-sub">Simpson's paradox, the ecological fallacy, and the garden of forking paths — how a claim is earned.</span>
+    </span>
+    <span class="lab-cta-arrow" aria-hidden="true">→</span>
+  </a>
+</section>
     <!-- PUBLICATIONS -->
     <section id="publications">
       <span class="eyebrow">My Publications</span>
