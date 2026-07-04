@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S437KK8JX4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S437KK8JX4');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Methods Lab — Fariborz Aref | How a Social Scientist Reasons</title>
+  <meta name="description" content="An interactive treatise on research methods by Fariborz Aref: Simpson's paradox, the ecological fallacy, and the garden of forking paths — how a defensible claim is earned, not computed.">
+  <meta name="author" content="Fariborz Aref">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://fariborzaref.github.io/methods/">
+  <link rel="icon" type="image/png" href="../favicon-32.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Fariborz Aref">
+  <meta property="og:title" content="The Methods Lab — How a Social Scientist Reasons">
+  <meta property="og:description" content="Three interactive demonstrations: Simpson's paradox, the ecological fallacy, and the garden of forking paths.">
+  <meta property="og:url" content="https://fariborzaref.github.io/methods/">
+  <meta property="og:image" content="https://fariborzaref.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fdfcf9;
+      --panel: #ffffff;
+      --panel-2: #f4f1ea;
+      --ink: #232c33;
+      --muted: #6d767d;
+      --line: #e7e1d5;
+      --accent: #0f766e;
+      --accent-ink: #0b5750;
+      --navy: #1d3f7a;
+      --terra: #b45b3e;
+      --gold: #9a7428;
+      --shadow: 0 22px 60px rgba(35, 44, 51, .10);
+      --display: "Playfair Display", Georgia, "Times New Roman", serif;
+      --body: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --wrap: 860px;
+    }
+    * { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: var(--body); font-size: 16px; line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent-ink); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; color: var(--ink); }
+    ::selection { background: var(--accent); color: #fff; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+    .skip { position: absolute; left: -9999px; }
+    .skip:focus { left: 8px; top: 8px; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 100; }
+
+    /* top bar */
+    .top {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(253, 252, 249, .9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      padding: max(12px, env(safe-area-inset-top)) clamp(20px, 5vw, 40px) 12px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .top .back { font-weight: 700; font-size: .88rem; color: var(--ink); display: inline-flex; align-items: center; gap: 7px; }
+    .top .back:hover { color: var(--accent-ink); text-decoration: none; }
+    .top .here { font-family: var(--display); font-weight: 600; font-size: .95rem; color: var(--muted); }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+
+    /* hero */
+    .hero { padding: clamp(48px, 9vw, 92px) 0 40px; border-bottom: 1px solid var(--line); }
+    .eyebrow { display: inline-block; color: var(--accent); font-weight: 700; font-size: .74rem; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 16px; }
+    .hero h1 { margin: 0; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.0; letter-spacing: -.025em; }
+    .hero .thesis { margin: 24px 0 0; max-width: 60ch; font-size: 1.12rem; color: #3d474e; }
+    .hero .thesis em { font-style: italic; color: var(--accent-ink); }
+    .pull { font-family: var(--display); font-style: italic; font-size: 1.28rem; line-height: 1.4; color: var(--accent-ink); margin: 26px 0 0; max-width: 46ch; }
+
+    /* index */
+    .index { padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .index-title { font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 14px; }
+    .index ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+    .index a { display: flex; align-items: baseline; gap: 14px; padding: 10px 12px; border-radius: 10px; color: var(--ink); }
+    .index a:hover { background: var(--panel-2); text-decoration: none; }
+    .index .rn { font-family: var(--display); color: var(--gold); font-weight: 700; font-size: .95rem; min-width: 34px; letter-spacing: .1em; }
+    .index .nm { font-family: var(--display); font-weight: 600; font-size: 1.08rem; }
+    .index .ds { color: var(--muted); font-size: .88rem; margin-left: auto; text-align: right; }
+
+    /* demo section */
+    .demo { padding: clamp(44px, 8vw, 72px) 0; border-bottom: 1px solid var(--line); scroll-margin-top: 70px; }
+    .demo-rn { font-family: var(--display); font-size: 1rem; letter-spacing: .18em; color: var(--gold); font-weight: 700; }
+    .demo h2 { margin: 6px 0 0; font-size: clamp(1.7rem, 3.4vw, 2.2rem); line-height: 1.1; letter-spacing: -.015em; }
+    .demo .lineage { margin: 14px 0 0; padding: 14px 18px; border-left: 3px solid var(--gold); background: var(--panel-2); border-radius: 0 12px 12px 0; font-family: var(--display); font-style: italic; font-size: 1.06rem; color: var(--accent-ink); max-width: 62ch; line-height: 1.4; }
+    .demo .intro { margin: 18px 0 0; max-width: 64ch; color: #3d474e; }
+
+    /* widget shell */
+    .lab-wrap { margin-top: 24px; border: 1px solid var(--line); border-radius: 20px; background: var(--panel); padding: 22px; box-shadow: var(--shadow); }
+    .readout { padding: 14px 16px; background: var(--panel-2); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 12px; font-size: .98rem; color: var(--ink); line-height: 1.55; margin-bottom: 16px; }
+    .readout b { color: var(--accent-ink); font-weight: 700; }
+    .chart-holder { position: relative; }
+    .lab-svg { width: 100%; height: auto; display: block; }
+    .axis { font-size: 13px; fill: var(--muted); font-family: var(--body); }
+    .axis-title { font-size: 12px; fill: var(--muted); font-family: var(--body); font-weight: 600; }
+    .grid { stroke: var(--line); stroke-width: 1; }
+    .dot { transition: fill .35s ease, opacity .35s ease, r .35s ease; stroke: #fff; stroke-width: 1.1; }
+    .reg { fill: none; stroke-width: 2.6; stroke-linecap: round; transition: opacity .35s ease; }
+    .reg-agg { stroke: #b4483a; stroke-dasharray: 7 5; }
+    .mean-line { stroke-width: 2; stroke-dasharray: 5 4; transition: opacity .3s ease; }
+
+    .controls { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .toggle { display: inline-flex; align-items: center; gap: 11px; border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 8px 16px; cursor: pointer; font-family: var(--body); font-weight: 700; font-size: .88rem; color: var(--ink); }
+    .switch { width: 42px; height: 23px; border-radius: 999px; background: var(--line); position: relative; transition: background .2s ease; flex: none; }
+    .switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 17px; height: 17px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .2s ease; }
+    .toggle.on .switch { background: var(--accent); }
+    .toggle.on .switch::after { transform: translateX(19px); }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; }
+    .leg { display: inline-flex; align-items: center; gap: 7px; font-size: .82rem; font-weight: 600; color: var(--muted); }
+    .leg i { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+
+    .btn { border: 1px solid var(--accent); background: var(--accent); color: #fff; border-radius: 999px; padding: 9px 18px; font-family: var(--body); font-weight: 700; font-size: .86rem; cursor: pointer; transition: background .16s ease; }
+    .btn:hover { background: var(--accent-ink); }
+    .btn.ghost { background: var(--panel); color: var(--accent-ink); }
+    .btn.ghost:hover { background: var(--panel-2); }
+
+    .lesson { margin: 20px 0 0; font-family: var(--display); font-style: italic; font-size: 1.12rem; color: var(--ink); max-width: 60ch; }
+    .lesson::before { content: "Lesson — "; font-style: normal; font-family: var(--body); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px; }
+    .note { margin: 14px 0 0; font-size: .8rem; color: var(--muted); }
+
+    /* p-hacking widget */
+    .ph-readout { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+    .ph-p { font-family: var(--display); font-size: 2.4rem; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .ph-p.sig { color: var(--terra); }
+    .ph-p.ns { color: var(--muted); }
+    .ph-verdict { font-weight: 700; font-size: .9rem; }
+    .ph-grid { display: grid; grid-template-columns: repeat(20, 1fr); gap: 5px; margin: 8px 0 4px; }
+    .ph-cell { aspect-ratio: 1; border-radius: 4px; background: var(--panel-2); border: 1px solid var(--line); transition: background .2s ease, border-color .2s ease; }
+    .ph-cell.ns { background: #eceae3; }
+    .ph-cell.sig { background: var(--terra); border-color: var(--terra); }
+    .ph-tally { margin-top: 12px; font-size: .9rem; color: #3d474e; }
+    .ph-tally b { color: var(--terra); }
+    .ph-reveal { margin-top: 14px; padding: 14px 16px; border: 1px dashed var(--terra); border-radius: 12px; background: #fbf4f1; color: #5a3226; font-size: .92rem; line-height: 1.55; opacity: 0; transition: opacity .3s ease; }
+    .ph-reveal.show { opacity: 1; }
+    .ph-controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    @media (max-width: 560px) { .ph-grid { grid-template-columns: repeat(10, 1fr); } .ph-p { font-size: 2rem; } }
+
+    /* closing */
+    .closing { padding: clamp(48px, 9vw, 84px) 0; }
+    .closing .ai {
+      font-family: var(--display); font-style: italic; font-size: clamp(1.3rem, 3vw, 1.7rem);
+      line-height: 1.4; color: var(--ink); max-width: 30ch; margin: 0;
+    }
+    .closing .ai b { color: var(--accent-ink); font-style: normal; }
+    .closing .sig { margin-top: 30px; padding-top: 22px; border-top: 1.5px solid rgba(35,44,51,.2); color: var(--muted); font-size: .86rem; }
+    .closing .sig a { font-weight: 700; }
+
+    /* reveal */
+    .js .rv { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16,.7,.2,1), transform .7s cubic-bezier(.16,.7,.2,1); }
+    .js .rv.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+      .js .rv { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="back" href="/">← Fariborz Aref</a>
+    <span class="here">Methods Lab</span>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <!-- HERO -->
+      <section class="hero">
+        <span class="eyebrow">A Treatise in Three Demonstrations</span>
+        <h1>The Methods Lab</h1>
+        <p class="thesis">
+          Most of what is written about method teaches software — how to compute an answer.
+          This lab is about the harder thing: <em>how a claim is earned</em>. Three demonstrations,
+          each a place where a confident number quietly points the wrong way, and where judgment —
+          not calculation — decides what is true.
+        </p>
+        <p class="pull">Not how to compute an answer — how to earn one.</p>
+      </section>
+
+      <!-- INDEX -->
+      <nav class="index" aria-label="Contents">
+        <div class="index-title">Contents</div>
+        <ol>
+          <li><a href="#simpson"><span class="rn">I</span><span class="nm">Simpson's Paradox</span><span class="ds">the whole is not its parts</span></a></li>
+          <li><a href="#ecological"><span class="rn">II</span><span class="nm">The Ecological Fallacy</span><span class="ds">groups are not their members</span></a></li>
+          <li><a href="#phacking"><span class="rn">III</span><span class="nm">The Garden of Forking Paths</span><span class="ds">search long enough and noise obliges</span></a></li>
+        </ol>
+      </nav>
+
+      <!-- I. SIMPSON -->
+      <section class="demo rv" id="simpson">
+        <div class="demo-rn">I</div>
+        <h2>Simpson's Paradox</h2>
+        <p class="lineage">Durkheim insisted a society is a reality of its own, never merely the sum of its members. Simpson's paradox is that claim rendered in data: an aggregate can tell the opposite story of its parts.</p>
+        <p class="intro">
+          A question of my own: does social spending reduce inequality? Pool every society together and the
+          answer looks like <i>no</i>. Account for the structure beneath the pool, and the sign reverses.
+        </p>
+
+        <div class="lab-wrap">
+          <div class="readout" id="s-readout" aria-live="polite"></div>
+          <div class="chart-holder"><svg class="lab-svg" id="s-chart" viewBox="0 0 760 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Social spending versus inequality scatterplot"></svg></div>
+          <div class="controls">
+            <button class="toggle" id="s-toggle" type="button" aria-pressed="false"><span class="switch"></span> Account for structural pressure</button>
+            <div class="legend" id="s-legend"></div>
+          </div>
+          <p class="note">Illustrative data — societies under greater structural pressure (higher pre-redistribution inequality) tend to spend more, so the pooled correlation reflects <i>who spends</i>, not <i>what spending does</i>.</p>
+        </div>
+        <p class="lesson">The pooled number was never wrong — it just answered a question no one asked. Structure is not a nuisance to remove; it is the finding.</p>
+      </section>
+
+      <!-- II. ECOLOGICAL -->
+      <section class="demo rv" id="ecological">
+        <div class="demo-rn">II</div>
+        <h2>The Ecological Fallacy</h2>
+        <p class="lineage">Robinson, 1950: across U.S. states, the more foreign-born residents, the higher the literacy. Person by person, immigrants were <i>less</i> literate. The state trend never described a single human being.</p>
+        <p class="intro">
+          A relationship measured on groups cannot be carried down to the individuals inside them.
+          Toggle between the two levels: the aggregate is tidy and positive; the people tell another story.
+        </p>
+
+        <div class="lab-wrap">
+          <div class="readout" id="e-readout" aria-live="polite"></div>
+          <div class="chart-holder"><svg class="lab-svg" id="e-chart" viewBox="0 0 760 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Foreign-born share versus literacy, states versus individuals"></svg></div>
+          <div class="controls">
+            <button class="toggle" id="e-toggle" type="button" aria-pressed="false"><span class="switch"></span> Show the people, not the states</button>
+            <div class="legend" id="e-legend"></div>
+          </div>
+          <p class="note">Illustrative reconstruction of Robinson's classic case. The confound: immigrants settled disproportionately where literacy was already high.</p>
+        </div>
+        <p class="lesson">To measure a group is not to know its members. The unit you count silently decides what you are allowed to conclude.</p>
+      </section>
+
+      <!-- III. P-HACKING -->
+      <section class="demo rv" id="phacking">
+        <div class="demo-rn">III</div>
+        <h2>The Garden of Forking Paths</h2>
+        <p class="lineage">Every dataset hides thousands of defensible analyses. Try enough of them and one will cross the line into "significance" — not because something is there, but because you looked so many times.</p>
+        <p class="intro">
+          Below is a variable with <b>no real effect at all</b>. Keep running analyses — a different subgroup,
+          a different covariate — and watch a "discovery" appear from pure noise. Count how few tries it takes.
+        </p>
+
+        <div class="lab-wrap">
+          <div class="ph-readout">
+            <span class="ph-p ns" id="ph-p">p = —</span>
+            <span class="ph-verdict" id="ph-verdict"></span>
+          </div>
+          <div class="ph-grid" id="ph-grid" aria-hidden="true"></div>
+          <div class="ph-tally" id="ph-tally">Analyses run: 0 · "Significant" results: 0</div>
+          <div class="ph-reveal" id="ph-reveal"></div>
+          <div class="ph-controls">
+            <button class="btn" id="ph-run" type="button">Run an analysis</button>
+            <button class="btn ghost" id="ph-auto" type="button">Run 20 at once</button>
+            <button class="btn ghost" id="ph-reset" type="button">Reset</button>
+          </div>
+          <p class="note">A live simulation of the null hypothesis: each analysis draws a p-value with no underlying effect. With twenty independent tries, a false positive is more likely than not — 1 − 0.95²⁰ ≈ 64%.</p>
+        </div>
+        <p class="lesson">A single significant result is not evidence; the honest question is always <i>how many paths were walked to reach it</i>. Method is what you did before the number, not after.</p>
+      </section>
+
+      <!-- CLOSING -->
+      <section class="closing rv">
+        <p class="ai">
+          A model trained to search will find every one of these patterns — confidently, and at scale.
+          <b>The oldest cautions in social science are the newest ones for machine intelligence.</b>
+          Structure, level, and restraint are not the housekeeping of research. They are the research.
+        </p>
+        <div class="sig">
+          <a href="/">← Return to fariborzaref.github.io</a> · Methods Lab · Fariborz Aref
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    // ---------- shared helpers ----------
+    var NS = 'http://www.w3.org/2000/svg';
+    function el(svg, tag, attrs) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+    function ols(pts) {
+      var n = pts.length, sx = 0, sy = 0, sxy = 0, sxx = 0;
+      pts.forEach(function (p) { sx += p.x; sy += p.y; sxy += p.x * p.y; sxx += p.x * p.x; });
+      var m = (n * sxy - sx * sy) / (n * sxx - sx * sx); return { m: m, b: (sy - m * sx) / n };
+    }
+    function rng(s) { return function () { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }; }
+    var MOB = window.matchMedia('(max-width: 560px)').matches;
+
+    // ---------- reveal ----------
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+      document.querySelectorAll('.rv').forEach(function (n) { io.observe(n); });
+    })();
+
+    // ============================================================
+    // I. SIMPSON'S PARADOX — social spending vs inequality
+    // ============================================================
+    (function () {
+      var svg = document.getElementById('s-chart'); if (!svg) return;
+      var readout = document.getElementById('s-readout'), toggle = document.getElementById('s-toggle'), legendEl = document.getElementById('s-legend');
+      var VBW = MOB ? 430 : 760, VBH = MOB ? 460 : 440, mL = 54, mR = 20, mT = 26, mB = 48;
+      svg.setAttribute('viewBox', '0 0 ' + VBW + ' ' + VBH);
+      var plotW = VBW - mL - mR, plotH = VBH - mT - mB, xMin = 12, xMax = 36, yMin = 0.22, yMax = 0.46;
+      function xS(x) { return mL + (x - xMin) / (xMax - xMin) * plotW; }
+      function yS(y) { return mT + (yMax - y) / (yMax - yMin) * plotH; }
+
+      var xr = { low: [14, 22], mid: [20, 28], high: [26, 34] };
+      var groups = [
+        { id: 'low', name: 'Low structural pressure', color: '#0f766e', cx: 18, cy: 0.27, slope: -0.006 },
+        { id: 'mid', name: 'Moderate structural pressure', color: '#1d3f7a', cx: 24, cy: 0.33, slope: -0.006 },
+        { id: 'high', name: 'High structural pressure', color: '#b45b3e', cx: 30, cy: 0.40, slope: -0.006 }
+      ];
+      var rand = rng(11);
+      groups.forEach(function (gp) {
+        gp.pts = []; var lo = xr[gp.id][0], hi = xr[gp.id][1];
+        for (var i = 0; i < 9; i++) { var x = lo + (hi - lo) * ((i + rand() * 0.6) / 9); gp.pts.push({ x: x, y: gp.cy + gp.slope * (x - gp.cx) + (rand() - 0.5) * 0.024 }); }
+      });
+      var all = []; groups.forEach(function (g) { g.pts.forEach(function (p) { all.push(p); }); });
+
+      var g = el(svg, 'g', {});
+      [0.25, 0.30, 0.35, 0.40, 0.45].forEach(function (v) { el(g, 'line', { x1: mL, y1: yS(v), x2: mL + plotW, y2: yS(v), class: 'grid' }); var t = el(g, 'text', { x: mL - 8, y: yS(v) + 4, 'text-anchor': 'end', class: 'axis' }); t.textContent = v.toFixed(2); });
+      [15, 20, 25, 30, 35].forEach(function (v) { var t = el(g, 'text', { x: xS(v), y: mT + plotH + 22, 'text-anchor': 'middle', class: 'axis' }); t.textContent = v + '%'; });
+      var xl = el(g, 'text', { x: mL + plotW / 2, y: mT + plotH + 40, 'text-anchor': 'middle', class: 'axis-title' }); xl.textContent = 'Social spending (% of GDP)';
+      var yl = el(g, 'text', { x: mL - 46, y: mT - 10, class: 'axis' }); yl.textContent = 'Gini';
+
+      var af = ols(all);
+      var aggLine = el(svg, 'line', { class: 'reg reg-agg', x1: xS(15), y1: yS(af.m * 15 + af.b), x2: xS(33), y2: yS(af.m * 33 + af.b) });
+      groups.forEach(function (gp) { var f = ols(gp.pts), lo = xr[gp.id][0] - 0.5, hi = xr[gp.id][1] + 0.5; gp.line = el(svg, 'line', { class: 'reg', stroke: gp.color, x1: xS(lo), y1: yS(f.m * lo + f.b), x2: xS(hi), y2: yS(f.m * hi + f.b) }); gp.line.style.opacity = 0; });
+      groups.forEach(function (gp) { gp.dots = gp.pts.map(function (p) { return el(svg, 'circle', { cx: xS(p.x), cy: yS(p.y), r: 5, class: 'dot' }); }); });
+      groups.forEach(function (gp) { var s = document.createElement('span'); s.className = 'leg'; s.innerHTML = '<i style="background:' + gp.color + '"></i>' + gp.name; legendEl.appendChild(s); });
+
+      var on = false;
+      function render() {
+        groups.forEach(function (gp) { gp.dots.forEach(function (c) { c.setAttribute('fill', on ? gp.color : '#9aa0a6'); }); gp.line.style.opacity = on ? 1 : 0; });
+        aggLine.style.opacity = on ? 0 : 1; toggle.classList.toggle('on', on); toggle.setAttribute('aria-pressed', on); legendEl.style.opacity = on ? 1 : 0.35;
+        readout.innerHTML = on
+          ? 'Hold structural pressure constant and the sign flips: among societies under the <b>same</b> underlying inequality, those that spend more end up <b>more equal</b>.'
+          : 'Pooled across all societies, more spending appears to bring <b>more</b> inequality — read naively, redistribution looks futile. Now account for structure.';
+      }
+      toggle.addEventListener('click', function () { on = !on; render(); }); render();
+    })();
+
+    // ============================================================
+    // II. ECOLOGICAL FALLACY — foreign-born vs literacy
+    // ============================================================
+    (function () {
+      var svg = document.getElementById('e-chart'); if (!svg) return;
+      var readout = document.getElementById('e-readout'), toggle = document.getElementById('e-toggle'), legendEl = document.getElementById('e-legend');
+      var VBW = MOB ? 430 : 760, VBH = MOB ? 460 : 440, mL = 54, mR = 20, mT = 26, mB = 48;
+      svg.setAttribute('viewBox', '0 0 ' + VBW + ' ' + VBH);
+      var plotW = VBW - mL - mR, plotH = VBH - mT - mB, xMin = 2, xMax = 40, yMin = 45, yMax = 100;
+      function xS(x) { return mL + (x - xMin) / (xMax - xMin) * plotW; }
+      function yS(y) { return mT + (yMax - y) / (yMax - yMin) * plotH; }
+
+      var NAT = '#0f766e', IMM = '#b45b3e';
+      var rand = rng(23);
+      // states: foreign-born % and base literacy rising together (confound)
+      var states = [];
+      var fps = [6, 10, 15, 19, 24, 28, 33, 37];
+      fps.forEach(function (fp) {
+        var base = 84 + 0.38 * fp;                 // higher foreign-born states are more literate
+        var people = [];
+        for (var i = 0; i < 26; i++) {
+          var isImm = rand() < (fp / 100) * 1.9;
+          var lit = base - (isImm ? 15 : 0) + (rand() - 0.5) * 9;
+          lit = Math.max(46, Math.min(99, lit));
+          people.push({ x: fp + (rand() - 0.5) * 2.4, y: lit, imm: isImm });
+        }
+        var mean = people.reduce(function (a, p) { return a + p.y; }, 0) / people.length;
+        states.push({ fp: fp, mean: mean, people: people });
+      });
+
+      var g = el(svg, 'g', {});
+      [50, 60, 70, 80, 90, 100].forEach(function (v) { el(g, 'line', { x1: mL, y1: yS(v), x2: mL + plotW, y2: yS(v), class: 'grid' }); var t = el(g, 'text', { x: mL - 8, y: yS(v) + 4, 'text-anchor': 'end', class: 'axis' }); t.textContent = v; });
+      [10, 20, 30, 40].forEach(function (v) { var t = el(g, 'text', { x: xS(v), y: mT + plotH + 22, 'text-anchor': 'middle', class: 'axis' }); t.textContent = v + '%'; });
+      var xl = el(g, 'text', { x: mL + plotW / 2, y: mT + plotH + 40, 'text-anchor': 'middle', class: 'axis-title' }); xl.textContent = 'Foreign-born residents (% of area)';
+      var yl = el(g, 'text', { x: mL - 46, y: mT - 10, class: 'axis' }); yl.textContent = 'Literacy';
+
+      // aggregate line (state means)
+      var aggPts = states.map(function (s) { return { x: s.fp, y: s.mean }; });
+      var af = ols(aggPts);
+      var aggLine = el(svg, 'line', { class: 'reg reg-agg', x1: xS(6), y1: yS(af.m * 6 + af.b), x2: xS(37), y2: yS(af.m * 37 + af.b) });
+      aggLine.setAttribute('stroke', '#1d3f7a'); aggLine.setAttribute('stroke-dasharray', 'none');
+      // state dots (aggregate)
+      var stateDots = states.map(function (s) { return el(svg, 'circle', { cx: xS(s.fp), cy: yS(s.mean), r: 8, fill: '#1d3f7a', stroke: '#fff', 'stroke-width': 2, class: 'dot' }); });
+      // individual dots
+      var indDots = [];
+      states.forEach(function (s) { s.people.forEach(function (p) { indDots.push(el(svg, 'circle', { cx: xS(p.x), cy: yS(p.y), r: 3.2, fill: p.imm ? IMM : NAT, class: 'dot' })); }); });
+      indDots.forEach(function (d) { d.style.opacity = 0; });
+      // group mean markers for individual view
+      var immVals = [], natVals = [];
+      states.forEach(function (s) { s.people.forEach(function (p) { (p.imm ? immVals : natVals).push(p.y); }); });
+      var immMean = immVals.reduce(function (a, b) { return a + b; }, 0) / immVals.length;
+      var natMean = natVals.reduce(function (a, b) { return a + b; }, 0) / natVals.length;
+      var immLine = el(svg, 'line', { class: 'mean-line', stroke: IMM, x1: mL, x2: mL + plotW, y1: yS(immMean), y2: yS(immMean) }); immLine.style.opacity = 0;
+      var natLine = el(svg, 'line', { class: 'mean-line', stroke: NAT, x1: mL, x2: mL + plotW, y1: yS(natMean), y2: yS(natMean) }); natLine.style.opacity = 0;
+
+      [['State average', '#1d3f7a'], ['Immigrant', IMM], ['Native-born', NAT]].forEach(function (a) { var s = document.createElement('span'); s.className = 'leg'; s.innerHTML = '<i style="background:' + a[1] + '"></i>' + a[0]; legendEl.appendChild(s); });
+
+      var people = false;
+      function render() {
+        stateDots.forEach(function (d) { d.style.opacity = people ? 0 : 1; });
+        aggLine.style.opacity = people ? 0 : 1;
+        indDots.forEach(function (d) { d.style.opacity = people ? 0.85 : 0; });
+        immLine.style.opacity = people ? 0.9 : 0; natLine.style.opacity = people ? 0.9 : 0;
+        toggle.classList.toggle('on', people); toggle.setAttribute('aria-pressed', people);
+        readout.innerHTML = people
+          ? 'Down at the level of people, immigrants are the <b>less</b>-literate group (dashed lines mark each average). The upward slope across states has vanished — it was a property of <i>places</i>, not persons.'
+          : 'Across states, the pattern is clean and positive: more foreign-born residents, <b>higher</b> literacy. It is tempting to conclude something about immigrants. Now drop to the people.';
+      }
+      toggle.addEventListener('click', function () { people = !people; render(); }); render();
+    })();
+
+    // ============================================================
+    // III. THE GARDEN OF FORKING PATHS — p-hacking
+    // ============================================================
+    (function () {
+      var pEl = document.getElementById('ph-p'), verdict = document.getElementById('ph-verdict'), grid = document.getElementById('ph-grid'),
+          tally = document.getElementById('ph-tally'), reveal = document.getElementById('ph-reveal'),
+          runBtn = document.getElementById('ph-run'), autoBtn = document.getElementById('ph-auto'), resetBtn = document.getElementById('ph-reset');
+      if (!grid) return;
+      var MAX = 20, cells = [];
+      for (var i = 0; i < MAX; i++) { var c = document.createElement('div'); c.className = 'ph-cell'; grid.appendChild(c); cells.push(c); }
+      var runs = 0, sig = 0, firstSigAt = 0;
+
+      function one() {
+        if (runs >= MAX) return;
+        var p = Math.random();
+        var isSig = p < 0.05;
+        var cell = cells[runs];
+        cell.className = 'ph-cell ' + (isSig ? 'sig' : 'ns');
+        runs++;
+        if (isSig) { sig++; if (!firstSigAt) firstSigAt = runs; }
+        pEl.textContent = 'p = ' + p.toFixed(3);
+        pEl.className = 'ph-p ' + (isSig ? 'sig' : 'ns');
+        verdict.textContent = isSig ? '“Significant!” (p < .05)' : 'not significant';
+        verdict.style.color = isSig ? 'var(--terra)' : 'var(--muted)';
+        tally.innerHTML = 'Analyses run: ' + runs + ' · "Significant" results: <b>' + sig + '</b>';
+        if (sig > 0) {
+          reveal.classList.add('show');
+          reveal.innerHTML = 'There is <b>no real effect</b> — every point is pure noise. Yet a "discovery" appeared after ' + firstSigAt + ' ' + (firstSigAt === 1 ? 'try' : 'tries') + '. Report only that one analysis and it looks like science. This is why the number of paths walked must be declared, not hidden.';
+        }
+        if (runs >= MAX) { runBtn.disabled = true; autoBtn.disabled = true; runBtn.style.opacity = .5; autoBtn.style.opacity = .5; }
+      }
+      function auto() { var t = setInterval(function () { if (runs >= MAX) { clearInterval(t); return; } one(); }, 70); }
+      function reset() {
+        runs = 0; sig = 0; firstSigAt = 0;
+        cells.forEach(function (c) { c.className = 'ph-cell'; });
+        pEl.textContent = 'p = —'; pEl.className = 'ph-p ns'; verdict.textContent = '';
+        tally.innerHTML = 'Analyses run: 0 · "Significant" results: 0';
+        reveal.classList.remove('show'); reveal.innerHTML = '';
+        runBtn.disabled = false; autoBtn.disabled = false; runBtn.style.opacity = 1; autoBtn.style.opacity = 1;
+      }
+      runBtn.addEventListener('click', one);
+      autoBtn.addEventListener('click', auto);
+      resetBtn.addEventListener('click', reset);
+    })();
+  </script>
+</body>
+</html>
