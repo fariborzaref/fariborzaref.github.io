@@ -501,6 +501,40 @@
     .lab-note { margin: 14px 0 0; font-size: .8rem; color: var(--muted); }
     .lab-note a { color: var(--accent-ink); font-weight: 700; }
 
+    /* "Enter the full lab" call-to-action */
+    .lab-cta {
+      display: flex; align-items: center; gap: 16px;
+      margin-top: 20px; padding: 16px 18px;
+      border: 1px solid var(--line); border-radius: 16px;
+      background: var(--panel); position: relative; overflow: hidden;
+      transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+    }
+    .lab-cta::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--accent); transform: scaleY(0); transform-origin: top;
+      transition: transform .28s cubic-bezier(.16,.7,.2,1);
+    }
+    .lab-cta:hover, .lab-cta:focus-visible {
+      text-decoration: none; transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
+      box-shadow: 0 16px 34px rgba(15, 118, 110, .12);
+    }
+    .lab-cta:hover::before, .lab-cta:focus-visible::before { transform: scaleY(1); }
+    .lab-cta-icon {
+      width: 46px; height: 46px; flex: none; border-radius: 13px;
+      display: grid; place-items: center; background: var(--panel-2);
+      color: var(--accent-ink); font-size: 1.25rem; font-weight: 700;
+      transition: background .22s ease, color .22s ease, transform .22s ease;
+    }
+    .lab-cta:hover .lab-cta-icon { background: var(--accent); color: #fff; transform: rotate(-6deg); }
+    .lab-cta-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .lab-cta-eyebrow { font-size: .66rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+    .lab-cta-title { font-family: var(--display); font-weight: 700; font-size: 1.12rem; color: var(--ink); line-height: 1.2; letter-spacing: -.01em; }
+    .lab-cta-sub { font-size: .86rem; color: var(--muted); line-height: 1.4; }
+    .lab-cta-arrow { margin-left: auto; flex: none; color: var(--accent-ink); font-size: 1.3rem; font-weight: 700; transition: transform .22s ease; }
+    .lab-cta:hover .lab-cta-arrow { transform: translateX(5px); }
+    @media (max-width: 560px) { .lab-cta { padding: 14px; gap: 13px; } .lab-cta-sub { display: none; } }
+
     /* ===== Methodology Lab (Simpson's paradox) ===== */
     .m-grid { stroke: var(--line); stroke-width: 1; }
     .m-axis { font-size: 13px; fill: var(--muted); font-family: var(--body); }
@@ -751,6 +785,16 @@
           <a href="https://doi.org/10.1007/s12232-024-00448-9" target="_blank" rel="noopener">welfare regimes</a>.
         </p>
       </div>
+
+      <a class="lab-cta" href="/inequality/">
+        <span class="lab-cta-icon">◑</span>
+        <span class="lab-cta-body">
+          <span class="lab-cta-eyebrow">Standalone experience</span>
+          <span class="lab-cta-title">Enter the Birth Lottery</span>
+          <span class="lab-cta-sub">Be born at random into the world — and see how much of a life is decided by place alone.</span>
+        </span>
+        <span class="lab-cta-arrow" aria-hidden="true">→</span>
+      </a>
     </section>
 
     <!-- METHODOLOGY LAB -->
@@ -792,6 +836,16 @@
           the pooled correlation reflects <i>who spends</i>, not <i>what spending does</i>. The pattern is real; the points are schematic.
         </p>
       </div>
+
+      <a class="lab-cta" href="/methods/">
+        <span class="lab-cta-icon">∴</span>
+        <span class="lab-cta-body">
+          <span class="lab-cta-eyebrow">Full treatise · three demonstrations</span>
+          <span class="lab-cta-title">Open the Methods Lab</span>
+          <span class="lab-cta-sub">Simpson's paradox, the ecological fallacy, and the garden of forking paths — how a claim is earned.</span>
+        </span>
+        <span class="lab-cta-arrow" aria-hidden="true">→</span>
+      </a>
     </section>
 
     <!-- PUBLICATIONS -->
@@ -1368,4 +1422,3 @@
   </script>
 </body>
 </html>
-
