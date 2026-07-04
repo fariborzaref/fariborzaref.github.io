@@ -1,1 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S437KK8JX4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S437KK8JX4');
+  </script>
 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Birth Lottery — Fariborz Aref | The Structure of Life Chances</title>
+  <meta name="description" content="An interactive on global inequality by Fariborz Aref: be born at random into the world and see how much of your life — income, schooling, years lived — was decided by place alone.">
+  <meta name="author" content="Fariborz Aref">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://fariborzaref.github.io/inequality/">
+  <link rel="icon" type="image/png" href="../favicon-32.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Fariborz Aref">
+  <meta property="og:title" content="The Birth Lottery — The Structure of Life Chances">
+  <meta property="og:description" content="Be born at random into the world, and see how much of a life is decided by place alone.">
+  <meta property="og:url" content="https://fariborzaref.github.io/inequality/">
+  <meta property="og:image" content="https://fariborzaref.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fdfcf9; --panel: #ffffff; --panel-2: #f4f1ea;
+      --ink: #232c33; --muted: #6d767d; --line: #e7e1d5;
+      --accent: #0f766e; --accent-ink: #0b5750; --navy: #1d3f7a; --terra: #b45b3e; --gold: #9a7428;
+      --shadow: 0 22px 60px rgba(35, 44, 51, .10);
+      --display: "Playfair Display", Georgia, "Times New Roman", serif;
+      --body: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --wrap: 860px;
+    }
+    * { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent-ink); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; color: var(--ink); }
+    ::selection { background: var(--accent); color: #fff; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .skip { position: absolute; left: -9999px; }
+    .skip:focus { left: 8px; top: 8px; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 100; }
+
+    .top { position: sticky; top: 0; z-index: 40; background: rgba(253,252,249,.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: max(12px, env(safe-area-inset-top)) clamp(20px,5vw,40px) 12px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .top .back { font-weight: 700; font-size: .88rem; color: var(--ink); }
+    .top .back:hover { color: var(--accent-ink); text-decoration: none; }
+    .top .here { font-family: var(--display); font-weight: 600; font-size: .95rem; color: var(--muted); }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+
+    .hero { padding: clamp(48px, 9vw, 92px) 0 40px; border-bottom: 1px solid var(--line); }
+    .eyebrow { display: inline-block; color: var(--accent); font-weight: 700; font-size: .74rem; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 16px; }
+    .hero h1 { margin: 0; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.0; letter-spacing: -.025em; }
+    .hero .thesis { margin: 24px 0 0; max-width: 60ch; font-size: 1.12rem; color: #3d474e; }
+    .hero .thesis em { font-style: italic; color: var(--accent-ink); }
+    .pull { font-family: var(--display); font-style: italic; font-size: 1.28rem; line-height: 1.4; color: var(--accent-ink); margin: 26px 0 0; max-width: 46ch; }
+
+    /* lottery */
+    .lottery { padding: clamp(40px, 8vw, 64px) 0; border-bottom: 1px solid var(--line); }
+    .stage {
+      border: 1px solid var(--line); border-radius: 22px; background: var(--panel);
+      box-shadow: var(--shadow); padding: clamp(24px, 5vw, 40px); text-align: center; position: relative; overflow: hidden;
+    }
+    .stage::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; right: -160px; top: -180px; background: radial-gradient(circle, rgba(15,118,110,.10), transparent 65%); pointer-events: none; }
+    .stage-kicker { position: relative; font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .stage-name { position: relative; font-family: var(--display); font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.05; margin: 10px 0 4px; letter-spacing: -.02em; min-height: 1.1em; }
+    .stage-name.spin { color: var(--muted); }
+    .stage-band { position: relative; color: var(--accent-ink); font-weight: 700; font-size: .92rem; min-height: 1.2em; }
+    .odds { position: relative; color: var(--muted); font-size: .86rem; margin-top: 2px; min-height: 1em; }
+
+    .stats { position: relative; display: grid; gap: 16px; margin: 26px auto 0; max-width: 560px; text-align: left; opacity: 0; transition: opacity .4s ease; }
+    .stats.show { opacity: 1; }
+    .stat .stat-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+    .stat .stat-label { font-size: .82rem; font-weight: 700; color: var(--ink); letter-spacing: .02em; }
+    .stat .stat-val { font-family: var(--display); font-weight: 700; font-size: 1.05rem; }
+    .track { position: relative; height: 9px; border-radius: 999px; background: var(--panel-2); border: 1px solid var(--line); overflow: hidden; }
+    .fill { position: absolute; inset: 0 auto 0 0; width: 0; border-radius: 999px; transition: width .7s cubic-bezier(.16,.7,.2,1); }
+    .rangelabels { display: flex; justify-content: space-between; font-size: .7rem; color: var(--muted); margin-top: 4px; }
+
+    .takeaway { position: relative; margin: 24px auto 0; max-width: 520px; font-family: var(--display); font-style: italic; font-size: 1.14rem; line-height: 1.45; color: var(--ink); min-height: 1.4em; opacity: 0; transition: opacity .4s ease; }
+    .takeaway.show { opacity: 1; }
+
+    .stage-controls { position: relative; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
+    .btn { border: 1px solid var(--accent); background: var(--accent); color: #fff; border-radius: 999px; padding: 12px 26px; font-family: var(--body); font-weight: 700; font-size: .95rem; cursor: pointer; transition: background .16s ease, transform .16s ease; }
+    .btn:hover { background: var(--accent-ink); transform: translateY(-1px); }
+    .btn.ghost { background: var(--panel); color: var(--accent-ink); padding: 12px 20px; }
+    .btn.ghost:hover { background: var(--panel-2); }
+    .tally { position: relative; margin-top: 18px; font-size: .86rem; color: var(--muted); min-height: 1.2em; }
+    .tally b { color: var(--accent-ink); }
+    .note { margin: 16px 0 0; font-size: .8rem; color: var(--muted); }
+
+    /* facts */
+    .facts { padding: clamp(44px, 8vw, 72px) 0; border-bottom: 1px solid var(--line); }
+    .facts h2 { margin: 0 0 6px; font-size: clamp(1.7rem, 3.4vw, 2.2rem); letter-spacing: -.015em; }
+    .facts .sub { color: var(--muted); margin: 0 0 26px; }
+    .factgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .fact { border: 1px solid var(--line); border-radius: 18px; background: var(--panel); padding: 24px; }
+    .fact .big { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1; letter-spacing: -.02em; color: var(--accent-ink); }
+    .fact p { margin: 12px 0 0; color: #3d474e; font-size: .95rem; }
+    .fact cite { display: block; margin-top: 10px; font-style: normal; font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+    @media (max-width: 620px) { .factgrid { grid-template-columns: 1fr; } }
+
+    /* essay */
+    .essay { padding: clamp(44px, 8vw, 72px) 0; border-bottom: 1px solid var(--line); }
+    .essay h2 { margin: 0 0 18px; font-size: clamp(1.6rem, 3.2vw, 2rem); letter-spacing: -.01em; }
+    .essay p { max-width: 66ch; margin: 0 0 18px; color: #3d474e; }
+    .essay .lineage { padding: 16px 20px; border-left: 3px solid var(--gold); background: var(--panel-2); border-radius: 0 12px 12px 0; font-family: var(--display); font-style: italic; font-size: 1.1rem; color: var(--accent-ink); max-width: 62ch; }
+
+    .closing { padding: clamp(48px, 9vw, 84px) 0; }
+    .closing .ai { font-family: var(--display); font-style: italic; font-size: clamp(1.3rem, 3vw, 1.7rem); line-height: 1.4; color: var(--ink); max-width: 34ch; margin: 0; }
+    .closing .ai b { color: var(--accent-ink); font-style: normal; }
+    .sources { margin-top: 30px; padding-top: 22px; border-top: 1.5px solid rgba(35,44,51,.2); color: var(--muted); font-size: .82rem; line-height: 1.7; }
+    .sources h3 { font-family: var(--body); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+    .sig { margin-top: 22px; color: var(--muted); font-size: .86rem; }
+    .sig a { font-weight: 700; }
+
+    .js .rv { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16,.7,.2,1), transform .7s cubic-bezier(.16,.7,.2,1); }
+    .js .rv.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } .js .rv { opacity: 1 !important; transform: none !important; } }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="back" href="/">← Fariborz Aref</a>
+    <span class="here">The Birth Lottery</span>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <section class="hero">
+        <span class="eyebrow">The Structure of Life Chances</span>
+        <h1>The Birth Lottery</h1>
+        <p class="thesis">
+          You did not choose where you were born. Almost nothing about your life mattered more.
+          Press the button below and be born, at random, into today's world — weighted, honestly,
+          by where people actually are. <em>Then ask what you did to deserve the result.</em>
+        </p>
+        <p class="pull">Merit begins after the lottery. The lottery decides most of the outcome.</p>
+      </section>
+
+      <!-- LOTTERY -->
+      <section class="lottery rv">
+        <div class="stage">
+          <div class="stage-kicker">You are born in…</div>
+          <div class="stage-name" id="name">—</div>
+          <div class="stage-band" id="band"></div>
+          <div class="odds" id="odds"></div>
+
+          <div class="stats" id="stats">
+            <div class="stat">
+              <div class="stat-top"><span class="stat-label">Life expectancy at birth</span><span class="stat-val" id="v-life"></span></div>
+              <div class="track"><div class="fill" id="f-life" style="background:var(--accent)"></div></div>
+              <div class="rangelabels"><span>50 yrs</span><span>85 yrs</span></div>
+            </div>
+            <div class="stat">
+              <div class="stat-top"><span class="stat-label">Income per person (PPP)</span><span class="stat-val" id="v-inc"></span></div>
+              <div class="track"><div class="fill" id="f-inc" style="background:var(--navy)"></div></div>
+              <div class="rangelabels"><span>$800</span><span>$90,000</span></div>
+            </div>
+            <div class="stat">
+              <div class="stat-top"><span class="stat-label">Years of schooling (avg adult)</span><span class="stat-val" id="v-sch"></span></div>
+              <div class="track"><div class="fill" id="f-sch" style="background:var(--gold)"></div></div>
+              <div class="rangelabels"><span>2 yrs</span><span>15 yrs</span></div>
+            </div>
+          </div>
+
+          <p class="takeaway" id="takeaway"></p>
+
+          <div class="stage-controls">
+            <button class="btn" id="born" type="button">Be born into the world</button>
+            <button class="btn ghost" id="again" type="button" style="display:none">Be born again</button>
+          </div>
+          <div class="tally" id="tally"></div>
+        </div>
+        <p class="note">
+          Illustrative figures, rounded, from World Bank (income, life expectancy) and UNDP (schooling),
+          c. 2023, across a population-weighted sample of ~5 billion people. Approximate — verify against
+          current sources before citing.
+        </p>
+      </section>
+
+      <!-- FACTS -->
+      <section class="facts rv">
+        <h2>By the numbers</h2>
+        <p class="sub">The shape of the world you were just born into.</p>
+        <div class="factgrid">
+          <div class="fact">
+            <div class="big">76% / 2%</div>
+            <p>The richest 10% of humanity hold about three-quarters of all wealth. The poorest half hold roughly two percent.</p>
+            <cite>World Inequality Report 2022</cite>
+          </div>
+          <div class="fact">
+            <div class="big">52%</div>
+            <p>Share of global income captured by the top 10%. The bottom half of the world earns about 8.5%.</p>
+            <cite>World Inequality Report 2022</cite>
+          </div>
+          <div class="fact">
+            <div class="big">&gt; 50%</div>
+            <p>Share of the variation in global incomes explained by a single fact: the country a person was born in.</p>
+            <cite>Milanović, Global Inequality</cite>
+          </div>
+          <div class="fact">
+            <div class="big">~700M</div>
+            <p>People — nearly one in eleven — living on less than $2.15 a day, the World Bank's line for extreme poverty.</p>
+            <cite>World Bank, 2022</cite>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESSAY -->
+      <section class="essay rv">
+        <h2>Why this is the sociologist's question</h2>
+        <p class="lineage">A century of sociology rests on one refusal: the refusal to mistake a person's position for a person's merit.</p>
+        <p>
+          Marx read inequality in the ownership of capital; Weber, in the interlocking of class, status, and
+          power; Durkheim, in the way whole societies cohere or come apart. Different lenses, one shared
+          conviction — that life chances are <em>structured</em>, distributed before the individual acts,
+          by institutions and history rather than desert.
+        </p>
+        <p>
+          The birth lottery is that conviction made visible. The country you land in fixes, on average, how
+          long you will live, how far you will study, and how much you will earn — and it does so before you
+          have done anything at all. This is not an argument against effort. It is an argument about what
+          effort is <em>added to</em>: a starting line that is nowhere near the same for everyone.
+        </p>
+        <p>
+          My own work asks the next question — not only how unequal the world is, but what <em>reduces</em> it:
+          which institutions, which welfare arrangements, which forms of community capacity turn a brutal
+          starting position into a survivable one. Inequality is structured. So, therefore, is the work of
+          undoing it.
+        </p>
+      </section>
+
+      <!-- CLOSING -->
+      <section class="closing rv">
+        <p class="ai">
+          You were born once, without choosing. <b>Everyone reading this drew a ticket too — and most of the
+          world drew worse than you.</b> The measure of a society is what it does about that.
+        </p>
+        <div class="sources">
+          <h3>Sources</h3>
+          World Inequality Report 2022 (wir2022.wid.world) · World Bank, World Development Indicators &amp; Poverty
+          data · UNDP, Human Development Report · B. Milanović, <i>Global Inequality</i> (2016). Country figures are
+          rounded approximations for illustration.
+        </div>
+        <div class="sig"><a href="/">← Return to fariborzaref.github.io</a> · The Birth Lottery · Fariborz Aref</div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      // reveal
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+        document.querySelectorAll('.rv').forEach(function (n) { io.observe(n); });
+      }
+
+      // country data — rounded approximations, c. 2023
+      // n=name, pop=millions, gni=income per capita PPP (US$), life=life expectancy, sch=mean years schooling
+      var C = [
+        { n: 'India', pop: 1428, gni: 8300, life: 67, sch: 6.6 },
+        { n: 'China', pop: 1425, gni: 21000, life: 78, sch: 7.6 },
+        { n: 'the United States', pop: 340, gni: 76000, life: 77, sch: 13.7 },
+        { n: 'Indonesia', pop: 277, gni: 14000, life: 68, sch: 8.6 },
+        { n: 'Pakistan', pop: 240, gni: 6400, life: 66, sch: 4.5 },
+        { n: 'Nigeria', pop: 224, gni: 5700, life: 53, sch: 7.2 },
+        { n: 'Brazil', pop: 216, gni: 18000, life: 75, sch: 8.3 },
+        { n: 'Bangladesh', pop: 173, gni: 8400, life: 74, sch: 7.4 },
+        { n: 'Russia', pop: 144, gni: 32000, life: 70, sch: 12.8 },
+        { n: 'Mexico', pop: 128, gni: 21000, life: 75, sch: 9.2 },
+        { n: 'Ethiopia', pop: 127, gni: 2800, life: 65, sch: 3.2 },
+        { n: 'Japan', pop: 123, gni: 48000, life: 84, sch: 13.4 },
+        { n: 'the DR Congo', pop: 102, gni: 1300, life: 59, sch: 6.8 },
+        { n: 'Germany', pop: 84, gni: 63000, life: 81, sch: 14.1 },
+        { n: 'Chad', pop: 18, gni: 1600, life: 53, sch: 2.6 },
+        { n: 'Burundi', pop: 13, gni: 800, life: 62, sch: 3.1 },
+        { n: 'Switzerland', pop: 8.8, gni: 84000, life: 84, sch: 13.9 }
+      ];
+      var TOTAL = C.reduce(function (a, c) { return a + c.pop; }, 0);
+      var HIGH = C.filter(function (c) { return c.gni >= 25000; }).reduce(function (a, c) { return a + c.pop; }, 0);
+      var highPct = Math.round(HIGH / TOTAL * 100);
+
+      function pick() { var r = Math.random() * TOTAL, acc = 0; for (var i = 0; i < C.length; i++) { acc += C[i].pop; if (r <= acc) return C[i]; } return C[C.length - 1]; }
+      function band(g) { return g < 2500 ? 'a low-income country' : g < 8000 ? 'a lower-middle-income country' : g < 25000 ? 'an upper-middle-income country' : 'a high-income country'; }
+      function logfill(g) { var lo = Math.log(800), hi = Math.log(90000); return Math.max(2, Math.min(100, (Math.log(g) - lo) / (hi - lo) * 100)); }
+      function money(g) { return '$' + g.toLocaleString(); }
+
+      var nameEl = document.getElementById('name'), bandEl = document.getElementById('band'), oddsEl = document.getElementById('odds'),
+          statsEl = document.getElementById('stats'), takeEl = document.getElementById('takeaway'), tallyEl = document.getElementById('tally'),
+          bornBtn = document.getElementById('born'), againBtn = document.getElementById('again');
+      var vLife = document.getElementById('v-life'), vInc = document.getElementById('v-inc'), vSch = document.getElementById('v-sch');
+      var fLife = document.getElementById('f-life'), fInc = document.getElementById('f-inc'), fSch = document.getElementById('f-sch');
+
+      var births = 0, highCount = 0, spinning = false;
+
+      function reveal(c) {
+        nameEl.textContent = c.n.replace(/^the /, 'the '); nameEl.classList.remove('spin');
+        bandEl.textContent = 'Born into ' + band(c.gni) + '.';
+        oddsEl.textContent = 'Your odds of landing here: about ' + (c.pop / TOTAL * 100).toFixed(1) + '%.';
+        vLife.textContent = c.life + ' years'; vInc.textContent = money(c.gni); vSch.textContent = c.sch.toFixed(1) + ' years';
+        statsEl.classList.add('show');
+        requestAnimationFrame(function () {
+          fLife.style.width = Math.max(2, Math.min(100, (c.life - 50) / 35 * 100)) + '%';
+          fInc.style.width = logfill(c.gni) + '%';
+          fSch.style.width = Math.max(2, Math.min(100, (c.sch - 2) / 13 * 100)) + '%';
+        });
+        var high = c.gni >= 25000;
+        takeEl.textContent = high
+          ? 'You won a lottery you never entered. Most of humanity never draws this ticket — and you did nothing to earn it.'
+          : (c.gni < 2500
+            ? 'Through no choice of your own, the odds just narrowed — in schooling, in health, in years of life itself.'
+            : 'A middle draw. Comfortable by the standards of history, precarious by the standards of the rich world — and, again, not chosen.');
+        takeEl.classList.add('show');
+        births++; if (high) highCount++;
+        tallyEl.innerHTML = 'You have been born <b>' + births + '</b> ' + (births === 1 ? 'time' : 'times') +
+          '. Times you landed in a high-income country: <b>' + highCount + '</b>. ' +
+          '(In this world, only about ' + highPct + '% of people are born into one.)';
+        againBtn.style.display = ''; bornBtn.style.display = 'none';
+      }
+
+      function run() {
+        if (spinning) return; spinning = true;
+        statsEl.classList.remove('show'); takeEl.classList.remove('show');
+        bandEl.textContent = ''; oddsEl.textContent = '';
+        nameEl.classList.add('spin');
+        var ticks = 0, target = 16 + Math.floor(Math.random() * 6);
+        var iv = setInterval(function () {
+          nameEl.textContent = C[Math.floor(Math.random() * C.length)].n.replace(/^the /, '');
+          ticks++;
+          if (ticks >= target) { clearInterval(iv); spinning = false; reveal(pick()); }
+        }, 55);
+      }
+      bornBtn.addEventListener('click', run);
+      againBtn.addEventListener('click', run);
+    })();
+  </script>
+</body>
+</html>
