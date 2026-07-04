@@ -16,14 +16,14 @@
   <meta name="description" content="An interactive treatise on global inequality by Fariborz Aref: the birth lottery, the shape of the world's wealth, and the two-century divergence between nations.">
   <meta name="author" content="Fariborz Aref">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://fariborzaref.github.io/inequality/">
+  <link rel="canonical" href="https://fariborzaref.github.io/inequality">
   <link rel="icon" type="image/png" href="../favicon-32.png">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Fariborz Aref">
   <meta property="og:title" content="The Inequality Lab — Chance, Structure, History">
   <meta property="og:description" content="Three interactive demonstrations of global inequality: the birth lottery, the champagne glass, and the great divergence.">
-  <meta property="og:url" content="https://fariborzaref.github.io/inequality/">
+  <meta property="og:url" content="https://fariborzaref.github.io/inequality">
   <meta property="og:image" content="https://fariborzaref.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
@@ -322,7 +322,7 @@
           question for sociology, and not only for economics.
         </p>
 
-        <a class="crosslink" href="/methods/">
+        <a class="crosslink" href="/methods">
           <span class="ci">∴</span>
           <span class="cb">
             <span class="ce">The companion lab</span>
@@ -341,7 +341,7 @@
           <span class="dot">·</span>
           <a href="/">Main site</a>
           <span class="dot">·</span>
-          <a href="/methods/">Methods Lab</a>
+          <a href="/methods">Methods Lab</a>
         </div>
       </section>
 
