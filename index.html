@@ -1,3 +1,1306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S437KK8JX4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S437KK8JX4');
+  </script>
 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Fariborz Aref</title>
+  <meta name="description" content="Fariborz Aref — sociologist working on global inequality, research methods, and computational social research.">
+
+  <!-- Install as an app (PWA) -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1d3f7a">
+  <link rel="icon" type="image/png" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="F. Aref">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <meta property="og:title" content="Fariborz Aref">
+  <meta property="og:description" content="Sociologist. Global inequality, research methods, and computational social research.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fdfcf9;
+      --panel: #ffffff;
+      --panel-2: #f4f1ea;
+      --ink: #232c33;
+      --muted: #6d767d;
+      --line: #e7e1d5;
+      --accent: #0f766e;      /* deep teal */
+      --accent-ink: #0b5750;
+      --navy: #1d3f7a;
+      --gold: #9a7428;
+      --sidebar-w: 312px;
+      --shadow: 0 22px 60px rgba(35, 44, 51, .10);
+      --display: "Playfair Display", Georgia, "Times New Roman", serif;
+      --body: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { max-width: 100%; overflow-x: hidden; }
+
+    .card h3, .pub-title, .lens h4, .book h3 { overflow-wrap: break-word; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; }
+
+    /* ---------- MOBILE TOP BAR ---------- */
+    .topbar {
+      display: none;
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 60;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: max(12px, env(safe-area-inset-top)) 16px 12px;
+      background: rgba(253, 252, 249, .94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .tb-name { font-family: var(--display); font-weight: 700; font-size: 1.05rem; }
+    .hamburger {
+      width: 42px; height: 38px;
+      display: grid; place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: var(--panel);
+      cursor: pointer;
+    }
+    .hamburger span, .hamburger span::before, .hamburger span::after {
+      content: ""; display: block; width: 20px; height: 2px; background: var(--ink); position: relative;
+    }
+    .hamburger span::before { position: absolute; top: -6px; }
+    .hamburger span::after { position: absolute; top: 6px; }
+
+    .overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 55;
+      background: rgba(20, 26, 30, .42);
+    }
+    .overlay.active { display: block; }
+
+    /* ---------- SIDEBAR ---------- */
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar-w);
+      z-index: 58;
+      background: var(--panel);
+      border-right: 1px solid var(--line);
+      overflow-y: auto;
+      padding: 34px 26px 26px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sb-head { text-align: center; }
+
+    .avatar {
+      width: 132px; height: 132px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(15,118,110,.18), transparent 60%),
+        linear-gradient(150deg, var(--panel-2), #eee7d8);
+      border: 1px solid var(--line);
+      font-family: var(--display);
+      font-size: 2.7rem; font-weight: 700;
+      color: var(--ink);
+      /* To use a real photo, replace the background lines with:
+         background-image: url(images/me.jpg); background-size: cover; background-position: center;
+         and delete the "FA" text inside .avatar */
+    }
+
+    .sb-name { margin: 0; font-size: 1.32rem; line-height: 1.15; letter-spacing: -.01em; }
+    .sb-role {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+    .sb-role b { color: var(--accent-ink); font-weight: 700; }
+
+    .sb-nav { margin: 24px 0 8px; }
+    .sb-nav ul { list-style: none; margin: 0; padding: 0; }
+    .sb-nav a {
+      display: block;
+      padding: 9px 14px;
+      margin-bottom: 3px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: .95rem;
+      transition: background .16s ease, color .16s ease, padding-left .16s ease;
+    }
+    .sb-nav a:hover { background: var(--panel-2); color: var(--ink); }
+    .sb-nav a.active {
+      background: var(--panel-2);
+      color: var(--accent-ink);
+      padding-left: 18px;
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+
+    .sb-foot { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
+    .sb-contact { color: var(--muted); font-size: .86rem; line-height: 1.8; }
+    .sb-contact a:hover { color: var(--accent-ink); }
+    .ph { color: #b8b0a1; font-style: italic; }
+
+    .sb-social { list-style: none; margin: 14px 0 0; padding: 0; }
+    .sb-social li { margin-bottom: 6px; }
+    .sb-social a {
+      font-size: .86rem; font-weight: 600; color: var(--ink);
+      display: inline-flex; align-items: center; gap: 7px;
+      transition: color .16s ease;
+    }
+    .sb-social a:hover { color: var(--accent-ink); }
+    .sb-social .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
+
+    .cv-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 16px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 700; font-size: .88rem;
+      transition: transform .16s ease, background .16s ease;
+    }
+    .cv-btn:hover { background: var(--accent-ink); transform: translateY(-1px); }
+
+    .copyright { margin-top: 18px; color: #a49b8b; font-size: .72rem; line-height: 1.6; }
+
+    /* ---------- MAIN ---------- */
+    .main {
+      margin-left: var(--sidebar-w);
+      min-height: 100vh;
+    }
+
+    section {
+      padding: 76px clamp(24px, 6vw, 92px);
+      max-width: 1080px;
+      scroll-margin-top: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    section:last-of-type { border-bottom: 0; }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .78rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .sec-title { margin: 0 0 24px; font-size: clamp(1.7rem, 3vw, 2.15rem); line-height: 1.12; letter-spacing: -.015em; text-wrap: balance; }
+    .sub-title { margin: 40px 0 16px; font-size: 1.35rem; }
+
+    p { margin: 0 0 16px; text-wrap: pretty; }
+    .lead { font-size: 1.08rem; color: #3d474e; text-wrap: pretty; }
+
+    /* HERO */
+    #home {
+      min-height: 78vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(15,118,110,.10), transparent 34%),
+        radial-gradient(circle at 6% 92%, rgba(29,63,122,.09), transparent 34%),
+        linear-gradient(180deg, #fffef9, var(--bg));
+    }
+    #home::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(35,44,51,.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(35,44,51,.035) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(circle at 78% 30%, black, transparent 62%);
+      pointer-events: none;
+    }
+    .hero-greet { position: relative; color: var(--muted); font-family: var(--display); font-style: italic; font-size: 1.15rem; margin-bottom: 6px; }
+    .hero-title { position: relative; margin: 0; font-size: clamp(2.6rem, 7vw, 5rem); line-height: .98; letter-spacing: -.03em; }
+    .hero-title em { font-style: italic; color: var(--accent-ink); }
+    .hero-lines { position: relative; margin: 22px 0 30px; max-width: 620px; color: #3d474e; font-size: 1.08rem; text-wrap: pretty; }
+    .hero-cta { position: relative; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 18px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--panel);
+      font-weight: 700; font-size: .9rem;
+      transition: border-color .16s ease, transform .16s ease;
+    }
+    .btn-ghost:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+    /* generic lists */
+    .tick { list-style: none; margin: 0 0 16px; padding: 0; }
+    .tick li { position: relative; padding-left: 22px; margin-bottom: 8px; color: #3d474e; }
+    .tick li::before { content: ""; position: absolute; left: 2px; top: 11px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      border: 1px solid var(--line); border-radius: 999px;
+      background: var(--panel); padding: 7px 13px;
+      font-weight: 600; font-size: .84rem;
+    }
+
+    /* NEWS */
+    .news-item {
+      display: grid;
+      grid-template-columns: 168px 1fr;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .news-item:last-child { border-bottom: 0; }
+    .news-meta { color: var(--muted); font-weight: 600; font-size: .84rem; }
+    .news-meta b { display: block; color: var(--accent-ink); }
+    .news-body { color: #3d474e; }
+    .placeholder-note {
+      margin-top: 10px; padding: 12px 14px; border: 1px dashed var(--line);
+      border-radius: 12px; background: var(--panel-2); color: var(--muted);
+      font-size: .86rem;
+    }
+
+    /* PUBLICATIONS */
+    .pub { padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .pub:last-child { border-bottom: 0; }
+    .pub-authors { font-size: .95rem; color: #3d474e; }
+    .pub-authors u { text-decoration: none; border-bottom: 2px solid var(--accent); font-weight: 700; }
+    .pub-title { display: block; margin: 3px 0; font-weight: 700; font-size: 1.05rem; font-family: var(--display); line-height: 1.4; }
+    .pub-venue { color: var(--muted); font-style: italic; font-size: .92rem; }
+    .pub-links { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .pub-links a {
+      font-size: .78rem; font-weight: 700;
+      border: 1px solid var(--line); border-radius: 8px;
+      padding: 3px 9px; color: var(--accent-ink);
+      transition: background .16s ease;
+    }
+    .pub-links a:hover { background: var(--panel-2); }
+
+    /* CARDS (background + code + reading) */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+    .card {
+      border: 1px solid var(--line); border-radius: 16px;
+      background: var(--panel); padding: 20px;
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: rgba(15,118,110,.35); }
+    .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .card .card-sub { color: var(--accent-ink); font-weight: 700; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; }
+    .card p { color: var(--muted); font-size: .9rem; margin: 8px 0 0; }
+    .card .repo-link { display: inline-block; margin-top: 10px; font-weight: 700; font-size: .84rem; color: var(--accent-ink); }
+    .card .repo-link::after { content: " ↗"; }
+
+    .svc {
+      border: 1px solid var(--line); border-radius: 18px; background: var(--panel);
+      padding: 26px; margin-bottom: 16px;
+    }
+    .svc h3 { margin: 0 0 14px; font-size: 1.2rem; letter-spacing: -.005em; }
+    .grp-label { margin: 18px 0 9px; font-family: var(--body); font-weight: 700; font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+    .grp-label:first-of-type { margin-top: 0; }
+    .course-group { margin-top: 26px; }
+    .course-group:first-of-type { margin-top: 2px; }
+    .course-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 8px; border-bottom: 1.5px solid rgba(35,44,51,.22); }
+    .course-head .lvl { font-weight: 700; font-size: .76rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-ink); }
+    .course-head .count { font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .course-list { columns: 2; column-gap: 42px; margin-top: 4px; counter-reset: c; }
+    .course-list .ci { break-inside: avoid; display: flex; align-items: baseline; gap: 12px; padding: 9px 2px; border-bottom: 1px solid var(--line); counter-increment: c; }
+    .course-list .ci::before { content: counter(c, decimal-leading-zero); font-size: .72rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+    .course-list .ci .t { font-size: .96rem; color: var(--ink); font-weight: 500; line-height: 1.4; }
+    @media (max-width: 620px) { .course-list { columns: 1; } }
+    .tick.cols { column-count: 2; column-gap: 34px; margin-bottom: 0; }
+    .tick.cols li { break-inside: avoid; }
+    @media (max-width: 620px) { .tick.cols { column-count: 1; } }
+    .deg { margin-bottom: 12px; }
+    .deg b { font-family: var(--display); font-weight: 700; font-size: 1.02rem; }
+    .deg span { display: block; color: var(--muted); font-size: .92rem; }
+
+    /* TIMELINE (honors) */
+    .timeline { position: relative; margin-left: 8px; padding-left: 26px; border-left: 2px solid var(--line); }
+    .t-entry { position: relative; padding: 4px 0 22px; }
+    .t-entry::before {
+      content: ""; position: absolute; left: -33px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--panel); border: 2px solid var(--accent);
+    }
+    .t-entry h3 { margin: 0 0 6px; font-size: 1.08rem; }
+
+    /* FOUNDATIONS */
+    .foundations-epigraph {
+      margin: 0 0 6px; padding: 16px 20px;
+      border-left: 3px solid var(--accent);
+      background: var(--panel-2); border-radius: 0 12px 12px 0;
+      font-family: var(--display); font-style: italic; font-size: 1.18rem;
+      color: var(--accent-ink); max-width: 42ch; line-height: 1.4;
+    }
+    .foundations-intro { max-width: 640px; color: #3d474e; font-size: 1.02rem; margin: 6px 0 0; }
+    .founders { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 28px; border-top: 1px solid var(--line); }
+    .founder { padding: 24px 26px 6px; border-right: 1px solid var(--line); }
+    .founder:first-child { padding-left: 0; }
+    .founder:last-child { padding-right: 0; border-right: 0; }
+    .founder .fnum { font-family: var(--display); font-size: 1rem; letter-spacing: .16em; color: var(--gold); }
+    .founder .fdate { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 6px; }
+    .founder h3 { font-family: var(--display); font-size: 1.3rem; margin: 4px 0 8px; letter-spacing: -.01em; }
+    .founder .concept { font-family: var(--display); font-style: italic; color: var(--accent-ink); font-size: 1.02rem; margin: 0 0 10px; }
+    .founder .tiein { font-size: .9rem; color: #3d474e; margin: 0; line-height: 1.55; }
+    .foundations-synth { margin: 30px 0 0; padding-top: 24px; border-top: 1.5px solid rgba(35,44,51,.22); font-family: var(--display); font-size: 1.18rem; line-height: 1.5; color: var(--ink); max-width: 720px; text-wrap: pretty; }
+    .foundations-synth b { color: var(--accent-ink); font-weight: 700; }
+    @media (max-width: 760px) {
+      .founders { grid-template-columns: 1fr; border-top: 0; }
+      .founder { border-right: 0; border-bottom: 1px solid var(--line); padding: 20px 0; }
+      .founder:last-child { border-bottom: 0; }
+    }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .contact-grid h3 { font-size: 1.08rem; letter-spacing: -.005em; }
+    .thanks { margin-top: 40px; text-align: center; font-family: var(--display); font-size: 1.2rem; color: var(--accent-ink); }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+    /* ===== Inequality Lab (interactive) ===== */
+    .lab-wrap { border: 1px solid var(--line); border-radius: 20px; background: var(--panel); padding: 22px; box-shadow: var(--shadow); }
+    .lab-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .leg {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--line); border-radius: 999px;
+      padding: 6px 12px; font-size: .82rem; font-weight: 600; line-height: 1;
+      cursor: pointer; background: var(--panel); color: var(--ink);
+      font-family: var(--body); transition: opacity .16s ease, background .16s ease;
+    }
+    .leg .swatch { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+    .leg.off { opacity: .4; background: var(--panel-2); }
+    .chart-holder { position: relative; }
+    .lab-svg { width: 100%; height: auto; display: block; touch-action: none; cursor: crosshair; }
+    .axis-label { font-size: 14px; fill: var(--muted); font-family: var(--body); }
+    .grid-line { stroke: var(--line); stroke-width: 1; }
+    .shock-band { fill: rgba(35,44,51,.05); }
+    .shock-text { font-size: 13px; fill: var(--muted); font-family: var(--body); font-weight: 600; }
+    .series-line { fill: none; stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; transition: opacity .18s ease; }
+    .guide-line { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0; }
+    .lab-dot { transition: opacity .12s ease; }
+    .tooltip {
+      position: absolute; pointer-events: none; opacity: 0;
+      background: var(--ink); color: #fff; border-radius: 10px;
+      padding: 9px 11px; font-size: .74rem; line-height: 1.55; white-space: nowrap;
+      transform: translate(-50%, -112%); transition: opacity .12s ease;
+      box-shadow: 0 12px 26px rgba(0,0,0,.20); z-index: 3;
+    }
+    .tooltip .tt-row { display: flex; align-items: center; gap: 6px; }
+    .tooltip .tt-sw { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+    .lab-controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .lab-controls label { font-size: .84rem; font-weight: 700; color: var(--ink); }
+    .lab-controls .val { color: var(--accent-ink); font-variant-numeric: tabular-nums; }
+    .lab-controls .hint { font-size: .8rem; color: var(--muted); }
+    input[type=range].slider { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 999px; background: var(--line); flex: 1; min-width: 150px; max-width: 300px; }
+    input[type=range].slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+    input[type=range].slider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 2px solid #fff; }
+    .lab-note { margin: 14px 0 0; font-size: .8rem; color: var(--muted); }
+    .lab-note a { color: var(--accent-ink); font-weight: 700; }
+
+    /* ===== Methodology Lab (Simpson's paradox) ===== */
+    .m-grid { stroke: var(--line); stroke-width: 1; }
+    .m-axis { font-size: 13px; fill: var(--muted); font-family: var(--body); }
+    .m-axis-title { font-size: 12px; fill: var(--muted); font-family: var(--body); font-weight: 600; }
+    .scatter-dot { transition: fill .35s ease, opacity .3s ease; stroke: #fff; stroke-width: 1.2; }
+    .reg-line { fill: none; stroke-width: 2.6; stroke-linecap: round; transition: opacity .35s ease; }
+    .reg-agg { stroke: #b4483a; stroke-dasharray: 7 5; }
+    .mlab-readout { padding: 14px 16px; background: var(--panel-2); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 12px; font-size: .98rem; color: var(--ink); line-height: 1.55; margin-bottom: 16px; }
+    .mlab-readout b { color: var(--accent-ink); font-weight: 700; }
+    .mlab-controls { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .mlab-toggle { display: inline-flex; align-items: center; gap: 11px; border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 8px 16px; cursor: pointer; font-family: var(--body); font-weight: 700; font-size: .88rem; color: var(--ink); }
+    .mlab-switch { width: 42px; height: 23px; border-radius: 999px; background: var(--line); position: relative; transition: background .2s ease; flex: none; }
+    .mlab-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 17px; height: 17px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .2s ease; }
+    .mlab-toggle.on .mlab-switch { background: var(--accent); }
+    .mlab-toggle.on .mlab-switch::after { transform: translateX(19px); }
+    .mlab-legend { display: flex; flex-wrap: wrap; gap: 14px; opacity: 0; transition: opacity .3s ease; }
+    .mleg { display: inline-flex; align-items: center; gap: 7px; font-size: .82rem; font-weight: 600; color: var(--muted); }
+    .mleg i { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+    .mlab-epigraph {
+      margin: 0 0 16px; padding: 14px 18px;
+      border-left: 3px solid var(--gold);
+      background: var(--panel-2); border-radius: 0 12px 12px 0;
+      font-family: var(--display); font-style: italic; font-size: 1.12rem;
+      color: var(--accent-ink); max-width: 60ch; line-height: 1.4;
+    }
+    .mlab-forward {
+      margin: 16px 0 0; padding: 14px 16px;
+      border: 1px dashed var(--line); border-radius: 12px;
+      background: #fbfaf7; color: #3d474e; font-size: .92rem; line-height: 1.55;
+    }
+    .mlab-forward b { color: var(--accent-ink); font-weight: 700; }
+
+    /* two lenses */
+    .lenses { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0 6px; }
+    .lens { border: 1px solid var(--line); border-radius: 16px; background: var(--panel-2); padding: 18px; }
+    .lens .lens-k { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+    .lens h4 { margin: 6px 0; font-size: 1.04rem; }
+    .lens p { margin: 0; font-size: .88rem; color: var(--muted); }
+    .lens .inst { opacity: .72; }
+    @media (max-width: 620px) { .lenses { grid-template-columns: 1fr; } }
+
+    /* book */
+    .book { display: grid; grid-template-columns: 156px 1fr; gap: 28px; align-items: center; border: 1px solid var(--line); border-radius: 20px; background: var(--panel); padding: 28px; box-shadow: var(--shadow); }
+    .book-cover { aspect-ratio: 3 / 4.4; border-radius: 8px; background: linear-gradient(155deg, var(--navy), #142a52); color: #fff; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 18px 36px rgba(29,63,122,.32); }
+    .book-cover .bc-top { font-family: var(--display); font-weight: 700; font-size: 1.02rem; line-height: 1.2; }
+    .book-cover .bc-bot { font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+    .book-tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
+    .book h3 { margin: 8px 0 4px; font-size: 1.3rem; line-height: 1.18; }
+    .book .sub { color: var(--muted); font-style: italic; margin-bottom: 12px; }
+    @media (max-width: 620px) { .book { grid-template-columns: 1fr; } .book-cover { width: 150px; } }
+
+    /* ===== Motion: scroll-reveal + hero entrance (progressive; hidden only when JS is on) ===== */
+    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.16,.7,.2,1), transform .8s cubic-bezier(.16,.7,.2,1); will-change: opacity, transform; }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    .js #home .hero-greet,
+    .js #home .hero-title,
+    .js #home .hero-lines,
+    .js #home .hero-cta { opacity: 0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.16,.7,.2,1), transform .9s cubic-bezier(.16,.7,.2,1); }
+    .js #home.lit .hero-greet { opacity: 1; transform: none; transition-delay: .06s; }
+    .js #home.lit .hero-title { opacity: 1; transform: none; transition-delay: .20s; }
+    .js #home.lit .hero-lines { opacity: 1; transform: none; transition-delay: .38s; }
+    .js #home.lit .hero-cta   { opacity: 1; transform: none; transition-delay: .54s; }
+
+    .hero-title em { position: relative; }
+    .hero-title em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .04em; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; border-radius: 2px; }
+    .js #home.lit .hero-title em::after { animation: drawLine 1s cubic-bezier(.16,.7,.2,1) .9s forwards; }
+    @keyframes drawLine { to { transform: scaleX(1); } }
+
+    @media (max-width: 560px) { .series-line { stroke-width: 3.2; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .js #home .hero-greet, .js #home .hero-title, .js #home .hero-lines, .js #home .hero-cta { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .hero-title em::after { transform: scaleX(1) !important; animation: none !important; }
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .topbar { display: flex; }
+      .sidebar {
+        width: 288px;
+        transform: translateX(-100%);
+        transition: transform .24s ease;
+        padding-top: 26px;
+      }
+      .sidebar.open { transform: translateX(0); box-shadow: var(--shadow); }
+      .main { margin-left: 0; padding-top: calc(62px + env(safe-area-inset-top)); }
+      section { scroll-margin-top: 74px; }
+      .news-item { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* ----- Phone refinements ----- */
+    @media (max-width: 560px) {
+      section { padding: 52px 20px; }
+      #home { min-height: 72vh; }
+      .lab-wrap { padding: 16px; }
+      .svc, .book { padding: 20px; }
+      .lab-controls { row-gap: 6px; }
+      .lab-controls .hint { width: 100%; }
+      .cards { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .pub-links a { padding: 4px 10px; }        /* comfortable tap targets */
+      .leg { padding: 7px 13px; }
+    }
+    @media (max-width: 380px) {
+      .hero-cta { flex-direction: column; align-items: flex-start; }
+      .hero-cta .btn-ghost { width: 100%; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Mobile top bar -->
+  <div class="topbar">
+    <span class="tb-name">Fariborz Aref</span>
+    <button class="hamburger" id="menuBtn" aria-label="Open menu"><span></span></button>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-head">
+      <div class="avatar">FA</div>
+      <h1 class="sb-name">Fariborz Aref</h1>
+      <span class="sb-role">
+        Sociologist and Researcher<br>
+      </span>
+    </div>
+
+    <nav class="sb-nav" aria-label="Sections">
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About Me</a></li>
+        <li><a href="#lab" class="nav-link">Inequality Lab</a></li>
+        <li><a href="#methods-lab" class="nav-link">Methods Lab</a></li>
+        <li><a href="#publications" class="nav-link">Publications</a></li>
+        <li><a href="#book" class="nav-link">The Book</a></li>
+        <li><a href="#background" class="nav-link">Background</a></li>
+        <li><a href="#code" class="nav-link">Code &amp; Data</a></li>
+        <li><a href="#honors" class="nav-link">Honors &amp; Awards</a></li>
+        <li><a href="#foundations" class="nav-link">Foundations</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="sb-foot">
+      <div class="sb-contact">
+        <a href="mailto:fariborz.aref@gmail.com">fariborz.aref@gmail.com</a>
+      </div>
+
+      <ul class="sb-social">
+        <li><a href="https://fariborzaref.com" target="_blank" rel="noopener"><span class="dot"></span>fariborzaref.com</a></li>
+        <li><a href="https://github.com/fariborzaref" target="_blank" rel="noopener"><span class="dot"></span>GitHub</a></li>
+        <li><a href="https://orcid.org/0000-0001-6622-1824" target="_blank" rel="noopener"><span class="dot"></span>ORCID</a></li>
+      </ul>
+
+      <p class="copyright">&copy; <span id="year"></span> Fariborz Aref. All rights reserved.</p>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <!-- HOME -->
+    <section id="home">
+      <span class="hero-greet">Sociology · Method · Evidence</span>
+      <h1 class="hero-title">The making and measurement of <em>inequality.</em></h1>
+      <p class="hero-lines">
+        I'm a sociologist studying global inequality — how institutions, labor markets,
+        migration, education, health, and policy shape unequal outcomes across societies.
+      </p>
+      <div class="hero-cta">
+        <a class="btn-ghost" href="#publications">See publications</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <span class="eyebrow">About Me</span>
+      <h2 class="sec-title">Fariborz Aref</h2>
+      <p class="lead">
+        I'm a sociologist whose work examines the structure of inequality and the methods we use
+        to study it. My research sits at the intersection of:
+      </p>
+      <ul class="tick">
+        <li>Global inequality</li>
+        <li>Research design &amp; methods</li>
+        <li>Mixed methods</li>
+        <li>Computational sociology</li>
+        <li>Community capacity building &amp; rural development</li>
+      </ul>
+      <p>
+        My approach pairs quantitative estimation with qualitative interpretation, and is motivated
+        by questions about how welfare regimes, labor markets, migration, education, and health
+        produce and reproduce inequality. Alongside empirical work, I care about reproducible,
+        openly licensed research infrastructure.
+      </p>
+      <div class="lenses">
+        <div class="lens">
+          <div class="lens-k">The macro lens</div>
+          <h4>Sociology</h4>
+          <p>Structures, models, and the measurement of inequality across societies. <span class="inst">PhD, University of Oklahoma.</span></p>
+        </div>
+        <div class="lens">
+          <div class="lens-k">The ground lens</div>
+          <h4>Community Development</h4>
+          <p>Fieldwork, local governance, and how communities build capacity from within. <span class="inst">PhD, Putra University.</span></p>
+        </div>
+      </div>
+      <p>
+        Most research picks one of these. Mine moves between them — a question travels from the
+        macro model down to the community system and back — which is where I think the more honest
+        explanations live.
+      </p>
+    </section>
+
+    <!-- INEQUALITY LAB -->
+    <section id="lab">
+      <span class="eyebrow">Interactive · Computational Sociology</span>
+      <h2 class="sec-title">The Inequality Lab</h2>
+      <p class="lead">
+        A central claim in my work: shocks don't hit societies evenly — welfare regimes decide how a
+        recession or a pandemic becomes inequality. Here's that argument as a small model you can run.
+        Drag the slider to watch institutions absorb the shock, and tap or hover the chart to read any year.
+      </p>
+
+      <div class="lab-wrap">
+        <div class="lab-legend" id="legend"></div>
+        <div class="chart-holder" id="chartHolder">
+          <svg class="lab-svg" id="chart" viewBox="0 0 760 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Illustrative inequality trajectories by welfare regime through the 2008 recession and 2020 pandemic"></svg>
+          <div class="tooltip" id="tooltip"></div>
+        </div>
+        <div class="lab-controls">
+          <label>Social-protection strength <span class="val" id="protVal">50%</span></label>
+          <input type="range" min="0" max="100" value="50" class="slider" id="prot" aria-label="Social-protection strength">
+          <span class="hint">0% = shocks pass straight through · 100% = institutions absorb them</span>
+        </div>
+        <p class="lab-note">
+          Illustrative model — trajectories are schematic, dramatizing the mechanism rather than reporting
+          fitted estimates. Empirical results live in the papers:
+          <a href="https://doi.org/10.1163/15691330-bja10103" target="_blank" rel="noopener">recession → pandemic</a> ·
+          <a href="https://doi.org/10.1007/s12232-024-00448-9" target="_blank" rel="noopener">welfare regimes</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY LAB -->
+    <section id="methods-lab">
+      <span class="eyebrow">Interactive · Research Methods</span>
+      <h2 class="sec-title">The Methodology Lab</h2>
+
+      <p class="mlab-epigraph">Durkheim argued that a society is a reality of its own — never merely the sum of its members. Simpson's paradox is that argument rendered in data.</p>
+
+      <p class="lead">
+        Sociology's founding claim is that the collective obeys laws its individuals do not. Its statistical
+        shadow is a reversal: a relationship can flip its sign the instant you divide a population into the
+        groups that actually structure it. Here the question is one of my own — does social spending reduce
+        inequality? — and the honest answer depends entirely on whether you read the aggregate or the
+        structure beneath it.
+      </p>
+
+      <div class="lab-wrap">
+        <div class="mlab-readout" id="mlabReadout" aria-live="polite"></div>
+        <div class="chart-holder" id="mchartHolder">
+          <svg class="lab-svg" id="mchart" viewBox="0 0 760 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Scatterplot of social spending against inequality, illustrating Simpson's paradox"></svg>
+        </div>
+        <div class="mlab-controls">
+          <button class="mlab-toggle" id="mlabToggle" type="button" aria-pressed="false">
+            <span class="mlab-switch"></span> Account for structural pressure
+          </button>
+          <div class="mlab-legend" id="mlabLegend"></div>
+        </div>
+
+        <p class="mlab-forward">
+          A model trained on the pooled data would learn the sign with confidence — and get it exactly
+          backwards. <b>Structure is not noise to be controlled away; it is the finding.</b> The oldest
+          caution in sociology is also the newest one for machine learning.
+        </p>
+
+        <p class="lab-note">
+          Illustrative data — a Simpson's-paradox structure grounded in comparative welfare research: societies
+          under greater <i>structural pressure</i> (higher pre-redistribution inequality) tend to spend more, so
+          the pooled correlation reflects <i>who spends</i>, not <i>what spending does</i>. The pattern is real; the points are schematic.
+        </p>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <span class="eyebrow">My Publications</span>
+      <h2 class="sec-title">Selected Work</h2>
+
+      <div class="pub">
+        <span class="pub-title">From recession to pandemic: Evolving inequalities in OECD countries through a two-decade analysis of socio-economic impacts</span>
+        <span class="pub-venue">Comparative Sociology, 23(2), 182–215 · 2024</span>
+        <div class="pub-links">
+          <a href="https://doi.org/10.1163/15691330-bja10103" target="_blank" rel="noopener">DOI</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <span class="pub-title">Analyzing inequalities: Welfare regimes during the Great Recession and the pandemic</span>
+        <span class="pub-venue">International Review of Economics, 71, 401–420 · 2024</span>
+        <div class="pub-links">
+          <a href="https://doi.org/10.1007/s12232-024-00448-9" target="_blank" rel="noopener">DOI</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <span class="pub-title">Minority-serving institution faculty perspectives on research productivity factors</span>
+        <span class="pub-venue">Journal of Rehabilitation, 87(3), 61–71 · 2021</span>
+      </div>
+
+      <div class="pub">
+        <span class="pub-title">Co-serving Native American and Alaskan Native veterans with disabilities</span>
+        <span class="pub-venue">Journal of Rehabilitation, 86(4), 48–58 · 2020</span>
+      </div>
+
+      <div class="pub">
+        <span class="pub-title">New immigrating minority populations and trend impacts on state vocational rehabilitation agencies</span>
+        <span class="pub-venue">Journal of Rehabilitation, 85(3) · 2019</span>
+      </div>
+
+      <div class="pub">
+        <span class="pub-title">Research productivity in rehabilitation, disability, and allied health programs</span>
+        <span class="pub-venue">Rehabilitation Research, Policy, and Education, 31(3) · 2017</span>
+      </div>
+
+      <div class="placeholder-note">
+        Full list on <a href="https://orcid.org/0000-0001-6622-1824" target="_blank" rel="noopener">ORCID</a>.
+      </div>
+    </section>
+
+    <!-- THE BOOK -->
+    <section id="book">
+      <span class="eyebrow">Work in progress</span>
+      <h2 class="sec-title">The Book</h2>
+      <div class="book">
+        <div class="book-cover">
+          <div class="bc-top">The Structure of Social Inquiry</div>
+          <div class="bc-bot">F. Aref · Forthcoming</div>
+        </div>
+        <div>
+          <span class="book-tag">Forthcoming</span>
+          <h3>The Structure of Social Inquiry</h3>
+          <p class="sub">Research Design, Evidence, and Explanation</p>
+          <p style="color:#3d474e;">
+            A book-length argument about how social scientists move from a question to a credible
+            explanation — treating design, evidence, and inference as one connected craft rather than
+            a toolbox of separate techniques.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKGROUND -->
+    <section id="background">
+      <span class="eyebrow">My Background</span>
+      <h2 class="sec-title">Education, Research, Teaching</h2>
+
+      <div class="svc">
+        <h3>Education</h3>
+        <div class="deg"><b>PhD, Sociology</b><span>University of Oklahoma</span></div>
+        <div class="deg"><b>PhD, Community Development</b><span>Putra University</span></div>
+        <div class="deg"><b>MA, Survey Research</b><span>University of Connecticut</span></div>
+      </div>
+
+      <div class="svc">
+        <h3>Areas of Specialization</h3>
+        <ul class="tick cols">
+          <li>Computational &amp; Quantitative Sociology</li>
+          <li>Labor Markets &amp; Economic Change</li>
+          <li>Community &amp; Regional Development</li>
+          <li>Migration &amp; Demographic Transitions</li>
+          <li>Community Participation &amp; Local Governance</li>
+          <li>Mixed Methods Research</li>
+          <li>Social Inequality &amp; Institutional Barriers</li>
+          <li>Organizational &amp; Community Systems</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <h3>Methodological Expertise</h3>
+        <ul class="tick cols">
+          <li>Structural equation modeling</li>
+          <li>Multilevel &amp; longitudinal models</li>
+          <li>Generalized estimating equations</li>
+          <li>Text &amp; network analysis</li>
+          <li>Comparative &amp; simulation-based modeling</li>
+          <li>Survey design</li>
+          <li>Data visualization</li>
+          <li>Fieldwork integration</li>
+        </ul>
+        <h4 class="grp-label" style="margin-top:20px;">Software</h4>
+        <div class="chips">
+          <span class="chip">R</span><span class="chip">Python</span><span class="chip">Stata</span>
+          <span class="chip">SPSS</span><span class="chip">NVivo</span><span class="chip">SQL</span>
+          <span class="chip">LaTeX</span><span class="chip">Git</span>
+        </div>
+      </div>
+
+      <div class="svc">
+        <h3>Courses Taught</h3>
+
+        <div class="course-group">
+          <div class="course-head"><span class="lvl">Graduate</span><span class="count">2 courses</span></div>
+          <div class="course-list">
+            <div class="ci"><span class="t">Research Methods &amp; Statistics</span></div>
+            <div class="ci"><span class="t">Educational Research &amp; Evaluation</span></div>
+          </div>
+        </div>
+
+        <div class="course-group">
+          <div class="course-head"><span class="lvl">Undergraduate</span><span class="count">15 courses</span></div>
+          <div class="course-list">
+            <div class="ci"><span class="t">Introduction to Sociology</span></div>
+            <div class="ci"><span class="t">Social Theory</span></div>
+            <div class="ci"><span class="t">Social Research</span></div>
+            <div class="ci"><span class="t">Social Statistics</span></div>
+            <div class="ci"><span class="t">Introduction to Statistics</span></div>
+            <div class="ci"><span class="t">Social Problems</span></div>
+            <div class="ci"><span class="t">Social Stratification</span></div>
+            <div class="ci"><span class="t">Race &amp; Ethnic Relations</span></div>
+            <div class="ci"><span class="t">Social Psychology</span></div>
+            <div class="ci"><span class="t">Cultural Anthropology</span></div>
+            <div class="ci"><span class="t">Human Geography</span></div>
+            <div class="ci"><span class="t">Alcohol, Drugs &amp; Society</span></div>
+            <div class="ci"><span class="t">Sociology Senior Synthesis</span></div>
+            <div class="ci"><span class="t">Introduction to Multicultural Education</span></div>
+            <div class="ci"><span class="t">Human Relations &amp; Cultural Diversity</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CODE & DATA -->
+    <section id="code">
+      <span class="eyebrow">Open Research Infrastructure</span>
+      <h2 class="sec-title">Code &amp; Data</h2>
+      <p class="lead">Six public, version-controlled labs carrying the research program from evidence to teaching and the open record.</p>
+
+      <div class="cards">
+        <div class="card">
+          <span class="card-sub">Quantitative</span>
+          <h3>QuantitativeSocietyLab</h3>
+          <p>Reproducible statistical modeling and quantitative sociology workflows.</p>
+          <a class="repo-link" href="https://github.com/fariborzaref/QuantitativeSocietyLab" target="_blank" rel="noopener">View repo</a>
+        </div>
+        <div class="card">
+          <span class="card-sub">Qualitative</span>
+          <h3>QualitativeSocietyLab</h3>
+          <p>Coding frameworks, discourse analysis, and institutional interpretation.</p>
+          <a class="repo-link" href="https://github.com/fariborzaref/QualitativeSocietyLab" target="_blank" rel="noopener">View repo</a>
+        </div>
+        <div class="card">
+          <span class="card-sub">Mixed methods</span>
+          <h3>MixedMethods_SocietyLab</h3>
+          <p>Survey, interview, and computational evidence in one triangulated design.</p>
+          <a class="repo-link" href="https://github.com/fariborzaref/MixedMethods_SocietyLab" target="_blank" rel="noopener">View repo</a>
+        </div>
+        <div class="card">
+          <span class="card-sub">Computational</span>
+          <h3>ComputationalSociologyHub</h3>
+          <p>Text mining, network analysis, agent-based models, and simulation.</p>
+          <a class="repo-link" href="https://github.com/fariborzaref/ComputationalSociologyHub" target="_blank" rel="noopener">View repo</a>
+        </div>
+        <div class="card">
+          <span class="card-sub">Pedagogy</span>
+          <h3>Teaching_and_Curriculum</h3>
+          <p>Syllabi, problem sets, and materials for research methods and statistics.</p>
+          <a class="repo-link" href="https://github.com/fariborzaref/Teaching_and_Curriculum" target="_blank" rel="noopener">View repo</a>
+        </div>
+        <div class="card">
+          <span class="card-sub">Public archive</span>
+          <h3>SociologyArchive</h3>
+          <p>Theory, inequality studies, and open public-sociology writing.</p>
+          <a class="repo-link" href="https://github.com/fariborzaref/SociologyArchive" target="_blank" rel="noopener">View repo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HONORS -->
+    <section id="honors">
+      <span class="eyebrow">Honors &amp; Awards</span>
+      <h2 class="sec-title">Highlights</h2>
+
+      <div class="timeline">
+        <div class="t-entry">
+          <h3>Recognition &amp; Media</h3>
+          <ul class="tick">
+            <li>Ranked among the <b>Top Two Worldwide in Capacity Building</b> — ScholarGPS, 2025.</li>
+            <li>Featured in <i>Science</i> Magazine, 2025, for research on welfare inequality.</li>
+            <li>Guest, Takoma Radio — “Disability Inclusion and Research Productivity,” 2018.</li>
+          </ul>
+        </div>
+        <!-- Add real entries when ready, then uncomment:
+        <div class="t-entry">
+          <h3>Awards &amp; Honors</h3>
+          <ul class="tick"><li>Title — Body, Year.</li></ul>
+        </div>
+        <div class="t-entry">
+          <h3>Grants &amp; Fellowships</h3>
+          <ul class="tick"><li>Title — Sponsor, Year.</li></ul>
+        </div>
+        -->
+      </div>
+    </section>
+
+    <!-- FOUNDATIONS -->
+    <section id="foundations">
+      <span class="eyebrow">Intellectual Lineage</span>
+      <h2 class="sec-title">Foundations</h2>
+      <p class="foundations-epigraph">“The world is not random. It is structured. So is inequality.”</p>
+      <p class="foundations-intro">Three classical accounts of inequality — and where my work picks up the thread.</p>
+
+      <div class="founders">
+        <div class="founder">
+          <div class="fnum">I</div>
+          <div class="fdate">1818–1883</div>
+          <h3>Marx</h3>
+          <p class="concept">Capital &amp; class</p>
+          <p class="tiein">The economic engine of inequality.</p>
+        </div>
+        <div class="founder">
+          <div class="fnum">II</div>
+          <div class="fdate">1864–1920</div>
+          <h3>Weber</h3>
+          <p class="concept">Class, status &amp; power</p>
+          <p class="tiein">How institutions organize advantage.</p>
+        </div>
+        <div class="founder">
+          <div class="fnum">III</div>
+          <div class="fdate">1858–1917</div>
+          <h3>Durkheim</h3>
+          <p class="concept">Solidarity &amp; cohesion</p>
+          <p class="tiein">What holds societies together under strain.</p>
+        </div>
+      </div>
+
+      <p class="foundations-synth">
+        My work joins these threads — the <b>macro structure</b> of inequality and the
+        <b>community systems</b> that absorb it.
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <span class="eyebrow">Contact Me</span>
+      <h2 class="sec-title">Get in Touch</h2>
+
+      <div class="contact-grid">
+        <div>
+          <h3 style="margin:0 0 8px;">Fariborz Aref</h3>
+          <p style="color:#3d474e;">
+            Sociologist and Researcher<br>
+            Email: <a href="mailto:fariborz.aref@gmail.com">fariborz.aref@gmail.com</a>
+          </p>
+        </div>
+        <div>
+          <h3 style="margin:0 0 8px;">Elsewhere</h3>
+          <ul class="tick">
+            <li>Website — <a href="https://fariborzaref.com" target="_blank" rel="noopener">fariborzaref.com</a></li>
+            <li>GitHub — <a href="https://github.com/fariborzaref" target="_blank" rel="noopener">@fariborzaref</a></li>
+            <li>ORCID — <a href="https://orcid.org/0000-0001-6622-1824" target="_blank" rel="noopener">0000-0001-6622-1824</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const menuBtn = document.getElementById("menuBtn");
+    function closeMenu() { sidebar.classList.remove("open"); overlay.classList.remove("active"); }
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      overlay.classList.toggle("active");
+    });
+    overlay.addEventListener("click", closeMenu);
+    document.querySelectorAll(".nav-link").forEach(a => a.addEventListener("click", closeMenu));
+
+    // Scroll-spy
+    const links = [...document.querySelectorAll(".nav-link")];
+    const map = new Map(links.map(l => [l.getAttribute("href").slice(1), l]));
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        links.forEach(l => l.classList.remove("active"));
+        const link = map.get(e.target.id);
+        if (link) link.classList.add("active");
+      });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
+    document.querySelectorAll("main section").forEach(s => spy.observe(s));
+
+    // Hero entrance
+    var home = document.getElementById("home");
+    if (home) requestAnimationFrame(function () { requestAnimationFrame(function () { home.classList.add("lit"); }); });
+
+    // Scroll-reveal cascade (every block below the hero rises in as it enters view)
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) {
+      var targets = [];
+      document.querySelectorAll("main section:not(#home)").forEach(function (sec) {
+        Array.prototype.forEach.call(sec.children, function (child) { targets.push(child); });
+      });
+      targets.forEach(function (t) { t.classList.add("reveal"); });
+      var revIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var sibs = Array.prototype.slice.call(e.target.parentNode.children).filter(function (c) { return c.classList.contains("reveal"); });
+          var idx = sibs.indexOf(e.target);
+          e.target.style.transitionDelay = Math.min(idx, 6) * 0.07 + "s";
+          e.target.classList.add("in");
+          revIO.unobserve(e.target);
+        });
+      }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
+      targets.forEach(function (t) { revIO.observe(t); });
+    }
+  </script>
+  <script>
+    (function () {
+      var svg = document.getElementById('chart');
+      if (!svg) return;
+      var NS = 'http://www.w3.org/2000/svg';
+      var holder = document.getElementById('chartHolder');
+      var tooltip = document.getElementById('tooltip');
+      var legend = document.getElementById('legend');
+      var prot = document.getElementById('prot');
+      var protVal = document.getElementById('protVal');
+
+      var MOB = window.matchMedia('(max-width: 560px)').matches;
+      var VBW = MOB ? 430 : 760, VBH = MOB ? 470 : 420, mL = 50, mR = 18, mT = 30, mB = 42;
+      svg.setAttribute('viewBox', '0 0 ' + VBW + ' ' + VBH);
+      var plotW = VBW - mL - mR, plotH = VBH - mT - mB;
+      var y0 = 2004, y1 = 2022, gMin = 0.22, gMax = 0.42;
+
+      var regimes = [
+        { id: 'socdem',  name: 'Social-democratic', color: '#0f766e', base: 0.255, rec: 0.016, pan: 0.011 },
+        { id: 'cons',    name: 'Conservative',      color: '#1d3f7a', base: 0.298, rec: 0.024, pan: 0.017 },
+        { id: 'liberal', name: 'Liberal',           color: '#9a7428', base: 0.346, rec: 0.035, pan: 0.029 },
+        { id: 'south',   name: 'Southern',          color: '#b45b3e', base: 0.334, rec: 0.041, pan: 0.035 }
+      ];
+      regimes.forEach(function (r) { r.active = true; });
+
+      var years = []; for (var y = y0; y <= y1; y++) years.push(y);
+
+      function bump(t, c, w) { var d = (t - c) / w; return Math.exp(-0.5 * d * d); }
+      function xS(v) { return mL + (v - y0) / (y1 - y0) * plotW; }
+      function yS(g) { return mT + (gMax - g) / (gMax - gMin) * plotH; }
+      function val(r, v, p) {
+        var pf = 1 - p * 0.70;
+        return r.base + (v - y0) * 0.0006 + r.rec * bump(v, 2009, 1.7) * pf + r.pan * bump(v, 2020, 1.25) * pf;
+      }
+      function el(tag, attrs) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+
+      // static grid + shock bands
+      var g = el('g', {}); svg.appendChild(g);
+      [{ a: 2008, b: 2010, l: MOB ? '2008 · Recession' : '2008 · Great Recession' }, { a: 2020, b: 2021.4, l: '2020 · Pandemic' }].forEach(function (s) {
+        g.appendChild(el('rect', { x: xS(s.a), y: mT, width: xS(s.b) - xS(s.a), height: plotH, class: 'shock-band' }));
+        var tx = el('text', { x: xS(s.a) + 5, y: mT + 13, class: 'shock-text' }); tx.textContent = s.l; g.appendChild(tx);
+      });
+      [0.25, 0.30, 0.35, 0.40].forEach(function (gv) {
+        g.appendChild(el('line', { x1: mL, y1: yS(gv), x2: mL + plotW, y2: yS(gv), class: 'grid-line' }));
+        var t = el('text', { x: mL - 8, y: yS(gv) + 4, 'text-anchor': 'end', class: 'axis-label' }); t.textContent = gv.toFixed(2); g.appendChild(t);
+      });
+      [2004, 2008, 2012, 2016, 2020].forEach(function (yy) {
+        var t = el('text', { x: xS(yy), y: mT + plotH + 22, 'text-anchor': 'middle', class: 'axis-label' }); t.textContent = yy; g.appendChild(t);
+      });
+      var yt = el('text', { x: mL - 40, y: mT - 12, class: 'axis-label' }); yt.textContent = 'Gini (illustrative)'; g.appendChild(yt);
+
+      // series
+      var lineEls = {};
+      regimes.forEach(function (r) { var p = el('path', { class: 'series-line', stroke: r.color }); svg.appendChild(p); lineEls[r.id] = p; });
+      function pathFor(r, p) { var d = ''; years.forEach(function (v, i) { d += (i ? ' L' : 'M') + xS(v).toFixed(1) + ' ' + yS(val(r, v, p)).toFixed(1); }); return d; }
+      function draw() {
+        var p = +prot.value / 100;
+        regimes.forEach(function (r) { lineEls[r.id].setAttribute('d', pathFor(r, p)); lineEls[r.id].style.opacity = r.active ? 1 : 0; });
+      }
+
+      // hover guide + dots
+      var guide = el('line', { class: 'guide-line', y1: mT, y2: mT + plotH }); svg.appendChild(guide);
+      var dots = {};
+      regimes.forEach(function (r) { var c = el('circle', { r: 4.2, fill: r.color, stroke: '#fff', 'stroke-width': 2, class: 'lab-dot' }); c.style.opacity = 0; svg.appendChild(c); dots[r.id] = c; });
+
+      function showAt(v) {
+        var p = +prot.value / 100;
+        guide.setAttribute('x1', xS(v)); guide.setAttribute('x2', xS(v)); guide.style.opacity = 0.5;
+        var rows = '';
+        regimes.forEach(function (r) {
+          if (!r.active) { dots[r.id].style.opacity = 0; return; }
+          var gg = val(r, v, p);
+          dots[r.id].setAttribute('cx', xS(v)); dots[r.id].setAttribute('cy', yS(gg)); dots[r.id].style.opacity = 1;
+          rows += '<div class="tt-row"><span class="tt-sw" style="background:' + r.color + '"></span>' + r.name + ' <b>' + gg.toFixed(3) + '</b></div>';
+        });
+        tooltip.innerHTML = '<div style="font-weight:700;margin-bottom:4px">' + v + '</div>' + rows;
+        tooltip.style.left = (xS(v) / VBW * holder.clientWidth) + 'px';
+        tooltip.style.top = ((mT + 8) / VBH * holder.clientHeight) + 'px';
+        tooltip.style.opacity = 1;
+      }
+      function hide() { guide.style.opacity = 0; tooltip.style.opacity = 0; regimes.forEach(function (r) { dots[r.id].style.opacity = 0; }); }
+      function pointerYear(clientX) {
+        var rect = svg.getBoundingClientRect();
+        var sx = (clientX - rect.left) / rect.width * VBW;
+        var v = Math.round(y0 + (sx - mL) / plotW * (y1 - y0));
+        return Math.max(y0, Math.min(y1, v));
+      }
+      svg.addEventListener('mousemove', function (e) { showAt(pointerYear(e.clientX)); });
+      svg.addEventListener('mouseleave', hide);
+      svg.addEventListener('touchstart', function (e) { if (e.touches[0]) showAt(pointerYear(e.touches[0].clientX)); }, { passive: true });
+      svg.addEventListener('touchmove', function (e) { if (e.touches[0]) showAt(pointerYear(e.touches[0].clientX)); }, { passive: true });
+
+      // legend toggles
+      regimes.forEach(function (r) {
+        var b = document.createElement('button'); b.className = 'leg'; b.type = 'button';
+        b.innerHTML = '<span class="swatch" style="background:' + r.color + '"></span>' + r.name;
+        b.addEventListener('click', function () { r.active = !r.active; b.classList.toggle('off', !r.active); draw(); });
+        legend.appendChild(b);
+      });
+
+      function animateIn() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        regimes.forEach(function (r, i) {
+          var p = lineEls[r.id];
+          if (!r.active) return;
+          var len;
+          try { len = p.getTotalLength(); } catch (e) { return; }
+          p.style.transition = 'none';
+          p.style.strokeDasharray = len;
+          p.style.strokeDashoffset = len;
+          p.getBoundingClientRect(); // force reflow
+          p.style.transition = 'stroke-dashoffset 1.15s cubic-bezier(.16,.7,.2,1) ' + (i * 0.12) + 's';
+          p.style.strokeDashoffset = '0';
+        });
+        setTimeout(function () {
+          regimes.forEach(function (r) {
+            var p = lineEls[r.id];
+            p.style.transition = ''; p.style.strokeDasharray = 'none'; p.style.strokeDashoffset = '0';
+          });
+        }, 1650);
+      }
+      var seenLab = false;
+      var labIO = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting && !seenLab) { seenLab = true; animateIn(); } });
+      }, { threshold: 0.25 });
+      labIO.observe(document.getElementById('lab'));
+
+      prot.addEventListener('input', function () { protVal.textContent = prot.value + '%'; draw(); });
+      draw();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var svg = document.getElementById('mchart');
+      if (!svg) return;
+      var NS = 'http://www.w3.org/2000/svg';
+      var readout = document.getElementById('mlabReadout');
+      var toggle = document.getElementById('mlabToggle');
+      var legendEl = document.getElementById('mlabLegend');
+
+      var MOB = window.matchMedia('(max-width: 560px)').matches;
+      var VBW = MOB ? 430 : 760, VBH = MOB ? 460 : 440, mL = 54, mR = 20, mT = 26, mB = 48;
+      svg.setAttribute('viewBox', '0 0 ' + VBW + ' ' + VBH);
+      var plotW = VBW - mL - mR, plotH = VBH - mT - mB;
+      var xMin = 12, xMax = 36, yMin = 0.22, yMax = 0.46;
+
+      function xS(x) { return mL + (x - xMin) / (xMax - xMin) * plotW; }
+      function yS(y) { return mT + (yMax - y) / (yMax - yMin) * plotH; }
+      function el(t, a) { var e = document.createElementNS(NS, t); for (var k in a) e.setAttribute(k, a[k]); return e; }
+
+      var xr = { low: [14, 22], mid: [20, 28], high: [26, 34] };
+      var groups = [
+        { id: 'low',  name: 'Low structural pressure',      color: '#0f766e', cx: 18, cy: 0.27, slope: -0.006 },
+        { id: 'mid',  name: 'Moderate structural pressure', color: '#1d3f7a', cx: 24, cy: 0.33, slope: -0.006 },
+        { id: 'high', name: 'High structural pressure',     color: '#b45b3e', cx: 30, cy: 0.40, slope: -0.006 }
+      ];
+      function rng(s) { return function () { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }; }
+      var rand = rng(11);
+      groups.forEach(function (gp) {
+        gp.pts = []; var lo = xr[gp.id][0], hi = xr[gp.id][1];
+        for (var i = 0; i < 9; i++) {
+          var x = lo + (hi - lo) * ((i + rand() * 0.6) / 9);
+          var y = gp.cy + gp.slope * (x - gp.cx) + (rand() - 0.5) * 0.024;
+          gp.pts.push({ x: x, y: y });
+        }
+      });
+      var all = []; groups.forEach(function (gp) { gp.pts.forEach(function (p) { all.push(p); }); });
+
+      function ols(pts) {
+        var n = pts.length, sx = 0, sy = 0, sxy = 0, sxx = 0;
+        pts.forEach(function (p) { sx += p.x; sy += p.y; sxy += p.x * p.y; sxx += p.x * p.x; });
+        var m = (n * sxy - sx * sy) / (n * sxx - sx * sx); return { m: m, b: (sy - m * sx) / n };
+      }
+
+      // axes
+      var g = el('g', {}); svg.appendChild(g);
+      [0.25, 0.30, 0.35, 0.40, 0.45].forEach(function (v) {
+        g.appendChild(el('line', { x1: mL, y1: yS(v), x2: mL + plotW, y2: yS(v), class: 'm-grid' }));
+        var t = el('text', { x: mL - 8, y: yS(v) + 4, 'text-anchor': 'end', class: 'm-axis' }); t.textContent = v.toFixed(2); g.appendChild(t);
+      });
+      [15, 20, 25, 30, 35].forEach(function (v) {
+        var t = el('text', { x: xS(v), y: mT + plotH + 22, 'text-anchor': 'middle', class: 'm-axis' }); t.textContent = v + '%'; g.appendChild(t);
+      });
+      var xlab = el('text', { x: mL + plotW / 2, y: mT + plotH + 40, 'text-anchor': 'middle', class: 'm-axis-title' }); xlab.textContent = 'Social spending (% of GDP)'; g.appendChild(xlab);
+      var ylab = el('text', { x: mL - 46, y: mT - 10, class: 'm-axis' }); ylab.textContent = 'Gini'; g.appendChild(ylab);
+
+      // regression lines
+      var aggFit = ols(all);
+      var aggLine = el('line', { class: 'reg-line reg-agg', x1: xS(15), y1: yS(aggFit.m * 15 + aggFit.b), x2: xS(33), y2: yS(aggFit.m * 33 + aggFit.b) });
+      svg.appendChild(aggLine);
+      groups.forEach(function (gp) {
+        var f = ols(gp.pts), lo = xr[gp.id][0] - 0.5, hi = xr[gp.id][1] + 0.5;
+        gp.line = el('line', { class: 'reg-line', stroke: gp.color, x1: xS(lo), y1: yS(f.m * lo + f.b), x2: xS(hi), y2: yS(f.m * hi + f.b) });
+        gp.line.style.opacity = 0; svg.appendChild(gp.line);
+      });
+
+      // dots
+      groups.forEach(function (gp) {
+        gp.dots = gp.pts.map(function (p) { var c = el('circle', { cx: xS(p.x), cy: yS(p.y), r: 5, class: 'scatter-dot' }); svg.appendChild(c); return c; });
+      });
+
+      // legend
+      groups.forEach(function (gp) {
+        var s = document.createElement('span'); s.className = 'mleg';
+        s.innerHTML = '<i style="background:' + gp.color + '"></i>' + gp.name; legendEl.appendChild(s);
+      });
+
+      var grouped = false;
+      function render() {
+        groups.forEach(function (gp) {
+          gp.dots.forEach(function (c) { c.setAttribute('fill', grouped ? gp.color : '#9aa0a6'); });
+          gp.line.style.opacity = grouped ? 1 : 0;
+        });
+        aggLine.style.opacity = grouped ? 0 : 1;
+        toggle.classList.toggle('on', grouped);
+        toggle.setAttribute('aria-pressed', grouped);
+        legendEl.style.opacity = grouped ? 1 : 0;
+        readout.innerHTML = grouped
+          ? 'Hold structural pressure constant and the sign flips: among societies under the <b>same</b> underlying inequality, those that spend more end up <b>more equal</b>. The pooled pattern reflected <i>who spends</i> — the societies already under strain — not what spending does.'
+          : 'Pool every society together and the correlation runs the wrong way: more social spending, <b>more</b> inequality. Read naively, redistribution looks futile — even perverse. Now account for structural pressure.';
+      }
+
+      toggle.addEventListener('click', function () { grouped = !grouped; render(); });
+      render();
+    })();
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>
 
 
