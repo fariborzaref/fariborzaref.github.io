@@ -16,7 +16,7 @@
   <meta name="description" content="An interactive treatise on research methods by Fariborz Aref: Simpson's paradox, the ecological fallacy, and the garden of forking paths — how a defensible claim is earned, not computed.">
   <meta name="author" content="Fariborz Aref">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://fariborzaref.github.io/methods/">
+  <link rel="canonical" href="https://fariborzaref.github.io/methods">
   <link rel="icon" type="image/png" href="../favicon-32.png">
 
   <meta property="og:type" content="article">
@@ -75,9 +75,13 @@
       padding: max(12px, env(safe-area-inset-top)) clamp(20px, 5vw, 40px) 12px;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
-    .top .back { font-weight: 700; font-size: .88rem; color: var(--ink); display: inline-flex; align-items: center; gap: 7px; }
-    .top .back:hover { color: var(--accent-ink); text-decoration: none; }
-    .top .here { font-family: var(--display); font-weight: 600; font-size: .95rem; color: var(--muted); }
+    .top .brand { display: inline-flex; align-items: center; gap: 11px; }
+    .top .fa { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(150deg, var(--panel-2), #eee7d8); border: 1px solid var(--line); font-family: var(--display); font-weight: 700; font-size: .92rem; color: var(--ink); }
+    .top .who { font-family: var(--display); font-weight: 700; font-size: .96rem; color: var(--ink); line-height: 1; }
+    .top .who small { display: block; font-family: var(--body); font-weight: 600; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+    .top .back { font-weight: 700; font-size: .84rem; color: var(--accent-ink); }
+    .top .back:hover { text-decoration: none; opacity: .8; }
+    @media (max-width: 560px) { .top .who small { display: none; } }
 
     .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
 
@@ -163,8 +167,20 @@
       line-height: 1.4; color: var(--ink); max-width: 30ch; margin: 0;
     }
     .closing .ai b { color: var(--accent-ink); font-style: normal; }
-    .closing .sig { margin-top: 30px; padding-top: 22px; border-top: 1.5px solid rgba(35,44,51,.2); color: var(--muted); font-size: .86rem; }
-    .closing .sig a { font-weight: 700; }
+    .crosslink { margin-top: 30px; display: inline-flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); position: relative; overflow: hidden; transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease; }
+    .crosslink::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); transform: scaleY(0); transform-origin: top; transition: transform .28s cubic-bezier(.16,.7,.2,1); }
+    .crosslink:hover { text-decoration: none; transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); box-shadow: 0 16px 34px rgba(15,118,110,.12); }
+    .crosslink:hover::before { transform: scaleY(1); }
+    .crosslink .ci { width: 44px; height: 44px; flex: none; border-radius: 12px; display: grid; place-items: center; background: var(--panel-2); color: var(--accent-ink); font-size: 1.2rem; transition: background .22s ease, color .22s ease; }
+    .crosslink:hover .ci { background: var(--accent); color: #fff; }
+    .crosslink .cb { display: flex; flex-direction: column; gap: 2px; }
+    .crosslink .ce { font-size: .66rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+    .crosslink .ct { font-family: var(--display); font-weight: 700; font-size: 1.05rem; color: var(--ink); }
+    .sources { margin-top: 30px; padding-top: 22px; border-top: 1.5px solid rgba(35,44,51,.2); color: var(--muted); font-size: .82rem; line-height: 1.7; }
+    .sources h3 { font-family: var(--body); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+    .foot { margin-top: 22px; color: var(--muted); font-size: .84rem; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+    .foot a { font-weight: 700; }
+    .foot .dot { opacity: .45; }
 
     /* reveal */
     .js .rv { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16,.7,.2,1), transform .7s cubic-bezier(.16,.7,.2,1); }
@@ -182,8 +198,11 @@
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="top">
-    <a class="back" href="/">← Fariborz Aref</a>
-    <span class="here">Methods Lab</span>
+    <span class="brand">
+      <span class="fa">FA</span>
+      <span class="who">Fariborz Aref<small>The Methods Lab</small></span>
+    </span>
+    <a class="back" href="/">← Main site</a>
   </header>
 
   <main id="main">
@@ -291,8 +310,26 @@
           <b>The oldest cautions in social science are the newest ones for machine intelligence.</b>
           Structure, level, and restraint are not the housekeeping of research. They are the research.
         </p>
-        <div class="sig">
-          <a href="/">← Return to fariborzaref.github.io</a> · Methods Lab · Fariborz Aref
+        <a class="crosslink" href="/inequality">
+          <span class="ci">◑</span>
+          <span class="cb">
+            <span class="ce">The companion lab</span>
+            <span class="ct">Enter the Inequality Lab →</span>
+          </span>
+        </a>
+
+        <div class="sources">
+          <h3>On the demonstrations</h3>
+          Illustrative models grounded in classic results — W. S. Robinson on the ecological fallacy (1950),
+          the endogeneity of welfare effort in comparative political economy, and the "garden of forking paths"
+          from the replication-crisis literature. Data are schematic; the paradoxes are real.
+        </div>
+        <div class="foot">
+          <span>&copy; <span id="year"></span> Fariborz Aref</span>
+          <span class="dot">·</span>
+          <a href="/">Main site</a>
+          <span class="dot">·</span>
+          <a href="/inequality">Inequality Lab</a>
         </div>
       </section>
 
@@ -300,6 +337,8 @@
   </main>
 
   <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     // ---------- shared helpers ----------
     var NS = 'http://www.w3.org/2000/svg';
     function el(svg, tag, attrs) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
