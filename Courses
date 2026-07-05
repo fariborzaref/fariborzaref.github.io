@@ -13,7 +13,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Teaching &amp; Courses — Fariborz Aref | Research Methods &amp; Statistics</title>
-  <meta name="description" content="Courses and teaching by Fariborz Aref, sociologist: research methods and statistics taught as methodological judgment — the one skill automated analysis cannot replace. Syllabi, materials, and workshops.">
+  <meta name="description" content="Courses and teaching by Fariborz Aref, sociologist: research methods and statistics taught as methodological judgment — how to earn a claim, not merely compute one. Syllabi, materials, and workshops.">
   <meta name="author" content="Fariborz Aref">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://fariborzaref.github.io/courses">
@@ -171,10 +171,10 @@
         <span class="eyebrow">Teaching · Research Methods &amp; Statistics</span>
         <h1>Courses</h1>
         <p class="thesis">
-          Anyone can now compute a statistic in seconds; almost no one can say whether it should be believed.
-          That gap — between an answer and a <em>defensible</em> one — is what my teaching is about. In an age
-          of automated analysis, methodological judgment is the one skill a machine cannot supply, and it is
-          the skill these courses are built to develop.
+          Anyone can compute a statistic in seconds; almost no one can say whether it should be believed.
+          That gap — between an answer and a <em>defensible</em> one — is what my teaching is about.
+          Methodological judgment, knowing what a result can and cannot support, is what the numbers never
+          provide on their own, and it is the skill these courses are built to develop.
         </p>
         <p class="pull">I don't teach students to run the test. I teach them to know what the test can, and cannot, say.</p>
       </section>
@@ -216,17 +216,17 @@
               <li>Reason about sampling, measurement, and validity before touching data.</li>
               <li>Run and read core statistics: description, association, inference.</li>
               <li>Interpret results honestly — including what the numbers cannot show.</li>
-              <li>Use AI and software as tools, while owning the judgment themselves.</li>
+              <li>Treat statistical software as an instrument, while keeping the judgment their own.</li>
             </ul>
 
-            <div class="subh">How it is designed — for the AI age</div>
+            <div class="subh">How it is designed</div>
             <div class="design-note">
               <p>
                 The course is built around a single, <b>scaffolded original research project</b> that grows
                 week by week — proposal, design, analysis, and a final presentation — rather than one-off,
-                easily-outsourced problem sets. Assessment rewards <b>reasoning shown, not answers produced</b>,
-                which makes the work resistant to being generated wholesale and keeps the learning where it
-                belongs: in the student's own judgment. A transparent 1,000-point structure makes every
+                easily-outsourced problem sets. Assessment rewards <b>reasoning shown, not answers produced</b> —
+                work that reflects a student's own understanding rather than something assembled elsewhere —
+                and keeps the learning where it belongs: in the student's own judgment. A transparent 1,000-point structure makes every
                 expectation legible from day one.
               </p>
             </div>
@@ -287,14 +287,14 @@
 
       <!-- CLOSING -->
       <section class="closing rv">
-        <p class="line">Teaching method is teaching judgment. <b>In a world that can compute anything, that is the one thing worth learning.</b></p>
+        <p class="line">To teach method is to teach judgment. <b>When answers are cheap, judgment is the one thing worth learning.</b></p>
 
         <div class="cross-row">
-          <a class="crosslink" href="https://fariborzaref.github.io/methods">
+          <a class="crosslink" href="/methods">
             <span class="ci">∴</span>
             <span class="cb"><span class="ce">See it in practice</span><span class="ct">The Methods Lab →</span></span>
           </a>
-          <a class="crosslink" href="https://fariborzaref.github.io/inequality">
+          <a class="crosslink" href="/inequality">
             <span class="ci">◑</span>
             <span class="cb"><span class="ce">The companion lab</span><span class="ct">The Inequality Lab →</span></span>
           </a>
