@@ -238,6 +238,15 @@
       padding-left: 18px;
       box-shadow: inset 3px 0 0 var(--accent);
     }
+    .nav-group-label { margin: 18px 0 6px 14px; font-size: .64rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #b0a893; }
+    .sb-nav a.nav-deep {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      padding: 9px 14px; margin-bottom: 3px; border-radius: 10px;
+      color: var(--accent-ink); font-weight: 700; font-size: .93rem;
+      transition: background .16s ease, padding-left .16s ease;
+    }
+    .sb-nav a.nav-deep:hover { background: var(--panel-2); padding-left: 17px; }
+    .nd-glyph { color: var(--gold); font-size: .95rem; opacity: .85; }
 
     .sb-foot { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
     .sb-contact { color: var(--muted); font-size: .86rem; line-height: 1.8; }
@@ -683,6 +692,12 @@
         <li><a href="#honors" class="nav-link">Honors &amp; Awards</a></li>
         <li><a href="#foundations" class="nav-link">Foundations</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-group-label">In Depth</div>
+      <ul>
+        <li><a href="/inequality" class="nav-deep">The Inequality Lab <span class="nd-glyph">◑</span></a></li>
+        <li><a href="/methods" class="nav-deep">The Methods Lab <span class="nd-glyph">∴</span></a></li>
+        <li><a href="/courses" class="nav-deep">Courses <span class="nd-glyph">✎</span></a></li>
       </ul>
     </nav>
 
