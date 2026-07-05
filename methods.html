@@ -162,11 +162,11 @@
 
     /* closing */
     .closing { padding: clamp(48px, 9vw, 84px) 0; }
-    .closing .ai {
+    .closing .coda {
       font-family: var(--display); font-style: italic; font-size: clamp(1.3rem, 3vw, 1.7rem);
       line-height: 1.4; color: var(--ink); max-width: 30ch; margin: 0;
     }
-    .closing .ai b { color: var(--accent-ink); font-style: normal; }
+    .closing .coda b { color: var(--accent-ink); font-style: normal; }
     .crosslink { margin-top: 30px; display: inline-flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); position: relative; overflow: hidden; transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease; }
     .crosslink::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); transform: scaleY(0); transform-origin: top; transition: transform .28s cubic-bezier(.16,.7,.2,1); }
     .crosslink:hover { text-decoration: none; transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); box-shadow: 0 16px 34px rgba(15,118,110,.12); }
@@ -305,10 +305,11 @@
 
       <!-- CLOSING -->
       <section class="closing rv">
-        <p class="ai">
-          A model trained to search will find every one of these patterns — confidently, and at scale.
-          <b>The oldest cautions in social science are the newest ones for machine intelligence.</b>
-          Structure, level, and restraint are not the housekeeping of research. They are the research.
+        <p class="coda">
+          Each of these failures wears the costume of rigor — a clean number, a confident conclusion.
+          <b>They are not errors of arithmetic but errors of judgment, and no amount of computation
+          corrects them.</b> Structure, level, and restraint are not the housekeeping of research.
+          They are the research.
         </p>
         <a class="crosslink" href="/inequality">
           <span class="ci">◑</span>
