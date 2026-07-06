@@ -256,7 +256,7 @@
             </div>
             <div class="tally" id="tally"></div>
           </div>
-          <p class="note">Illustrative figures, rounded, from World Bank (income, life expectancy) and UNDP (schooling), c. 2023, across a population-weighted sample of ~5 billion people.</p>
+          <p class="note">Illustrative figures, rounded, from World Bank (income, life expectancy) and UNDP (schooling), c. 2023, across a population-weighted sample of ~5.6 billion people across 25 countries.</p>
         </div>
         <p class="lesson">Merit begins after the draw. The draw decides most of the outcome, and no one drafts their own ticket.</p>
       </section>
@@ -370,13 +370,21 @@
         { n: 'Bangladesh', pop: 173, gni: 8400, life: 74, sch: 7.4 },
         { n: 'Russia', pop: 144, gni: 32000, life: 70, sch: 12.8 },
         { n: 'Mexico', pop: 128, gni: 21000, life: 75, sch: 9.2 },
+        { n: 'the Philippines', pop: 117, gni: 10000, life: 70, sch: 9.0 },
+        { n: 'Egypt', pop: 113, gni: 13000, life: 70, sch: 9.6 },
+        { n: 'Vietnam', pop: 99, gni: 13000, life: 74, sch: 8.5 },
+        { n: 'Iran', pop: 89, gni: 15000, life: 74, sch: 10.6 },
+        { n: 'Turkey', pop: 85, gni: 33000, life: 76, sch: 9.0 },
         { n: 'Ethiopia', pop: 127, gni: 2800, life: 65, sch: 3.2 },
         { n: 'Japan', pop: 123, gni: 48000, life: 84, sch: 13.4 },
         { n: 'the DR Congo', pop: 102, gni: 1300, life: 59, sch: 6.8 },
         { n: 'Germany', pop: 84, gni: 63000, life: 81, sch: 14.1 },
+        { n: 'Colombia', pop: 52, gni: 16000, life: 73, sch: 8.9 },
         { n: 'Chad', pop: 18, gni: 1600, life: 53, sch: 2.6 },
         { n: 'Burundi', pop: 13, gni: 800, life: 62, sch: 3.1 },
-        { n: 'Switzerland', pop: 8.8, gni: 84000, life: 84, sch: 13.9 }
+        { n: 'Switzerland', pop: 8.8, gni: 84000, life: 84, sch: 13.9 },
+        { n: 'Norway', pop: 5.5, gni: 82000, life: 83, sch: 13.1 },
+        { n: 'Qatar', pop: 2.7, gni: 90000, life: 80, sch: 10.0 }
       ];
       var TOTAL = C.reduce(function (a, c) { return a + c.pop; }, 0);
       var highPct = Math.round(C.filter(function (c) { return c.gni >= 25000; }).reduce(function (a, c) { return a + c.pop; }, 0) / TOTAL * 100);
