@@ -1,520 +1,293 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S437KK8JX4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-S437KK8JX4');
-  </script>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>The Inequality Lab · Fariborz Aref · Chance, Structure, History</title>
-  <meta name="description" content="An interactive treatise on global inequality by Fariborz Aref: the birth lottery, the shape of the world's wealth, and the two-century divergence between nations.">
+  <title>The Inequality Lab · Fariborz Aref</title>
+  <meta name="description" content="Five interactive demonstrations on global inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, and the Great Divergence.">
   <meta name="author" content="Fariborz Aref">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://fariborzaref.github.io/inequality">
-  <link rel="icon" type="image/png" href="/favicon-32.png">
 
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Fariborz Aref">
-  <meta property="og:title" content="The Inequality Lab · Chance, Structure, History">
-  <meta property="og:description" content="Three interactive demonstrations of global inequality: the birth lottery, the champagne glass, and the great divergence.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fariborz Aref · Labs">
+  <meta property="og:title" content="The Inequality Lab · Fariborz Aref">
+  <meta property="og:description" content="Five interactive demonstrations on global inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, and the Great Divergence.">
   <meta property="og:url" content="https://fariborzaref.github.io/inequality">
   <meta property="og:image" content="https://fariborzaref.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Inequality Lab · Fariborz Aref">
+  <meta name="twitter:description" content="Five interactive demonstrations on global inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, and the Great Divergence.">
   <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
+
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#12100c">
+  <link rel="icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="F. Aref Labs">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/labs.css">
+  <script src="assets/js/labs.js"></script>
 
-  <style>
-    :root {
-      --bg: #fdfcf9; --panel: #ffffff; --panel-2: #f4f1ea;
-      --ink: #232c33; --muted: #6d767d; --line: #e7e1d5;
-      --accent: #0f766e; --accent-ink: #0b5750; --navy: #1d3f7a; --terra: #b45b3e; --gold: #9a7428;
-      --shadow: 0 22px 60px rgba(35, 44, 51, .10);
-      --display: "Playfair Display", Georgia, "Times New Roman", serif;
-      --body: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
-      --wrap: 880px;
-    }
-    * { box-sizing: border-box; }
-    html, body { max-width: 100%; overflow-x: hidden; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-    a { color: var(--accent-ink); text-decoration: none; }
-    a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; color: var(--ink); }
-    ::selection { background: var(--accent); color: #fff; }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-    .skip { position: absolute; left: -9999px; }
-    .skip:focus { left: 8px; top: 8px; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 100; }
-
-    .top { position: sticky; top: 0; z-index: 40; background: rgba(253,252,249,.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: max(11px, env(safe-area-inset-top)) clamp(20px,5vw,40px) 11px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .top .brand { display: inline-flex; align-items: center; gap: 11px; }
-    .top .fa { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(150deg, var(--panel-2), #eee7d8); border: 1px solid var(--line); font-family: var(--display); font-weight: 700; font-size: .92rem; color: var(--ink); }
-    .top .who { font-family: var(--display); font-weight: 700; font-size: .96rem; color: var(--ink); line-height: 1; }
-    .top .who small { display: block; font-family: var(--body); font-weight: 600; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
-    .top .back { font-weight: 700; font-size: .84rem; color: var(--accent-ink); }
-    .top .back:hover { text-decoration: none; opacity: .8; }
-
-    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
-
-    .hero { padding: clamp(46px, 8vw, 84px) 0 38px; border-bottom: 1px solid var(--line); }
-    .eyebrow { display: inline-block; color: var(--accent); font-weight: 700; font-size: .74rem; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 16px; }
-    .hero h1 { margin: 0; font-size: clamp(1.85rem, 3.4vw, 2.5rem); line-height: 1.08; letter-spacing: -.015em; }
-    .hero .thesis { margin: 24px 0 0; max-width: 62ch; font-size: 1.12rem; color: #3d474e; }
-    .hero .thesis em { font-style: italic; color: var(--accent-ink); }
-    .pull { font-family: var(--display); font-style: italic; font-size: 1.18rem; line-height: 1.42; color: var(--accent-ink); margin: 24px 0 0; max-width: 46ch; }
-
-    .index { padding: 30px 0; border-bottom: 1px solid var(--line); }
-    .index-title { font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 14px; }
-    .index ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-    .index a { display: flex; align-items: baseline; gap: 14px; padding: 10px 12px; border-radius: 10px; color: var(--ink); }
-    .index a:hover { background: var(--panel-2); text-decoration: none; }
-    .index .rn { font-family: var(--display); color: var(--gold); font-weight: 700; font-size: .95rem; min-width: 34px; letter-spacing: .1em; }
-    .index .nm { font-family: var(--display); font-weight: 600; font-size: 1.08rem; }
-    .index .ds { color: var(--muted); font-size: .88rem; margin-left: auto; text-align: right; }
-
-    .demo { padding: clamp(44px, 8vw, 72px) 0; border-bottom: 1px solid var(--line); scroll-margin-top: 68px; }
-    .demo-rn { font-family: var(--display); font-size: 1rem; letter-spacing: .18em; color: var(--gold); font-weight: 700; }
-    .demo h2 { margin: 6px 0 0; font-size: clamp(1.55rem, 3vw, 1.95rem); line-height: 1.14; letter-spacing: -.012em; }
-    .demo .lineage { margin: 14px 0 0; padding: 14px 18px; border-left: 3px solid var(--gold); background: var(--panel-2); border-radius: 0 12px 12px 0; font-family: var(--display); font-style: italic; font-size: 1.06rem; color: var(--accent-ink); max-width: 62ch; line-height: 1.4; }
-    .demo .intro { margin: 18px 0 0; max-width: 64ch; color: #3d474e; }
-
-    .lab-wrap { margin-top: 24px; border: 1px solid var(--line); border-radius: 20px; background: var(--panel); padding: clamp(18px, 4vw, 26px); box-shadow: var(--shadow); }
-    .readout { padding: 14px 16px; background: var(--panel-2); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 12px; font-size: .98rem; color: var(--ink); line-height: 1.55; margin-bottom: 16px; }
-    .readout b { color: var(--accent-ink); font-weight: 700; }
-    .lesson { margin: 20px 0 0; font-family: var(--display); font-style: italic; font-size: 1.12rem; color: var(--ink); max-width: 60ch; }
-    .lesson::before { content: "Lesson"; font-style: normal; font-family: var(--body); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px; }
-    .note { margin: 14px 0 0; font-size: .8rem; color: var(--muted); }
-
-    .btn { border: 1px solid var(--accent); background: var(--accent); color: #fff; border-radius: 999px; padding: 12px 26px; font-family: var(--body); font-weight: 700; font-size: .95rem; cursor: pointer; transition: background .16s ease, transform .16s ease; }
-    .btn:hover { background: var(--accent-ink); transform: translateY(-1px); }
-    .btn.ghost { background: var(--panel); color: var(--accent-ink); padding: 12px 20px; }
-    .btn.ghost:hover { background: var(--panel-2); }
-    .toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
-    .toggle button { border: 0; background: var(--panel); color: var(--muted); font-family: var(--body); font-weight: 700; font-size: .86rem; padding: 9px 18px; cursor: pointer; transition: background .18s ease, color .18s ease; }
-    .toggle button.on { background: var(--accent); color: #fff; }
-
-    /* ---- I. Birth Lottery ---- */
-    .stage { text-align: center; position: relative; }
-    .stage-kicker { font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
-    .stage-name { font-family: var(--display); font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.05; margin: 10px 0 4px; letter-spacing: -.02em; min-height: 1.1em; }
-    .stage-name.spin { color: var(--muted); }
-    .stage-band { color: var(--accent-ink); font-weight: 700; font-size: .92rem; min-height: 1.2em; }
-    .odds { color: var(--muted); font-size: .86rem; margin-top: 2px; min-height: 1em; }
-    .stats { display: grid; gap: 16px; margin: 26px auto 0; max-width: 560px; text-align: left; opacity: 0; transition: opacity .4s ease; }
-    .stats.show { opacity: 1; }
-    .stat .stat-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
-    .stat .stat-label { font-size: .82rem; font-weight: 700; color: var(--ink); }
-    .stat .stat-val { font-family: var(--display); font-weight: 700; font-size: 1.05rem; }
-    .track { position: relative; height: 9px; border-radius: 999px; background: var(--panel-2); border: 1px solid var(--line); overflow: hidden; }
-    .fill { position: absolute; inset: 0 auto 0 0; width: 0; border-radius: 999px; transition: width .7s cubic-bezier(.16,.7,.2,1); }
-    .rangelabels { display: flex; justify-content: space-between; font-size: .7rem; color: var(--muted); margin-top: 4px; }
-    .takeaway { margin: 24px auto 0; max-width: 520px; font-family: var(--display); font-style: italic; font-size: 1.14rem; line-height: 1.45; color: var(--ink); min-height: 1.4em; opacity: 0; transition: opacity .4s ease; }
-    .takeaway.show { opacity: 1; }
-    .stage-controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
-    .tally { margin-top: 18px; font-size: .86rem; color: var(--muted); min-height: 1.2em; }
-    .tally b { color: var(--accent-ink); }
-
-    /* ---- II. Champagne Glass ---- */
-    .glass-summary { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 18px; }
-    .gs { flex: 1 1 160px; border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: var(--panel-2); }
-    .gs .n { font-family: var(--display); font-weight: 700; font-size: 1.9rem; letter-spacing: -.02em; line-height: 1; color: var(--accent-ink); }
-    .gs .l { margin-top: 8px; font-size: .84rem; color: #3d474e; }
-    .glass { display: grid; gap: 5px; margin: 6px 0 4px; }
-    .grow { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 12px; }
-    .grow .glabel { font-size: .74rem; color: var(--muted); text-align: right; }
-    .gbar-track { height: 22px; display: flex; justify-content: center; }
-    .gbar { height: 100%; border-radius: 4px; transition: width .6s cubic-bezier(.16,.7,.2,1), background .3s ease; cursor: pointer; min-width: 2px; }
-    .gbar:hover { filter: brightness(1.08); }
-    .glass-controls { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
-
-    /* ---- III. Great Divergence ---- */
-    .div-year { font-family: var(--display); font-weight: 700; font-size: 2.4rem; letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
-    .div-ratio { color: var(--accent-ink); font-weight: 700; margin-left: 10px; font-size: .95rem; }
-    .div-rows { display: grid; gap: 10px; margin: 16px 0 4px; }
-    .drow { display: grid; grid-template-columns: 132px 1fr; align-items: center; gap: 12px; }
-    .drow .dlabel { font-size: .82rem; font-weight: 600; color: var(--ink); }
-    .dbar-track { position: relative; height: 26px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; }
-    .dbar { position: absolute; inset: 0 auto 0 0; height: 100%; border-radius: 5px; display: flex; align-items: center; transition: width .2s linear; }
-    .dval { font-size: .72rem; font-weight: 700; color: #fff; padding-left: 8px; white-space: nowrap; font-variant-numeric: tabular-nums; }
-    .dval.out { color: var(--ink); }
-    .div-controls { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
-    .div-controls label { font-size: .82rem; font-weight: 700; color: var(--ink); display: block; margin-bottom: 10px; }
-    input[type=range].slider { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 999px; background: var(--line); }
-    input[type=range].slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
-    input[type=range].slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 2px solid #fff; }
-
-    .closing { padding: clamp(48px, 9vw, 84px) 0; }
-    .closing .coda { font-family: var(--display); font-style: italic; font-size: clamp(1.3rem, 3vw, 1.7rem); line-height: 1.4; color: var(--ink); max-width: 34ch; margin: 0; }
-    .closing .coda b { color: var(--accent-ink); font-style: normal; }
-    .crosslink { margin-top: 30px; display: inline-flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); position: relative; overflow: hidden; transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease; }
-    .crosslink::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); transform: scaleY(0); transform-origin: top; transition: transform .28s cubic-bezier(.16,.7,.2,1); }
-    .crosslink:hover { text-decoration: none; transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); box-shadow: 0 16px 34px rgba(15,118,110,.12); }
-    .crosslink:hover::before { transform: scaleY(1); }
-    .crosslink .ci { width: 44px; height: 44px; flex: none; border-radius: 12px; display: grid; place-items: center; background: var(--panel-2); color: var(--accent-ink); font-size: 1.2rem; transition: background .22s ease, color .22s ease; }
-    .crosslink:hover .ci { background: var(--accent); color: #fff; }
-    .crosslink .cb { display: flex; flex-direction: column; gap: 2px; }
-    .crosslink .ce { font-size: .66rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
-    .crosslink .ct { font-family: var(--display); font-weight: 700; font-size: 1.05rem; color: var(--ink); }
-    .sources { margin-top: 30px; padding-top: 22px; border-top: 1.5px solid rgba(35,44,51,.2); color: var(--muted); font-size: .82rem; line-height: 1.7; }
-    .sources h3 { font-family: var(--body); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
-    .foot { margin-top: 22px; color: var(--muted); font-size: .84rem; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
-    .foot a { font-weight: 700; }
-    .foot .dot { opacity: .45; }
-
-    .js .rv { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16,.7,.2,1), transform .7s cubic-bezier(.16,.7,.2,1); }
-    .js .rv.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } .js .rv { opacity: 1 !important; transform: none !important; } }
-    @media (max-width: 560px) {
-      .grow { grid-template-columns: 70px 1fr; } .grow .glabel { font-size: .68rem; }
-      .drow { grid-template-columns: 96px 1fr; } .div-year { font-size: 2rem; }
-      .top .who small { display: none; }
-    }
-  </style>
-  <script>document.documentElement.classList.add('js');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S437KK8JX4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-S437KK8JX4');
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "The Inequality Lab \u00b7 Fariborz Aref",
+  "description": "Five interactive demonstrations on global inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, and the Great Divergence.",
+  "url": "https://fariborzaref.github.io/inequality",
+  "author": {
+    "@type": "Person",
+    "@id": "https://fariborzaref.com/#fariborz-aref",
+    "name": "Fariborz Aref",
+    "url": "https://fariborzaref.com/"
+  }
+}
+  </script>
 </head>
-
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="top">
-    <span class="brand">
-      <span class="fa">FA</span>
-      <span class="who">Fariborz Aref<small>The Inequality Lab</small></span>
-    </span>
-    <a class="back" href="/">← Main site</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">Fariborz Aref<span>Labs</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/">Labs</a></li>
+          <li><a href="/inequality" aria-current="page">Inequality Lab</a></li>
+          <li><a href="/methods">Methods Lab</a></li>
+          <li><a href="/courses">Courses</a></li>
+          <li><a class="ext" href="https://fariborzaref.com/">Main site</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main id="main">
-    <div class="wrap">
 
+    <div class="wrap">
       <section class="hero">
-        <span class="eyebrow">A Treatise in Three Demonstrations · Global Inequality</span>
-        <h1>The Inequality Lab</h1>
-        <p class="thesis">
-          Inequality is not one thing but three questions. <em>Where do life chances begin?</em>
-          <em>What shape does the world actually take?</em> <em>And how did the gap between nations grow
-          so vast?</em> Three interactives follow: chance, structure, history. Each is a face of the same
-          fact: that outcomes are distributed by forces larger than any individual.
-        </p>
-        <p class="pull">The world is not random. It is structured. So is inequality.</p>
+        <p class="kicker">The Inequality Lab</p>
+        <h1>How the world's advantages are <em>distributed.</em></h1>
+        <p class="lead">Five demonstrations, each built on published data. They follow inequality from the circumstances of birth, through the measurement of income and wealth, to the policies that reshape it and the history that produced it.</p>
+        <p class="lead soft">Every figure is sourced at the foot of the page. Where a chart simplifies, the note beneath it says how.</p>
       </section>
 
       <nav class="index" aria-label="Contents">
         <div class="index-title">Contents</div>
         <ol>
-          <li><a href="#lottery"><span class="rn">I</span><span class="nm">The Birth Lottery</span><span class="ds">chance · where a life begins</span></a></li>
-          <li><a href="#glass"><span class="rn">II</span><span class="nm">The Champagne Glass</span><span class="ds">structure · the shape of the world</span></a></li>
-          <li><a href="#divergence"><span class="rn">III</span><span class="nm">The Great Divergence</span><span class="ds">history · how the gap was made</span></a></li>
+          <li><a href="#lottery"><span class="rn">I</span><span class="nm">The Birth Lottery</span><span class="ds">Where a life begins</span></a></li>
+          <li><a href="#glass"><span class="rn">II</span><span class="nm">The Champagne Glass</span><span class="ds">How world income and wealth are shared</span></a></li>
+          <li><a href="#lorenz"><span class="rn">III</span><span class="nm">The Lorenz Curve and the Gini</span><span class="ds">How inequality is measured</span></a></li>
+          <li><a href="#redistribution"><span class="rn">IV</span><span class="nm">Redistribution by Welfare Regime</span><span class="ds">What states do to market inequality</span></a></li>
+          <li><a href="#divergence"><span class="rn">V</span><span class="nm">The Great Divergence</span><span class="ds">How the gap between regions formed</span></a></li>
         </ol>
       </nav>
 
-      <!-- I. BIRTH LOTTERY -->
       <section class="demo rv" id="lottery">
-        <div class="demo-rn">I</div>
-        <h2>The Birth Lottery</h2>
-        <p class="lineage">Rawls asked us to choose a society from behind a veil of ignorance, not knowing who we would be. Every person alive has already made that draw, and never chose.</p>
-        <p class="intro">
-          Press the button and be born, at random, into today's world, weighted honestly by where people
-          actually are. Then ask what you did to deserve the result.
-        </p>
-
-        <div class="lab-wrap">
-          <div class="stage">
-            <div class="stage-kicker">You are born in…</div>
-            <div class="stage-name" id="name">…</div>
-            <div class="stage-band" id="band"></div>
-            <div class="odds" id="odds"></div>
-            <div class="stats" id="stats">
-              <div class="stat">
-                <div class="stat-top"><span class="stat-label">Life expectancy at birth</span><span class="stat-val" id="v-life"></span></div>
-                <div class="track"><div class="fill" id="f-life" style="background:var(--accent)"></div></div>
-                <div class="rangelabels"><span>50 yrs</span><span>85 yrs</span></div>
-              </div>
-              <div class="stat">
-                <div class="stat-top"><span class="stat-label">Income per person (PPP)</span><span class="stat-val" id="v-inc"></span></div>
-                <div class="track"><div class="fill" id="f-inc" style="background:var(--navy)"></div></div>
-                <div class="rangelabels"><span>$800</span><span>$90,000</span></div>
-              </div>
-              <div class="stat">
-                <div class="stat-top"><span class="stat-label">Years of schooling (avg adult)</span><span class="stat-val" id="v-sch"></span></div>
-                <div class="track"><div class="fill" id="f-sch" style="background:var(--gold)"></div></div>
-                <div class="rangelabels"><span>2 yrs</span><span>15 yrs</span></div>
-              </div>
-            </div>
-            <p class="takeaway" id="takeaway"></p>
-            <div class="stage-controls">
-              <button class="btn" id="born" type="button">Be born into the world</button>
-              <button class="btn ghost" id="again" type="button" style="display:none">Be born again</button>
-            </div>
-            <div class="tally" id="tally"></div>
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>I.</b>Demonstration 1</span>
+            <h2>The Birth Lottery</h2>
+            <p class="lineage">Rawls asked us to choose principles of justice from behind a veil of ignorance, without knowing who we would be. Every person alive has already drawn a place of birth, and none chose it.</p>
           </div>
-          <p class="note">Illustrative figures, rounded, from World Bank (income, life expectancy) and UNDP (schooling), c. 2023, across a population-weighted sample of ~5.6 billion people across 25 countries.</p>
+          <div><p class="intro">Press the button to be born at random into one of 25 countries that together hold about 70 percent of humanity. The draw is weighted by population, so each person in these countries has the same chance of being you. The bars compare the outcome with the population-weighted average of the sample, marked by the black tick.</p></div>
         </div>
-        <p class="lesson">Merit begins after the draw. The draw decides most of the outcome, and no one drafts their own ticket.</p>
+        <div class="panel lottery" id="lottery-panel">
+          <div class="lot-kicker">You are born in</div>
+          <div class="lot-name" id="lot-name">&hellip;</div>
+          <div class="lot-band" id="lot-band"></div>
+          <div class="lot-bars" id="lot-bars">
+            <div class="bar-row">
+              <div class="bar-top"><span>Life expectancy at birth</span><b id="v-life"></b></div>
+              <div class="track"><div class="fill" id="f-life" style="background:var(--c-blue)"></div><div class="tick-world" id="t-life"></div></div>
+              <div class="bar-ends"><span>50 years</span><span>86 years</span></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span>Income per person, PPP dollars</span><b id="v-gni"></b></div>
+              <div class="track"><div class="fill" id="f-gni" style="background:var(--accent)"></div><div class="tick-world" id="t-gni"></div></div>
+              <div class="bar-ends"><span>$1,000</span><span>$125,000 (log scale)</span></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span>Mean years of schooling, adults</span><b id="v-sch"></b></div>
+              <div class="track"><div class="fill" id="f-sch" style="background:var(--c-green)"></div><div class="tick-world" id="t-sch"></div></div>
+              <div class="bar-ends"><span>0 years</span><span>15 years</span></div>
+            </div>
+          </div>
+          <p class="lot-take" id="lot-take"></p>
+          <div class="controls"><button class="btn" id="lot-go" type="button">Be born into the world</button></div>
+          <div class="lot-tally" id="lot-tally"></div>
+          <p class="note" style="text-align:left"><span class="note-label">Data</span>Population: UN World Population Prospects, 2023. Income: World Bank GNI per capita, PPP (current international dollars), 2023. Life expectancy: UN DESA, 2023. Schooling: UNDP Human Development Report 2025, 2023 values. The 25 countries are a sample; the poorest and smallest countries are underrepresented.</p>
+        </div>
+        <p class="lesson">Life expectancy differs by thirty years and income by a factor of a hundred across these draws. All of it is settled before the person drawn has done anything.</p>
       </section>
 
-      <!-- II. CHAMPAGNE GLASS -->
       <section class="demo rv" id="glass">
-        <div class="demo-rn">II</div>
-        <h2>The Champagne Glass</h2>
-        <p class="lineage">Marx read inequality in who owns. The shape below is what ownership looks like when the whole planet is stacked into ten equal tenths of people. It is not a pyramid. It is a goblet.</p>
-        <p class="intro">
-          Each bar is a tenth of humanity, poorest at the bottom, richest at the top; its width is the share
-          of the world's income, or wealth, that tenth holds. Switch between the two and watch the stem
-          thin to nothing.
-        </p>
-
-        <div class="lab-wrap">
-          <div class="glass-summary">
-            <div class="gs"><div class="n" id="gs-top">…</div><div class="l">held by the richest 10%</div></div>
-            <div class="gs"><div class="n" id="gs-bot">…</div><div class="l">held by the poorest 50%</div></div>
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>II.</b>Demonstration 2</span>
+            <h2>The Champagne Glass</h2>
+            <p class="lineage">The 1992 UNDP Human Development Report drew world income as a champagne glass: a wide bowl for the rich and a thin stem for everyone else. Three decades later the shape persists.</p>
           </div>
-          <div class="glass" id="glass"></div>
-          <div class="readout" id="g-readout" style="margin:14px 0 0"></div>
-          <div class="glass-controls">
-            <span class="toggle" role="group" aria-label="Measure">
-              <button id="g-income" class="on" type="button">Income</button>
-              <button id="g-wealth" type="button">Wealth</button>
-            </span>
-            <span class="note" style="margin:0">Tap any tenth to read its share.</span>
-          </div>
-          <p class="note">Global shares, World Inequality Report 2022 (approximate; decile splits interpolated from published top-10 / middle-40 / bottom-50 figures).</p>
+          <div><p class="intro">Each bar is one tenth of the world's adults, from the poorest at the bottom to the richest at the top. Its width is that tenth's share of world income or wealth. Switch to wealth and the stem nearly disappears.</p></div>
         </div>
-        <p class="lesson">Averages hide the goblet. The world's mean income sounds comfortable; almost no one lives at the mean.</p>
+        <div class="panel">
+          <div class="panel-grid">
+            <div>
+              <svg class="chart" id="glass-chart" role="img" aria-label="Shares of world income or wealth by decile"></svg>
+            </div>
+            <div>
+              <div class="controls" style="margin:0 0 1.4rem"><div class="seg" id="glass-seg" role="group" aria-label="Measure"><button type="button" data-v="income" aria-pressed="true">Income</button><button type="button" data-v="wealth" aria-pressed="false">Wealth</button></div></div>
+              <div class="stats">
+                <div class="stat"><span class="stat-label">Richest 10%</span><span class="stat-val" id="gl-top"></span></div>
+                <div class="stat"><span class="stat-label">Middle 40%</span><span class="stat-val" id="gl-mid"></span></div>
+                <div class="stat"><span class="stat-label">Poorest 50%</span><span class="stat-val" id="gl-bot"></span></div>
+              </div>
+              <p class="readout" id="glass-readout" style="margin-top:1.2rem"></p>
+            </div>
+          </div>
+          <p class="note"><span class="note-label">Data</span>World Inequality Report 2022, global shares for 2021 in purchasing power parity. The report publishes the bottom 50%, middle 40%, and top 10%. The split of each group into deciles is interpolated here; group totals match the report.</p>
+        </div>
+        <p class="lesson">An average describes almost no one in a distribution shaped like this. The world's mean income sits far above what most people receive.</p>
       </section>
 
-      <!-- III. GREAT DIVERGENCE -->
+      <section class="demo rv" id="lorenz">
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>III.</b>Demonstration 3</span>
+            <h2>The Lorenz Curve and the Gini</h2>
+            <p class="lineage">Max Lorenz proposed his curve in 1905; Corrado Gini derived his coefficient from the same idea in 1912. Most published statements about inequality rest on these two tools.</p>
+          </div>
+          <div><p class="intro">Line up everyone from poorest to richest and ask what share of total income the poorest p percent receive. Perfect equality gives the dashed diagonal. The further the curve sags, the larger the Gini. Move the slider, or pick a real country.</p></div>
+        </div>
+        <div class="panel">
+          <div class="panel-grid">
+            <div><svg class="chart" id="lorenz-chart" role="img" aria-label="Lorenz curve for the selected Gini coefficient"></svg></div>
+            <div>
+              <div class="range-row"><label for="lz-g">Gini <b id="lz-gval" style="font-family:var(--serif);font-size:1.3rem;color:var(--ink);font-weight:400"></b></label><input type="range" id="lz-g" min="200" max="700" value="394" step="1"></div>
+              <div class="controls" style="margin:0.4rem 0 1.4rem"><div class="seg" id="lz-presets" role="group" aria-label="Country presets"></div></div>
+              <div class="stats">
+                <div class="stat"><span class="stat-label" style="color:var(--c-blue)">Poorest half holds</span><span class="stat-val" id="lz-b50"></span></div>
+                <div class="stat"><span class="stat-label" style="color:var(--c-terra)">Richest tenth holds</span><span class="stat-val" id="lz-t10"></span></div>
+                <div class="stat"><span class="stat-label">Top-tenth person vs. bottom-half person</span><span class="stat-val" id="lz-ratio"></span></div>
+              </div>
+              <p class="readout" id="lz-readout" style="margin-top:1.2rem"></p>
+            </div>
+          </div>
+          <p class="note"><span class="note-label">Method</span>The curve assumes a lognormal income distribution with the chosen Gini (&sigma; = &radic;2 &middot; &Phi;<sup>&minus;1</sup>((G+1)/2)). Real distributions have heavier top tails, so the top-tenth share is understated at high Gini values. Presets: OECD Income Distribution Database via Our World in Data, Gini of equivalised household income. Hover the chart to read any point.</p>
+        </div>
+        <p class="lesson">A single number summarizes a whole curve. Two societies with the same Gini can still differ at the top or the bottom, which is why careful work reports shares as well.</p>
+      </section>
+
+      <section class="demo rv" id="redistribution">
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>IV.</b>Demonstration 4</span>
+            <h2>Redistribution by Welfare Regime</h2>
+            <p class="lineage">Esping-Andersen's <i>Three Worlds of Welfare Capitalism</i> (1990) sorted rich democracies into social democratic, conservative, and liberal regimes. Later work added southern European and East Asian types.</p>
+          </div>
+          <div><p class="intro">Each row shows a country's Gini twice: for market income, before taxes and transfers (open circle), and for disposable income, after them (filled circle). The line between is what the state does. Hover a row for its figures.</p></div>
+        </div>
+        <div class="panel">
+          <div class="controls" style="margin:0 0 1.2rem;justify-content:space-between">
+            <div class="seg" id="redist-seg" role="group" aria-label="Sort"><button type="button" data-v="reduction" aria-pressed="true">Sort by reduction</button><button type="button" data-v="regime" aria-pressed="false">Group by regime</button></div>
+            <div class="legend" id="redist-legend"></div>
+          </div>
+          <svg class="chart" id="redist-chart" role="img" aria-label="Market and disposable income Gini by country"></svg>
+          <div class="stats" style="margin-top:1.4rem">
+            <div class="stat"><span class="stat-label">Range of market-income Gini</span><span class="stat-val" id="rd-mrange"></span></div>
+            <div class="stat"><span class="stat-label">Range of disposable-income Gini</span><span class="stat-val" id="rd-drange"></span></div>
+          </div>
+          <p class="readout" id="redist-readout" style="margin-top:1.2rem">Market inequality varies within a narrow band across these countries. Final inequality varies far more, and the difference is made by taxes and transfers.</p>
+          <p class="note"><span class="note-label">Data</span>OECD Income Distribution Database, via Our World in Data: Gini of equivalised household income, total population, latest year available (2020 to 2023). Regime labels follow common usage in comparative research; the Netherlands and Ireland are frequently classed as hybrids. Public pensions count as transfers, so retirees have little market income; this raises the market-income Gini most where public pensions are large.</p>
+        </div>
+        <p class="lesson">Rich democracies begin with similar levels of market inequality and finish far apart. Much of the inequality people experience is a policy outcome.</p>
+      </section>
+
       <section class="demo rv" id="divergence">
-        <div class="demo-rn">III</div>
-        <h2>The Great Divergence</h2>
-        <p class="lineage">In 1820 the richest region on Earth was perhaps three times the poorest. Weber asked why some societies industrialised first; the slider below is the two centuries of advantage that answer compounded into.</p>
-        <p class="intro">
-          Drag through time and watch average income per person pull apart. In the early 1800s the world's
-          regions were poor together. Then a few pulled away, and the distance became the defining fact of
-          the modern world.
-        </p>
-
-        <div class="lab-wrap">
-          <div><span class="div-year" id="d-year">1820</span><span class="div-ratio" id="d-ratio"></span></div>
-          <div class="div-rows" id="d-rows"></div>
-          <div class="div-controls">
-            <label for="d-slider">Drag the year: <span id="d-yearlabel">1820</span></label>
-            <input type="range" min="1820" max="2018" value="1820" step="1" class="slider" id="d-slider" aria-label="Year">
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>V.</b>Demonstration 5</span>
+            <h2>The Great Divergence</h2>
+            <p class="lineage">Kenneth Pomeranz gave the term its modern meaning in 2000. Around 1800 the richest and poorest regions of the world were separated by a factor of about three. Two centuries of uneven growth widened the gap.</p>
           </div>
-          <p class="note">Real GDP per capita, approximate, drawn from the Maddison Project regional series (2011 international dollars). Values are rounded for illustration.</p>
+          <div><p class="intro">Drag through time to trace average income per person in seven world regions. The log scale shows growth rates as slopes; the linear scale shows the gap as people experience it.</p></div>
         </div>
-        <p class="lesson">Inequality between nations is not ancient and not natural. It is roughly two hundred years old, which means it was made, and can be unmade.</p>
+        <div class="panel">
+          <div class="controls" style="margin:0 0 1rem;justify-content:space-between">
+            <div class="range-row"><label for="div-year">Year <b id="div-yval" style="font-family:var(--serif);font-size:1.3rem;color:var(--ink);font-weight:400"></b></label><input type="range" id="div-year" min="1820" max="2008" value="2008" step="1"></div>
+            <div class="seg" id="div-seg" role="group" aria-label="Scale"><button type="button" data-v="log" aria-pressed="true">Log scale</button><button type="button" data-v="lin" aria-pressed="false">Linear</button></div>
+          </div>
+          <svg class="chart" id="div-chart" role="img" aria-label="GDP per capita by world region, 1820 to 2008"></svg>
+          <div class="legend" id="div-list" style="margin-top:0.8rem"></div>
+          <div class="stats" style="margin-top:1.2rem">
+            <div class="stat"><span class="stat-label">Richest region relative to poorest</span><span class="stat-val" id="div-ratio"></span></div>
+          </div>
+          <p class="readout" id="div-readout" style="margin-top:1.2rem"></p>
+          <p class="note"><span class="note-label">Data</span>GDP per capita in 1990 international Geary-Khamis dollars, from A. Maddison, <i>Contours of the World Economy, 1&ndash;2030 AD</i> (2007), table A.7, for 1820, 1870, 1913, 1950, 1973, and 2008. Values between those years are interpolated on a log scale. Western offshoots are the United States, Canada, Australia, and New Zealand.</p>
+        </div>
+        <p class="lesson">The gap between rich and poor regions is largely a creation of the last two centuries. Since 1973, Asia's growth has narrowed it for a large share of humanity, while Africa's position has slipped further.</p>
       </section>
 
-      <!-- CLOSING -->
       <section class="closing rv">
-  <p class="coda">
-  Chance places you, structure holds you, and history explains the gap.
-  <b>None of the three is a matter of merit; all three are products of collective choices.</b>
-  That is why inequality is a question for sociology.
-</p>
-
-
-        <a class="crosslink" href="/methods">
-          <span class="ci">∴</span>
-          <span class="cb">
-            <span class="ce">The companion lab</span>
-            <span class="ct">Open the Methods Lab →</span>
-          </span>
-        </a>
-
+        <p class="coda">Place of birth, the shape of the distribution, the reach of the state, and the long history of growth each set limits on individual effort. <em>Sociology studies those limits.</em></p>
+        <a class="cross" href="/methods"><span><small>Companion lab</small>The Methods Lab &rarr;</span></a>
         <div class="sources">
           <h3>Sources</h3>
-          World Inequality Report 2022 (wir2022.wid.world) · World Bank, World Development Indicators &amp; Poverty data ·
-          UNDP, Human Development Report · Maddison Project Database (regional GDP per capita) · J. Rawls, <i>A Theory of Justice</i>.
-          Figures are rounded approximations for illustration; verify against current sources before citing.
-        </div>
-        <div class="foot">
-          <span>&copy; <span id="year"></span> Fariborz Aref</span>
-          <span class="dot">·</span>
-          <a href="/">Main site</a>
-          <span class="dot">·</span>
-          <a href="/methods">Methods Lab</a>
+          <ol>
+            <li>Chancel, L., Piketty, T., Saez, E., and Zucman, G. (2022). <i>World Inequality Report 2022</i>. World Inequality Lab. <a href="https://wir2022.wid.world/">wir2022.wid.world</a></li>
+            <li>OECD Income Distribution Database, via Our World in Data, &ldquo;Income inequality before and after taxes and transfers.&rdquo; <a href="https://ourworldindata.org/income-inequality-before-and-after-taxes">ourworldindata.org</a></li>
+            <li>Maddison, A. (2007). <i>Contours of the World Economy, 1&ndash;2030 AD</i>. Oxford University Press, table A.7.</li>
+            <li>World Bank, World Development Indicators: GNI per capita, PPP (current international $).</li>
+            <li>United Nations, World Population Prospects and DESA life-expectancy estimates.</li>
+            <li>UNDP (2025). <i>Human Development Report 2025</i>, Statistical Annex, Table 1.</li>
+            <li>UNDP (1992). <i>Human Development Report 1992</i>. Oxford University Press.</li>
+            <li>Lorenz, M. O. (1905). Methods of measuring the concentration of wealth. <i>Publications of the American Statistical Association</i>, 9(70), 209&ndash;219.</li>
+            <li>Esping-Andersen, G. (1990). <i>The Three Worlds of Welfare Capitalism</i>. Princeton University Press.</li>
+            <li>Pomeranz, K. (2000). <i>The Great Divergence</i>. Princeton University Press.</li>
+            <li>Rawls, J. (1971). <i>A Theory of Justice</i>. Harvard University Press.</li>
+          </ol>
         </div>
       </section>
-
     </div>
   </main>
 
+  <footer class="site-footer">
+    <div class="foot-inner">
+      <span class="foot">&copy; <span data-year>2026</span> Fariborz Aref</span>
+      <span class="foot">
+        <a href="https://fariborzaref.com/">Main site</a>
+        <a href="https://orcid.org/0000-0001-6622-1824">ORCID</a>
+        <a href="https://github.com/fariborzaref">GitHub</a>
+      </span>
+    </div>
+  </footer>
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
     (function () {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-      document.querySelectorAll('.rv').forEach(function (n) { io.observe(n); });
+      var t = document.querySelector('.nav-toggle'), n = document.getElementById('site-nav');
+      if (!t || !n) return;
+      function set(o) { t.setAttribute('aria-expanded', String(o)); n.classList.toggle('open', o); t.setAttribute('aria-label', o ? 'Close navigation' : 'Open navigation'); }
+      t.addEventListener('click', function (e) { e.preventDefault(); set(t.getAttribute('aria-expanded') !== 'true'); });
+      n.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
     })();
-
-    // ============ I. BIRTH LOTTERY ============
-    (function () {
-      var C = [
-        { n: 'India', pop: 1428, gni: 8300, life: 67, sch: 6.6 },
-        { n: 'China', pop: 1425, gni: 21000, life: 78, sch: 7.6 },
-        { n: 'the United States', pop: 340, gni: 76000, life: 77, sch: 13.7 },
-        { n: 'Indonesia', pop: 277, gni: 14000, life: 68, sch: 8.6 },
-        { n: 'Pakistan', pop: 240, gni: 6400, life: 66, sch: 4.5 },
-        { n: 'Nigeria', pop: 224, gni: 5700, life: 53, sch: 7.2 },
-        { n: 'Brazil', pop: 216, gni: 18000, life: 75, sch: 8.3 },
-        { n: 'Bangladesh', pop: 173, gni: 8400, life: 74, sch: 7.4 },
-        { n: 'Russia', pop: 144, gni: 32000, life: 70, sch: 12.8 },
-        { n: 'Mexico', pop: 128, gni: 21000, life: 75, sch: 9.2 },
-        { n: 'the Philippines', pop: 117, gni: 10000, life: 70, sch: 9.0 },
-        { n: 'Egypt', pop: 113, gni: 13000, life: 70, sch: 9.6 },
-        { n: 'Vietnam', pop: 99, gni: 13000, life: 74, sch: 8.5 },
-        { n: 'Iran', pop: 89, gni: 15000, life: 74, sch: 10.6 },
-        { n: 'Turkey', pop: 85, gni: 33000, life: 76, sch: 9.0 },
-        { n: 'Ethiopia', pop: 127, gni: 2800, life: 65, sch: 3.2 },
-        { n: 'Japan', pop: 123, gni: 48000, life: 84, sch: 13.4 },
-        { n: 'the DR Congo', pop: 102, gni: 1300, life: 59, sch: 6.8 },
-        { n: 'Germany', pop: 84, gni: 63000, life: 81, sch: 14.1 },
-        { n: 'Colombia', pop: 52, gni: 16000, life: 73, sch: 8.9 },
-        { n: 'Chad', pop: 18, gni: 1600, life: 53, sch: 2.6 },
-        { n: 'Burundi', pop: 13, gni: 800, life: 62, sch: 3.1 },
-        { n: 'Switzerland', pop: 8.8, gni: 84000, life: 84, sch: 13.9 },
-        { n: 'Norway', pop: 5.5, gni: 82000, life: 83, sch: 13.1 },
-        { n: 'Qatar', pop: 2.7, gni: 90000, life: 80, sch: 10.0 }
-      ];
-      var TOTAL = C.reduce(function (a, c) { return a + c.pop; }, 0);
-      var highPct = Math.round(C.filter(function (c) { return c.gni >= 25000; }).reduce(function (a, c) { return a + c.pop; }, 0) / TOTAL * 100);
-      function pick() { var r = Math.random() * TOTAL, acc = 0; for (var i = 0; i < C.length; i++) { acc += C[i].pop; if (r <= acc) return C[i]; } return C[C.length - 1]; }
-      function bandName(g) { return g < 2500 ? 'a low-income country' : g < 8000 ? 'a lower-middle-income country' : g < 25000 ? 'an upper-middle-income country' : 'a high-income country'; }
-      function logfill(g) { var lo = Math.log(800), hi = Math.log(90000); return Math.max(2, Math.min(100, (Math.log(g) - lo) / (hi - lo) * 100)); }
-
-      var nameEl = document.getElementById('name'), bandEl = document.getElementById('band'), oddsEl = document.getElementById('odds'),
-          statsEl = document.getElementById('stats'), takeEl = document.getElementById('takeaway'), tallyEl = document.getElementById('tally'),
-          bornBtn = document.getElementById('born'), againBtn = document.getElementById('again');
-      var vLife = document.getElementById('v-life'), vInc = document.getElementById('v-inc'), vSch = document.getElementById('v-sch');
-      var fLife = document.getElementById('f-life'), fInc = document.getElementById('f-inc'), fSch = document.getElementById('f-sch');
-      var births = 0, highCount = 0, spinning = false;
-
-      function reveal(c) {
-        nameEl.textContent = c.n; nameEl.classList.remove('spin');
-        bandEl.textContent = 'Born into ' + bandName(c.gni) + '.';
-        oddsEl.textContent = 'Your odds of landing here: about ' + (c.pop / TOTAL * 100).toFixed(1) + '%.';
-        vLife.textContent = c.life + ' years'; vInc.textContent = '$' + c.gni.toLocaleString(); vSch.textContent = c.sch.toFixed(1) + ' years';
-        statsEl.classList.add('show');
-        requestAnimationFrame(function () {
-          fLife.style.width = Math.max(2, Math.min(100, (c.life - 50) / 35 * 100)) + '%';
-          fInc.style.width = logfill(c.gni) + '%';
-          fSch.style.width = Math.max(2, Math.min(100, (c.sch - 2) / 13 * 100)) + '%';
-        });
-        var high = c.gni >= 25000;
-        takeEl.textContent = high
-          ? 'You won a lottery you never entered. Most of humanity never draws this ticket, and you did nothing to earn it.'
-          : (c.gni < 2500 ? 'Through no choice of your own, the odds just narrowed: in schooling, in health, in years of life itself.'
-            : 'A middle draw: comfortable by the standards of history, precarious by the standards of the rich world, and, again, not chosen.');
-        takeEl.classList.add('show');
-        births++; if (high) highCount++;
-        tallyEl.innerHTML = 'You have been born <b>' + births + '</b> ' + (births === 1 ? 'time' : 'times') + '. Times you landed in a high-income country: <b>' + highCount + '</b>. (In this world, only about ' + highPct + '% of people are.)';
-        againBtn.style.display = ''; bornBtn.style.display = 'none';
-      }
-      function run() {
-        if (spinning) return; spinning = true;
-        statsEl.classList.remove('show'); takeEl.classList.remove('show'); bandEl.textContent = ''; oddsEl.textContent = '';
-        nameEl.classList.add('spin');
-        var ticks = 0, target = 16 + Math.floor(Math.random() * 6);
-        var iv = setInterval(function () {
-          nameEl.textContent = C[Math.floor(Math.random() * C.length)].n.replace(/^the /, '');
-          if (++ticks >= target) { clearInterval(iv); spinning = false; reveal(pick()); }
-        }, 55);
-      }
-      bornBtn.addEventListener('click', run); againBtn.addEventListener('click', run);
-    })();
-
-    // ============ II. CHAMPAGNE GLASS ============
-    (function () {
-      var glass = document.getElementById('glass'), readout = document.getElementById('g-readout'),
-          gsTop = document.getElementById('gs-top'), gsBot = document.getElementById('gs-bot'),
-          bIncome = document.getElementById('g-income'), bWealth = document.getElementById('g-wealth');
-      if (!glass) return;
-      var DATA = { income: [0.1, 0.6, 1.4, 2.4, 3.5, 5, 7.5, 11, 16, 52], wealth: [0.0, 0.1, 0.4, 0.6, 0.9, 1, 3, 6, 12, 76] };
-      var COLORS = ['#c9c2b4', '#bcae95', '#b09a78', '#a98f68', '#9a7428', '#6f8f6a', '#3f8f86', '#1f7d74', '#12655c', '#0b5750'];
-      var labels = ['Poorest 10%', '', '', '', 'Middle', '', '', '', '', 'Richest 10%'];
-      var MAXW = 76, rows = [];
-      var ords = ['first','second','third','fourth','fifth','sixth','seventh','eighth','ninth','tenth'];
-      for (var i = 9; i >= 0; i--) {
-        var row = document.createElement('div'); row.className = 'grow';
-        var lab = document.createElement('div'); lab.className = 'glabel'; lab.textContent = labels[i] || ('Decile ' + (i + 1));
-        var track = document.createElement('div'); track.className = 'gbar-track';
-        var bar = document.createElement('div'); bar.className = 'gbar'; bar.style.background = COLORS[i]; bar.setAttribute('data-i', i);
-        track.appendChild(bar); row.appendChild(lab); row.appendChild(track); glass.appendChild(row); rows.push(bar);
-        bar.addEventListener('mouseenter', function () { showBar(+this.getAttribute('data-i')); });
-        bar.addEventListener('click', function () { showBar(+this.getAttribute('data-i')); });
-      }
-      var mode = 'income';
-      function tierName(i) { return i === 9 ? 'the richest 10%' : i === 0 ? 'the poorest 10%' : 'the ' + ords[i] + ' tenth'; }
-      function showBar(i) { readout.innerHTML = 'By ' + mode + ', <b>' + tierName(i) + '</b> of humanity holds <b>' + DATA[mode][i] + '%</b> of the world total.'; }
-      function render() {
-        var arr = DATA[mode];
-        rows.forEach(function (bar) { var i = +bar.getAttribute('data-i'); bar.style.width = (arr[i] / MAXW * 100) + '%'; });
-        gsTop.textContent = arr[9] + '%'; gsBot.textContent = (arr[0] + arr[1] + arr[2] + arr[3] + arr[4]).toFixed(1) + '%';
-        readout.innerHTML = mode === 'income'
-          ? 'The bowl is the top tenth; the stem is the bottom half. By income, the richest 10% hold <b>52%</b> of the world, roughly six times the entire poorer half of humanity.'
-          : 'Switch to wealth and the stem all but vanishes: the poorest half of the planet owns about <b>2%</b> of everything, while the top tenth owns roughly <b>76%</b>.';
-        bIncome.classList.toggle('on', mode === 'income'); bWealth.classList.toggle('on', mode === 'wealth');
-      }
-      bIncome.addEventListener('click', function () { mode = 'income'; render(); });
-      bWealth.addEventListener('click', function () { mode = 'wealth'; render(); });
-      render();
-    })();
-
-    // ============ III. THE GREAT DIVERGENCE ============
-    (function () {
-      var rowsEl = document.getElementById('d-rows'), slider = document.getElementById('d-slider'),
-          yearEl = document.getElementById('d-year'), yearLab = document.getElementById('d-yearlabel'), ratioEl = document.getElementById('d-ratio');
-      if (!rowsEl) return;
-      var KEY = [1820, 1870, 1913, 1950, 1980, 2018];
-      var REG = [
-        { n: 'Western offshoots', c: '#0b5750', v: [2000, 3700, 8000, 15000, 25000, 55000] },
-        { n: 'Western Europe',    c: '#1f7d74', v: [1500, 2500, 4500, 6000, 18000, 40000] },
-        { n: 'Latin America',     c: '#9a7428', v: [1000, 1300, 2000, 4000, 8000, 14000] },
-        { n: 'East & South Asia', c: '#1d3f7a', v: [800, 800, 900, 1200, 2000, 13000] },
-        { n: 'Africa',            c: '#b45b3e', v: [750, 800, 1000, 1500, 2500, 4000] }
-      ];
-      var MAX = 55000;
-      var bars = REG.map(function (r) {
-        var row = document.createElement('div'); row.className = 'drow';
-        var lab = document.createElement('div'); lab.className = 'dlabel'; lab.textContent = r.n;
-        var track = document.createElement('div'); track.className = 'dbar-track';
-        var bar = document.createElement('div'); bar.className = 'dbar'; bar.style.background = r.c;
-        var val = document.createElement('span'); val.className = 'dval'; bar.appendChild(val);
-        track.appendChild(bar); row.appendChild(lab); row.appendChild(track); rowsEl.appendChild(row);
-        return { bar: bar, val: val, r: r };
-      });
-      function interp(v, year) {
-        if (year <= KEY[0]) return v[0]; if (year >= KEY[KEY.length - 1]) return v[v.length - 1];
-        for (var i = 0; i < KEY.length - 1; i++) { if (year >= KEY[i] && year <= KEY[i + 1]) { var t = (year - KEY[i]) / (KEY[i + 1] - KEY[i]); return v[i] + t * (v[i + 1] - v[i]); } }
-        return v[v.length - 1];
-      }
-      function update(year) {
-        yearEl.textContent = year; yearLab.textContent = year;
-        var vals = [];
-        bars.forEach(function (b) {
-          var val = interp(b.r.v, year); vals.push(val);
-          var pct = val / MAX * 100;
-          b.bar.style.width = pct + '%';
-          b.val.textContent = '$' + (Math.round(val / 100) * 100).toLocaleString();
-          b.val.className = 'dval' + (pct < 16 ? ' out' : '');
-        });
-        var mx = Math.max.apply(null, vals), mn = Math.min.apply(null, vals);
-        ratioEl.textContent = 'richest region ≈ ' + (mx / mn).toFixed(1) + '× the poorest';
-      }
-      slider.addEventListener('input', function () { update(+slider.value); });
-      update(1820);
-    })();
+    if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); }); }
   </script>
+  <script src="assets/js/inequality.js"></script>
+
 </body>
 </html>

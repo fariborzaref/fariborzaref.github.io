@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Page not found · Fariborz Aref · Labs</title>
+  <meta name="description" content="This page does not exist.">
+  <meta name="author" content="Fariborz Aref">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://fariborzaref.github.io/404">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fariborz Aref · Labs">
+  <meta property="og:title" content="Page not found · Fariborz Aref · Labs">
+  <meta property="og:description" content="This page does not exist.">
+  <meta property="og:url" content="https://fariborzaref.github.io/404">
+  <meta property="og:image" content="https://fariborzaref.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Page not found · Fariborz Aref · Labs">
+  <meta name="twitter:description" content="This page does not exist.">
+  <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
+
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#12100c">
+  <link rel="icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="F. Aref Labs">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/labs.css">
+  <script src="assets/js/labs.js"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S437KK8JX4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-S437KK8JX4');
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Page not found \u00b7 Fariborz Aref \u00b7 Labs",
+  "description": "This page does not exist.",
+  "url": "https://fariborzaref.github.io/404",
+  "author": {
+    "@type": "Person",
+    "@id": "https://fariborzaref.com/#fariborz-aref",
+    "name": "Fariborz Aref",
+    "url": "https://fariborzaref.com/"
+  }
+}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">Fariborz Aref<span>Labs</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/">Labs</a></li>
+          <li><a href="/inequality">Inequality Lab</a></li>
+          <li><a href="/methods">Methods Lab</a></li>
+          <li><a href="/courses">Courses</a></li>
+          <li><a class="ext" href="https://fariborzaref.com/">Main site</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="wrap">
+      <section class="hero" style="border-bottom:0;min-height:50vh">
+        <p class="kicker">Page not found</p>
+        <h1>This page does not <em>exist.</em></h1>
+        <p class="lead">It may have moved. The labs and courses are listed below.</p>
+        <div class="controls"><a class="btn" href="/">Labs home</a><a class="btn ghost" href="/inequality">Inequality Lab</a><a class="btn ghost" href="/methods">Methods Lab</a></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="foot-inner">
+      <span class="foot">&copy; <span data-year>2026</span> Fariborz Aref</span>
+      <span class="foot">
+        <a href="https://fariborzaref.com/">Main site</a>
+        <a href="https://orcid.org/0000-0001-6622-1824">ORCID</a>
+        <a href="https://github.com/fariborzaref">GitHub</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var t = document.querySelector('.nav-toggle'), n = document.getElementById('site-nav');
+      if (!t || !n) return;
+      function set(o) { t.setAttribute('aria-expanded', String(o)); n.classList.toggle('open', o); t.setAttribute('aria-label', o ? 'Close navigation' : 'Open navigation'); }
+      t.addEventListener('click', function (e) { e.preventDefault(); set(t.getAttribute('aria-expanded') !== 'true'); });
+      n.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+    })();
+    if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); }); }
+  </script>
+
+</body>
+</html>

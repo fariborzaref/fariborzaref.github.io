@@ -1,8 +1,18 @@
-/* Fariborz Aref — offline service worker */
-const CACHE = 'fa-site-v1';
+/* Fariborz Aref · Labs: offline support.
+   Pages are fetched from the network first, so updates appear immediately;
+   the cache is used only when the visitor is offline. */
+const CACHE = 'fa-labs-v2';
 const ASSETS = [
   './',
   './index.html',
+  './inequality.html',
+  './methods.html',
+  './courses.html',
+  './404.html',
+  './assets/css/labs.css',
+  './assets/js/labs.js',
+  './assets/js/inequality.js',
+  './assets/js/methods.js',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png',
@@ -25,16 +35,14 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
-  // Let cross-origin requests (Google Fonts, Analytics) go straight to the network.
   if (new URL(req.url).origin !== location.origin) return;
   e.respondWith(
-    caches.match(req).then((cached) =>
-      cached ||
-      fetch(req).then((resp) => {
+    fetch(req)
+      .then((resp) => {
         const copy = resp.clone();
         caches.open(CACHE).then((c) => c.put(req, copy));
         return resp;
-      }).catch(() => caches.match('./index.html'))
-    )
+      })
+      .catch(() => caches.match(req).then((hit) => hit || caches.match('./index.html')))
   );
 });
