@@ -1,7 +1,7 @@
 /* Fariborz Aref · Labs: offline support.
    Pages are fetched from the network first, so updates appear immediately;
    the cache is used only when the visitor is offline. */
-const CACHE = 'fa-labs-v2';
+const CACHE = 'fa-labs-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -9,10 +9,10 @@ const ASSETS = [
   './methods.html',
   './courses.html',
   './404.html',
-  './assets/css/labs.css',
-  './assets/js/labs.js',
-  './assets/js/inequality.js',
-  './assets/js/methods.js',
+  './labs.css',
+  './labs.js',
+  './inequality.js',
+  './methods.js',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png',
