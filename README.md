@@ -9,7 +9,7 @@ Interactive demonstrations in inequality and research methods, published at http
 | `methods.html` | Simpson's paradox, ecological fallacy, confidence intervals, forking paths |
 | `courses.html` | Course catalog |
 
-Shared design: `assets/css/labs.css`. Shared helpers: `assets/js/labs.js`. Each lab has its own script in `assets/js/`.
+All files sit at the top level: `labs.css` (design), `labs.js` (shared helpers), `inequality.js` and `methods.js` (the demonstrations).
 Data sources are listed at the foot of each lab page and in comments at the top of each demonstration's code.
 
 No build step. GitHub Pages serves the files as they are.
