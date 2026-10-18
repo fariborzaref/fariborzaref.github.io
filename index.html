@@ -20,10 +20,10 @@
   <meta name="twitter:description" content="Interactive demonstrations in inequality and research methods by sociologist Fariborz Aref: the Inequality Lab and the Methods Lab, built on published data and simulation.">
   <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
 
-  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#12100c">
-  <link rel="icon" type="image/png" href="/favicon-32.png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="apple-mobile-web-app-title" content="F. Aref Labs">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,16 +60,16 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="/">Fariborz Aref<span>Labs</span></a>
+      <a class="brand" href="./">Fariborz Aref<span>Labs</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
         <span></span><span></span>
       </button>
       <nav class="nav" id="site-nav" aria-label="Primary">
         <ul>
-          <li><a href="/" aria-current="page">Labs</a></li>
-          <li><a href="/inequality">Inequality Lab</a></li>
-          <li><a href="/methods">Methods Lab</a></li>
-          <li><a href="/courses">Courses</a></li>
+          <li><a href="./" aria-current="page">Labs</a></li>
+          <li><a href="inequality">Inequality Lab</a></li>
+          <li><a href="methods">Methods Lab</a></li>
+          <li><a href="courses">Courses</a></li>
           <li><a class="ext" href="https://fariborzaref.com/">Main site</a></li>
         </ul>
       </nav>
@@ -87,7 +87,7 @@
       </section>
 
       <section class="labs-grid">
-        <a class="lab-card rv" href="/inequality">
+        <a class="lab-card rv" href="inequality">
           <div class="fig"><svg viewBox="0 0 320 170" class="chart" aria-hidden="true">
               <line x1="20" y1="150" x2="300" y2="150" class="axis"/><line x1="20" y1="10" x2="20" y2="150" class="axis"/>
               <line x1="20" y1="150" x2="300" y2="10" stroke="var(--ink-faint)" stroke-dasharray="4 4"/>
@@ -109,7 +109,7 @@
             <span class="go">Enter the lab &rarr;</span>
           </div>
         </a>
-        <a class="lab-card rv" href="/methods">
+        <a class="lab-card rv" href="methods">
           <div class="fig"><svg viewBox="0 0 320 170" class="chart" aria-hidden="true">
               <line x1="160" y1="6" x2="160" y2="164" stroke="var(--ink)" stroke-width="1.6"/>
               <g stroke-width="2">
@@ -147,7 +147,7 @@
           <p class="kicker">Courses</p>
           <h2>The labs in the classroom</h2>
           <p>Each course follows the same sequence, from question to design to evidence to a claim that holds up under questioning. The labs are where several of those steps are practiced.</p>
-          <p><a class="text" href="/courses">See the course catalog &rarr;</a></p>
+          <p><a class="text" href="courses">See the course catalog &rarr;</a></p>
         </div>
         <div class="rv">
           <p class="kicker">The author</p>
@@ -179,7 +179,7 @@
       n.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
     })();
-    if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); }); }
+    if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }
   </script>
 
 </body>

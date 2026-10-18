@@ -20,10 +20,10 @@
   <meta name="twitter:description" content="Four interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, the meaning of a confidence interval, and the garden of forking paths.">
   <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
 
-  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#12100c">
-  <link rel="icon" type="image/png" href="/favicon-32.png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="apple-mobile-web-app-title" content="F. Aref Labs">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,16 +60,16 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="/">Fariborz Aref<span>Labs</span></a>
+      <a class="brand" href="./">Fariborz Aref<span>Labs</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
         <span></span><span></span>
       </button>
       <nav class="nav" id="site-nav" aria-label="Primary">
         <ul>
-          <li><a href="/">Labs</a></li>
-          <li><a href="/inequality">Inequality Lab</a></li>
-          <li><a href="/methods" aria-current="page">Methods Lab</a></li>
-          <li><a href="/courses">Courses</a></li>
+          <li><a href="./">Labs</a></li>
+          <li><a href="inequality">Inequality Lab</a></li>
+          <li><a href="methods" aria-current="page">Methods Lab</a></li>
+          <li><a href="courses">Courses</a></li>
           <li><a class="ext" href="https://fariborzaref.com/">Main site</a></li>
         </ul>
       </nav>
@@ -203,7 +203,7 @@
 
       <section class="closing rv">
         <p class="coda">Each failure here produces a clean number and a confident sentence. <em>Judgment about structure, level, and the number of tests performed decides whether that sentence is true.</em></p>
-        <a class="cross" href="/inequality"><span><small>Companion lab</small>The Inequality Lab &rarr;</span></a>
+        <a class="cross" href="inequality"><span><small>Companion lab</small>The Inequality Lab &rarr;</span></a>
         <p class="sources">The note beneath each chart states how its data were simulated.</p>
       </section>
     </div>
@@ -229,7 +229,7 @@
       n.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
     })();
-    if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); }); }
+    if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }
   </script>
   <script src="methods.js"></script>
 
