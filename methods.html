@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>The Methods Lab · Fariborz Aref</title>
-  <meta name="description" content="Four interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, the meaning of a confidence interval, and the garden of forking paths.">
+  <meta name="description" content="Seven interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, and overfitting with few countries.">
   <meta name="author" content="Fariborz Aref">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://fariborzaref.github.io/methods">
@@ -12,12 +12,12 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fariborz Aref · Labs">
   <meta property="og:title" content="The Methods Lab · Fariborz Aref">
-  <meta property="og:description" content="Four interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, the meaning of a confidence interval, and the garden of forking paths.">
+  <meta property="og:description" content="Seven interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, and overfitting with few countries.">
   <meta property="og:url" content="https://fariborzaref.github.io/methods">
   <meta property="og:image" content="https://fariborzaref.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Methods Lab · Fariborz Aref">
-  <meta name="twitter:description" content="Four interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, the meaning of a confidence interval, and the garden of forking paths.">
+  <meta name="twitter:description" content="Seven interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, and overfitting with few countries.">
   <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
 
   <link rel="manifest" href="manifest.webmanifest">
@@ -44,7 +44,7 @@
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "The Methods Lab \u00b7 Fariborz Aref",
-  "description": "Four interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, the meaning of a confidence interval, and the garden of forking paths.",
+  "description": "Seven interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, and overfitting with few countries.",
   "url": "https://fariborzaref.github.io/methods",
   "author": {
     "@type": "Person",
@@ -82,8 +82,8 @@
       <section class="hero">
         <p class="kicker">The Methods Lab</p>
         <h1>How a claim is <em>earned.</em></h1>
-        <p class="lead">Four demonstrations of places where a correct calculation leads to a wrong conclusion. In each, the error lies in the design or the reading of the analysis, and the arithmetic is fine.</p>
-        <p class="lead soft">All four use simulated data, so the true answer is known in advance. That is what makes the failure visible.</p>
+        <p class="lead">Seven demonstrations of places where a correct calculation leads to a wrong conclusion. In each, the error lies in the design or the reading of the analysis, and the arithmetic is fine.</p>
+        <p class="lead soft">All use simulated data, so the true answer is known in advance. The last three take their settings from published comparative research on OECD countries.</p>
       </section>
 
       <nav class="index" aria-label="Contents">
@@ -93,6 +93,9 @@
           <li><a href="#ecological"><span class="rn">II</span><span class="nm">The Ecological Fallacy</span><span class="ds">Patterns among places are not patterns among people</span></a></li>
           <li><a href="#confidence"><span class="rn">III</span><span class="nm">What 95% Confidence Means</span><span class="ds">A property of the procedure, never of one interval</span></a></li>
           <li><a href="#forking"><span class="rn">IV</span><span class="nm">The Garden of Forking Paths</span><span class="ds">Enough analyses will find something in noise</span></a></li>
+          <li><a href="#between"><span class="rn">V</span><span class="nm">Between and Within</span><span class="ds">How much inequality is national</span></a></li>
+          <li><a href="#persistence"><span class="rn">VI</span><span class="nm">Twenty Years Are Not Twenty Observations</span><span class="ds">Persistence and the information in a panel</span></a></li>
+          <li><a href="#smalln"><span class="rn">VII</span><span class="nm">Twenty-Seven Countries, Many Variables</span><span class="ds">Overfitting in small-N comparison</span></a></li>
         </ol>
       </nav>
 
@@ -115,6 +118,16 @@
           <p class="note"><span class="note-label">Simulated</span>Thirty societies in three groups. The structure follows a known problem in comparative research: welfare effort responds to pre-existing inequality, so spending is endogenous to the outcome it is meant to affect.</p>
         </div>
         <p class="lesson">The pooled slope is computed correctly and answers the wrong question. Deciding which comparison is meaningful is a theoretical decision made before any model is run.</p>
+        <div class="demo-foot">
+          <p class="cite"><span class="note-label">Cite</span>Aref, F. (2026). Simpson’s Paradox. <i>The Methods Lab</i>. https://fariborzaref.github.io/methods#simpson</p>
+          <details class="teach">
+            <summary>For instructors</summary>
+            <p><b>Goal.</b> Show that a pooled relationship can reverse within every group.</p>
+            <p><b>Ask the class to answer aloud.</b> Which slope answers whether spending reduces inequality among comparable societies?</p>
+            <ol class="teach-opts"><li>The pooled slope</li><li>The slope within each group</li></ol>
+            <p><b>Answer.</b> The slope within each group, which compares societies facing the same structural pressure.</p>
+          </details>
+        </div>
       </section>
 
       <section class="demo rv" id="ecological">
@@ -136,6 +149,16 @@
           <p class="note"><span class="note-label">Simulated</span>Eight states of thirty people each. Higher-literacy states attract more immigrants, and immigrants are less literate than the native-born within every state.</p>
         </div>
         <p class="lesson">The unit of analysis limits the conclusion. Data on places support claims about places, and claims about persons need data on persons.</p>
+        <div class="demo-foot">
+          <p class="cite"><span class="note-label">Cite</span>Aref, F. (2026). The Ecological Fallacy. <i>The Methods Lab</i>. https://fariborzaref.github.io/methods#ecological</p>
+          <details class="teach">
+            <summary>For instructors</summary>
+            <p><b>Goal.</b> Match the unit of analysis to the claim.</p>
+            <p><b>Ask the class to answer aloud.</b> State data show that states with more immigrants have higher literacy. Can we conclude that immigrants are more literate?</p>
+            <ol class="teach-opts"><li>Yes</li><li>No</li></ol>
+            <p><b>Answer.</b> No. The data describe states. Claims about persons need data on persons.</p>
+          </details>
+        </div>
       </section>
 
       <section class="demo rv" id="confidence">
@@ -168,6 +191,16 @@
           <p class="note"><span class="note-label">Simulated</span>Simple random samples from a population with a true proportion of 0.40. Intervals use the normal approximation, p&#770; &plusmn; z&middot;&radic;(p&#770;(1&minus;p&#770;)/n). The latest 60 intervals are shown.</p>
         </div>
         <p class="lesson">The 95% describes the long run of the method. Any single interval either contains the true value or does not, and the data in hand cannot say which.</p>
+        <div class="demo-foot">
+          <p class="cite"><span class="note-label">Cite</span>Aref, F. (2026). What 95% Confidence Means. <i>The Methods Lab</i>. https://fariborzaref.github.io/methods#confidence</p>
+          <details class="teach">
+            <summary>For instructors</summary>
+            <p><b>Goal.</b> Interpret a confidence interval correctly.</p>
+            <p><b>Ask the class to answer aloud.</b> Which statement about a 95% confidence interval is correct?</p>
+            <ol class="teach-opts"><li>There is a 95% chance the true value lies inside this interval</li><li>95% of intervals made this way contain the true value</li></ol>
+            <p><b>Answer.</b> The second. The 95% describes the procedure across repeated samples.</p>
+          </details>
+        </div>
       </section>
 
       <section class="demo rv" id="forking">
@@ -199,6 +232,138 @@
           <p class="note"><span class="note-label">Simulated</span>Outcome and ten predictors are independent standard normal variables. Subgroups are random. Each p-value comes from a test of the correlation coefficient. Analyses that share data are correlated, so the independence figure is an approximation.</p>
         </div>
         <p class="lesson">A p-value means what it claims only when the analysis was fixed in advance. The remedy is a pre-registered plan, or a full report of every path that was tried.</p>
+        <div class="demo-foot">
+          <p class="cite"><span class="note-label">Cite</span>Aref, F. (2026). The Garden of Forking Paths. <i>The Methods Lab</i>. https://fariborzaref.github.io/methods#forking</p>
+          <details class="teach">
+            <summary>For instructors</summary>
+            <p><b>Goal.</b> Recognize how multiple testing produces false findings.</p>
+            <p><b>Ask the class to answer aloud.</b> A study reports one significant result out of twenty tests. This is</p>
+            <ol class="teach-opts"><li>strong evidence of an effect</li><li>about what chance alone would produce</li></ol>
+            <p><b>Answer.</b> About what chance alone would produce. One in twenty is the expected false-positive rate at the 5% level.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="demo rv" id="between">
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>V.</b>Demonstration 5</span>
+            <h2>Between and Within</h2>
+            <p class="lineage">Multilevel models divide variation into two parts: differences between countries and change within countries over time. The share that lies between countries is the intraclass correlation. It tells a researcher how much of an outcome belongs to national institutions that rarely change.</p>
+          </div>
+          <div><p class="intro">The panel below follows 27 OECD countries from 2002 to 2021. It is generated from the fixed effects and variance components of a published mixed-effects model. Choose an outcome, then remove each country’s average to see how little of the variation is change over time.</p></div>
+        </div>
+        <div class="panel">
+          <div class="controls" style="margin:0 0 1.2rem;justify-content:space-between">
+            <div class="seg" id="icc-seg" role="group" aria-label="Outcome"><button type="button" data-v="gini" aria-pressed="true">Gini</button><button type="button" data-v="emp" aria-pressed="false">Employment</button><button type="button" data-v="unemp" aria-pressed="false">Unemployment</button><button type="button" data-v="le" aria-pressed="false">Life exp.</button><button type="button" data-v="im" aria-pressed="false">Infant mort.</button></div>
+            <div class="seg" id="icc-view" role="group" aria-label="View"><button type="button" data-v="levels" aria-pressed="true">Levels</button><button type="button" data-v="within" aria-pressed="false">Within countries</button></div>
+          </div>
+          <div class="panel-grid">
+            <div><svg class="chart" id="icc-chart" role="img" aria-label="Simulated country trajectories with period effects"></svg></div>
+            <div>
+              <div class="stats">
+                <div class="stat"><span class="stat-label">Variance between countries</span><span class="stat-val" id="icc-share"></span></div>
+                <div class="stat"><span class="stat-label">Variance within countries</span><span class="stat-val" id="icc-within"></span></div>
+                <div class="stat"><span class="stat-label">Country SD / residual SD</span><span class="stat-val" id="icc-sds" style="font-size:1.3rem"></span></div>
+              </div>
+              <p class="readout" id="icc-readout" style="margin-top:1.2rem"></p>
+              <div class="legend"><span><i class="line" style="background:var(--accent)"></i>period effects, published</span><span><i class="line" style="background:var(--c-blue)"></i>simulated countries</span></div>
+            </div>
+          </div>
+          <p class="note"><span class="note-label">Source</span>Fixed effects and variance components from <a href="https://doi.org/10.1163/15691330-bja10103">Aref (2024), <i>Comparative Sociology</i> 23(2)</a>, Tables 1 to 5: periods 2002&ndash;07, 2008&ndash;10, 2011&ndash;19, and 2020&ndash;21. Shares are computed from the published country and residual standard deviations; random slopes are omitted. The country lines are simulated from those estimates and do not show real countries.</p>
+        </div>
+        <p class="lesson">Across OECD countries, most of the variation in inequality, employment, and health is a lasting difference between nations. A crisis moves the smaller, within-country part, which is why comparative models must separate the two.</p>
+        <div class="demo-foot">
+          <p class="cite"><span class="note-label">Cite</span>Aref, F. (2026). Between and Within. <i>The Methods Lab</i>. https://fariborzaref.github.io/methods#between</p>
+          <details class="teach">
+            <summary>For instructors</summary>
+            <p><b>Goal.</b> Separate differences between countries from change within them.</p>
+            <p><b>Ask the class to answer aloud.</b> Most of the variation in OECD Gini values from 2002 to 2021 lies</p>
+            <ol class="teach-opts"><li>between countries</li><li>within countries over time</li></ol>
+            <p><b>Answer.</b> Between countries: about four-fifths in the published model.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="demo rv" id="persistence">
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>VI.</b>Demonstration 6</span>
+            <h2>Twenty Years Are Not Twenty Observations</h2>
+            <p class="lineage">National statistics change slowly: this year’s Gini is close to last year’s. A model of OECD welfare regimes estimated the year-to-year correlation of the Gini index at 0.957, and so used generalized estimating equations with an AR(1) working correlation.</p>
+          </div>
+          <div><p class="intro">The series below has no trend at all. Raise the year-to-year correlation and watch two things: how little information twenty persistent observations carry, and how often an ordinary trend test reports a trend that is not there.</p></div>
+        </div>
+        <div class="panel">
+          <div class="controls" style="margin:0 0 1rem;justify-content:space-between">
+            <div class="range-row"><label for="ar-rho">Year-to-year correlation <b id="ar-rhoval" style="font-family:var(--serif);font-size:1.3rem;color:var(--ink);font-weight:400"></b></label><input type="range" id="ar-rho" min="0" max="980" value="957" step="1"></div>
+            <div class="seg" id="ar-seg" role="group" aria-label="Presets"><button type="button" data-v="0" aria-pressed="false">Independent</button><button type="button" data-v="0.5" aria-pressed="false">0.5</button><button type="button" data-v="0.957" aria-pressed="true">OECD Gini</button></div>
+          </div>
+          <div class="panel-grid">
+            <div><svg class="chart" id="ar-chart" role="img" aria-label="A simulated persistent series with no trend"></svg></div>
+            <div>
+              <div class="stats">
+                <div class="stat"><span class="stat-label">Equivalent independent observations</span><span class="stat-val" id="ar-neff"></span></div>
+                <div class="stat"><span class="stat-label">False trends, naive test</span><span class="stat-val" id="ar-fpr"></span></div>
+              </div>
+              <p class="readout" id="ar-readout" style="margin-top:1.2rem"></p>
+              <div class="controls"><button class="btn ghost" id="ar-new" type="button">Draw another series</button></div>
+            </div>
+          </div>
+          <p class="note"><span class="note-label">Method</span>Twenty annual values from a stationary AR(1) process with no trend. Equivalent observations are n&sup2; divided by the sum of all pairwise correlations. False-trend rates come from 600 simulated series tested with ordinary least squares at the 5% level. The 0.957 preset is the AR(1) correlation reported for the Gini model in <a href="https://doi.org/10.1007/s12232-024-00448-9">Aref (2024), <i>International Review of Economics</i> 71</a>.</p>
+        </div>
+        <p class="lesson">Repeated measures of a slow-moving outcome contain far less information than their number suggests. Standard errors that ignore this are too small, and trends appear where there are none.</p>
+        <div class="demo-foot">
+          <p class="cite"><span class="note-label">Cite</span>Aref, F. (2026). Twenty Years Are Not Twenty Observations. <i>The Methods Lab</i>. https://fariborzaref.github.io/methods#persistence</p>
+          <details class="teach">
+            <summary>For instructors</summary>
+            <p><b>Goal.</b> Understand why autocorrelation shrinks the information in panel data.</p>
+            <p><b>Ask the class to answer aloud.</b> Twenty years of a slow-moving national statistic contain</p>
+            <ol class="teach-opts"><li>twenty independent observations</li><li>far fewer independent observations</li></ol>
+            <p><b>Answer.</b> Far fewer. At a correlation of 0.957, twenty years carry the information of about one independent observation.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="demo rv" id="smalln">
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>VII.</b>Demonstration 7</span>
+            <h2>Twenty-Seven Countries, Many Variables</h2>
+            <p class="lineage">Cross-national research works with few cases. Comparative studies of the OECD often have 20 to 30 countries with complete data, and every control variable spends part of that small sample.</p>
+          </div>
+          <div><p class="intro">The outcome below is random noise for 27 countries. Add control variables, each also pure noise, and watch R&sup2; rise toward 1 while adjusted R&sup2; stays near zero on average. Draw new data to see how unstable a single small sample is.</p></div>
+        </div>
+        <div class="panel">
+          <div class="controls" style="margin:0 0 1rem;justify-content:space-between">
+            <div class="range-row"><label for="sn-k">Control variables <b id="sn-kval" style="font-family:var(--serif);font-size:1.3rem;color:var(--ink);font-weight:400"></b></label><input type="range" id="sn-k" min="0" max="24" value="10" step="1"></div>
+            <button class="btn ghost" id="sn-new" type="button">New data</button>
+          </div>
+          <div class="panel-grid">
+            <div><svg class="chart" id="sn-chart" role="img" aria-label="R squared and adjusted R squared as noise variables are added"></svg></div>
+            <div>
+              <div class="stats">
+                <div class="stat"><span class="stat-label" style="color:var(--accent)">R&sup2;</span><span class="stat-val" id="sn-r2"></span></div>
+                <div class="stat"><span class="stat-label" style="color:var(--c-blue)">Adjusted R&sup2;</span><span class="stat-val" id="sn-adj"></span></div>
+                <div class="stat"><span class="stat-label">Degrees of freedom left</span><span class="stat-val" id="sn-df"></span></div>
+              </div>
+              <p class="readout" id="sn-readout" style="margin-top:1.2rem"></p>
+              <div class="legend"><span><i class="line" style="background:var(--accent)"></i>R&sup2;</span><span><i class="line" style="background:var(--c-blue)"></i>adjusted R&sup2;</span><span><i class="line" style="background:var(--ink-faint)"></i>expected R&sup2; from noise, k/(n&minus;1)</span></div>
+            </div>
+          </div>
+          <p class="note"><span class="note-label">Simulated</span>Outcome and predictors are independent standard normal variables for 27 cases, the number of OECD countries in the two published studies. Predictors are added one at a time to the same data.</p>
+        </div>
+        <p class="lesson">In small-N comparison, a good fit is easy to manufacture. The number of predictors must stay far below the number of countries, and fit statistics should be read against what noise alone would produce.</p>
+        <div class="demo-foot">
+          <p class="cite"><span class="note-label">Cite</span>Aref, F. (2026). Twenty-Seven Countries, Many Variables. <i>The Methods Lab</i>. https://fariborzaref.github.io/methods#smalln</p>
+          <details class="teach">
+            <summary>For instructors</summary>
+            <p><b>Goal.</b> Recognize overfitting when cases are few.</p>
+            <p><b>Ask the class to answer aloud.</b> Adding a variable of pure noise to a regression makes R²</p>
+            <ol class="teach-opts"><li>rise</li><li>fall</li><li>stay the same</li></ol>
+            <p><b>Answer.</b> Rise, or at least never fall. That is why adjusted R² and restraint matter with few countries.</p>
+          </details>
+        </div>
       </section>
 
       <section class="closing rv">

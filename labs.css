@@ -414,3 +414,22 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
   .mx tfoot th { font-size: 0.46rem; letter-spacing: 0.06em; }
   .mx-key { columns: 1; }
 }
+
+/* ---------------- cite and instructor notes ---------------- */
+.demo-foot { margin-top: 1.6rem; padding-top: 1rem; border-top: 1px solid var(--hair); max-width: 44rem; }
+.cite { font-family: var(--sans); font-size: 0.72rem; line-height: 1.6; color: var(--ink-soft); margin: 0 0 0.8rem; word-break: break-word; }
+.teach { font-size: 1rem; }
+.teach summary { cursor: pointer; font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); list-style: none; }
+.teach summary::-webkit-details-marker { display: none; }
+.teach summary::before { content: "+ "; }
+.teach[open] summary::before { content: "\2212 "; }
+.teach p { margin: 0.7rem 0 0; }
+.teach b { font-weight: 500; }
+.teach-opts { margin: 0.4rem 0 0; padding-left: 1.4rem; list-style: lower-alpha; color: var(--ink-soft); }
+.note a, .cite a { color: var(--ink); }
+@media (max-width: 600px) {
+  .mx .mx-col a { font-size: 0.66rem; }
+  .mx .mx-group { font-size: 0.42rem; }
+  .mx-dot { width: 8px; height: 8px; }
+  .seg { flex-wrap: wrap; }
+}
