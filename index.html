@@ -11,12 +11,15 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fariborz Aref · Labs">
-  <meta property="og:title" content="Labs · Fariborz Aref · Inequality and Research Methods">
+  <meta property="og:title" content="Sociology you can run · Fariborz Aref Labs">
   <meta property="og:description" content="Interactive demonstrations in inequality and research methods by sociologist Fariborz Aref: the Inequality Lab and the Methods Lab, built on published data and simulation.">
   <meta property="og:url" content="https://fariborzaref.github.io/">
   <meta property="og:image" content="https://fariborzaref.github.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fariborz Aref Labs: Sociology you can run.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Labs · Fariborz Aref · Inequality and Research Methods">
+  <meta name="twitter:title" content="Sociology you can run · Fariborz Aref Labs">
   <meta name="twitter:description" content="Interactive demonstrations in inequality and research methods by sociologist Fariborz Aref: the Inequality Lab and the Methods Lab, built on published data and simulation.">
   <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
 
@@ -73,22 +76,46 @@
           <li><a class="ext" href="https://fariborzaref.com/">Main site</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark reading mode"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></button>
     </div>
   </header>
 
   <main id="main">
 
     <div class="wrap">
-      <section class="hero">
-        <p class="kicker">Labs &middot; Fariborz Aref</p>
-        <h1>Interactive demonstrations in <em>inequality</em> and <em>method.</em></h1>
-        <p class="lead">Two labs that turn central ideas of sociology into models you can run. The Inequality Lab works with published data on income, wealth, and welfare states. The Methods Lab uses simulation to show how sound calculations lead to unsound conclusions.</p>
-        <p class="lead soft">They are written for students, colleagues, and anyone who wants to see an argument work rather than take it on trust.</p>
+      <section class="hero home-hero">
+        <div>
+          <p class="kicker">Labs &middot; Fariborz Aref</p>
+          <h1>Sociology you can <em>run.</em></h1>
+          <p class="lead">Two labs that turn central ideas of sociology into models you can run. The Inequality Lab works with published data on income, wealth, and welfare states. The Methods Lab uses simulation to show how sound calculations lead to unsound conclusions.</p>
+          <p class="lead soft">They are written for students, colleagues, and anyone who wants to see an argument work rather than take it on trust.</p>
+          <div class="hero-actions">
+            <a class="btn" href="inequality">Inequality Lab &rarr;</a>
+            <a class="btn ghost" href="methods">Methods Lab &rarr;</a>
+          </div>
+        </div>
+        <figure class="instrument" aria-labelledby="inst-cap">
+          <div class="inst-head"><span class="live">Lorenz curve &middot; live</span><span id="inst-g">Gini 0.40</span></div>
+          <svg class="chart" id="inst-svg" viewBox="0 0 340 280" role="img" aria-label="A Lorenz curve whose level of inequality changes over time"></svg>
+          <div class="inst-read">
+            <div><span>Gini</span><b id="inst-gini">0.40</b></div>
+            <div><span>Poorest half</span><b class="k-blue" id="inst-b50">20%</b></div>
+            <div><span>Richest tenth</span><b class="k-terra" id="inst-t10">22%</b></div>
+          </div>
+          <figcaption class="inst-note" id="inst-cap">Illustrative: a one-parameter curve, L(p) = p<sup>a</sup>. The Inequality Lab works from published distributions.</figcaption>
+        </figure>
+      </section>
+
+      <section class="numbers" aria-label="The labs in numbers">
+        <div><b>2</b><span>Labs</span></div>
+        <div><b>12</b><span>Demonstrations</span></div>
+        <div><b>10</b><span>Courses served</span></div>
+        <div><b>6</b><span>Published data sources</span></div>
       </section>
 
       <section class="labs-grid">
-        <a class="lab-card rv" href="inequality">
-          <div class="fig"><svg viewBox="0 0 320 170" class="chart" aria-hidden="true">
+        <article class="lab-card rv">
+          <div class="fig"><span class="vol">Vol. I</span><svg viewBox="0 0 320 170" class="chart" aria-hidden="true">
               <line x1="20" y1="150" x2="300" y2="150" class="axis"/><line x1="20" y1="10" x2="20" y2="150" class="axis"/>
               <line x1="20" y1="150" x2="300" y2="10" stroke="var(--ink-faint)" stroke-dasharray="4 4"/>
               <path d="M20,150 C150,148 230,128 300,10 L20,150 Z" fill="var(--accent-soft)"/>
@@ -97,20 +124,20 @@
             </svg></div>
           <div class="body">
             <p class="kicker" style="margin-bottom:0.8rem">Five demonstrations</p>
-            <h2>The Inequality Lab</h2>
+            <h2><a href="inequality">The Inequality Lab</a></h2>
             <p>Where a life begins, how the world's income and wealth are shared, how inequality is measured, what states do to it, and how the gap between regions formed.</p>
-            <ul>
-              <li><i>I</i><span>The Birth Lottery</span></li>
-              <li><i>II</i><span>The Champagne Glass</span></li>
-              <li><i>III</i><span>The Lorenz Curve and the Gini</span></li>
-              <li><i>IV</i><span>Redistribution by Welfare Regime</span></li>
-              <li><i>V</i><span>The Great Divergence</span></li>
-            </ul>
+            <ol>
+              <li><a href="inequality#lottery"><i>I</i><span>The Birth Lottery</span></a></li>
+              <li><a href="inequality#glass"><i>II</i><span>The Champagne Glass</span></a></li>
+              <li><a href="inequality#lorenz"><i>III</i><span>The Lorenz Curve and the Gini</span></a></li>
+              <li><a href="inequality#redistribution"><i>IV</i><span>Redistribution by Welfare Regime</span></a></li>
+              <li><a href="inequality#divergence"><i>V</i><span>The Great Divergence</span></a></li>
+            </ol>
             <span class="go">Enter the lab &rarr;</span>
           </div>
-        </a>
-        <a class="lab-card rv" href="methods">
-          <div class="fig"><svg viewBox="0 0 320 170" class="chart" aria-hidden="true">
+        </article>
+        <article class="lab-card rv">
+          <div class="fig"><span class="vol">Vol. II</span><svg viewBox="0 0 320 170" class="chart" aria-hidden="true">
               <line x1="160" y1="6" x2="160" y2="164" stroke="var(--ink)" stroke-width="1.6"/>
               <g stroke-width="2">
                 <line x1="112" y1="14" x2="196" y2="14" stroke="var(--c-blue)"/><line x1="128" y1="28" x2="214" y2="28" stroke="var(--c-blue)"/>
@@ -123,20 +150,20 @@
             </svg></div>
           <div class="body">
             <p class="kicker" style="margin-bottom:0.8rem">Seven demonstrations</p>
-            <h2>The Methods Lab</h2>
+            <h2><a href="methods">The Methods Lab</a></h2>
             <p>Places where a clean number points the wrong way, including three problems specific to comparing countries, and the judgment that catches the error before it reaches print.</p>
-            <ul>
-              <li><i>I</i><span>Simpson's Paradox</span></li>
-              <li><i>II</i><span>The Ecological Fallacy</span></li>
-              <li><i>III</i><span>What 95% Confidence Means</span></li>
-              <li><i>IV</i><span>The Garden of Forking Paths</span></li>
-              <li><i>V</i><span>Between and Within <span class="badge">New</span></span></li>
-              <li><i>VI</i><span>Twenty Years Are Not Twenty Observations <span class="badge">New</span></span></li>
-              <li><i>VII</i><span>Twenty-Seven Countries, Many Variables <span class="badge">New</span></span></li>
-            </ul>
+            <ol>
+              <li><a href="methods#simpson"><i>I</i><span>Simpson's Paradox</span></a></li>
+              <li><a href="methods#ecological"><i>II</i><span>The Ecological Fallacy</span></a></li>
+              <li><a href="methods#confidence"><i>III</i><span>What 95% Confidence Means</span></a></li>
+              <li><a href="methods#forking"><i>IV</i><span>The Garden of Forking Paths</span></a></li>
+              <li><a href="methods#between"><i>V</i><span>Between and Within <span class="badge">New</span></span></a></li>
+              <li><a href="methods#persistence"><i>VI</i><span>Twenty Years Are Not Twenty Observations <span class="badge">New</span></span></a></li>
+              <li><a href="methods#smalln"><i>VII</i><span>Twenty-Seven Countries, Many Variables <span class="badge">New</span></span></a></li>
+            </ol>
             <span class="go">Enter the lab &rarr;</span>
           </div>
-        </a>
+        </article>
       </section>
 
       <section class="principles">
@@ -151,27 +178,113 @@
           <h2>The labs in the classroom</h2>
           <p>Each course follows the same sequence, from question to design to evidence to a claim that holds up under questioning. The labs are where several of those steps are practiced.</p>
           <p><a class="text" href="courses">See the course catalog &rarr;</a></p>
-        </div>
-        <div class="rv">
-          <p class="kicker">The author</p>
+          <p class="kicker" style="margin-top:2.6rem">The author</p>
           <h2>Fariborz Aref</h2>
           <p>Sociologist. His research examines how welfare regimes and labor markets shape inequality across societies, using comparative and longitudinal methods.</p>
           <p><a class="text" href="https://fariborzaref.com/">Research, publications, and contact at fariborzaref.com &rarr;</a></p>
+        </div>
+        <div class="rv" id="cite">
+          <p class="kicker">How to cite</p>
+          <h2>Cite the labs</h2>
+          <p>Each demonstration also carries its own citation line, with a copy button, at the foot of its section.</p>
+          <div class="cite-box">
+            <div class="cite-head" data-copy="cite-apa"><span>APA 7</span></div>
+            <pre id="cite-apa">Aref, F. (2026). Labs: Interactive demonstrations in inequality and research methods [Interactive website]. https://fariborzaref.github.io/</pre>
+          </div>
+          <div class="cite-box">
+            <div class="cite-head" data-copy="cite-bib"><span>BibTeX</span></div>
+            <pre id="cite-bib">@misc{aref2026labs,
+  author       = {Aref, Fariborz},
+  title        = {Labs: Interactive Demonstrations in
+                  Inequality and Research Methods},
+  year         = {2026},
+  howpublished = {\url{https://fariborzaref.github.io/}},
+  note         = {Interactive website}
+}</pre>
+          </div>
         </div>
       </section>
     </div>
   </main>
 
   <footer class="site-footer">
-    <div class="foot-inner">
-      <span class="foot">&copy; <span data-year>2026</span> Fariborz Aref</span>
-      <span class="foot">
-        <a href="https://fariborzaref.com/">Main site</a>
-        <a href="https://orcid.org/0000-0001-6622-1824">ORCID</a>
-        <a href="https://github.com/fariborzaref">GitHub</a>
-      </span>
+    <div class="foot-inner rich">
+      <div class="foot-grid">
+        <div>
+          <p class="foot-brand">Sociology you can <em>run.</em></p>
+          <p class="foot-lede">Interactive demonstrations in inequality and research method, built on published data and simulation.</p>
+        </div>
+        <div>
+          <span class="foot-label">The labs</span>
+          <ul><li><a href="inequality">Inequality Lab</a></li><li><a href="methods">Methods Lab</a></li><li><a href="courses">Courses</a></li></ul>
+        </div>
+        <div>
+          <span class="foot-label">Elsewhere</span>
+          <ul><li><a href="https://fariborzaref.com/">fariborzaref.com</a></li><li><a href="https://orcid.org/0000-0001-6622-1824">ORCID</a></li><li><a href="https://github.com/fariborzaref">GitHub</a></li></ul>
+        </div>
+        <div>
+          <span class="foot-label">Colophon</span>
+          <ul><li><a href="./#cite">How to cite</a></li><li><a href="https://github.com/fariborzaref/fariborzaref.github.io">Source code</a></li></ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span class="foot">&copy; <span data-year>2026</span> Fariborz Aref</span>
+        <span class="foot">Hand-built &middot; No framework, no build step</span>
+      </div>
     </div>
   </footer>
+
+  <script>
+    /* Hero instrument: a one-parameter Lorenz curve, L(p) = p^a, with Gini = (a - 1) / (a + 1). */
+    (function () {
+      var svg = document.getElementById('inst-svg');
+      if (!svg || !window.L) return;
+      var W = 340, H = 280, m = { l: 34, r: 12, t: 10, b: 30 };
+      var x = L.scale(0, 1, m.l, W - m.r), y = L.scale(0, 1, H - m.b, m.t);
+      [0.25, 0.5, 0.75].forEach(function (v) {
+        L.el(svg, 'line', { x1: x(0), x2: x(1), y1: y(v), y2: y(v), class: 'grid' });
+        L.el(svg, 'line', { x1: x(v), x2: x(v), y1: y(0), y2: y(1), class: 'grid' });
+      });
+      L.el(svg, 'rect', { x: x(0), y: y(1), width: x(1) - x(0), height: y(0) - y(1), fill: 'none', class: 'axis' });
+      [0, 50, 100].forEach(function (v) { L.el(svg, 'text', { x: m.l - 6, y: y(v / 100) + 4, 'text-anchor': 'end' }, v + '%'); });
+      L.el(svg, 'text', { x: x(0), y: H - m.b + 17, 'text-anchor': 'start' }, '0%');
+      L.el(svg, 'text', { x: x(1), y: H - m.b + 17, 'text-anchor': 'end' }, '100%');
+      L.el(svg, 'text', { x: x(0.5), y: H - m.b + 17, 'text-anchor': 'middle', class: 't-title' }, 'People, poorest first →');
+      var area = L.el(svg, 'path', { fill: 'var(--accent-soft)' });
+      L.el(svg, 'line', { x1: x(0), y1: y(0), x2: x(1), y2: y(1), stroke: 'var(--ink-faint)', 'stroke-dasharray': '4 4' });
+      L.el(svg, 'text', { x: x(0.36), y: y(0.47), class: 't-serif', 'font-style': 'italic', 'text-anchor': 'end' }, 'equality');
+      var curve = L.el(svg, 'path', { fill: 'none', stroke: 'var(--accent)', 'stroke-width': 2.4, 'stroke-linecap': 'round' });
+      var g50 = L.el(svg, 'line', { stroke: 'var(--c-blue)', 'stroke-dasharray': '2 3' });
+      var d50 = L.el(svg, 'circle', { r: 4.5, fill: 'var(--c-blue)' });
+      var d90 = L.el(svg, 'circle', { r: 4.5, fill: 'var(--c-terra)' });
+      var elG = document.getElementById('inst-gini'), elG2 = document.getElementById('inst-g'),
+          elB = document.getElementById('inst-b50'), elT = document.getElementById('inst-t10');
+      function draw(G) {
+        var a = (1 + G) / (1 - G), pts = [];
+        for (var i = 0; i <= 60; i++) { var p = i / 60; pts.push(x(p).toFixed(1) + ',' + y(Math.pow(p, a)).toFixed(1)); }
+        curve.setAttribute('d', 'M' + pts.join(' L'));
+        area.setAttribute('d', 'M' + pts.join(' L') + ' Z');
+        var b50 = Math.pow(0.5, a), t10 = 1 - Math.pow(0.9, a);
+        d50.setAttribute('cx', x(0.5)); d50.setAttribute('cy', y(b50));
+        d90.setAttribute('cx', x(0.9)); d90.setAttribute('cy', y(1 - t10));
+        g50.setAttribute('x1', x(0.5)); g50.setAttribute('x2', x(0.5)); g50.setAttribute('y1', y(0)); g50.setAttribute('y2', y(b50));
+        elG.textContent = G.toFixed(2); elG2.textContent = 'Gini ' + G.toFixed(2);
+        elB.textContent = Math.round(b50 * 100) + '%'; elT.textContent = Math.round(t10 * 100) + '%';
+      }
+      var seq = [0.28, 0.40, 0.52, 0.64, 0.46, 0.34], k = 0, cur = 0.40;
+      draw(cur);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var ease = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+      function next() {
+        var from = cur, to = seq[k = (k + 1) % seq.length], t0 = performance.now();
+        (function step(now) {
+          var t = Math.min(1, (now - t0) / 1400); cur = from + (to - from) * ease(t); draw(cur);
+          if (t < 1) requestAnimationFrame(step); else setTimeout(next, 2200);
+        })(t0);
+      }
+      setTimeout(next, 2000);
+    })();
+  </script>
 
   <script>
     (function () {

@@ -3,6 +3,10 @@
   var doc = document.documentElement;
   doc.classList.add('js');
 
+  // optional dark reading mode: off unless the visitor turns it on
+  var THEME_KEY = 'fa-labs-theme';
+  try { if (localStorage.getItem(THEME_KEY) === 'dark') doc.setAttribute('data-theme', 'dark'); } catch (e) {}
+
   var L = {};
   L.NS = 'http://www.w3.org/2000/svg';
   L.narrow = function () { return window.matchMedia('(max-width: 600px)').matches; };
@@ -109,5 +113,55 @@
 
     // hide tooltip on scroll
     window.addEventListener('scroll', function () { L.tip(null); }, { passive: true });
+
+    // dark reading mode toggle
+    document.querySelectorAll('.theme-toggle').forEach(function (b) {
+      var label = function () { b.setAttribute('aria-label', doc.getAttribute('data-theme') === 'dark' ? 'Switch to light reading mode' : 'Switch to dark reading mode'); };
+      label();
+      b.addEventListener('click', function () {
+        var dark = doc.getAttribute('data-theme') !== 'dark';
+        if (dark) doc.setAttribute('data-theme', 'dark'); else doc.removeAttribute('data-theme');
+        try { if (dark) localStorage.setItem(THEME_KEY, 'dark'); else localStorage.removeItem(THEME_KEY); } catch (e) {}
+        label();
+        window.dispatchEvent(new Event('themechange'));
+      });
+    });
+
+    // reading progress on the lab pages
+    var head = document.querySelector('.site-header');
+    if (head && document.querySelectorAll('.demo').length > 2) {
+      var bar = document.createElement('div'); bar.className = 'progress'; bar.setAttribute('aria-hidden', 'true'); head.appendChild(bar);
+      var ticking = false;
+      var upd = function () {
+        var max = doc.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+        ticking = false;
+      };
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }, { passive: true });
+      upd();
+    }
+
+    // copy buttons on citation lines and citation boxes
+    function copyText(text, btn) {
+      var done = function () { btn.classList.add('done'); btn.textContent = 'Copied'; setTimeout(function () { btn.classList.remove('done'); btn.textContent = 'Copy'; }, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () {}); return; }
+      var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+    function addCopy(host, text) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'copy-btn'; b.textContent = 'Copy';
+      b.setAttribute('aria-label', 'Copy citation');
+      b.addEventListener('click', function () { copyText(text(), b); });
+      host.appendChild(b);
+    }
+    document.querySelectorAll('.cite').forEach(function (c) {
+      var t = c.textContent.replace(/^\s*Cite\s*/, '').trim();
+      addCopy(c, function () { return t; });
+    });
+    document.querySelectorAll('[data-copy]').forEach(function (h) {
+      var src = document.getElementById(h.getAttribute('data-copy'));
+      if (src) addCopy(h, function () { return src.textContent.trim(); });
+    });
   });
 })();

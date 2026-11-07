@@ -73,6 +73,7 @@
           <li><a class="ext" href="https://fariborzaref.com/">Main site</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark reading mode"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></button>
     </div>
   </header>
 
@@ -80,10 +81,16 @@
 
     <div class="wrap">
       <section class="hero">
-        <p class="kicker">The Inequality Lab</p>
+        <p class="kicker">Vol. I &middot; The Inequality Lab</p>
         <h1>How the world's advantages are <em>distributed.</em></h1>
         <p class="lead">Five demonstrations, each built on published data. They follow inequality from the circumstances of birth, through the measurement of income and wealth, to the policies that reshape it and the history that produced it.</p>
         <p class="lead soft">Every figure is sourced at the foot of the page. Where a chart simplifies, the note beneath it says how.</p>
+        <dl class="meta">
+          <div><dt>Demonstrations</dt><dd>Five</dd></div>
+          <div><dt>Evidence</dt><dd>Published data</dd></div>
+          <div><dt>Length</dt><dd>One class session each</dd></div>
+          <div><dt>Companion</dt><dd><a href="methods">The Methods Lab &rarr;</a></dd></div>
+        </dl>
       </section>
 
       <nav class="index" aria-label="Contents">
@@ -301,13 +308,29 @@
   </main>
 
   <footer class="site-footer">
-    <div class="foot-inner">
-      <span class="foot">&copy; <span data-year>2026</span> Fariborz Aref</span>
-      <span class="foot">
-        <a href="https://fariborzaref.com/">Main site</a>
-        <a href="https://orcid.org/0000-0001-6622-1824">ORCID</a>
-        <a href="https://github.com/fariborzaref">GitHub</a>
-      </span>
+    <div class="foot-inner rich">
+      <div class="foot-grid">
+        <div>
+          <p class="foot-brand">Sociology you can <em>run.</em></p>
+          <p class="foot-lede">Interactive demonstrations in inequality and research method, built on published data and simulation.</p>
+        </div>
+        <div>
+          <span class="foot-label">The labs</span>
+          <ul><li><a href="inequality">Inequality Lab</a></li><li><a href="methods">Methods Lab</a></li><li><a href="courses">Courses</a></li></ul>
+        </div>
+        <div>
+          <span class="foot-label">Elsewhere</span>
+          <ul><li><a href="https://fariborzaref.com/">fariborzaref.com</a></li><li><a href="https://orcid.org/0000-0001-6622-1824">ORCID</a></li><li><a href="https://github.com/fariborzaref">GitHub</a></li></ul>
+        </div>
+        <div>
+          <span class="foot-label">Colophon</span>
+          <ul><li><a href="./#cite">How to cite</a></li><li><a href="https://github.com/fariborzaref/fariborzaref.github.io">Source code</a></li></ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span class="foot">&copy; <span data-year>2026</span> Fariborz Aref</span>
+        <span class="foot">Hand-built &middot; No framework, no build step</span>
+      </div>
     </div>
   </footer>
 

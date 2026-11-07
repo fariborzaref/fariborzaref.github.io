@@ -6,7 +6,8 @@
   <title>Page not found · Fariborz Aref · Labs</title>
   <meta name="description" content="This page does not exist.">
   <meta name="author" content="Fariborz Aref">
-  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="robots" content="noindex">
+  <base href="/">
   <link rel="canonical" href="https://fariborzaref.github.io/404">
 
   <meta property="og:type" content="website">
@@ -73,29 +74,46 @@
           <li><a class="ext" href="https://fariborzaref.com/">Main site</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark reading mode"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></button>
     </div>
   </header>
 
   <main id="main">
 
     <div class="wrap">
-      <section class="hero" style="border-bottom:0;min-height:50vh">
-        <p class="kicker">Page not found</p>
-        <h1>This page does not <em>exist.</em></h1>
-        <p class="lead">It may have moved. The labs and courses are listed below.</p>
+      <section class="nf">
+        <p class="kicker">Error 404 &middot; Page not found</p>
+        <h1>This page is not in the <em>sample.</em></h1>
+        <p class="lead">The address may have changed, or the page may never have existed. Every demonstration is one step away.</p>
         <div class="controls"><a class="btn" href="./">Labs home</a><a class="btn ghost" href="inequality">Inequality Lab</a><a class="btn ghost" href="methods">Methods Lab</a></div>
       </section>
     </div>
   </main>
 
   <footer class="site-footer">
-    <div class="foot-inner">
-      <span class="foot">&copy; <span data-year>2026</span> Fariborz Aref</span>
-      <span class="foot">
-        <a href="https://fariborzaref.com/">Main site</a>
-        <a href="https://orcid.org/0000-0001-6622-1824">ORCID</a>
-        <a href="https://github.com/fariborzaref">GitHub</a>
-      </span>
+    <div class="foot-inner rich">
+      <div class="foot-grid">
+        <div>
+          <p class="foot-brand">Sociology you can <em>run.</em></p>
+          <p class="foot-lede">Interactive demonstrations in inequality and research method, built on published data and simulation.</p>
+        </div>
+        <div>
+          <span class="foot-label">The labs</span>
+          <ul><li><a href="inequality">Inequality Lab</a></li><li><a href="methods">Methods Lab</a></li><li><a href="courses">Courses</a></li></ul>
+        </div>
+        <div>
+          <span class="foot-label">Elsewhere</span>
+          <ul><li><a href="https://fariborzaref.com/">fariborzaref.com</a></li><li><a href="https://orcid.org/0000-0001-6622-1824">ORCID</a></li><li><a href="https://github.com/fariborzaref">GitHub</a></li></ul>
+        </div>
+        <div>
+          <span class="foot-label">Colophon</span>
+          <ul><li><a href="./#cite">How to cite</a></li><li><a href="https://github.com/fariborzaref/fariborzaref.github.io">Source code</a></li></ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span class="foot">&copy; <span data-year>2026</span> Fariborz Aref</span>
+        <span class="foot">Hand-built &middot; No framework, no build step</span>
+      </div>
     </div>
   </footer>
 
