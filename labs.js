@@ -3,6 +3,19 @@
   var doc = document.documentElement;
   doc.classList.add('js');
 
+  // theme: an explicit choice is remembered; otherwise the system setting applies
+  var THEME_KEY = 'fa-labs-theme';
+  try { var saved = localStorage.getItem(THEME_KEY); if (saved === 'light' || saved === 'dark') doc.setAttribute('data-theme', saved); } catch (e) {}
+  function isDark() {
+    var t = doc.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function syncThemeColor() {
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', isDark() ? '#0c0d10' : '#f6f5f1');
+  }
+
   var L = {};
   L.NS = 'http://www.w3.org/2000/svg';
   L.narrow = function () { return window.matchMedia('(max-width: 600px)').matches; };
@@ -109,5 +122,67 @@
 
     // hide tooltip on scroll
     window.addEventListener('scroll', function () { L.tip(null); }, { passive: true });
+
+    // theme toggle
+    syncThemeColor();
+    document.querySelectorAll('.theme-toggle').forEach(function (b) {
+      var label = function () { b.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme'); };
+      label();
+      b.addEventListener('click', function () {
+        var next = isDark() ? 'light' : 'dark';
+        doc.setAttribute('data-theme', next);
+        try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+        label(); syncThemeColor();
+      });
+    });
+
+    // mobile navigation
+    var t = document.querySelector('.nav-toggle'), n = document.getElementById('site-nav');
+    if (t && n) {
+      var set = function (o) { t.setAttribute('aria-expanded', String(o)); n.classList.toggle('open', o); t.setAttribute('aria-label', o ? 'Close navigation' : 'Open navigation'); };
+      t.addEventListener('click', function (e) { e.preventDefault(); set(t.getAttribute('aria-expanded') !== 'true'); });
+      n.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+    }
+
+    // reading progress on long pages
+    var head = document.querySelector('.site-header');
+    if (head && document.querySelectorAll('.demo').length > 2) {
+      var bar = document.createElement('div'); bar.className = 'progress'; bar.setAttribute('aria-hidden', 'true'); head.appendChild(bar);
+      var ticking = false;
+      var upd = function () {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+        ticking = false;
+      };
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }, { passive: true });
+      upd();
+    }
+
+    // copy buttons: every citation line, and any [data-copy] block
+    function copyText(text, btn) {
+      var done = function () { btn.classList.add('done'); btn.textContent = 'Copied'; setTimeout(function () { btn.classList.remove('done'); btn.textContent = btn.getAttribute('data-label'); }, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () {});
+      else { var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(ta); }
+    }
+    function addCopy(host, getText, label) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'copy-btn';
+      b.textContent = label || 'Copy'; b.setAttribute('data-label', b.textContent);
+      b.addEventListener('click', function () { copyText(getText(), b); });
+      host.appendChild(b);
+    }
+    document.querySelectorAll('.cite').forEach(function (c) {
+      var text = c.textContent.replace(/^\s*Cite\s*/, '').trim();
+      addCopy(c, function () { return text; }, 'Copy');
+    });
+    document.querySelectorAll('[data-copy]').forEach(function (box) {
+      var src = document.getElementById(box.getAttribute('data-copy'));
+      if (src) addCopy(box, function () { return src.textContent.trim(); }, 'Copy');
+    });
+
+    // offline support
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+    }
   });
 })();

@@ -301,8 +301,8 @@
       document.getElementById('icc-within').textContent = Math.round((1 - icc) * 100) + '%';
       document.getElementById('icc-sds').textContent = o.sc + ' / ' + o.sr;
       document.getElementById('icc-readout').innerHTML = view === 'levels'
-        ? 'In the published model of the <b>' + o.w + '</b>, ' + Math.round(icc * 100) + '% of the variance lies <b>between countries</b>. The gold line shows the period effects; the blue lines show how far each country sits from it.'
-        : 'Remove each country’s own average and the lines collapse toward the gold line. What remains, ' + Math.round((1 - icc) * 100) + '% of the variance, is change <b>within countries</b> over time, the part that a recession or a pandemic can move.';
+        ? 'In the published model of the <b>' + o.w + '</b>, ' + Math.round(icc * 100) + '% of the variance lies <b>between countries</b>. The bold stepped line shows the period effects; the thin lines show how far each country sits from it.'
+        : 'Remove each country’s own average and the lines collapse toward the stepped line. What remains, ' + Math.round((1 - icc) * 100) + '% of the variance, is change <b>within countries</b> over time, the part that a recession or a pandemic can move.';
     }
     L.seg(document.getElementById('icc-seg'), function (v) { key = v; draw(); });
     L.seg(document.getElementById('icc-view'), function (v) { view = v; draw(); });

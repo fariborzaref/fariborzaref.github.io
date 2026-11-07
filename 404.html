@@ -6,7 +6,8 @@
   <title>Page not found · Fariborz Aref · Labs</title>
   <meta name="description" content="This page does not exist.">
   <meta name="author" content="Fariborz Aref">
-  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="robots" content="noindex">
+  <base href="/">
   <link rel="canonical" href="https://fariborzaref.github.io/404">
 
   <meta property="og:type" content="website">
@@ -21,14 +22,15 @@
   <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
 
   <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#12100c">
+  <meta name="theme-color" content="#f6f5f1">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" type="image/png" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="apple-mobile-web-app-title" content="F. Aref Labs">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="labs.css">
   <script src="labs.js"></script>
 
@@ -60,29 +62,28 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="./">Fariborz Aref<span>Labs</span></a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
-        <span></span><span></span>
-      </button>
+      <a class="brand" href="./" aria-label="Fariborz Aref Labs, home"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7"/><path d="M7 25 L25 7" stroke-width="1.2" stroke-dasharray="1.6 2.2" fill="none" opacity=".55"/><path class="m-acc" d="M7 25 C16 24.6 21.5 20.5 25 7" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg><span class="wm">Fariborz Aref<span>Labs</span></span></a>
       <nav class="nav" id="site-nav" aria-label="Primary">
         <ul>
           <li><a href="./">Labs</a></li>
           <li><a href="inequality">Inequality Lab</a></li>
           <li><a href="methods">Methods Lab</a></li>
           <li><a href="courses">Courses</a></li>
-          <li><a class="ext" href="https://fariborzaref.com/">Main site</a></li>
+          <li><a class="ext" href="https://fariborzaref.com/">fariborzaref.com</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button>
     </div>
   </header>
 
   <main id="main">
 
     <div class="wrap">
-      <section class="hero" style="border-bottom:0;min-height:50vh">
-        <p class="kicker">Page not found</p>
-        <h1>This page does not <em>exist.</em></h1>
-        <p class="lead">It may have moved. The labs and courses are listed below.</p>
+      <section class="nf">
+        <p class="big">Error 404</p>
+        <h1>This page is not in the <em>sample.</em></h1>
+        <p class="lead">The address may have changed, or the page may never have existed. Every demonstration is still one step away.</p>
         <div class="controls"><a class="btn" href="./">Labs home</a><a class="btn ghost" href="inequality">Inequality Lab</a><a class="btn ghost" href="methods">Methods Lab</a></div>
       </section>
     </div>
@@ -90,26 +91,27 @@
 
   <footer class="site-footer">
     <div class="foot-inner">
-      <span class="foot">&copy; <span data-year>2026</span> Fariborz Aref</span>
-      <span class="foot">
-        <a href="https://fariborzaref.com/">Main site</a>
-        <a href="https://orcid.org/0000-0001-6622-1824">ORCID</a>
-        <a href="https://github.com/fariborzaref">GitHub</a>
-      </span>
+      <div class="foot-grid">
+        <div>
+          <p class="foot-brand">Sociology you can <em>run.</em></p>
+          <p>Interactive demonstrations in inequality and research method, built on published data and simulation by Fariborz Aref.</p>
+        </div>
+        <div>
+          <span class="foot-label">Labs</span>
+          <ul><li><a href="inequality">Inequality Lab</a></li><li><a href="methods">Methods Lab</a></li><li><a href="courses">Courses</a></li></ul>
+        </div>
+        <div>
+          <span class="foot-label">Elsewhere</span>
+          <ul><li><a href="https://fariborzaref.com/">fariborzaref.com</a></li><li><a href="https://orcid.org/0000-0001-6622-1824">ORCID</a></li><li><a href="https://github.com/fariborzaref">GitHub</a></li></ul>
+        </div>
+        <div>
+          <span class="foot-label">Colophon</span>
+          <ul><li><a href="https://github.com/fariborzaref/fariborzaref.github.io">Source code</a></li><li><a href="./#cite">How to cite</a></li></ul>
+        </div>
+      </div>
+      <div class="foot-base"><span>&copy; <span data-year>2026</span> Fariborz Aref</span><span>Hand-built in HTML, CSS and JavaScript &middot; No framework, no build step</span></div>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      var t = document.querySelector('.nav-toggle'), n = document.getElementById('site-nav');
-      if (!t || !n) return;
-      function set(o) { t.setAttribute('aria-expanded', String(o)); n.classList.toggle('open', o); t.setAttribute('aria-label', o ? 'Close navigation' : 'Open navigation'); }
-      t.addEventListener('click', function (e) { e.preventDefault(); set(t.getAttribute('aria-expanded') !== 'true'); });
-      n.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
-    })();
-    if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }
-  </script>
 
 </body>
 </html>
