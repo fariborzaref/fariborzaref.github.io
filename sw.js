@@ -1,7 +1,7 @@
 /* Fariborz Aref · Labs: offline support.
    Pages are fetched from the network first, so updates appear immediately;
    the cache is used only when the visitor is offline. */
-const CACHE = 'fa-labs-v6';
+const CACHE = 'fa-labs-v5';
 const ASSETS = [
   './',
   './index.html',
@@ -17,8 +17,7 @@ const ASSETS = [
   './icon-192.png',
   './icon-512.png',
   './apple-touch-icon.png',
-  './favicon-32.png',
-  './favicon.svg'
+  './favicon-32.png'
 ];
 
 self.addEventListener('install', (e) => {
