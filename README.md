@@ -1,6 +1,6 @@
 # Fariborz Aref · Labs
 
-**Sociology you can run.** Twelve interactive demonstrations in inequality and research methods, published at https://fariborzaref.github.io/.
+**Inequality and Inference.** Twelve interactive demonstrations in inequality and research methods, published at https://fariborzaref.github.io/.
 
 | Page | Contents |
 |---|---|
