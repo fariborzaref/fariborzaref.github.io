@@ -1,7 +1,7 @@
 /* Fariborz Aref · Labs: offline support.
    Pages are fetched from the network first, so updates appear immediately;
    the cache is used only when the visitor is offline. */
-const CACHE = 'fa-labs-v6';
+const CACHE = 'fa-labs-v7';
 const ASSETS = [
   './',
   './index.html',
@@ -36,11 +36,14 @@ self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
   if (new URL(req.url).origin !== location.origin) return;
+  // Pages always ask the server for the latest copy, so an upload shows at once.
+  const fresh = req.mode === 'navigate'
+    ? fetch(req.url, { cache: 'no-cache', credentials: 'same-origin', redirect: 'manual' })
+    : fetch(req);
   e.respondWith(
-    fetch(req)
+    fresh
       .then((resp) => {
-        const copy = resp.clone();
-        caches.open(CACHE).then((c) => c.put(req, copy));
+        if (resp.ok) { const copy = resp.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); }
         return resp;
       })
       .catch(() => caches.match(req).then((hit) => hit || caches.match('./index.html')))
