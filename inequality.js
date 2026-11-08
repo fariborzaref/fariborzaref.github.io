@@ -1,4 +1,4 @@
-/* The Inequality Lab: five demonstrations. Data sources are listed in the page. */
+/* The Inequality Lab: seven demonstrations. Data sources are listed in the page. */
 (function () {
   var L = window.L;
 
@@ -381,6 +381,126 @@
     }
     slider.addEventListener('input', draw);
     L.seg(document.getElementById('div-seg'), function (v) { logScale = v === 'log'; draw(); });
+    draw(); L.onResize(draw);
+  })();
+
+  /* ============================================================
+     VI. THE MOBILITY LADDER
+     Quintile transition probabilities implied by a rank-rank slope,
+     using a Gaussian copula (Pearson r = 2 sin(pi * rho_s / 6)).
+     Presets: Chetty, Hendren, Kline and Saez (2014), QJE 129(4):
+     United States 0.341, Denmark 0.180.
+     ============================================================ */
+  (function () {
+    var svg = document.getElementById('ladder-chart'); if (!svg) return;
+    var slider = document.getElementById('lad-r'), out = document.getElementById('lad-rval');
+    var Q = [-8, L.PhiInv(0.2), L.PhiInv(0.4), L.PhiInv(0.6), L.PhiInv(0.8), 8];
+    var phi = function (x) { return Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI); };
+    function matrix(rs) {
+      var r = 2 * Math.sin(Math.PI * rs / 6), s = Math.sqrt(Math.max(1e-9, 1 - r * r)), M = [];
+      for (var i = 0; i < 5; i++) {
+        M.push([]);
+        var a = Math.max(-6, Q[i]), b = Math.min(6, Q[i + 1]), n = 240, h = (b - a) / n;
+        for (var j = 0; j < 5; j++) {
+          var sum = 0;
+          for (var k = 0; k <= n; k++) {
+            var x = a + k * h, w = (k === 0 || k === n) ? 1 : (k % 2 ? 4 : 2);
+            sum += w * phi(x) * (L.Phi((Q[j + 1] - r * x) / s) - L.Phi((Q[j] - r * x) / s));
+          }
+          M[i].push(sum * h / 3 * 5);
+        }
+      }
+      return M;
+    }
+    var NAMES = ['Bottom', 'Second', 'Middle', 'Fourth', 'Top'];
+    function draw(fromPreset) {
+      var rs = slider.value / 1000; out.textContent = rs.toFixed(3);
+      if (!fromPreset) document.querySelectorAll('#lad-presets button').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      var M = matrix(rs);
+      L.clear(svg);
+      var nar = L.narrow(), W = nar ? 360 : 520, mL = nar ? 66 : 92, mT = 46, cell = (W - mL - 8) / 5, H = mT + cell * 5 + 44;
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      L.el(svg, 'text', { x: mL, y: 14, class: 't-title' }, 'Children’s income fifth →');
+      for (var j = 0; j < 5; j++) L.el(svg, 'text', { x: mL + cell * j + cell / 2, y: mT - 8, 'text-anchor': 'middle' }, NAMES[j]);
+      for (var i = 0; i < 5; i++) {
+        var row = 4 - i, y = mT + row * cell;
+        L.el(svg, 'text', { x: mL - 8, y: y + cell / 2 + 4, 'text-anchor': 'end' }, NAMES[i]);
+        for (var jj = 0; jj < 5; jj++) {
+          var p = M[i][jj], x = mL + jj * cell;
+          var rect = L.el(svg, 'rect', { x: x + 1, y: y + 1, width: cell - 2, height: cell - 2, fill: 'var(--accent)', 'fill-opacity': Math.min(1, 0.06 + p * 1.6) });
+          L.el(svg, 'text', { x: x + cell / 2, y: y + cell / 2 + 5, 'text-anchor': 'middle', class: 't-label', style: 'fill:' + (p > 0.3 ? 'var(--card)' : 'var(--ink)') }, (p * 100).toFixed(nar ? 0 : 1) + '%');
+          (function (i, jj, p, rect) {
+            var h = function (e) { L.tip('Parents in the <b>' + NAMES[i].toLowerCase() + '</b> fifth<br>Children in the <b>' + NAMES[jj].toLowerCase() + '</b> fifth: <b>' + (p * 100).toFixed(1) + '%</b>', e); };
+            rect.addEventListener('mousemove', h); rect.addEventListener('touchstart', h, { passive: true }); rect.addEventListener('mouseleave', function () { L.tip(null); });
+          })(i, jj, p, rect);
+        }
+      }
+      L.el(svg, 'rect', { x: mL, y: mT + 4 * cell, width: cell * 5, height: cell, fill: 'none', stroke: 'var(--c-blue)', 'stroke-width': 2 });
+      L.el(svg, 'text', { x: mL - 8, y: mT + 5 * cell + 22, 'text-anchor': 'end', class: 't-title' }, 'Parents ↑');
+      L.el(svg, 'text', { x: mL + cell * 2.5, y: mT + 5 * cell + 22, 'text-anchor': 'middle' }, nar ? 'Chance alone: 20% per cell' : 'Each row sums to 100%. Chance alone gives 20% in every cell.');
+      document.getElementById('lad-up').textContent = (M[0][4] * 100).toFixed(1) + '%';
+      document.getElementById('lad-stay').textContent = (M[0][0] * 100).toFixed(1) + '%';
+      document.getElementById('lad-top').textContent = (M[4][4] * 100).toFixed(1) + '%';
+      document.getElementById('lad-readout').innerHTML = rs < 0.005
+        ? 'With no link between generations, a child’s fifth is independent of the parents’: <b>20%</b> land in every fifth, whatever their origin.'
+        : 'At a rank-rank slope of <b>' + rs.toFixed(2) + '</b>, a child born in the bottom fifth has a <b>' + (M[0][4] * 100).toFixed(1) + '%</b> chance of reaching the top fifth, against <b>' + (M[4][4] * 100).toFixed(1) + '%</b> for a child born at the top.';
+    }
+    slider.addEventListener('input', function () { draw(false); });
+    L.seg(document.getElementById('lad-presets'), function (v) { slider.value = Math.round(parseFloat(v) * 1000); draw(true); });
+    draw(true); L.onResize(function () { draw(true); });
+  })();
+
+  /* ============================================================
+     VII. THE GREAT GATSBY CURVE
+     Intergenerational earnings elasticities: Corak (2013), JEP 27(3).
+     Gini of disposable income: OECD Income Distribution Database via
+     Our World in Data, latest year 2020-2023 (as in the Inequality Lab).
+     ============================================================ */
+  (function () {
+    var svg = document.getElementById('gatsby-chart'); if (!svg) return;
+    var REG = {
+      sd: { n: 'Social democratic', c: 'var(--c-blue)' }, co: { n: 'Conservative', c: 'var(--c-green)' },
+      so: { n: 'Southern European', c: 'var(--c-gold)' }, li: { n: 'Liberal', c: 'var(--c-terra)' },
+      ea: { n: 'East Asian', c: 'var(--c-plum)' }, la: { n: 'Latin American', c: 'var(--c-stone)' }
+    };
+    var D = [
+      ['Denmark', 'DNK', 0.276, 0.15, 'sd', 2022], ['Norway', 'NOR', 0.262, 0.17, 'sd', 2022], ['Finland', 'FIN', 0.269, 0.18, 'sd', 2023],
+      ['Sweden', 'SWE', 0.289, 0.27, 'sd', 2023], ['Canada', 'CAN', 0.306, 0.19, 'li', 2023], ['Australia', 'AUS', 0.319, 0.26, 'li', 2020],
+      ['Germany', 'DEU', 0.309, 0.32, 'co', 2022], ['Japan', 'JPN', 0.338, 0.34, 'ea', 2021], ['Spain', 'ESP', 0.312, 0.40, 'so', 2023],
+      ['France', 'FRA', 0.299, 0.41, 'co', 2023], ['United States', 'USA', 0.394, 0.47, 'li', 2023], ['Italy', 'ITA', 0.325, 0.50, 'so', 2023],
+      ['United Kingdom', 'GBR', 0.367, 0.50, 'li', 2023], ['Chile', 'CHL', 0.448, 0.52, 'la', 2022]
+    ].map(function (r) { return { n: r[0], k: r[1], g: r[2], e: r[3], reg: r[4], yr: r[5] }; });
+    var leg = document.getElementById('gatsby-legend');
+    ['sd', 'co', 'so', 'li', 'ea', 'la'].forEach(function (k) { var s = document.createElement('span'); s.innerHTML = '<i style="background:' + REG[k].c + '"></i>' + REG[k].n; leg.appendChild(s); });
+    var dropChile = false;
+    function draw() {
+      var rows = dropChile ? D.filter(function (r) { return r.k !== 'CHL'; }) : D;
+      var pts = rows.map(function (r) { return { x: r.g, y: r.e }; }), fit = L.ols(pts), rr = L.corr(pts);
+      L.clear(svg);
+      var nar = L.narrow(), W = nar ? 360 : 660, H = nar ? 340 : 380, mL = 46, mR = 16, mT = 16, mB = 44;
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var x = L.scale(0.24, 0.47, mL, W - mR), y = L.scale(0.1, 0.6, H - mB, mT);
+      [0.2, 0.3, 0.4, 0.5, 0.6].forEach(function (v) { L.el(svg, 'line', { x1: mL, y1: y(v), x2: W - mR, y2: y(v), class: 'grid' }); L.el(svg, 'text', { x: mL - 6, y: y(v) + 4, 'text-anchor': 'end' }, v.toFixed(1)); });
+      [0.25, 0.30, 0.35, 0.40, 0.45].forEach(function (v) { L.el(svg, 'text', { x: x(v), y: H - mB + 18, 'text-anchor': 'middle' }, v.toFixed(2)); });
+      L.el(svg, 'text', { x: (mL + W - mR) / 2, y: H - 6, 'text-anchor': 'middle', class: 't-title' }, 'Inequality: Gini of disposable income');
+      L.el(svg, 'text', { x: mL, y: mT - 4, class: 't-title' }, 'Persistence: intergenerational earnings elasticity');
+      L.el(svg, 'line', { x1: x(0.25), y1: y(fit.m * 0.25 + fit.b), x2: x(0.46), y2: y(fit.m * 0.46 + fit.b), stroke: 'var(--ink-faint)', 'stroke-width': 1.6, 'stroke-dasharray': '6 5' });
+      D.forEach(function (r) {
+        var off = dropChile && r.k === 'CHL';
+        var c = L.el(svg, 'circle', { cx: x(r.g), cy: y(r.e), r: 6, fill: off ? 'none' : REG[r.reg].c, stroke: REG[r.reg].c, 'stroke-width': 1.6, opacity: off ? 0.5 : 1 });
+        var lab = nar ? r.k : r.n, right = x(r.g) > W - 140 || r.k === 'NOR' || r.k === 'FRA';
+        var dy = { FIN: -6, DNK: 10, NOR: 4, SWE: 0 }[r.k] || 4;
+        L.el(svg, 'text', { x: x(r.g) + (right ? -10 : 10), y: y(r.e) + dy, 'text-anchor': right ? 'end' : 'start', class: 't-label', opacity: off ? 0.5 : 1 }, lab);
+        var h = function (e) { L.tip('<b>' + r.n + '</b><br>' + REG[r.reg].n + ' regime<br>Earnings elasticity ' + r.e.toFixed(2) + '<br>Gini ' + r.g.toFixed(3) + ' (' + r.yr + ')', e); };
+        c.addEventListener('mousemove', h); c.addEventListener('touchstart', h, { passive: true }); c.addEventListener('mouseleave', function () { L.tip(null); });
+      });
+      document.getElementById('gat-r').textContent = rr.toFixed(2);
+      document.getElementById('gat-n').textContent = rows.length;
+      document.getElementById('gat-readout').innerHTML = dropChile
+        ? 'Without Chile, the most unequal case, the correlation is <b>' + rr.toFixed(2) + '</b> across ' + rows.length + ' countries. The pattern does not rest on one extreme point, a check worth running whenever the sample is small.'
+        : 'Across these ' + rows.length + ' countries, the correlation between inequality and earnings persistence is <b>' + rr.toFixed(2) + '</b>. Where incomes are more unequal, more of a father’s earnings advantage reappears in his son’s.';
+    }
+    L.seg(document.getElementById('gatsby-seg'), function (v) { dropChile = v === 'nochile'; draw(); });
     draw(); L.onResize(draw);
   })();
 })();

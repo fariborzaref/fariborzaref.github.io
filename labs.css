@@ -621,10 +621,3 @@ a.btn { text-decoration: none; }
 @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .foot-inner.rich { padding: 1.8rem 16px 1rem; } }
 .foot-grid li { line-height: 1.45; margin-bottom: 0.25rem; }
-
-/* three volumes */
-.labs-grid { grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
-.lab-card h2 { font-size: 1.8rem; }
-@media (max-width: 1100px) { .labs-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 900px) { .labs-grid { grid-template-columns: 1fr; } }
-@media (min-width: 901px) and (max-width: 1080px) { .nav ul { gap: 1.1rem; } .nav a { font-size: 0.6rem; letter-spacing: 0.14em; } .theme-toggle { margin-left: 1rem; } }

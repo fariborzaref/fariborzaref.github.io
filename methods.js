@@ -409,4 +409,56 @@
     document.getElementById('sn-new').addEventListener('click', function () { build(Math.floor(Math.random() * 1e6)); draw(); });
     build(27); draw(); L.onResize(draw);
   })();
+
+  /* ============================================================
+     VIII. REGRESSION TO THE MEAN (simulated, after Galton 1886)
+     Parent and child heights share a mean and spread; the child's
+     expected deviation is the slope times the parent's deviation.
+     ============================================================ */
+  (function () {
+    var svg = document.getElementById('galton-chart'); if (!svg) return;
+    var slider = document.getElementById('gal-b'), out = document.getElementById('gal-bval');
+    var MEAN = 68, SD = 1.8, N = 400, base = [];
+    var rand = L.rng(1886);
+    for (var i = 0; i < N; i++) base.push({ z: L.normal(rand), e: L.normal(rand) });
+    var group = 'tall';
+    function draw(fromPreset) {
+      var b = slider.value / 100; out.textContent = b.toFixed(2);
+      if (!fromPreset) document.querySelectorAll('#gal-preset button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      var pts = base.map(function (p) { return { x: MEAN + SD * p.z, y: MEAN + SD * (b * p.z + Math.sqrt(1 - b * b) * p.e) }; });
+      var sorted = pts.slice().sort(function (a, c) { return a.x - c.x; });
+      var cut = Math.round(N / 10), sel = group === 'tall' ? sorted.slice(N - cut) : sorted.slice(0, cut);
+      var inSel = new Set(sel);
+      var mx = sel.reduce(function (a, p) { return a + p.x; }, 0) / cut, my = sel.reduce(function (a, p) { return a + p.y; }, 0) / cut;
+      L.clear(svg);
+      var nar = L.narrow(), W = nar ? 360 : 660, H = nar ? 340 : 380, mL = 40, mR = 14, mT = 16, mB = 44;
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var x = L.scale(62, 74, mL, W - mR), y = L.scale(62, 74, H - mB, mT);
+      [64, 66, 68, 70, 72].forEach(function (v) {
+        L.el(svg, 'line', { x1: mL, y1: y(v), x2: W - mR, y2: y(v), class: 'grid' }); L.el(svg, 'text', { x: mL - 6, y: y(v) + 4, 'text-anchor': 'end' }, v);
+        L.el(svg, 'text', { x: x(v), y: H - mB + 18, 'text-anchor': 'middle' }, v);
+      });
+      L.el(svg, 'text', { x: (mL + W - mR) / 2, y: H - 6, 'text-anchor': 'middle', class: 't-title' }, 'Parent height, inches');
+      L.el(svg, 'text', { x: mL, y: mT - 4, class: 't-title' }, 'Child height, inches');
+      L.el(svg, 'line', { x1: x(62), y1: y(62), x2: x(74), y2: y(74), stroke: 'var(--ink-faint)', 'stroke-dasharray': '4 4' });
+      L.el(svg, 'line', { x1: x(62), y1: y(MEAN + b * (62 - MEAN)), x2: x(74), y2: y(MEAN + b * (74 - MEAN)), stroke: 'var(--accent)', 'stroke-width': 2 });
+      pts.forEach(function (p) {
+        if (p.x < 62 || p.x > 74 || p.y < 62 || p.y > 74) return;
+        var on = inSel.has(p);
+        L.el(svg, 'circle', { cx: x(p.x), cy: y(p.y), r: on ? 3.4 : 2.6, fill: on ? 'var(--c-terra)' : 'var(--c-stone)', opacity: on ? 0.95 : 0.45 });
+      });
+      L.el(svg, 'line', { x1: x(mx), y1: y(62), x2: x(mx), y2: y(74), stroke: 'var(--c-terra)', 'stroke-width': 1.2, opacity: 0.6 });
+      L.el(svg, 'line', { x1: x(62), y1: y(my), x2: x(74), y2: y(my), stroke: 'var(--c-blue)', 'stroke-width': 1.6 });
+      L.el(svg, 'circle', { cx: x(mx), cy: y(my), r: 6, fill: 'var(--c-blue)', stroke: 'var(--card)', 'stroke-width': 2 });
+      var dp = mx - MEAN, dc = my - MEAN;
+      document.getElementById('gal-par').textContent = (dp > 0 ? '+' : '') + dp.toFixed(1);
+      document.getElementById('gal-chi').textContent = (dc > 0 ? '+' : '') + dc.toFixed(1);
+      document.getElementById('gal-closed').textContent = Math.round((1 - dc / dp) * 100) + '%';
+      document.getElementById('gal-readout').innerHTML = 'Parents in the ' + (group === 'tall' ? 'tallest' : 'shortest') + ' tenth stand <b>' + Math.abs(dp).toFixed(1) + ' inches</b> ' + (dp > 0 ? 'above' : 'below') + ' the average. Their children stand <b>' + Math.abs(dc).toFixed(1) + ' inches</b> ' + (dc > 0 ? 'above' : 'below') + ' it. ' + (b > 0.97 ? 'With a slope of 1, height passes in full and nothing regresses.' : 'No cause pulled them toward the middle; an imperfect link between generations is enough.');
+    }
+    slider.addEventListener('input', function () { draw(false); });
+    L.seg(document.getElementById('gal-seg'), function (v) { group = v; draw(true); });
+    L.seg(document.getElementById('gal-preset'), function (v) { slider.value = Math.round(parseFloat(v) * 100); draw(true); });
+    draw(true); L.onResize(function () { draw(true); });
+  })();
 })();

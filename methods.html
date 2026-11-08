@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>The Methods Lab · Fariborz Aref</title>
-  <meta name="description" content="Seven interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, and overfitting with few countries.">
+  <meta name="description" content="Eight interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, overfitting with few countries, and regression to the mean.">
   <meta name="author" content="Fariborz Aref">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://fariborzaref.github.io/methods">
@@ -12,12 +12,12 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fariborz Aref · Labs">
   <meta property="og:title" content="The Methods Lab · Fariborz Aref">
-  <meta property="og:description" content="Seven interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, and overfitting with few countries.">
+  <meta property="og:description" content="Eight interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, overfitting with few countries, and regression to the mean.">
   <meta property="og:url" content="https://fariborzaref.github.io/methods">
   <meta property="og:image" content="https://fariborzaref.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Methods Lab · Fariborz Aref">
-  <meta name="twitter:description" content="Seven interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, and overfitting with few countries.">
+  <meta name="twitter:description" content="Eight interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, overfitting with few countries, and regression to the mean.">
   <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
 
   <link rel="manifest" href="manifest.webmanifest">
@@ -29,8 +29,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="labs.css?v=6">
-  <script src="labs.js?v=6"></script>
+  <link rel="stylesheet" href="labs.css?v=7">
+  <script src="labs.js?v=7"></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S437KK8JX4"></script>
   <script>
@@ -44,7 +44,7 @@
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "The Methods Lab \u00b7 Fariborz Aref",
-  "description": "Seven interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, and overfitting with few countries.",
+  "description": "Eight interactive demonstrations in research methods: Simpson's paradox, the ecological fallacy, confidence intervals, forking paths, between and within variation, persistence in panel data, overfitting with few countries, and regression to the mean.",
   "url": "https://fariborzaref.github.io/methods",
   "author": {
     "@type": "Person",
@@ -69,7 +69,6 @@
           <li><a href="./">Labs</a></li>
           <li><a href="inequality">Inequality Lab</a></li>
           <li><a href="methods" aria-current="page">Methods Lab</a></li>
-          <li><a href="mobility">Mobility Lab</a></li>
           <li><a href="courses">Courses</a></li>
           <li><a class="ext" href="https://fariborzaref.com/">Main site</a></li>
         </ul>
@@ -84,10 +83,10 @@
       <section class="hero">
         <p class="kicker">Vol. II &middot; The Methods Lab</p>
         <h1>The Logic of Social <em>Research</em></h1>
-        <p class="lead">Seven demonstrations of places where a correct calculation leads to a wrong conclusion. In each, the error lies in the design or the reading of the analysis, and the arithmetic is fine.</p>
-        <p class="lead soft">All use simulated data, so the true answer is known in advance. The last three take their settings from published comparative research on OECD countries.</p>
+        <p class="lead">Eight demonstrations of places where a correct calculation leads to a wrong conclusion. In each, the error lies in the design or the reading of the analysis, and the arithmetic is fine.</p>
+        <p class="lead soft">All use simulated data, so the true answer is known in advance. Three take their settings from published comparative research on OECD countries.</p>
         <dl class="meta">
-          <div><dt>Demonstrations</dt><dd>Seven</dd></div>
+          <div><dt>Demonstrations</dt><dd>Eight</dd></div>
           <div><dt>Evidence</dt><dd>Simulation with a known truth</dd></div>
           <div><dt>Length</dt><dd>One class session each</dd></div>
           <div><dt>Companion</dt><dd><a href="inequality">The Inequality Lab &rarr;</a></dd></div>
@@ -104,6 +103,7 @@
           <li><a href="#between"><span class="rn">V</span><span class="nm">Between and Within</span><span class="ds">How much inequality is national</span></a></li>
           <li><a href="#persistence"><span class="rn">VI</span><span class="nm">Twenty Years Are Not Twenty Observations</span><span class="ds">Persistence and the information in a panel</span></a></li>
           <li><a href="#smalln"><span class="rn">VII</span><span class="nm">Twenty-Seven Countries, Many Variables</span><span class="ds">Overfitting in small-N comparison</span></a></li>
+          <li><a href="#galton"><span class="rn">VIII</span><span class="nm">Regression to the Mean</span><span class="ds">Movement between generations that requires no cause</span></a></li>
         </ol>
       </nav>
 
@@ -374,6 +374,48 @@
         </div>
       </section>
 
+      <section class="demo rv" id="galton">
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>VIII.</b>Demonstration 8</span>
+            <h2>Regression to the Mean</h2>
+            <p class="lineage">Francis Galton&rsquo;s &ldquo;Regression towards Mediocrity in Hereditary Stature&rdquo; (1886) compared the heights of parents and their adult children. The children of unusually tall or short parents were, on average, closer to the population mean; Galton put the ratio at about two thirds.</p>
+          </div>
+          <div><p class="intro">Each point is a simulated parent and child. Select the tallest or shortest tenth of parents and compare their average with their children&rsquo;s. The slope sets how strongly height passes from one generation to the next; at 1, nothing regresses.</p></div>
+        </div>
+        <div class="panel">
+          <div class="controls" style="margin:0 0 1rem;justify-content:space-between">
+            <div class="range-row"><label for="gal-b">Parent-child slope <b id="gal-bval" style="font-family:var(--serif);font-size:1.3rem;color:var(--ink);font-weight:400"></b></label><input type="range" id="gal-b" min="0" max="100" value="67" step="1"></div>
+            <div class="seg" id="gal-preset" role="group" aria-label="Preset"><button type="button" data-v="0.67" aria-pressed="true">Galton, 2/3</button><button type="button" data-v="1" aria-pressed="false">No regression</button></div>
+          </div>
+          <div class="controls" style="margin:0 0 1rem"><div class="seg" id="gal-seg" role="group" aria-label="Group"><button type="button" data-v="tall" aria-pressed="true">Tallest tenth of parents</button><button type="button" data-v="short" aria-pressed="false">Shortest tenth</button></div></div>
+          <div class="panel-grid">
+            <div><svg class="chart" id="galton-chart" role="img" aria-label="Simulated parent and child heights"></svg></div>
+            <div>
+              <div class="stats">
+                <div class="stat"><span class="stat-label" style="color:var(--c-terra)">Parents, inches from mean</span><span class="stat-val" id="gal-par"></span></div>
+                <div class="stat"><span class="stat-label" style="color:var(--c-blue)">Children, inches from mean</span><span class="stat-val" id="gal-chi"></span></div>
+                <div class="stat"><span class="stat-label">Share of the gap closed</span><span class="stat-val" id="gal-closed"></span></div>
+              </div>
+              <p class="readout" id="gal-readout" style="margin-top:1.2rem"></p>
+              <div class="legend"><span><i class="line" style="background:var(--accent)"></i>expected child height</span><span><i class="line" style="background:var(--ink-faint)"></i>child equals parent</span></div>
+            </div>
+          </div>
+          <p class="note"><span class="note-label">Simulated</span>Four hundred parent-child pairs with a mean of 68 inches and a standard deviation of 1.8 inches in both generations, values chosen to resemble Galton&rsquo;s data. The slope of 2/3 is Galton&rsquo;s estimate.</p>
+        </div>
+        <p class="lesson">Some movement toward the average is a statistical certainty whenever generations are imperfectly linked. Research on mobility has to separate it from movement that opportunity produces.</p>
+        <div class="demo-foot">
+          <p class="cite"><span class="note-label">Cite</span>Aref, F. (2026). Regression to the Mean. <i>The Methods Lab</i>. https://fariborzaref.github.io/methods#galton</p>
+          <details class="teach">
+            <summary>For instructors</summary>
+            <p><b>Goal.</b> Recognize regression to the mean as a statistical, not social, process.</p>
+            <p><b>Ask the class to answer aloud.</b> Children of the lowest-earning parents earn more, on average, than their parents did. This shows that</p>
+            <ol class="teach-opts"><li>opportunity is equal</li><li>part of the rise would appear even with no opportunity at all</li></ol>
+            <p><b>Answer.</b> The second. Groups selected for extreme values move toward the mean in the next measurement whatever the society.</p>
+          </details>
+        </div>
+      </section>
+
       <section class="closing rv">
         <p class="coda">Each failure here produces a clean number and a confident sentence. <em>Judgment about structure, level, and the number of tests performed decides whether that sentence is true.</em></p>
         <a class="cross" href="inequality"><span><small>Companion lab</small>The Inequality Lab &rarr;</span></a>
@@ -391,7 +433,7 @@
         </div>
         <div>
           <span class="foot-label">The labs</span>
-          <ul><li><a href="inequality">Inequality Lab</a></li><li><a href="methods">Methods Lab</a></li><li><a href="mobility">Mobility Lab</a></li><li><a href="courses">Courses</a></li><li><a href="./#cite">How to cite</a></li></ul>
+          <ul><li><a href="inequality">Inequality Lab</a></li><li><a href="methods">Methods Lab</a></li><li><a href="courses">Courses</a></li><li><a href="./#cite">How to cite</a></li></ul>
         </div>
         <div>
           <span class="foot-label">Elsewhere</span>
@@ -415,7 +457,7 @@
     })();
     if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }
   </script>
-  <script src="methods.js?v=6"></script>
+  <script src="methods.js?v=7"></script>
 
 </body>
 </html>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>The Inequality Lab · Fariborz Aref</title>
-  <meta name="description" content="Five interactive demonstrations on global inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, and the Great Divergence.">
+  <meta name="description" content="Seven interactive demonstrations on inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, the Great Divergence, the mobility ladder, and the Great Gatsby curve.">
   <meta name="author" content="Fariborz Aref">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://fariborzaref.github.io/inequality">
@@ -12,12 +12,12 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fariborz Aref · Labs">
   <meta property="og:title" content="The Inequality Lab · Fariborz Aref">
-  <meta property="og:description" content="Five interactive demonstrations on global inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, and the Great Divergence.">
+  <meta property="og:description" content="Seven interactive demonstrations on inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, the Great Divergence, the mobility ladder, and the Great Gatsby curve.">
   <meta property="og:url" content="https://fariborzaref.github.io/inequality">
   <meta property="og:image" content="https://fariborzaref.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Inequality Lab · Fariborz Aref">
-  <meta name="twitter:description" content="Five interactive demonstrations on global inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, and the Great Divergence.">
+  <meta name="twitter:description" content="Seven interactive demonstrations on inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, the Great Divergence, the mobility ladder, and the Great Gatsby curve.">
   <meta name="twitter:image" content="https://fariborzaref.github.io/og-image.png">
 
   <link rel="manifest" href="manifest.webmanifest">
@@ -29,8 +29,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="labs.css?v=6">
-  <script src="labs.js?v=6"></script>
+  <link rel="stylesheet" href="labs.css?v=7">
+  <script src="labs.js?v=7"></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S437KK8JX4"></script>
   <script>
@@ -44,7 +44,7 @@
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "The Inequality Lab \u00b7 Fariborz Aref",
-  "description": "Five interactive demonstrations on global inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, and the Great Divergence.",
+  "description": "Seven interactive demonstrations on inequality built on published data: the birth lottery, the champagne glass, the Lorenz curve and Gini, redistribution by welfare regime, the Great Divergence, the mobility ladder, and the Great Gatsby curve.",
   "url": "https://fariborzaref.github.io/inequality",
   "author": {
     "@type": "Person",
@@ -69,7 +69,6 @@
           <li><a href="./">Labs</a></li>
           <li><a href="inequality" aria-current="page">Inequality Lab</a></li>
           <li><a href="methods">Methods Lab</a></li>
-          <li><a href="mobility">Mobility Lab</a></li>
           <li><a href="courses">Courses</a></li>
           <li><a class="ext" href="https://fariborzaref.com/">Main site</a></li>
         </ul>
@@ -84,10 +83,10 @@
       <section class="hero">
         <p class="kicker">Vol. I &middot; The Inequality Lab</p>
         <h1>The Distribution of <em>Advantage</em></h1>
-        <p class="lead">Five demonstrations, each built on published data. They follow inequality from the circumstances of birth, through the measurement of income and wealth, to the policies that reshape it and the history that produced it.</p>
+        <p class="lead">Seven demonstrations, each built on published data. They follow inequality from the circumstances of birth, through the measurement of income and wealth, to the policies that reshape it, the history that produced it, and its passage from one generation to the next.</p>
         <p class="lead soft">Every figure is sourced at the foot of the page. Where a chart simplifies, the note beneath it says how.</p>
         <dl class="meta">
-          <div><dt>Demonstrations</dt><dd>Five</dd></div>
+          <div><dt>Demonstrations</dt><dd>Seven</dd></div>
           <div><dt>Evidence</dt><dd>Published data</dd></div>
           <div><dt>Length</dt><dd>One class session each</dd></div>
           <div><dt>Companion</dt><dd><a href="methods">The Methods Lab &rarr;</a></dd></div>
@@ -102,6 +101,8 @@
           <li><a href="#lorenz"><span class="rn">III</span><span class="nm">The Lorenz Curve and the Gini</span><span class="ds">How inequality is measured</span></a></li>
           <li><a href="#redistribution"><span class="rn">IV</span><span class="nm">Redistribution by Welfare Regime</span><span class="ds">What states do to market inequality</span></a></li>
           <li><a href="#divergence"><span class="rn">V</span><span class="nm">The Great Divergence</span><span class="ds">How the gap between regions formed</span></a></li>
+          <li><a href="#ladder"><span class="rn">VI</span><span class="nm">The Mobility Ladder</span><span class="ds">Where children land, given where parents stood</span></a></li>
+          <li><a href="#gatsby"><span class="rn">VII</span><span class="nm">The Great Gatsby Curve</span><span class="ds">Inequality and its persistence across generations</span></a></li>
         </ol>
       </nav>
 
@@ -300,8 +301,87 @@
         </div>
       </section>
 
+      <section class="demo rv" id="ladder">
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>VI.</b>Demonstration 6</span>
+            <h2>The Mobility Ladder</h2>
+            <p class="lineage">Pitirim Sorokin&rsquo;s <i>Social Mobility</i> (1927) described society as a ladder that individuals climb and descend. Peter Blau and Otis Dudley Duncan&rsquo;s <i>The American Occupational Structure</i> (1967) turned the image into a table: where parents stood, and where their children ended up.</p>
+          </div>
+          <div><p class="intro">Each row is a fifth of parents, ranked by income; each cell shows where their children land. The rank-rank slope measures how strongly a parent&rsquo;s rank predicts a child&rsquo;s. Move it from zero, where origin does not matter, toward values measured in real countries.</p></div>
+        </div>
+        <div class="panel">
+          <div class="controls" style="margin:0 0 1rem;justify-content:space-between">
+            <div class="range-row"><label for="lad-r">Rank-rank slope <b id="lad-rval" style="font-family:var(--serif);font-size:1.3rem;color:var(--ink);font-weight:400"></b></label><input type="range" id="lad-r" min="0" max="900" value="341" step="1"></div>
+            <div class="seg" id="lad-presets" role="group" aria-label="Presets"><button type="button" data-v="0" aria-pressed="false">No link</button><button type="button" data-v="0.18" aria-pressed="false">Denmark</button><button type="button" data-v="0.341" aria-pressed="true">United States</button><button type="button" data-v="0.7" aria-pressed="false">Rigid</button></div>
+          </div>
+          <div class="panel-grid">
+            <div><svg class="chart" id="ladder-chart" role="img" aria-label="Quintile transition matrix between parents and children"></svg></div>
+            <div>
+              <div class="stats">
+                <div class="stat"><span class="stat-label" style="color:var(--c-blue)">Bottom fifth to top fifth</span><span class="stat-val" id="lad-up"></span></div>
+                <div class="stat"><span class="stat-label">Stay in the bottom fifth</span><span class="stat-val" id="lad-stay"></span></div>
+                <div class="stat"><span class="stat-label">Stay in the top fifth</span><span class="stat-val" id="lad-top"></span></div>
+              </div>
+              <p class="readout" id="lad-readout" style="margin-top:1.2rem"></p>
+            </div>
+          </div>
+          <p class="note"><span class="note-label">Method</span>Probabilities follow from a Gaussian copula with the chosen rank-rank slope. At 0.341, the slope for the United States in Chetty, Hendren, Kline and Saez (2014), the model gives 7.9% from the bottom to the top fifth and 35.8% remaining at the bottom; the published figures are 7.5% and 33.7%. At 0.180, the slope for Denmark, it gives 13.1% from bottom to top against a published 11.7% (Boserup, Kopczuk and Kreiner 2013).</p>
+        </div>
+        <p class="lesson">Mobility is a property of the link between generations. Even where that link is weakest among rich democracies, a child born at the bottom reaches the top far less often than the one in five that chance would give.</p>
+        <div class="demo-foot">
+          <p class="cite"><span class="note-label">Cite</span>Aref, F. (2026). The Mobility Ladder. <i>The Inequality Lab</i>. https://fariborzaref.github.io/inequality#ladder</p>
+          <details class="teach">
+            <summary>For instructors</summary>
+            <p><b>Goal.</b> Read a transition table and define perfect mobility.</p>
+            <p><b>Ask the class to answer aloud.</b> If parents&rsquo; income had no effect on children&rsquo;s, what share of children from the bottom fifth would reach the top fifth?</p>
+            <ol class="teach-opts"><li>0%</li><li>7.5%</li><li>20%</li></ol>
+            <p><b>Answer.</b> 20%. With no link, every origin sends one child in five to each fifth. The United States figure is 7.5%.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="demo rv" id="gatsby">
+        <div class="demo-head">
+          <div>
+            <span class="rn-label"><b>VII.</b>Demonstration 7</span>
+            <h2>The Great Gatsby Curve</h2>
+            <p class="lineage">Alan Krueger, then chair of the Council of Economic Advisers, named the curve in 2012, drawing on Miles Corak&rsquo;s estimates. Corak (2013) showed that countries with more inequality tend to show a stronger link between fathers&rsquo; and sons&rsquo; earnings.</p>
+          </div>
+          <div><p class="intro">Each point is a country. The horizontal axis is income inequality; the vertical axis is the intergenerational earnings elasticity, the share of a father&rsquo;s earnings advantage that reappears, on average, in his son&rsquo;s. Hover a point for its values, then remove the most unequal case and see whether the pattern holds.</p></div>
+        </div>
+        <div class="panel">
+          <div class="controls" style="margin:0 0 1.2rem;justify-content:space-between">
+            <div class="seg" id="gatsby-seg" role="group" aria-label="Sample"><button type="button" data-v="all" aria-pressed="true">All 14 countries</button><button type="button" data-v="nochile" aria-pressed="false">Without Chile</button></div>
+            <div class="legend" id="gatsby-legend"></div>
+          </div>
+          <div class="panel-grid">
+            <div><svg class="chart" id="gatsby-chart" role="img" aria-label="Income inequality and intergenerational earnings elasticity by country"></svg></div>
+            <div>
+              <div class="stats">
+                <div class="stat"><span class="stat-label">Correlation</span><span class="stat-val" id="gat-r"></span></div>
+                <div class="stat"><span class="stat-label">Countries</span><span class="stat-val" id="gat-n"></span></div>
+              </div>
+              <p class="readout" id="gat-readout" style="margin-top:1.2rem"></p>
+            </div>
+          </div>
+          <p class="note"><span class="note-label">Data</span>Earnings elasticities: Corak (2013), <i>Journal of Economic Perspectives</i> 27(3). Gini of disposable income: OECD Income Distribution Database via Our World in Data, latest year available (2020 to 2023), the same figures as in Demonstration IV. Corak pairs mobility with inequality in the parents&rsquo; generation, around 1985; recent values are used here, so the chart shows the association across countries, not its timing.</p>
+        </div>
+        <p class="lesson">Across rich democracies, societies with wider gaps tend to pass more of them to the next generation. Fourteen countries establish a pattern; they do not establish its cause.</p>
+        <div class="demo-foot">
+          <p class="cite"><span class="note-label">Cite</span>Aref, F. (2026). The Great Gatsby Curve. <i>The Inequality Lab</i>. https://fariborzaref.github.io/inequality#gatsby</p>
+          <details class="teach">
+            <summary>For instructors</summary>
+            <p><b>Goal.</b> Distinguish a cross-national association from a causal claim.</p>
+            <p><b>Ask the class to answer aloud.</b> Does this chart show that inequality reduces mobility?</p>
+            <ol class="teach-opts"><li>Yes, the correlation is strong</li><li>No, it shows an association across a small number of countries</li></ol>
+            <p><b>Answer.</b> No. With fourteen cases and many differences between them, the chart describes a pattern. Establishing cause requires evidence on timing and on what else differs.</p>
+          </details>
+        </div>
+      </section>
+
       <section class="closing rv">
-        <p class="coda">Place of birth, the shape of the distribution, the reach of the state, and the long history of growth each set limits on individual effort. <em>Sociology studies those limits.</em></p>
+        <p class="coda">Place of birth, the shape of the distribution, the reach of the state, the long history of growth, and the inheritance of position each set limits on individual effort. <em>Sociology studies those limits.</em></p>
         <a class="cross" href="methods"><span><small>Companion lab</small>The Methods Lab &rarr;</span></a>
         <p class="sources">The note beneath each chart gives the source and year of every figure it uses.</p>
       </section>
@@ -317,7 +397,7 @@
         </div>
         <div>
           <span class="foot-label">The labs</span>
-          <ul><li><a href="inequality">Inequality Lab</a></li><li><a href="methods">Methods Lab</a></li><li><a href="mobility">Mobility Lab</a></li><li><a href="courses">Courses</a></li><li><a href="./#cite">How to cite</a></li></ul>
+          <ul><li><a href="inequality">Inequality Lab</a></li><li><a href="methods">Methods Lab</a></li><li><a href="courses">Courses</a></li><li><a href="./#cite">How to cite</a></li></ul>
         </div>
         <div>
           <span class="foot-label">Elsewhere</span>
@@ -341,7 +421,7 @@
     })();
     if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }
   </script>
-  <script src="inequality.js?v=6"></script>
+  <script src="inequality.js?v=7"></script>
 
 </body>
 </html>
