@@ -1,6 +1,6 @@
 # Fariborz Aref · Labs
 
-**Inequality and Inference.** Twelve interactive demonstrations in inequality and research methods, published at https://fariborzaref.github.io/.
+**Inequality and Method.** Twelve interactive demonstrations in inequality and research methods, published at https://fariborzaref.github.io/.
 
 | Page | Contents |
 |---|---|
