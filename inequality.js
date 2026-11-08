@@ -82,6 +82,22 @@
       tally.innerHTML = 'Births so far: <b>' + births + '</b> &middot; born where income exceeds $50,000: <b>' + rich + '</b> &middot; expected share: ' + Math.round(richPct) + '%';
       btn.innerHTML = 'Be born again';
     }
+    // Opening state: the population-weighted average of the sample, so the panel
+    // is never empty before the first draw.
+    (function showAverage() {
+      var kick = root.querySelector('.lot-kicker');
+      kick.textContent = 'Before the draw';
+      btn.addEventListener('click', function () { kick.textContent = 'You are born in'; }, { once: true });
+      nameEl.textContent = 'The average of the sample';
+      bandEl.textContent = 'Population-weighted across 25 countries. Press the button to be born into one of them.';
+      document.getElementById('v-life').textContent = AVG.life.toFixed(1) + ' years';
+      document.getElementById('v-gni').textContent = '$' + L.fmt(Math.round(AVG.gni / 10) * 10);
+      document.getElementById('v-sch').textContent = AVG.sch.toFixed(1) + ' years';
+      bars.classList.add('show');
+      ['life', 'gni', 'sch'].forEach(function (k) { document.getElementById('f-' + k).style.width = pos(k, AVG[k]) + '%'; });
+      take.textContent = 'No one is born average. Each draw is a real country, chosen with the odds a newborn faces.';
+    })();
+
     btn.addEventListener('click', function () {
       if (spinning) return; spinning = true;
       bars.classList.remove('show'); take.textContent = ''; bandEl.textContent = '';
